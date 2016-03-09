@@ -3,8 +3,8 @@
 To use the project:
 
 1. Install Visual Studio 2015  
- 1. [This is the link to the Community version](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)
- 2. You can get the Enterprise version [from DreamSpark here](https://aits.encs.concordia.ca/aits/sec/msdnaa) (enter your ENCS username and password)
+    1. [This is the link to the Community version](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)
+    2. You can get the Enterprise version [from DreamSpark here](https://aits.encs.concordia.ca/aits/sec/msdnaa) (enter your ENCS username and password)
 2. Download Qt (32 bit - latest version) --- [This is the link to the RC version](http://download.qt.io/development_releases/qt/5.6/5.6.0-rc/qt-opensource-windows-x86-msvc2015-5.6.0-rc.exe)
     --- **NOTE:** the file size is about 800MB, so be patient!
 3. Install Qt into the default location (**C:\qt\Qt5.6.0\5.6\msvc2015**). You don't need to enter this location; just accept the defaults
