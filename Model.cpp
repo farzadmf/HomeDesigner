@@ -26,10 +26,10 @@ void Model::DrawOutline(glm::mat4& model, Shader& shader)
     glUniformMatrix4fv(glGetUniformLocation(shader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(outlineModel));
     glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
     glStencilMask(0x00);
-    glDisable(GL_DEPTH_TEST);
+//    glDisable(GL_DEPTH_TEST);
     DrawMeshes(shader);
     glStencilMask(0xFF);
-    glEnable(GL_DEPTH_TEST);
+//    glEnable(GL_DEPTH_TEST);
 }
 
 void Model::DrawBoundingBox() const
