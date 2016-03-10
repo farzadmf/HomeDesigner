@@ -51,6 +51,8 @@ artifacts/
 *.ilk
 *.meta
 *.obj
+# Not the model OBJ files
+!**/models/**/*.obj
 *.pch
 *.pdb
 *.pgc
