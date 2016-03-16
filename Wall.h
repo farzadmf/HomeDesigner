@@ -4,11 +4,13 @@
 #include <QOpenGLWidget>
 #include "Shader.h"
 
+class ModelContainer;
+
 enum Location
 {
-    LEFT,
-    RIGHT,
-    TOP,
+    LEFT_WALL,
+    RIGHT_WALL,
+    BACK_WALL,
 };
 
 class Wall
@@ -34,5 +36,6 @@ public:
     ~Wall();
 
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
+    void Bind(ModelContainer* container) const;
 };
 

@@ -3,8 +3,9 @@
 #include "Includes.h"
 #include <memory>
 #include <vector>
+#include "Wall.h"
 
-class Wall;
+class ModelContainer;
 class Floor;
 class QOpenGLWidget;
 
@@ -27,5 +28,7 @@ public:
     glm::vec3 GetMaximumVertices() const;
 
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
+    void BoundToFloor(ModelContainer* container);
+    void BoundToWall(ModelContainer*& container, Location wallLocation);
 };
 

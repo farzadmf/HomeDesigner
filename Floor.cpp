@@ -2,7 +2,7 @@
 
 using std::vector;
 
-void Floor::BufferData()
+void Floor::BufferData() const
 {
     vector<glm::vec3> floorVertices =
     {

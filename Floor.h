@@ -18,7 +18,7 @@ class Floor
 
     unique_ptr<Shader> shader;
 
-    void BufferData();
+    void BufferData() const;
 
 public:
     explicit Floor(QOpenGLWidget* targetWidget, GLfloat width);

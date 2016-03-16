@@ -1,7 +1,7 @@
 #include "Shader.h"
 #include "Room.h"
 #include "Floor.h"
-#include "Wall.h"
+#include "ModelContainer.h"
 
 using std::make_unique;
 
@@ -9,9 +9,9 @@ Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth) : width{ roomWidth }
 {
     this->targetWidget = targetWidget;
     floor = make_unique<Floor>(targetWidget, width);
-    walls.push_back(make_shared<Wall>(targetWidget, width / 2.0f, width, RIGHT));
-    walls.push_back(make_shared<Wall>(targetWidget, width / 2.0f, width, LEFT));
-    walls.push_back(make_shared<Wall>(targetWidget, width / 2.0f, width, TOP));
+    walls.push_back(make_shared<Wall>(targetWidget, width / 2.0f, width, RIGHT_WALL));
+    walls.push_back(make_shared<Wall>(targetWidget, width / 2.0f, width, LEFT_WALL));
+    walls.push_back(make_shared<Wall>(targetWidget, width / 2.0f, width, BACK_WALL));
 }
 
 Room::~Room()
@@ -37,4 +37,14 @@ void Room::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
         wall->Draw(view, projection);
 
     floor->Draw(view, projection);
+}
+
+void Room::BoundToFloor(ModelContainer* container)
+{
+    // Set the rotation bound to be 'y' axis, and the translation bound to be 'xz'
+    container->SetRotationBound(glm::vec3(0.0f, 1.0f, 0.0f));
+    container->SetTranslationBound(glm::vec3(1.0f, 0.0f, 1.0f));
+
+    // Just a small offset from the ground
+    container->TranslateBy(glm::vec3(0.0f, 0.001f, 0.0f));
 }

@@ -332,8 +332,8 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, string modelPath, GLf
 
     auto container = make_unique<ModelContainer>(models[modelIndex].get(), initialScale, room.get(), this);
     container->SetSelected(true);
-    //TODO: temporarily shift the model up by a small margin
-    container->TranslateBy(glm::vec3(0.0f, 0.001f, 0.0f));
+    // TODO: bound the model to the floor
+    room->BoundToFloor(container.get());
     for (int i = 0; i < modelContainers.size(); i++)
         modelContainers[i]->SetSelected(false);
 

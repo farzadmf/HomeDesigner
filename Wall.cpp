@@ -1,4 +1,5 @@
 #include "Wall.h"
+#include "ModelContainer.h"
 
 void Wall::BufferData() const
 {
@@ -6,19 +7,19 @@ void Wall::BufferData() const
 
     switch (location)
     {
-        case LEFT:
+        case LEFT_WALL:
             wallVertices.push_back(glm::vec3(-distance, +0.0f        , -width / 2.0f));
             wallVertices.push_back(glm::vec3(-distance, +width / 2.0f, -width / 2.0f));
             wallVertices.push_back(glm::vec3(-distance, +width / 2.0f, +width / 2.0f));
             wallVertices.push_back(glm::vec3(-distance, +0.0f        , +width / 2.0f));
             break;
-        case RIGHT:
+        case RIGHT_WALL:
             wallVertices.push_back(glm::vec3(+distance, +0.0f        , +width / 2.0f));
             wallVertices.push_back(glm::vec3(+distance, +width / 2.0f, +width / 2.0f));
             wallVertices.push_back(glm::vec3(+distance, +width / 2.0f, -width / 2.0f));
             wallVertices.push_back(glm::vec3(+distance, +0.0f        , -width / 2.0f));
             break;
-        case TOP:
+        case BACK_WALL:
             wallVertices.push_back(glm::vec3(+width / 2.0f, +0.0f        , -distance));
             wallVertices.push_back(glm::vec3(+width / 2.0f, +width / 2.0f, -distance));
             wallVertices.push_back(glm::vec3(-width / 2.0f, +width / 2.0f, -distance));
@@ -108,4 +109,18 @@ void Wall::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
     glBindVertexArray(secondWallVao);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
     glBindVertexArray(0);
+}
+
+void Wall::Bind(ModelContainer* container) const
+{
+    switch (location)
+    {
+        case LEFT_WALL:
+//            container->SetTranslationBound()
+            break;
+        case RIGHT_WALL:
+            break;
+        case BACK_WALL:
+            break;
+    }
 }
