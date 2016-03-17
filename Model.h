@@ -33,6 +33,8 @@ private:
     GLuint boundingBoxEbo = 0;
     QOpenGLWidget* targetWidget;
 
+    string filePath;
+
     void DrawMeshes(Shader& shader);
     void PopulateBoundingBoxVertices();
     void PopulateBoundingBoxIndices();

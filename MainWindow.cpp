@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     AddModelControlsToControlsGrid();
     SetupStatusBar();
 
-    openglWidget = new HomeDesignerOpenGLWidget(modelsCombo->count(), centralWidget);
+    openglWidget = new HomeDesignerOpenGLWidget(centralWidget);
     openglWidget->setFocusPolicy(Qt::StrongFocus);
     openglWidget->setFocus();
     openglWidget->setMouseTracking(true);

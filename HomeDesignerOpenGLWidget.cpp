@@ -26,8 +26,8 @@ static glm::vec3 initialCameraPosition(0.0f, 50.0f, 80.0f);
 static glm::vec2 initialCameraDelta(0.0f, -100.0f);
 static GLfloat roomWidth = 60.0f;
 
-HomeDesignerOpenGLWidget::HomeDesignerOpenGLWidget(int modelCount, QWidget* parent) :
-    QOpenGLWidget(parent), models{ vector<unique_ptr<Model>>(modelCount) }
+HomeDesignerOpenGLWidget::HomeDesignerOpenGLWidget(QWidget* parent) :
+    QOpenGLWidget(parent)
 {
     timer.start();
 }
@@ -217,20 +217,16 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
     {
         GLfloat angle = rotateSpeed * (event->y() < lastMouseY ? angleStep : -angleStep);
         lastMouseY = event->y();
-//        glm::vec3 currentRotationAngles = selectedContainer->GetRotationAngles();
         glm::vec3 targetRotationAngles;
         switch (axis)
         {
             case X:
-//                targetRotationAngles = glm::vec3(currentRotationAngles.x + angle, currentRotationAngles.y, currentRotationAngles.z);
                 targetRotationAngles = glm::vec3(angle, 0.0f, 0.0f);
                 break;
             case Y:
-//                targetRotationAngles = glm::vec3(currentRotationAngles.x, currentRotationAngles.y + angle, currentRotationAngles.z);
                 targetRotationAngles = glm::vec3(0.0f, angle, 0.0f);
                 break;
             default:
-//                targetRotationAngles = glm::vec3(currentRotationAngles.x, currentRotationAngles.y, currentRotationAngles.z + angle);
                 targetRotationAngles = glm::vec3(0.0f, 0.0f, angle);
                 break;
         }
@@ -325,17 +321,29 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttribut
     auto attributes = modelAttributes.split('|');
     auto modelPath = attributes[0].toStdString();
 
-    if (!models[modelIndex])
+    // Check if the map already contains a key for this model
+    bool modelAlreadyLoaded = false;
+    for (auto& model : models)
+    {
+        if (model.first == modelPath)
+        {
+            modelAlreadyLoaded = true;
+            break;
+        }
+    }
+
+    // Only load the model if it's not already loaded
+    if (!modelAlreadyLoaded)
     {
         string message = "Loading Model in path: '" + modelPath + "' ...... ";
         emit DisplayMessage(QString::fromStdString(message), 0);
         QCoreApplication::processEvents();
-        models[modelIndex] = make_unique<Model>(modelPath, this);
+        models[modelPath] = make_unique<Model>(modelPath, this);
         message += "DONE!";
         emit DisplayMessage(QString::fromStdString(message), 3000);
     }
 
-    auto container = make_unique<ModelContainer>(models[modelIndex].get(), initialScale, room.get(), this);
+    auto container = make_unique<ModelContainer>(models[modelPath].get(), initialScale, room.get(), this);
     container->SetSelected(true);
 
     // The model is to be bound to somewhere
@@ -389,10 +397,16 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
 
     if (keys[Qt::Key_N])
     {
+        // If no model is selected
         if (selectedContainerIndex == -1)
             return;
 
         int currentWall = modelContainers[selectedContainerIndex]->GetBoundedWall();
+
+        // If the model isn't currently bound to any wall
+        if (currentWall < 0 || currentWall >= room->GetWalls().size())
+            return;
+
         Location nextWall = static_cast<Location>((currentWall + 1) % room->GetWalls().size());
         room->BindToWall(modelContainers[selectedContainerIndex].get(), nextWall);
     }
