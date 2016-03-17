@@ -92,6 +92,18 @@ Wall::~Wall()
 {
 }
 
+Location Wall::GetLocationByName(string locationName)
+{
+    auto name = QString::fromStdString(locationName);
+    if (name.toLower() == "right")
+        return RIGHT_WALL;
+    if (name.toLower() == "back")
+        return BACK_WALL;
+
+    // LEFT_WALL for unknown string!
+    return LEFT_WALL;
+}
+
 void Wall::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
 {
     shader->Use();
@@ -113,14 +125,62 @@ void Wall::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
 
 void Wall::Bind(ModelContainer* container) const
 {
+    float containerWidth, containerDepth, containerHeight;
+
     switch (location)
     {
         case LEFT_WALL:
-//            container->SetTranslationBound()
+            // Move the container to wall location (with a small offset); we also need to consider the width of the model
+            //      We also move the model to the middle of the wall
+            containerWidth = (container->GetMaximumVertices() - container->GetMinimumVertices()).x;
+            containerHeight = (container->GetMaximumVertices() - container->GetMinimumVertices()).y;
+            container->SetInitialTranslateVector(glm::vec3(-distance + containerWidth / 2.0f + 0.001f,
+                                                           distance / 2.0f - containerHeight / 2.0f, 0.0f));
+            // Also rotate the model towards the wall
+            container->SetInitialRotationAngles(glm::vec3(0.0f, 90.0f, 0.0f));
+
+            // Rotation is bound to 'x' and translation to 'yz'
+            container->SetRotationBound(glm::vec3(1.0f, 0.0f, 0.0f));
+            container->SetTranslationBound(glm::vec3(0.0f, 1.0f, 1.0f));
+            container->SetBoundedWall(location);
+            container->Reset();
+
             break;
+
         case RIGHT_WALL:
+            // Move the container to wall location (with a small offset); we also need to consider the width of the model
+            //      We also move the model to the middle of the wall
+            containerWidth = (container->GetMaximumVertices() - container->GetMinimumVertices()).x;
+            containerHeight = (container->GetMaximumVertices() - container->GetMinimumVertices()).y;
+            container->SetInitialTranslateVector(glm::vec3(+distance - containerWidth / 2.0f - 0.001f,
+                                                           distance / 2.0f - containerHeight / 2.0f, 0.0f));
+            // Also rotate the model towards the wall
+            container->SetInitialRotationAngles(glm::vec3(0.0f, -90.0f, 0.0f));
+
+            // Rotation is bound to 'x' and translation to 'yz'
+            container->SetRotationBound(glm::vec3(1.0f, 0.0f, 0.0f));
+            container->SetTranslationBound(glm::vec3(0.0f, 1.0f, 1.0f));
+            container->SetBoundedWall(location);
+            container->Reset();
+
             break;
+
         case BACK_WALL:
+            // Move the container to wall location (with a small offset); we also need to consider the depth of the model
+            //      We also move the model to the middle of the wall
+            containerDepth = (container->GetMaximumVertices() - container->GetMinimumVertices()).z;
+            containerHeight = (container->GetMaximumVertices() - container->GetMinimumVertices()).y;
+            container->SetInitialTranslateVector(glm::vec3(0.0f, distance / 2.0f - containerHeight / 2.0f,
+                                                           -distance + containerDepth / 2.0f + 0.001f));
+            // Also rotate the model towards the wall
+            container->SetInitialRotationAngles(glm::vec3(0.0f, 0.0f, 0.0f));
+
+            // Rotation is bound to 'z' and translation to 'xy'
+            container->SetRotationBound(glm::vec3(0.0f, 0.0f, 1.0f));
+            container->SetTranslationBound(glm::vec3(1.0f, 1.0f, 0.0f));
+            container->SetBoundedWall(location);
+            container->Reset();
+
             break;
     }
 }

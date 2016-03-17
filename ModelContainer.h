@@ -2,32 +2,21 @@
 
 #include "Includes.h"
 #include "Model.h"
-
-class Room;
-
-enum Type
-{
-    BOUNDED,
-    FREE
-};
-
-enum BoundedPlane
-{
-    XY,
-    YZ,
-    XZ
-};
+#include "Room.h"
 
 class ModelContainer : public QObject
 {
     Q_OBJECT
 
-    Type type;
     Model* model = nullptr;
-    glm::vec3 translateVector = glm::vec3(0.0f, 0.0f, 0.0f);
+
+    glm::vec3 translateVector = glm::vec3(0.0f);
+    glm::vec3 initialTranslateVector = glm::vec3(0.0f);
     glm::vec3 rotationAngles = glm::vec3(0.0f);
+    glm::vec3 initialRotationAngles = glm::vec3(0.0f);
     GLfloat scaleFactor = 1.0f;
     GLfloat initialScale = 1.0f;
+
     bool selected = false;
     bool selectable = true;
     glm::mat4 projection = glm::mat4();
@@ -39,6 +28,9 @@ class ModelContainer : public QObject
     glm::vec3 translationBound = glm::vec3(1.0f);
     glm::vec3 rotationBound = glm::vec3(1.0f);
     Room* room = nullptr;
+
+    // Used when a model is bounded to a wall
+    Location boundedWall;
 
     glm::mat4 CombineTransformations() const;
     void UpdateBoundingBox();
@@ -53,6 +45,15 @@ public:
     glm::vec3 GetMinimumVertices() const { return aaBoundingBoxVertices[0]; }
     glm::vec3 GetMaximumVertices() const { return aaBoundingBoxVertices[6]; }
     glm::mat4 GetModelMatrix() const { return CombineTransformations(); }
+
+    // Setters for initial values
+    void SetInitialScale(GLfloat initialScale) { this->initialScale = initialScale; }
+    void SetInitialTranslateVector(glm::vec3 initialTranslateVector);
+    void SetInitialRotationAngles(glm::vec3 initialRotationAngles);
+
+    // Setter and getter for the bounded wall
+    Location GetBoundedWall() const { return boundedWall; }
+    void SetBoundedWall(Location wallLocation) { boundedWall = wallLocation; }
 
     void SetProjectionMatrix(glm::mat4& projection) { this->projection = projection; }
     void SetViewMatrix(glm::mat4& view) { this->view = view; }

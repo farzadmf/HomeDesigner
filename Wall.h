@@ -35,6 +35,12 @@ public:
     Wall(QOpenGLWidget* targetWidget, GLfloat distance, GLfloat width, Location location);
     ~Wall();
 
+    // Getter for location
+    Location GetLocation() const { return location; }
+
+    // Convert a string to location enumeration
+    static Location GetLocationByName(string locationName);
+
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
     void Bind(ModelContainer* container) const;
 };

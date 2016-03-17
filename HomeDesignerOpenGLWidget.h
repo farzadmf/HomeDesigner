@@ -58,7 +58,7 @@ public slots:
     void OnMoveSpeedChanged(int);
     void OnRotateSpeedChanged(int);
     void OnScaleSpeedChanged(int);
-    void OnLoadModel(int modelIndex, string modelPath, GLfloat initialScale);
+    void OnLoadModel(int modelIndex, QString modelAttributes, GLfloat initialScale);
 
 signals:
     void Exit();

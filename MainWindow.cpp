@@ -189,7 +189,11 @@ void MainWindow::AddModelControlsToControlsGrid()
     modelsCombo = new ModelComboBox(centralWidget);
     loadModelButton = new QPushButton("Load Model");
     modelsCombo->addItem("--- Please select a model ---");
-    modelsCombo->addItem("Nanosuit Model", "models/nanosuit/nanosuit.obj");
+    modelsCombo->addItem("Nanosuit Model (Not Bound)", "models/nanosuit/nanosuit.obj");
+    modelsCombo->addItem("Nanosuit Model (Bound to Floor)", "models/nanosuit/nanosuit.obj|floor");
+    modelsCombo->addItem("Nanosuit Model (Bound to Left Wall)", "models/nanosuit/nanosuit.obj|wall|left");
+    modelsCombo->addItem("Nanosuit Model (Bound to Right Wall)", "models/nanosuit/nanosuit.obj|wall|right");
+    modelsCombo->addItem("Nanosuit Model (Bound to Back Wall)", "models/nanosuit/nanosuit.obj|wall|back");
     modelsCombo->addItem("Lamp Model", "models/lamp/Bulb.obj");
     modelsCombo->addItem("Chair Model", "models/mychair/untitled.obj");
     modelsCombo->addItem("Table Model", "models/table/diningtable.obj");
@@ -222,7 +226,7 @@ void MainWindow::ConnectSignalsAndSlots() const
 
     connect(loadModelButton, SIGNAL(clicked()), modelsCombo, SLOT(OnButtonClicked()));
 
-    connect(modelsCombo, SIGNAL(ModelChanged(int, string, GLfloat)), openglWidget, SLOT(OnLoadModel(int, string, GLfloat)));
+    connect(modelsCombo, SIGNAL(ModelChanged(int, QString, GLfloat)), openglWidget, SLOT(OnLoadModel(int, QString, GLfloat)));
 }
 
 void MainWindow::SetupStatusBar()

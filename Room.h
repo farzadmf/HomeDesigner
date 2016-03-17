@@ -28,7 +28,7 @@ public:
     glm::vec3 GetMaximumVertices() const;
 
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
-    void BoundToFloor(ModelContainer* container);
-    void BoundToWall(ModelContainer*& container, Location wallLocation);
+    void BindToFloor(ModelContainer* container);
+    void BindToWall(ModelContainer* container, Location wallLocation);
 };
 

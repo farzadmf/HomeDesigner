@@ -12,12 +12,25 @@ void ModelComboBox::OnButtonClicked()
     if (!index)
         return;
 
-    string modelPath = this->currentData().toString().toStdString();
-    QFileInfo modelFile(QString::fromStdString(modelPath));
+    auto modelAttributes = this->currentData().toString().toStdString();
+
+    // Make sure enough information is included with the model
+    auto attributes = QString::fromStdString(modelAttributes).split('|');
+    if (attributes.size() == 0)
+    {
+        QMessageBox::critical(this, "Error!", QString::fromStdString(
+            "Date defined for the model isn't enough!"));
+        return;
+    }
+
+    // Check to see if the specified path exists
+    auto modelPath = attributes[0];
+    QFileInfo modelFile(modelPath);
+
     if (!modelFile.exists() || !modelFile.isFile())
     {
         QMessageBox::critical(this, "Error!", QString::fromStdString(
-            "File specified in '" + modelPath + "' doesn't exist!"));
+            "File specified in '" + modelAttributes + "' doesn't exist!"));
         return;
     }
 
@@ -34,5 +47,5 @@ void ModelComboBox::OnButtonClicked()
     if (!ok)
         return;
 
-    emit ModelChanged(index - 1, modelPath, initialScale);
+    emit ModelChanged(index - 1, QString::fromStdString(modelAttributes), initialScale);
 }

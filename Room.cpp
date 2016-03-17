@@ -39,7 +39,7 @@ void Room::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
     floor->Draw(view, projection);
 }
 
-void Room::BoundToFloor(ModelContainer* container)
+void Room::BindToFloor(ModelContainer* container)
 {
     // Set the rotation bound to be 'y' axis, and the translation bound to be 'xz'
     container->SetRotationBound(glm::vec3(0.0f, 1.0f, 0.0f));
@@ -47,4 +47,11 @@ void Room::BoundToFloor(ModelContainer* container)
 
     // Just a small offset from the ground
     container->TranslateBy(glm::vec3(0.0f, 0.001f, 0.0f));
+}
+
+void Room::BindToWall(ModelContainer* container, Location wallLocation)
+{
+    for (auto wall : walls)
+        if (wall->GetLocation() == wallLocation)
+            wall->Bind(container);
 }

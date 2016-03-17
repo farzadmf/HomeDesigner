@@ -1,14 +1,16 @@
 #include "ModelContainer.h"
 #include "CollisionManager.h"
-#include "Room.h"
 
 glm::mat4 ModelContainer::CombineTransformations() const
 {
     glm::mat4 modelMatrix;
-    modelMatrix = translate(modelMatrix, translateVector);
-    modelMatrix = rotate(modelMatrix, glm::radians(rotationAngles.x), glm::vec3(1.0f, 0.0f, 0.0f));
-    modelMatrix = rotate(modelMatrix, glm::radians(rotationAngles.y), glm::vec3(0.0f, 1.0f, 0.0f));
-    modelMatrix = rotate(modelMatrix, glm::radians(rotationAngles.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    modelMatrix = translate(modelMatrix, initialTranslateVector + translateVector);
+//    modelMatrix = rotate(modelMatrix, glm::radians(rotationAngles.x), glm::vec3(1.0f, 0.0f, 0.0f));
+//    modelMatrix = rotate(modelMatrix, glm::radians(rotationAngles.y), glm::vec3(0.0f, 1.0f, 0.0f));
+//    modelMatrix = rotate(modelMatrix, glm::radians(rotationAngles.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    modelMatrix = rotate(modelMatrix, glm::radians(initialRotationAngles.x) + glm::radians(rotationAngles.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    modelMatrix = rotate(modelMatrix, glm::radians(initialRotationAngles.y) + glm::radians(rotationAngles.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelMatrix = rotate(modelMatrix, glm::radians(initialRotationAngles.z) + glm::radians(rotationAngles.z), glm::vec3(0.0f, 0.0f, 1.0f));
     modelMatrix = scale(modelMatrix, glm::vec3(scaleFactor, scaleFactor, scaleFactor));
     return modelMatrix;
 }
@@ -63,6 +65,18 @@ ModelContainer::ModelContainer(Model* model, GLfloat initialScale, Room* room, Q
     collisionManagerIndex = CollisionManager::GetInstance().AddContainer(this);
 }
 
+void ModelContainer::SetInitialTranslateVector(glm::vec3 initialTranslateVector)
+{
+    this->initialTranslateVector = initialTranslateVector;
+    UpdateBoundingBox();
+}
+
+void ModelContainer::SetInitialRotationAngles(glm::vec3 initialRotationAngles)
+{
+    this->initialRotationAngles = initialRotationAngles;
+    UpdateBoundingBox();
+}
+
 void ModelContainer::ScaleBy(GLfloat scaleFactor)
 {
     auto currentScaleFactor = this->scaleFactor;
@@ -84,9 +98,12 @@ void ModelContainer::RotateBy(glm::vec3 angles)
     auto currentRotationAngles = rotationAngles;
 
     // Try to rotate and see whether it gets out of the room
-    rotationAngles.x = rotationBound.x * angles.x;
-    rotationAngles.y = rotationBound.y * angles.y;
-    rotationAngles.z = rotationBound.z * angles.z;
+//    rotationAngles.x = rotationBound.x * angles.x;
+//    rotationAngles.y = rotationBound.y * angles.y;
+//    rotationAngles.z = rotationBound.z * angles.z;
+    rotationAngles.x += rotationBound.x * angles.x;
+    rotationAngles.y += rotationBound.y * angles.y;
+    rotationAngles.z += rotationBound.z * angles.z;
     UpdateBoundingBox();
 
     // If model's box is not inside the room, revert back the changes
@@ -102,9 +119,9 @@ void ModelContainer::TranslateBy(glm::vec3 translateVector)
     auto currentTranslateVector = this->translateVector;
 
     // Try to move and see whether it gets out of the room
-    this->translateVector.x = translationBound.x * translateVector.x;
-    this->translateVector.y = translationBound.y * translateVector.y;
-    this->translateVector.z = translationBound.z * translateVector.z;
+    this->translateVector.x += translationBound.x * translateVector.x;
+    this->translateVector.y += translationBound.y * translateVector.y;
+    this->translateVector.z += translationBound.z * translateVector.z;
     UpdateBoundingBox();
 
     // If out of the room, revert back the changes

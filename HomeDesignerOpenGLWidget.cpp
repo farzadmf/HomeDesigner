@@ -186,18 +186,17 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
     {
         GLfloat translateFactor = moveSpeed * (event->y() < lastMouseY ? moveStep : -moveStep);
         lastMouseY = event->y();
-        glm::vec3 currentTranslate = selectedContainer->GetTranslationVector();
         glm::vec3 targetTranslate;
         switch (axis)
         {
             case X:
-                targetTranslate = glm::vec3(currentTranslate.x + translateFactor, currentTranslate.y, currentTranslate.z);
+                targetTranslate = glm::vec3(translateFactor, 0.0f, 0.0f);
                 break;
             case Y:
-                targetTranslate = glm::vec3(currentTranslate.x, currentTranslate.y + translateFactor, currentTranslate.z);
+                targetTranslate = glm::vec3(0.0f, translateFactor, 0.0f);
                 break;
             default:
-                targetTranslate = glm::vec3(currentTranslate.x, currentTranslate.y, currentTranslate.z + translateFactor);
+                targetTranslate = glm::vec3(0.0f, 0.0f, translateFactor);
                 break;
         }
         selectedContainer->TranslateBy(targetTranslate);
@@ -218,18 +217,21 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
     {
         GLfloat angle = rotateSpeed * (event->y() < lastMouseY ? angleStep : -angleStep);
         lastMouseY = event->y();
-        glm::vec3 currentRotationAngles = selectedContainer->GetRotationAngles();
+//        glm::vec3 currentRotationAngles = selectedContainer->GetRotationAngles();
         glm::vec3 targetRotationAngles;
         switch (axis)
         {
             case X:
-                targetRotationAngles = glm::vec3(currentRotationAngles.x + angle, currentRotationAngles.y, currentRotationAngles.z);
+//                targetRotationAngles = glm::vec3(currentRotationAngles.x + angle, currentRotationAngles.y, currentRotationAngles.z);
+                targetRotationAngles = glm::vec3(angle, 0.0f, 0.0f);
                 break;
             case Y:
-                targetRotationAngles = glm::vec3(currentRotationAngles.x, currentRotationAngles.y + angle, currentRotationAngles.z);
+//                targetRotationAngles = glm::vec3(currentRotationAngles.x, currentRotationAngles.y + angle, currentRotationAngles.z);
+                targetRotationAngles = glm::vec3(0.0f, angle, 0.0f);
                 break;
             default:
-                targetRotationAngles = glm::vec3(currentRotationAngles.x, currentRotationAngles.y, currentRotationAngles.z + angle);
+//                targetRotationAngles = glm::vec3(currentRotationAngles.x, currentRotationAngles.y, currentRotationAngles.z + angle);
+                targetRotationAngles = glm::vec3(0.0f, 0.0f, angle);
                 break;
         }
         selectedContainer->RotateBy(targetRotationAngles);
@@ -318,8 +320,11 @@ void HomeDesignerOpenGLWidget::OnMoveSpeedChanged(int speed) { moveSpeed = speed
 void HomeDesignerOpenGLWidget::OnRotateSpeedChanged(int speed) { rotateSpeed = speed; }
 void HomeDesignerOpenGLWidget::OnScaleSpeedChanged(int speed) { scaleSpeed = speed; }
 
-void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, string modelPath, GLfloat initialScale)
+void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttributes, GLfloat initialScale)
 {
+    auto attributes = modelAttributes.split('|');
+    auto modelPath = attributes[0].toStdString();
+
     if (!models[modelIndex])
     {
         string message = "Loading Model in path: '" + modelPath + "' ...... ";
@@ -332,8 +337,19 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, string modelPath, GLf
 
     auto container = make_unique<ModelContainer>(models[modelIndex].get(), initialScale, room.get(), this);
     container->SetSelected(true);
-    // TODO: bound the model to the floor
-    room->BoundToFloor(container.get());
+
+    // The model is to be bound to somewhere
+    if (attributes.size() > 1)
+    {
+        if (attributes[1].toLower() == "floor")
+            room->BindToFloor(container.get());
+        else if (attributes[1].toLower() == "wall")
+        {
+            auto wallLocation = Wall::GetLocationByName(attributes[2].toStdString());
+            room->BindToWall(container.get(), wallLocation);
+        }
+    }
+
     for (int i = 0; i < modelContainers.size(); i++)
         modelContainers[i]->SetSelected(false);
 
@@ -369,6 +385,16 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
         for (auto i = 0; i < modelContainers.size(); i++)
             modelContainers[i]->SetSelected(false);
         selectedContainerIndex = -1;
+    }
+
+    if (keys[Qt::Key_N])
+    {
+        if (selectedContainerIndex == -1)
+            return;
+
+        int currentWall = modelContainers[selectedContainerIndex]->GetBoundedWall();
+        Location nextWall = static_cast<Location>((currentWall + 1) % room->GetWalls().size());
+        room->BindToWall(modelContainers[selectedContainerIndex].get(), nextWall);
     }
 
     if (keys[Qt::Key_B])
