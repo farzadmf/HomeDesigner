@@ -76,6 +76,9 @@ void ModelContainer::SetInitialRotationAngles(glm::vec3 initialRotationAngles)
 
 void ModelContainer::ScaleBy(GLfloat scaleFactor)
 {
+    bool operationAllowed = true;
+    QString reason;     // Message indicating why the operation wasn't successful
+
     auto currentScaleFactor = this->scaleFactor;
 
     // Try to scale and see whether it gets out of the room
@@ -87,11 +90,21 @@ void ModelContainer::ScaleBy(GLfloat scaleFactor)
     {
         this->scaleFactor = currentScaleFactor;
         UpdateBoundingBox();
+        operationAllowed = false;
+        reason = "The object is getting out of the room!";
     }
+
+    if (!operationAllowed)
+        emit OperationNotAllowed("<b>Cannot scale! " + reason + "</b>");
+    else
+        emit OperationSuccessful();
 }
 
 void ModelContainer::RotateBy(glm::vec3 angles)
 {
+    bool operationAllowed = true;
+    QString reason;     // Message indicating why the operation wasn't successful
+
     auto currentRotationAngles = rotationAngles;
 
     // Try to rotate and see whether it gets out of the room
@@ -100,16 +113,34 @@ void ModelContainer::RotateBy(glm::vec3 angles)
     rotationAngles.z += rotationBound.z * angles.z;
     UpdateBoundingBox();
 
+    if ((angles.x != 0 && rotationBound.x == 0) ||
+        (angles.y != 0 && rotationBound.y == 0) ||
+        (angles.z != 0 && rotationBound.z == 0))
+    {
+        operationAllowed = false;
+        reason = "The object's rotation is bounded in this direction!";
+    }
+
     // If model's box is not inside the room, revert back the changes
     if (!IsInsideRoom())
     {
         rotationAngles = currentRotationAngles;
         UpdateBoundingBox();
+        operationAllowed = false;
+        reason = "The object is getting out of the room!";
     }
+
+    if (!operationAllowed)
+        emit OperationNotAllowed("<b>Cannot rotate! " + reason + "</b>");
+    else
+        emit OperationSuccessful();
 }
 
 void ModelContainer::TranslateBy(glm::vec3 translateVector)
 {
+    bool operationAllowed = true;
+    QString reason;     // Message indicating why the operation wasn't successful
+
     auto currentTranslateVector = this->translateVector;
 
     // Try to move and see whether it gets out of the room
@@ -118,12 +149,27 @@ void ModelContainer::TranslateBy(glm::vec3 translateVector)
     this->translateVector.z += translationBound.z * translateVector.z;
     UpdateBoundingBox();
 
+    if ((translateVector.x != 0 && translationBound.x == 0) ||
+        (translateVector.y != 0 && translationBound.y == 0) ||
+        (translateVector.z != 0 && translationBound.z == 0))
+    {
+        operationAllowed = false;
+        reason = "The object's movement is bounded in this direction!";
+    }
+
     // If out of the room, revert back the changes
     if (!IsInsideRoom())
     {
         this->translateVector = currentTranslateVector;
         UpdateBoundingBox();
+        operationAllowed = false;
+        reason = "The object is getting out of the room!";
     }
+
+    if (!operationAllowed)
+        emit OperationNotAllowed("<b>Cannot move! " + reason + "</b>");
+    else
+        emit OperationSuccessful();
 }
 
 bool ModelContainer::SetSelected(bool selected)

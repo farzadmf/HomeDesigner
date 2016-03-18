@@ -46,7 +46,7 @@ void Room::BindToFloor(ModelContainer* container)
     container->SetTranslationBound(glm::vec3(1.0f, 0.0f, 1.0f));
 
     // Just a small offset from the ground
-    container->TranslateBy(glm::vec3(0.0f, 0.001f, 0.0f));
+    container->SetInitialTranslateVector(glm::vec3(0.0f, 0.001f, 0.0f));
 }
 
 void Room::BindToWall(ModelContainer* container, Location wallLocation)

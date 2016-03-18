@@ -247,24 +247,34 @@ void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
     {
         case Qt::Key_X:
             axis = X;
-            if (oldAxis != axis) emit
-                DisplayMessage("<b><font color='red'>Axis   -------->   x  ( RED )</font></b>", 0);
+            if (oldAxis != axis)
+            {
+                lastMessage = "<b><font color='red'>Axis   -------->   x  ( RED )</font></b>";
+                emit DisplayMessage(lastMessage, 0);
+            }
             break;
 
         case Qt::Key_Y:
             axis = Y;
-            if (oldAxis != axis) emit
-                DisplayMessage("<b><font color='green'>Axis   -------->   y  ( GREEN )</font></b>", 0);
+            if (oldAxis != axis)
+            {
+                lastMessage = "<b><font color='green'>Axis   -------->   y  ( GREEN )</font></b>";
+                emit DisplayMessage(lastMessage, 0);
+            }
             break;
 
         case Qt::Key_Z:
             axis = Z;
             if (oldAxis != axis)
-                emit DisplayMessage("<b><font color='blue'>Axis   -------->   z  ( BLUE )</font></b>", 0);
+            {
+                lastMessage = "<b><font color='blue'>Axis   -------->   z  ( BLUE )</font></b>";
+                emit DisplayMessage(lastMessage, 0);
+            }
             break;
 
         default:
             axis = NONE;
+            lastMessage = "";
             emit ClearMessage();
             break;
     }
@@ -281,6 +291,7 @@ void HomeDesignerOpenGLWidget::keyReleaseEvent(QKeyEvent* event)
         return;
 
     axis = NONE;
+    lastMessage = "";
     emit ClearMessage();
     keys[event->key()] = false;
     modifiers[SHIFT] = event->modifiers() & Qt::ShiftModifier;
@@ -346,6 +357,10 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttribut
     auto container = make_unique<ModelContainer>(models[modelPath].get(), initialScale, room.get(), this);
     container->SetSelected(true);
 
+    // Attach container's SIGNAL to our SLOT to display a message
+    connect(container.get(), SIGNAL(OperationNotAllowed(QString)), this, SLOT(OnOperationNotAllowed(QString)));
+    connect(container.get(), SIGNAL(OperationSuccessful()), this, SLOT(OnOperationSuccessful()));
+
     // The model is to be bound to somewhere
     if (attributes.size() > 1)
     {
@@ -365,6 +380,16 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttribut
     selectedContainerIndex = modelContainers.size() - 1;
     grabKeyboard();
     update();
+}
+
+void HomeDesignerOpenGLWidget::OnOperationNotAllowed(QString message)
+{
+    emit DisplayMessage(message, 0);
+}
+
+void HomeDesignerOpenGLWidget::OnOperationSuccessful()
+{
+    emit DisplayMessage(lastMessage, 0);
 }
 
 void HomeDesignerOpenGLWidget::ProcessKeyboard()

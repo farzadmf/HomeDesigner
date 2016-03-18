@@ -34,6 +34,11 @@ class ModelContainer : public QObject
 
     glm::mat4 CombineTransformations() const;
     void UpdateBoundingBox();
+
+signals:
+    // Used to display a message when the transformation is not allowed
+    void OperationNotAllowed(QString message);
+    void OperationSuccessful();
     
 public:
     ModelContainer(Model* model, GLfloat initialScale, Room* room, QOpenGLWidget* targetWidget);

@@ -56,6 +56,9 @@ class HomeDesignerOpenGLWidget : public QOpenGLWidget
     Axis axis = NONE;
     bool collisionDetected = false;
 
+    // Last message from this class being displayed in the status bar
+    QString lastMessage;    
+
     void ProcessKeyboard();
 
 public:
@@ -88,6 +91,8 @@ public slots:
     void OnRotateSpeedChanged(int);
     void OnScaleSpeedChanged(int);
     void OnLoadModel(int modelIndex, QString modelAttributes, GLfloat initialScale);
+    void OnOperationNotAllowed(QString message);
+    void OnOperationSuccessful();
 
 signals:
     void Exit();
