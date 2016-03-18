@@ -52,8 +52,6 @@ void HomeDesignerOpenGLWidget::paintGL()
     glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "view"), 1, GL_FALSE, value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "projection"), 1, GL_FALSE, value_ptr(projection));
 
-    room->Draw(view, projection);
-
     if (showWorldAxis)
     {
         glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(glm::mat4()));
@@ -61,6 +59,8 @@ void HomeDesignerOpenGLWidget::paintGL()
         glDrawArrays(GL_LINES, 0, 6);
         glBindVertexArray(0);
     }
+
+    room->Draw(view, projection);
 
     // Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline)
     //      and also see if there's any collisions
