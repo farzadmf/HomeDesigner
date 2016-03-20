@@ -54,10 +54,14 @@ void HomeDesignerOpenGLWidget::paintGL()
 
     if (showWorldAxis)
     {
+        GLfloat currentLineWidth;
+        glGetFloatv(GL_LINE_WIDTH, &currentLineWidth);
+        glLineWidth(2 * currentLineWidth);
         glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(glm::mat4()));
         glBindVertexArray(axisVao);
         glDrawArrays(GL_LINES, 0, 6);
         glBindVertexArray(0);
+        glLineWidth(currentLineWidth);
     }
 
     room->Draw(view, projection);
@@ -120,17 +124,17 @@ void HomeDesignerOpenGLWidget::initializeGL()
     axisShader.Create();
     GLfloat axes[] =
     {
-        // x axis (red)
-        0.0f, 0.0001f, 0.0f, 1.0f, 0.0f, 0.0f,
-        5.0f, 0.0001f, 0.0f, 1.0f, 0.0f, 0.0f,
+        // x axis (cyan)
+        0.0f, 0.0005f, 0.0f, 0.5f, 0.0f, 0.0f,
+        8.0f, 0.0005f, 0.0f, 0.5f, 0.0f, 0.0f,
 
         // y axis (green)
-        0.0f, 0.0001f, 0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 5.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 0.0005f, 0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 8.0f, 0.0f, 0.0f, 1.0f, 0.0f,
 
         // z axis (blue)
-        0.0f, 0.0001f, 0.0f, 0.0f, 0.0f, 1.0f,
-        0.0f, 0.0001f, 5.0f, 0.0f, 0.0f, 1.0f,
+        0.0f, 0.0005f, 0.0f, 0.0f, 0.0f, 1.0f,
+        0.0f, 0.0005f, 8.0f, 0.0f, 0.0f, 1.0f,
     };
 
     glGenVertexArrays(1, &axisVao);
@@ -249,7 +253,7 @@ void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
             axis = X;
             if (oldAxis != axis)
             {
-                lastMessage = "<b><font color='red'>Axis   -------->   x  ( RED )</font></b>";
+                lastMessage = "<b><font color='maroon'>Axis   -------->   x  ( CYAN )</font></b>";
                 emit DisplayMessage(lastMessage, 0);
             }
             break;

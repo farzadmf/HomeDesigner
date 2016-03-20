@@ -95,7 +95,7 @@ void ModelContainer::ScaleBy(GLfloat scaleFactor)
     }
 
     if (!operationAllowed)
-        emit OperationNotAllowed("<b>Cannot scale! " + reason + "</b>");
+        emit OperationNotAllowed("<b><font color='red>Cannot scale! " + reason + "</font></b>");
     else
         emit OperationSuccessful();
 }
@@ -131,7 +131,7 @@ void ModelContainer::RotateBy(glm::vec3 angles)
     }
 
     if (!operationAllowed)
-        emit OperationNotAllowed("<b>Cannot rotate! " + reason + "</b>");
+        emit OperationNotAllowed("<b><font color='red'>Cannot rotate! " + reason + "</font></b>");
     else
         emit OperationSuccessful();
 }
@@ -167,7 +167,7 @@ void ModelContainer::TranslateBy(glm::vec3 translateVector)
     }
 
     if (!operationAllowed)
-        emit OperationNotAllowed("<b>Cannot move! " + reason + "</b>");
+        emit OperationNotAllowed("<b><font color='red'>Cannot move! " + reason + "</font></b>");
     else
         emit OperationSuccessful();
 }
