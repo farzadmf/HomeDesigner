@@ -253,7 +253,7 @@ void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
             axis = X;
             if (oldAxis != axis)
             {
-                lastMessage = "<b><font color='maroon'>Axis   -------->   x  ( CYAN )</font></b>";
+                lastMessage = "<b><font color='maroon'>Axis   -------->   x  ( MAROON )</font></b>";
                 emit DisplayMessage(lastMessage, 0);
             }
             break;
