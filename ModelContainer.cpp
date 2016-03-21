@@ -95,7 +95,7 @@ void ModelContainer::ScaleBy(GLfloat scaleFactor)
     }
 
     if (!operationAllowed)
-        emit OperationNotAllowed("<b><font color='red>Cannot scale! " + reason + "</font></b>");
+        emit OperationNotAllowed("<b><font color='red'>Cannot scale! " + reason + "</font></b>");
     else
         emit OperationSuccessful();
 }
