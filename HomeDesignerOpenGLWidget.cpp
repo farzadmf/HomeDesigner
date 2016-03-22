@@ -11,7 +11,7 @@ static int lastMouseX;
 static int lastMouseY;
 static map<int, bool> keys;
 static bool modifiers[3];
-static GLfloat cameraMoveSpeed = 0.1f;
+static GLfloat cameraMoveSpeed = 0.2f;
 static bool firstMouseMovement = true;
 
 static bool drawBoundingBox = false;
