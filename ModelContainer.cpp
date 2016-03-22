@@ -59,7 +59,15 @@ ModelContainer::ModelContainer(Model* model, GLfloat initialScale, Room* room, Q
 {
     aaBoundingBoxVertices = model->GetBoundingBoxVertices();
     UpdateBoundingBox();
-    collisionManagerIndex = CollisionManager::GetInstance().AddContainer(this);
+
+    if (IsInsideRoom())
+        collisionManagerIndex = CollisionManager::GetInstance().AddContainer(this);
+}
+
+void ModelContainer::SetInitialScale(GLfloat initialScale)
+{
+    this->initialScale = initialScale;
+    UpdateBoundingBox();
 }
 
 void ModelContainer::SetInitialTranslateVector(glm::vec3 initialTranslateVector)

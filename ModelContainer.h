@@ -52,7 +52,7 @@ public:
     glm::mat4 GetModelMatrix() const { return CombineTransformations(); }
 
     // Setters for initial values
-    void SetInitialScale(GLfloat initialScale) { this->initialScale = initialScale; }
+    void SetInitialScale(GLfloat initialScale);
     void SetInitialTranslateVector(glm::vec3 initialTranslateVector);
     void SetInitialRotationAngles(glm::vec3 initialRotationAngles);
 

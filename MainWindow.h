@@ -13,11 +13,11 @@ public:
     ~MainWindow();
 
 public slots:
-    void ChangeModelLoadingButton(bool enable) const;
-    void ClearMessage() const;
-    void DisplayMessage(QString message, int timeout) const;
-    void DisplayError(QString message);
-    void UpdateStatus(bool boundingBox, bool aaBoudningBox, bool axis) const;
+    void OnChangeModelLoadingButton(bool enable) const;
+    void OnClearMessage() const;
+    void OnDisplayMessage(QString message, int timeout) const;
+    void OnDisplayError(QString message);
+    void OnUpdateStatus(bool boundingBox, bool aaBoudningBox, bool axis) const;
 
 private:
     QWidget* centralWidget;

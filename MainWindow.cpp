@@ -29,12 +29,12 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     setCentralWidget(centralWidget);
 }
 
-void MainWindow::DisplayError(QString message)
+void MainWindow::OnDisplayError(QString message)
 {
     QMessageBox::critical(this, "Error!", message);
 }
 
-void MainWindow::UpdateStatus(bool boundingBox, bool aaBoudningBox, bool axis) const
+void MainWindow::OnUpdateStatus(bool boundingBox, bool aaBoudningBox, bool axis) const
 {
     QString bbString = QString("BB: <b>%1</b>").arg(boundingBox ? "ON" : "OFF");
     QString aabbString = QString("AABB: <b>%1</b>").arg(aaBoudningBox ? "ON" : "OFF");
@@ -64,24 +64,24 @@ MainWindow::~MainWindow()
     delete centralWidget;
 }
 
-void MainWindow::ChangeModelLoadingButton(bool enable) const
+void MainWindow::OnChangeModelLoadingButton(bool enable) const
 {
     loadModelButton->setEnabled(enable);
 }
 
-void MainWindow::ClearMessage() const
+void MainWindow::OnClearMessage() const
 {
     messageLabel->setText("");
 }
 
-void MainWindow::DisplayMessage(QString message, int timeout) const
+void MainWindow::OnDisplayMessage(QString message, int timeout) const
 {
     messageLabel->setText(message);
 
     if (timeout)
     {
         QCoreApplication::processEvents();
-        QTimer::singleShot(timeout, this, SLOT(ClearMessage()));
+        QTimer::singleShot(timeout, this, SLOT(OnClearMessage()));
     }
 }
 
@@ -204,25 +204,25 @@ void MainWindow::AddModelControlsToControlsGrid()
 
 void MainWindow::ConnectSignalsAndSlots() const
 {
-    connect(moveRadioButton, SIGNAL(toggled(bool)), openglWidget, SLOT(OnMoveSelectedChanged(bool)));
+    connect(moveRadioButton,   SIGNAL(toggled(bool)), openglWidget, SLOT(OnMoveSelectedChanged(bool)));
     connect(rotateRadioButton, SIGNAL(toggled(bool)), openglWidget, SLOT(OnRotateSelectedChanged(bool)));
-    connect(scaleRadioButton, SIGNAL(toggled(bool)), openglWidget, SLOT(OnScaleSelectedChanged(bool)));
+    connect(scaleRadioButton,  SIGNAL(toggled(bool)), openglWidget, SLOT(OnScaleSelectedChanged(bool)));
 
-    connect(moveSlider, SIGNAL(valueChanged(int)), openglWidget, SLOT(OnMoveSpeedChanged(int)));
+    connect(moveSlider, SIGNAL(valueChanged(int)), openglWidget,   SLOT(OnMoveSpeedChanged(int)));
     connect(moveSlider, SIGNAL(valueChanged(int)), moveValueLabel, SLOT(setNum(int)));
 
-    connect(rotateSlider, SIGNAL(valueChanged(int)), openglWidget, SLOT(OnRotateSpeedChanged(int)));
+    connect(rotateSlider, SIGNAL(valueChanged(int)), openglWidget,     SLOT(OnRotateSpeedChanged(int)));
     connect(rotateSlider, SIGNAL(valueChanged(int)), rotateValueLabel, SLOT(setNum(int)));
 
-    connect(scaleSlider, SIGNAL(valueChanged(int)), openglWidget, SLOT(OnScaleSpeedChanged(int)));
+    connect(scaleSlider, SIGNAL(valueChanged(int)), openglWidget,    SLOT(OnScaleSpeedChanged(int)));
     connect(scaleSlider, SIGNAL(valueChanged(int)), scaleValueLabel, SLOT(setNum(int)));
 
-    connect(openglWidget, SIGNAL(Exit()), this, SLOT(close()));
-    connect(openglWidget, SIGNAL(DisplayMessage(QString, int)), this, SLOT(DisplayMessage(QString, int)));
-    connect(openglWidget, SIGNAL(StatusUpdated(bool, bool, bool)), this, SLOT(UpdateStatus(bool, bool, bool)));
-    connect(openglWidget, SIGNAL(DisplayError(QString)), this, SLOT(DisplayError(QString)));
-    connect(openglWidget, SIGNAL(ClearMessage()), this, SLOT(ClearMessage()));
-    connect(openglWidget, SIGNAL(CollisionDetected(bool)), this, SLOT(ChangeModelLoadingButton(bool)));
+    connect(openglWidget, SIGNAL(Exit()),                          this, SLOT(close()));
+    connect(openglWidget, SIGNAL(DisplayMessage(QString, int)),    this, SLOT(OnDisplayMessage(QString, int)));
+    connect(openglWidget, SIGNAL(StatusUpdated(bool, bool, bool)), this, SLOT(OnUpdateStatus(bool, bool, bool)));
+    connect(openglWidget, SIGNAL(DisplayError(QString)),           this, SLOT(OnDisplayError(QString)));
+    connect(openglWidget, SIGNAL(ClearMessage()),                  this, SLOT(OnClearMessage()));
+    connect(openglWidget, SIGNAL(CollisionDetected(bool)),         this, SLOT(OnChangeModelLoadingButton(bool)));
 
     connect(loadModelButton, SIGNAL(clicked()), modelsCombo, SLOT(OnButtonClicked()));
 

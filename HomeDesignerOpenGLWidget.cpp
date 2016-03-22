@@ -359,6 +359,13 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttribut
     }
 
     auto container = make_unique<ModelContainer>(models[modelPath].get(), initialScale, room.get(), this);
+    if (!container->IsInsideRoom())
+    {
+        emit DisplayError("The model object is too big! Please try again.");
+        container.release();
+        return;
+    }
+
     container->SetSelected(true);
 
     // Attach container's SIGNAL to our SLOT to display a message
