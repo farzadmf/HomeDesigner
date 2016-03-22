@@ -7,6 +7,13 @@ int CollisionManager::AddContainer(ModelContainer* container)
     return containers.size() - 1;
 }
 
+void CollisionManager::RemoveContainer(ModelContainer* container)
+{
+    auto containerLocation = find(containers.begin(), containers.end(), container);
+    if (containerLocation != containers.end())
+        containers.erase(containerLocation);
+}
+
 bool CollisionManager::IsColliding(ModelContainer* container, int index)
 {
     // In our bounding box vertices, the 1st vertex contains the minimum

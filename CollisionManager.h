@@ -19,5 +19,6 @@ public:
     CollisionManager& operator=(CollisionManager const&) = delete;
 
     int AddContainer(ModelContainer* container);
+    void RemoveContainer(ModelContainer* container);
     bool IsColliding(ModelContainer* container, int index);
 };

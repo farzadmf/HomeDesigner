@@ -34,6 +34,7 @@ class ModelContainer : public QObject
 
     glm::mat4 CombineTransformations() const;
     void UpdateBoundingBox();
+    void DetectCollision();
 
 signals:
     // Used to display a message when the transformation is not allowed
@@ -42,6 +43,7 @@ signals:
     
 public:
     ModelContainer(Model* model, GLfloat initialScale, Room* room, QOpenGLWidget* targetWidget);
+    ~ModelContainer();
 
     GLfloat GetScaleFactor() const { return scaleFactor; }
     glm::vec3 GetTranslationVector() const { return translateVector; }
@@ -59,6 +61,9 @@ public:
     // Setter and getter for the bounded wall
     Location GetBoundedWall() const { return boundedWall; }
     void SetBoundedWall(Location wallLocation) { boundedWall = wallLocation; }
+
+    // Getter for the contained model
+    Model* GetModel() const { return model; }
 
     void SetProjectionMatrix(glm::mat4& projection) { this->projection = projection; }
     void SetViewMatrix(glm::mat4& view) { this->view = view; }

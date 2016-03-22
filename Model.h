@@ -21,6 +21,9 @@ public:
     vector<Mesh> GetMeshes() const { return meshes; }
     vector<glm::vec3> GetBoundingBoxVertices() const { return boundingBoxVertices; }
 
+    // Getter for model file path
+    string GetFilePath() const { return filePath; }
+
 private:
     // Model data
     vector<Mesh> meshes;

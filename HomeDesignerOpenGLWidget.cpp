@@ -358,7 +358,10 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttribut
         emit DisplayMessage(QString::fromStdString(message), 3000);
     }
 
-    auto container = make_unique<ModelContainer>(models[modelPath].get(), initialScale, room.get(), this);
+    auto myRoom = room.get();
+    auto myModel = models[modelPath].get();
+    auto container = make_unique<ModelContainer>(myModel, initialScale, myRoom, this);
+//    auto container = make_unique<ModelContainer>(models[modelPath].get(), initialScale, room.get(), this);
     if (!container->IsInsideRoom())
     {
         emit DisplayError("The model object is too big! Please try again.");
@@ -428,6 +431,17 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
 
         for (auto i = 0; i < modelContainers.size(); i++)
             modelContainers[i]->SetSelected(false);
+        selectedContainerIndex = -1;
+    }
+
+    // Delete the object from the scene
+    if (keys[Qt::Key_Delete])
+    {
+        if (modelContainers.size() == 0 || selectedContainerIndex == -1)
+            return;
+
+        // We keep the model in the map in case they choose to load the same model
+        modelContainers.erase(modelContainers.begin() + selectedContainerIndex);
         selectedContainerIndex = -1;
     }
 

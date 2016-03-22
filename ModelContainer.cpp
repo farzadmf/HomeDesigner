@@ -49,7 +49,10 @@ void ModelContainer::UpdateBoundingBox()
     aaBoundingBoxVertices.push_back(glm::vec3(maxX, maxY, minZ));    // 6
     aaBoundingBoxVertices.push_back(glm::vec3(maxX, maxY, maxZ));    // 7
     aaBoundingBoxVertices.push_back(glm::vec3(maxX, minY, maxZ));    // 8
+}
 
+void ModelContainer::DetectCollision()
+{
     colliding = CollisionManager::GetInstance().IsColliding(this, collisionManagerIndex);
 }
 
@@ -61,25 +64,36 @@ ModelContainer::ModelContainer(Model* model, GLfloat initialScale, Room* room, Q
     UpdateBoundingBox();
 
     if (IsInsideRoom())
+    {
         collisionManagerIndex = CollisionManager::GetInstance().AddContainer(this);
+        DetectCollision();
+    }
+}
+
+ModelContainer::~ModelContainer()
+{
+    CollisionManager::GetInstance().RemoveContainer(this);
 }
 
 void ModelContainer::SetInitialScale(GLfloat initialScale)
 {
     this->initialScale = initialScale;
     UpdateBoundingBox();
+    DetectCollision();
 }
 
 void ModelContainer::SetInitialTranslateVector(glm::vec3 initialTranslateVector)
 {
     this->initialTranslateVector = initialTranslateVector;
     UpdateBoundingBox();
+    DetectCollision();
 }
 
 void ModelContainer::SetInitialRotationAngles(glm::vec3 initialRotationAngles)
 {
     this->initialRotationAngles = initialRotationAngles;
     UpdateBoundingBox();
+    DetectCollision();
 }
 
 void ModelContainer::ScaleBy(GLfloat scaleFactor)
@@ -92,12 +106,14 @@ void ModelContainer::ScaleBy(GLfloat scaleFactor)
     // Try to scale and see whether it gets out of the room
     this->scaleFactor = scaleFactor;
     UpdateBoundingBox();
+    DetectCollision();
 
     // If not inside the room, revert back the changes
     if (!IsInsideRoom())
     {
         this->scaleFactor = currentScaleFactor;
         UpdateBoundingBox();
+        DetectCollision();
         operationAllowed = false;
         reason = "The object is getting out of the room!";
     }
@@ -120,6 +136,7 @@ void ModelContainer::RotateBy(glm::vec3 angles)
     rotationAngles.y += rotationBound.y * angles.y;
     rotationAngles.z += rotationBound.z * angles.z;
     UpdateBoundingBox();
+    DetectCollision();
 
     if ((angles.x != 0 && rotationBound.x == 0) ||
         (angles.y != 0 && rotationBound.y == 0) ||
@@ -134,6 +151,7 @@ void ModelContainer::RotateBy(glm::vec3 angles)
     {
         rotationAngles = currentRotationAngles;
         UpdateBoundingBox();
+        DetectCollision();
         operationAllowed = false;
         reason = "The object is getting out of the room!";
     }
@@ -156,6 +174,7 @@ void ModelContainer::TranslateBy(glm::vec3 translateVector)
     this->translateVector.y += translationBound.y * translateVector.y;
     this->translateVector.z += translationBound.z * translateVector.z;
     UpdateBoundingBox();
+    DetectCollision();
 
     if ((translateVector.x != 0 && translationBound.x == 0) ||
         (translateVector.y != 0 && translationBound.y == 0) ||
@@ -170,6 +189,7 @@ void ModelContainer::TranslateBy(glm::vec3 translateVector)
     {
         this->translateVector = currentTranslateVector;
         UpdateBoundingBox();
+        DetectCollision();
         operationAllowed = false;
         reason = "The object is getting out of the room!";
     }
@@ -254,6 +274,7 @@ void ModelContainer::Reset()
     rotationAngles = glm::vec3(0.0f);
     scaleFactor = initialScale;
     UpdateBoundingBox();
+    DetectCollision();
 }
 
 bool ModelContainer::IsInsideRoom() const
