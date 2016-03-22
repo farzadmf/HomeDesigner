@@ -358,10 +358,7 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttribut
         emit DisplayMessage(QString::fromStdString(message), 3000);
     }
 
-    auto myRoom = room.get();
-    auto myModel = models[modelPath].get();
-    auto container = make_unique<ModelContainer>(myModel, initialScale, myRoom, this);
-//    auto container = make_unique<ModelContainer>(models[modelPath].get(), initialScale, room.get(), this);
+    auto container = make_unique<ModelContainer>(models[modelPath].get(), initialScale, room.get(), this);
     if (!container->IsInsideRoom())
     {
         emit DisplayError("The model object is too big! Please try again.");
@@ -382,7 +379,14 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttribut
             room->BindToFloor(container.get());
         else if (attributes[1].toLower() == "wall")
         {
-            auto wallLocation = Wall::GetLocationByName(attributes[2].toStdString());
+            // Location of the wall to be bound to
+            // If no location is specified, default wall is the left wall
+            Location wallLocation;
+            if (attributes.size() == 2)
+                wallLocation = Wall::GetLocationByName("left");
+            else
+                wallLocation = Wall::GetLocationByName(attributes[2].toStdString());
+
             room->BindToWall(container.get(), wallLocation);
         }
     }

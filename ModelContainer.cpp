@@ -225,7 +225,7 @@ void ModelContainer::DrawModel(Shader& shader, Shader& outlineShader)
     glUniformMatrix4fv(glGetUniformLocation(finalShader.GetProgram(), "view"), 1, GL_FALSE, value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(finalShader.GetProgram(), "projection"), 1, GL_FALSE, value_ptr(projection));
 
-    // Update the stencil buffer
+    // Update the stencil buffer when drawing the model itself
     glStencilFunc(GL_ALWAYS, 1, 0xFF);
     glStencilMask(0xFF);
 

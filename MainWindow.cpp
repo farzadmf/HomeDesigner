@@ -191,6 +191,7 @@ void MainWindow::AddModelControlsToControlsGrid()
     modelsCombo->addItem("--- Please select a model ---");
     modelsCombo->addItem("Nanosuit Model (Not Bound)", "models/nanosuit/nanosuit.obj");
     modelsCombo->addItem("Nanosuit Model (Bound to Floor)", "models/nanosuit/nanosuit.obj|floor");
+    modelsCombo->addItem("Nanosuit Model (Bound to [Default] Wall)", "models/nanosuit/nanosuit.obj|wall");
     modelsCombo->addItem("Nanosuit Model (Bound to Left Wall)", "models/nanosuit/nanosuit.obj|wall|left");
     modelsCombo->addItem("Nanosuit Model (Bound to Right Wall)", "models/nanosuit/nanosuit.obj|wall|right");
     modelsCombo->addItem("Nanosuit Model (Bound to Back Wall)", "models/nanosuit/nanosuit.obj|wall|back");
