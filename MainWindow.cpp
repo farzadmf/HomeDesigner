@@ -234,17 +234,17 @@ void MainWindow::AddModelControlsToControlsGrid()
     modelsCombo = new ModelComboBox(centralWidget);
     loadModelButton = new QPushButton("Load Model");
     modelsCombo->addItem("--- Please select a model ---");
-    modelsCombo->addItem("Nanosuit Model (Not Bound)", "models/nanosuit/nanosuit.obj");
-    modelsCombo->addItem("Nanosuit Model (Bound to Floor)", "models/nanosuit/nanosuit.obj|floor");
+    modelsCombo->addItem("Nanosuit Model (Not Bound)"              , "models/nanosuit/nanosuit.obj");
+    modelsCombo->addItem("Nanosuit Model (Bound to Floor)"         , "models/nanosuit/nanosuit.obj|floor");
     modelsCombo->addItem("Nanosuit Model (Bound to [Default] Wall)", "models/nanosuit/nanosuit.obj|wall");
-    modelsCombo->addItem("Nanosuit Model (Bound to Left Wall)", "models/nanosuit/nanosuit.obj|wall|left");
-    modelsCombo->addItem("Nanosuit Model (Bound to Right Wall)", "models/nanosuit/nanosuit.obj|wall|right");
-    modelsCombo->addItem("Nanosuit Model (Bound to Back Wall)", "models/nanosuit/nanosuit.obj|wall|back");
-    modelsCombo->addItem("Lamp Model", "models/lamp/Bulb.obj");
-    modelsCombo->addItem("Chair Model", "models/mychair/untitled.obj");
-    modelsCombo->addItem("Table Model", "models/table/diningtable.obj");
-    modelsCombo->addItem("Test Model", "models/test/test.obj");
-    controlsGridLayout->addWidget(modelsCombo, 1, 0, 1, 6);
+    modelsCombo->addItem("Nanosuit Model (Bound to Left Wall)"     , "models/nanosuit/nanosuit.obj|wall|left");
+    modelsCombo->addItem("Nanosuit Model (Bound to Right Wall)"    , "models/nanosuit/nanosuit.obj|wall|right");
+    modelsCombo->addItem("Nanosuit Model (Bound to Back Wall)"     , "models/nanosuit/nanosuit.obj|wall|back");
+    modelsCombo->addItem("Lamp Model"                              , "models/lamp/Bulb.obj");
+    modelsCombo->addItem("Chair Model"                             , "models/mychair/untitled.obj");
+    modelsCombo->addItem("Table Model"                             , "models/table/diningtable.obj");
+    modelsCombo->addItem("Test Model"                              , "models/test/test.obj");
+    controlsGridLayout->addWidget(modelsCombo    , 1, 0, 1, 6);
     controlsGridLayout->addWidget(loadModelButton, 1, 6, 1, 3);
 }
 
@@ -287,8 +287,6 @@ void MainWindow::SetupStatusBar()
 {
     statusBar = new QStatusBar(centralWidget);
 
-//    QGridLayout* statusBarGrid = new QGridLayout();
-//    statusBarGrid->setObjectName("HELLO");
     messageLabel = new QLabel(statusBar);
     bbStatusLabel = new QLabel(statusBar);
     bbStatusLabel->setAlignment(Qt::AlignRight);
@@ -296,12 +294,10 @@ void MainWindow::SetupStatusBar()
     aabbStatusLabel->setAlignment(Qt::AlignRight);
     axisStatusLabel = new QLabel(statusBar);
     axisStatusLabel->setAlignment(Qt::AlignRight);
-//    statusBarGrid->addWidget(messageLabel, 0, 0);
     statusBar->addPermanentWidget(messageLabel, 4);
     statusBar->addPermanentWidget(bbStatusLabel, 0);
     statusBar->addPermanentWidget(aabbStatusLabel, 0);
     statusBar->addPermanentWidget(axisStatusLabel, 0);
-//    statusBar->setLayout(statusBarGrid);
     statusBar->setStyleSheet("QStatusBar{border-top: 2px outset grey;}");
     setStatusBar(statusBar);
 }
@@ -320,7 +316,7 @@ void MainWindow::SetupWallModifiers()
     wallGroupBox->setLayout(wallLayout);
     floorAndWallModifiersLayout->addWidget(wallGroupBox);
 
-    // Add a space
+    // Add a space between wall modifiers and floor modifiers
     floorAndWallModifiersLayout->addSpacing(40);
 }
 
