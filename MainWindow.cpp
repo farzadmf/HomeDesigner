@@ -51,12 +51,26 @@ void MainWindow::OnUpdateStatus(bool boundingBox, bool aaBoudningBox, bool axis)
 
 void MainWindow::OnWallColorButtonClicked()
 {
-    cout << "Now, change wall color" << endl;
+    grabKeyboard();
+    releaseKeyboard();
+    auto color = QColorDialog::getColor();
+
+    if (!color.isValid())
+        return;
+
+    emit ChangeRoomWallColor(color);
 }
 
 void MainWindow::OnFloorColorButtonClicked()
 {
-    cout << "Now, change floor color" << endl;
+    grabKeyboard();
+    releaseKeyboard();
+    auto color = QColorDialog::getColor();
+
+    if (!color.isValid())
+        return;
+
+    emit ChangeRoomFloorColor(color);
 }
 
 MainWindow::~MainWindow()

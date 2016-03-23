@@ -21,16 +21,16 @@ class Room
     glm::vec3 wallColor, floorColor;
 
 public:
-    Room(QOpenGLWidget* targetWidget, GLfloat roomWidth);
+    Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor);
     ~Room();
 
     Floor* GetFloor() const { return floor.get(); }
     vector<shared_ptr<Wall>> GetWalls() const { return walls; }
 
     // Getter and setter for colors
-    void SetWallColor(glm::vec3 wallColor) { this->wallColor = wallColor; }
+    void SetWallColor(glm::vec3 wallColor);
     glm::vec3 GetWallColor() const { return wallColor; }
-    void SetFloorColor(glm::vec3 floorColor) { this->floorColor = floorColor; }
+    void SetFloorColor(glm::vec3 floorColor);
     glm::vec3 GetFloorColor() const { return floorColor; }
 
     glm::vec3 GetMinimumVertices() const;

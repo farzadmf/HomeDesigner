@@ -24,7 +24,10 @@ static Shader axisShader;
 
 static glm::vec3 initialCameraPosition(0.0f, 50.0f, 80.0f);
 static glm::vec2 initialCameraDelta(0.0f, -100.0f);
+
 static GLfloat roomWidth = 60.0f;
+static glm::vec3 initialWallColor(0.4f);
+static glm::vec3 initialFloorColor(0.2f);
 
 HomeDesignerOpenGLWidget::HomeDesignerOpenGLWidget(QWidget* parent) :
     QOpenGLWidget(parent)
@@ -158,7 +161,7 @@ void HomeDesignerOpenGLWidget::initializeGL()
     camera->MouseSensitivity = 0.5f;
     camera->MovementSpeed = 5.0f;
 
-    room = make_shared<Room>(this, roomWidth);
+    room = make_shared<Room>(this, roomWidth, initialWallColor, initialFloorColor);
 }
 
 void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
@@ -410,16 +413,14 @@ void HomeDesignerOpenGLWidget::OnOperationSuccessful()
     emit DisplayMessage(lastMessage, 0);
 }
 
-void HomeDesignerOpenGLWidget::OnChangeRoomWallColor(QColor color)
+void HomeDesignerOpenGLWidget::OnChangeRoomWallColor(QColor color) const
 {
-    cout << "Change room's wall color" << endl;
-    cout << "Color is: " << color.redF() << ", " << color.greenF() << ", " << color.blueF() << endl;
+    room->SetWallColor(glm::vec3(color.redF(), color.greenF(), color.blueF()));
 }
 
-void HomeDesignerOpenGLWidget::OnChangeRoomFloorColor(QColor color)
+void HomeDesignerOpenGLWidget::OnChangeRoomFloorColor(QColor color) const
 {
-    cout << "Change room's floor color" << endl;
-    cout << "Color is: " << color.redF() << ", " << color.greenF() << ", " << color.blueF() << endl;
+    room->SetFloorColor(glm::vec3(color.redF(), color.greenF(), color.blueF()));
 }
 
 void HomeDesignerOpenGLWidget::ProcessKeyboard()

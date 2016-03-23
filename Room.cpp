@@ -5,17 +5,44 @@
 
 using std::make_unique;
 
-Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth) : width{ roomWidth }
+Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor) :
+    width{ roomWidth }, wallColor{ wallColor }, floorColor{ floorColor }
 {
     this->targetWidget = targetWidget;
     floor = make_unique<Floor>(targetWidget, width);
-    walls.push_back(make_shared<Wall>(targetWidget, width / 2.0f, width, RIGHT_WALL));
-    walls.push_back(make_shared<Wall>(targetWidget, width / 2.0f, width, LEFT_WALL));
-    walls.push_back(make_shared<Wall>(targetWidget, width / 2.0f, width, BACK_WALL));
+    floor->SetColor(this->floorColor);
+
+    auto leftWall = make_shared<Wall>(targetWidget, width / 2.0f, width, RIGHT_WALL, WALL_COLOR);
+    leftWall->SetColor(this->wallColor);
+    auto rightWall = make_shared<Wall>(targetWidget, width / 2.0f, width, LEFT_WALL, WALL_COLOR);
+    rightWall->SetColor(this->wallColor);
+    auto backWall = make_shared<Wall>(targetWidget, width / 2.0f, width, BACK_WALL, WALL_COLOR);
+    backWall->SetColor(this->wallColor);
+
+    walls.push_back(leftWall);
+    walls.push_back(rightWall);
+    walls.push_back(backWall);
 }
 
 Room::~Room()
 {
+}
+
+void Room::SetWallColor(glm::vec3 wallColor)
+{
+    this->wallColor = wallColor;
+    for (auto wall : walls)
+    {
+        wall->SetColor(this->wallColor);
+        wall->SetRenderMode(WALL_COLOR);
+    }
+}
+
+void Room::SetFloorColor(glm::vec3 floorColor)
+{
+    this->floorColor = floorColor;
+    floor->SetColor(this->floorColor);
+    floor->SetRenderMode(FLOOR_COLOR);
 }
 
 glm::vec3 Room::GetMinimumVertices() const

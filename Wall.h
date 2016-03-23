@@ -13,6 +13,12 @@ enum Location
     BACK_WALL,
 };
 
+enum WallRenderMode
+{
+    WALL_COLOR,
+    WALL_TEXTURE
+};
+
 class Wall
 {
     GLfloat distance;
@@ -29,12 +35,13 @@ class Wall
 
     unique_ptr<Shader> shader;
 
+    WallRenderMode renderMode;      // Render with color or texture
     glm::vec3 color;
 
     void BufferData() const;
 
 public:
-    Wall(QOpenGLWidget* targetWidget, GLfloat distance, GLfloat width, Location location);
+    Wall(QOpenGLWidget* targetWidget, GLfloat distance, GLfloat width, Location location, WallRenderMode renderMode);
     ~Wall();
 
     // Getter for location
@@ -46,6 +53,10 @@ public:
     // Getter and setter for color
     void SetColor(glm::vec3 color) { this->color = color; }
     glm::vec3 GetColor() const { return color; }
+
+    // Getter and setter for render mode
+    void SetRenderMode(WallRenderMode renderMode) { this->renderMode = renderMode; }
+    WallRenderMode GetRenderMode() const { return renderMode; }
 
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
     void Bind(ModelContainer* container) const;
