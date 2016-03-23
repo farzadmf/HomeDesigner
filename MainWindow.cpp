@@ -18,6 +18,14 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 
     floorAndWallModifiersLayout = new QHBoxLayout();
     controlsGridLayout->addLayout(floorAndWallModifiersLayout, 3, 0, 1, 9);
+
+    // Set two custom colors for the color dialog: first is the initial color for the walls,
+    //      and second one is for the floor (we get the values from 'HomeDesignerOpenGLWidget.cpp')
+    extern glm::vec3 initialWallColor;
+    extern glm::vec3 initialFloorColor;
+    QColorDialog::setCustomColor(0, QColor(initialWallColor.r * 255, initialWallColor.g * 255, initialWallColor.b * 255));
+    QColorDialog::setCustomColor(1, QColor(initialFloorColor.r * 255, initialFloorColor.g * 255, initialFloorColor.b * 255));
+
     SetupWallModifiers();
     SetupFloorModifiers();
 
@@ -91,7 +99,9 @@ MainWindow::~MainWindow()
     delete rotateValueLabel;
     delete scaleValueLabel;
     delete wallColorButton;
+    delete wallTextureButton;
     delete floorColorButton;
+    delete floorTextureButton;
     delete centralWidget;
 }
 

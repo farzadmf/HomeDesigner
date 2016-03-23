@@ -26,8 +26,8 @@ static glm::vec3 initialCameraPosition(0.0f, 50.0f, 80.0f);
 static glm::vec2 initialCameraDelta(0.0f, -100.0f);
 
 static GLfloat roomWidth = 60.0f;
-static glm::vec3 initialWallColor(0.4f);
-static glm::vec3 initialFloorColor(0.2f);
+glm::vec3 initialWallColor(0.4f);
+glm::vec3 initialFloorColor(0.2f);
 
 HomeDesignerOpenGLWidget::HomeDesignerOpenGLWidget(QWidget* parent) :
     QOpenGLWidget(parent)
