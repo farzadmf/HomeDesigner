@@ -38,12 +38,8 @@ class HomeDesignerOpenGLWidget : public QOpenGLWidget
     unique_ptr<Shader> shader;
     shared_ptr<Shader> outlineShader;
     unique_ptr<Model> nanosuitModel;
-//    vector<unique_ptr<Model>> models;
     map<string, unique_ptr<Model>> models;
     vector<unique_ptr<ModelContainer>> modelContainers;
-    unique_ptr<ModelContainer> nanosuitModelContainer;
-    unique_ptr<ModelContainer> nanosuitModelContainer2;
-    unique_ptr<Model> nanosuitModel2;
     unique_ptr<Camera> camera;
     bool leftMouseButtonDown = false;
     bool rightMouseButtonDown = false;
@@ -90,7 +86,7 @@ public slots:
     void OnMoveSpeedChanged(int);
     void OnRotateSpeedChanged(int);
     void OnScaleSpeedChanged(int);
-    void OnLoadModel(int modelIndex, QString modelAttributes, GLfloat initialScale);
+    void OnLoadModel(QString modelAttributes, GLfloat initialScale);
     void OnOperationNotAllowed(QString message);
     void OnOperationSuccessful();
 

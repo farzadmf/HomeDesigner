@@ -29,6 +29,8 @@ class Wall
 
     unique_ptr<Shader> shader;
 
+    glm::vec3 color;
+
     void BufferData() const;
 
 public:
@@ -40,6 +42,10 @@ public:
 
     // Convert a string to location enumeration
     static Location GetLocationByName(string locationName);
+
+    // Getter and setter for color
+    void SetColor(glm::vec3 color) { this->color = color; }
+    glm::vec3 GetColor() const { return color; }
 
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
     void Bind(ModelContainer* container) const;

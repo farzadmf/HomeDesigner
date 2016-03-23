@@ -110,6 +110,10 @@ void Wall::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
     glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "model"), 1, GL_FALSE, value_ptr(glm::mat4()));
     glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "view"), 1, GL_FALSE, value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "projection"), 1, GL_FALSE, value_ptr(projection));
+
+    // Set the color/texture
+    glUniform1i(glGetUniformLocation(shader->GetProgram(), "textureMode"), true);
+    glUniform3fv(glGetUniformLocation(shader->GetProgram(), "wallColor"), 1, value_ptr(color));
     
     // Main wall
     glBindVertexArray(wallVao);

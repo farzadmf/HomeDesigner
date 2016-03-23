@@ -16,6 +16,11 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     AddModelControlsToControlsGrid();
     SetupStatusBar();
 
+    floorAndWallModifiersLayout = new QHBoxLayout();
+    controlsGridLayout->addLayout(floorAndWallModifiersLayout, 3, 0, 1, 9);
+    SetupWallModifiers();
+    SetupFloorModifiers();
+
     openglWidget = new HomeDesignerOpenGLWidget(centralWidget);
     openglWidget->setFocusPolicy(Qt::StrongFocus);
     openglWidget->setFocus();
@@ -61,6 +66,8 @@ MainWindow::~MainWindow()
     delete moveValueLabel;
     delete rotateValueLabel;
     delete scaleValueLabel;
+    delete wallColorButton;
+    delete floorColorButton;
     delete centralWidget;
 }
 
@@ -227,7 +234,7 @@ void MainWindow::ConnectSignalsAndSlots() const
 
     connect(loadModelButton, SIGNAL(clicked()), modelsCombo, SLOT(OnButtonClicked()));
 
-    connect(modelsCombo, SIGNAL(ModelChanged(int, QString, GLfloat)), openglWidget, SLOT(OnLoadModel(int, QString, GLfloat)));
+    connect(modelsCombo, SIGNAL(ModelChanged(QString, GLfloat)), openglWidget, SLOT(OnLoadModel(QString, GLfloat)));
 }
 
 void MainWindow::SetupStatusBar()
@@ -251,4 +258,37 @@ void MainWindow::SetupStatusBar()
 //    statusBar->setLayout(statusBarGrid);
     statusBar->setStyleSheet("QStatusBar{border-top: 2px outset grey;}");
     setStatusBar(statusBar);
+}
+
+void MainWindow::SetupWallModifiers()
+{
+    wallColorButton = new QPushButton("Change Wall Color ...");
+    wallTextureButton = new QPushButton("Change Wall Texture ...");
+
+    QGroupBox* wallGroupBox = new QGroupBox("Wall Controls:");
+    wallGroupBox->setFixedHeight(60);
+    auto wallLayout = new QHBoxLayout();
+    wallLayout->addWidget(wallColorButton);
+    wallLayout->addWidget(wallTextureButton);
+
+    wallGroupBox->setLayout(wallLayout);
+    floorAndWallModifiersLayout->addWidget(wallGroupBox);
+
+    // Add a space
+    floorAndWallModifiersLayout->addSpacing(40);
+}
+
+void MainWindow::SetupFloorModifiers()
+{
+    floorColorButton = new QPushButton("Change Floor Color ...");
+    floorTextureButton = new QPushButton("Change Floor Texture ...");
+
+    QGroupBox* floorGroupBox = new QGroupBox("Floor Controls:");
+    floorGroupBox->setFixedHeight(60);
+    auto wallLayout = new QHBoxLayout();
+    wallLayout->addWidget(floorColorButton);
+    wallLayout->addWidget(floorTextureButton);
+
+    floorGroupBox->setLayout(wallLayout);
+    floorAndWallModifiersLayout->addWidget(floorGroupBox);
 }

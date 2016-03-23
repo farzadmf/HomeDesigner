@@ -2,7 +2,7 @@
 
 Model::Model() : targetWidget(nullptr) {}
 
-Model::Model(string path, QOpenGLWidget* targetWidget) : targetWidget{ targetWidget }
+Model::Model(QOpenGLWidget* targetWidget, string path) : targetWidget{ targetWidget }
 {
     targetWidget->makeCurrent();
     glGenVertexArrays(1, &boundingBoxVao);
@@ -211,7 +211,7 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene) const
         textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
     }
 
-    return Mesh(vertices, indices, textures, targetWidget);
+    return Mesh(targetWidget, vertices, indices, textures);
 }
 
 vector<Texture> Model::LoadMaterialTextures(aiMaterial* material,

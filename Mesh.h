@@ -27,7 +27,7 @@ public:
     vector<Texture> Textures;
 
     // Functions
-    Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures, QOpenGLWidget* targetWidget) :
+    Mesh(QOpenGLWidget* targetWidget, vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures) :
         Vertices{ vertices }, Indices{ indices }, Textures{ textures }, targetWidget{ targetWidget }
     {
         SetupMesh();

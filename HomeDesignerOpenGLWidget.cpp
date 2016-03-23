@@ -331,7 +331,7 @@ void HomeDesignerOpenGLWidget::OnMoveSpeedChanged(int speed) { moveSpeed = speed
 void HomeDesignerOpenGLWidget::OnRotateSpeedChanged(int speed) { rotateSpeed = speed; }
 void HomeDesignerOpenGLWidget::OnScaleSpeedChanged(int speed) { scaleSpeed = speed; }
 
-void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttributes, GLfloat initialScale)
+void HomeDesignerOpenGLWidget::OnLoadModel(QString modelAttributes, GLfloat initialScale)
 {
     auto attributes = modelAttributes.split('|');
     auto modelPath = attributes[0].toStdString();
@@ -353,7 +353,7 @@ void HomeDesignerOpenGLWidget::OnLoadModel(int modelIndex, QString modelAttribut
         string message = "Loading Model in path: '" + modelPath + "' ...... ";
         emit DisplayMessage(QString::fromStdString(message), 0);
         QCoreApplication::processEvents();
-        models[modelPath] = make_unique<Model>(modelPath, this);
+        models[modelPath] = make_unique<Model>(this, modelPath);
         message += "DONE!";
         emit DisplayMessage(QString::fromStdString(message), 3000);
     }

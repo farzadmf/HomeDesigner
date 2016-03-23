@@ -46,6 +46,12 @@ private:
     QLabel* rotateValueLabel;
     QLabel* scaleValueLabel;
 
+    QHBoxLayout* floorAndWallModifiersLayout;
+    QPushButton* wallColorButton;
+    QPushButton* wallTextureButton;
+    QPushButton* floorColorButton;
+    QPushButton* floorTextureButton;
+
     void SetupSliders();
     void InitializeControlsGrid();
     void AddMoveControlsToControlsGrid();
@@ -54,5 +60,7 @@ private:
     void AddModelControlsToControlsGrid();
     void ConnectSignalsAndSlots() const;
     void SetupStatusBar();
+    void SetupWallModifiers();
+    void SetupFloorModifiers();
 };
 

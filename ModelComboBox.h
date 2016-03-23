@@ -15,6 +15,6 @@ public slots:
     void OnButtonClicked();
 
 signals:
-    void ModelChanged(int index, QString modelAttributes, GLfloat initialScale);
+    void ModelChanged(QString modelAttributes, GLfloat initialScale);
 };
 

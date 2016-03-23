@@ -9,7 +9,7 @@ class Model
 {
 public:
     Model();
-    Model(string path, QOpenGLWidget* targetWidget);
+    Model(QOpenGLWidget* targetWidget, string path);
 
     void Draw(Shader& shader);
     void DrawOutline(glm::mat4& model, Shader& shader);

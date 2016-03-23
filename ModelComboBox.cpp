@@ -47,5 +47,5 @@ void ModelComboBox::OnButtonClicked()
     if (!ok)
         return;
 
-    emit ModelChanged(index - 1, QString::fromStdString(modelAttributes), initialScale);
+    emit ModelChanged(QString::fromStdString(modelAttributes), initialScale);
 }
