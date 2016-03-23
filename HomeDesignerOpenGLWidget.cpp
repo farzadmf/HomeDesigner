@@ -410,6 +410,18 @@ void HomeDesignerOpenGLWidget::OnOperationSuccessful()
     emit DisplayMessage(lastMessage, 0);
 }
 
+void HomeDesignerOpenGLWidget::OnChangeRoomWallColor(QColor color)
+{
+    cout << "Change room's wall color" << endl;
+    cout << "Color is: " << color.redF() << ", " << color.greenF() << ", " << color.blueF() << endl;
+}
+
+void HomeDesignerOpenGLWidget::OnChangeRoomFloorColor(QColor color)
+{
+    cout << "Change room's floor color" << endl;
+    cout << "Color is: " << color.redF() << ", " << color.greenF() << ", " << color.blueF() << endl;
+}
+
 void HomeDesignerOpenGLWidget::ProcessKeyboard()
 {
     if (keys[Qt::Key_Space])

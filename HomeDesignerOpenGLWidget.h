@@ -89,6 +89,8 @@ public slots:
     void OnLoadModel(QString modelAttributes, GLfloat initialScale);
     void OnOperationNotAllowed(QString message);
     void OnOperationSuccessful();
+    void OnChangeRoomWallColor(QColor color);
+    void OnChangeRoomFloorColor(QColor color);
 
 signals:
     void Exit();

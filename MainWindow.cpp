@@ -49,6 +49,16 @@ void MainWindow::OnUpdateStatus(bool boundingBox, bool aaBoudningBox, bool axis)
     axisStatusLabel->setText(axisString);
 }
 
+void MainWindow::OnWallColorButtonClicked()
+{
+    cout << "Now, change wall color" << endl;
+}
+
+void MainWindow::OnFloorColorButtonClicked()
+{
+    cout << "Now, change floor color" << endl;
+}
+
 MainWindow::~MainWindow()
 {
     delete messageLabel;
@@ -71,9 +81,13 @@ MainWindow::~MainWindow()
     delete centralWidget;
 }
 
-void MainWindow::OnChangeModelLoadingButton(bool enable) const
+void MainWindow::OnChangeButtons(bool enable) const
 {
     loadModelButton->setEnabled(enable);
+    wallColorButton->setEnabled(enable);
+    wallTextureButton->setEnabled(enable);
+    floorColorButton->setEnabled(enable);
+    floorTextureButton->setEnabled(enable);
 }
 
 void MainWindow::OnClearMessage() const
@@ -230,11 +244,19 @@ void MainWindow::ConnectSignalsAndSlots() const
     connect(openglWidget, SIGNAL(StatusUpdated(bool, bool, bool)), this, SLOT(OnUpdateStatus(bool, bool, bool)));
     connect(openglWidget, SIGNAL(DisplayError(QString)),           this, SLOT(OnDisplayError(QString)));
     connect(openglWidget, SIGNAL(ClearMessage()),                  this, SLOT(OnClearMessage()));
-    connect(openglWidget, SIGNAL(CollisionDetected(bool)),         this, SLOT(OnChangeModelLoadingButton(bool)));
+    connect(openglWidget, SIGNAL(CollisionDetected(bool)),         this, SLOT(OnChangeButtons(bool)));
 
     connect(loadModelButton, SIGNAL(clicked()), modelsCombo, SLOT(OnButtonClicked()));
 
     connect(modelsCombo, SIGNAL(ModelChanged(QString, GLfloat)), openglWidget, SLOT(OnLoadModel(QString, GLfloat)));
+
+    // Connect color/texture buttons' signals to appropriate slots
+    connect(wallColorButton, SIGNAL(clicked()),  this, SLOT(OnWallColorButtonClicked()));
+    connect(floorColorButton, SIGNAL(clicked()), this, SLOT(OnFloorColorButtonClicked()));
+
+    // Connect color/texture signals and slots
+    connect(this, SIGNAL(ChangeRoomWallColor(QColor)),  openglWidget, SLOT(OnChangeRoomWallColor(QColor)));
+    connect(this, SIGNAL(ChangeRoomFloorColor(QColor)), openglWidget, SLOT(OnChangeRoomFloorColor(QColor)));
 }
 
 void MainWindow::SetupStatusBar()

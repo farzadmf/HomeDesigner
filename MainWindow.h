@@ -13,11 +13,19 @@ public:
     ~MainWindow();
 
 public slots:
-    void OnChangeModelLoadingButton(bool enable) const;
+    void OnChangeButtons(bool enable) const;
     void OnClearMessage() const;
     void OnDisplayMessage(QString message, int timeout) const;
     void OnDisplayError(QString message);
     void OnUpdateStatus(bool boundingBox, bool aaBoudningBox, bool axis) const;
+
+    // Color/texture handlers
+    void OnWallColorButtonClicked();
+    void OnFloorColorButtonClicked();
+
+signals:
+    void ChangeRoomWallColor(QColor color);
+    void ChangeRoomFloorColor(QColor color);
 
 private:
     QWidget* centralWidget;
