@@ -20,6 +20,9 @@ class Room
     // Color for wall and floor
     glm::vec3 wallColor, floorColor;
 
+    // Texture file path for wall and floor
+    string wallTexture, floorTexture;
+
 public:
     Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor);
     ~Room();
@@ -27,11 +30,17 @@ public:
     Floor* GetFloor() const { return floor.get(); }
     vector<shared_ptr<Wall>> GetWalls() const { return walls; }
 
-    // Getter and setter for colors
+    // Getters and setters for colors
     void SetWallColor(glm::vec3 wallColor);
     glm::vec3 GetWallColor() const { return wallColor; }
     void SetFloorColor(glm::vec3 floorColor);
     glm::vec3 GetFloorColor() const { return floorColor; }
+
+    // Getters and setters for textures
+    void SetWallTexture(string wallTexture);
+    string GetWallTexture() const { return wallTexture; }
+    void SetFloorTexture(string floorTexture);
+    string GetFloorTexture() const { return floorTexture; }
 
     glm::vec3 GetMinimumVertices() const;
     glm::vec3 GetMaximumVertices() const;

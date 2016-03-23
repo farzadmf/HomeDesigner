@@ -37,6 +37,7 @@ class Wall
 
     WallRenderMode renderMode;      // Render with color or texture
     glm::vec3 color;
+    GLuint textureId;
 
     void BufferData() const;
 
@@ -51,12 +52,12 @@ public:
     static Location GetLocationByName(string locationName);
 
     // Getter and setter for color
-    void SetColor(glm::vec3 color) { this->color = color; }
+    void SetColor(glm::vec3 color);
     glm::vec3 GetColor() const { return color; }
 
-    // Getter and setter for render mode
-    void SetRenderMode(WallRenderMode renderMode) { this->renderMode = renderMode; }
-    WallRenderMode GetRenderMode() const { return renderMode; }
+    // Getter and setter for texture
+    void SetTexture(string textureFilePath);
+    GLuint GetTextureId() const { return textureId; }
 
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
     void Bind(ModelContainer* container) const;

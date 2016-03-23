@@ -1,5 +1,6 @@
 #include "Wall.h"
 #include "ModelContainer.h"
+#include "MyHelpers.h"
 
 void Wall::BufferData() const
 {
@@ -104,6 +105,21 @@ Location Wall::GetLocationByName(string locationName)
     return LEFT_WALL;
 }
 
+void Wall::SetColor(glm::vec3 color)
+{
+    this->color = color;
+    renderMode = WALL_COLOR;
+}
+
+void Wall::SetTexture(string textureFilePath)
+{
+    glDeleteTextures(1, &textureId);
+    textureId = loadTexture(const_cast<char*>(textureFilePath.c_str()));
+    renderMode = WALL_TEXTURE;
+    cout << "[Wall.cpp]: Now, set the texture for the wall" << endl;
+    cout << "textureId = " << textureId << endl;
+}
+
 void Wall::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
 {
     shader->Use();
@@ -114,15 +130,19 @@ void Wall::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
     // Set the color/texture
     glUniform1i(glGetUniformLocation(shader->GetProgram(), "textureMode"), renderMode == WALL_TEXTURE);
     glUniform3fv(glGetUniformLocation(shader->GetProgram(), "wallColor"), 1, value_ptr(color));
+    glBindTexture(GL_TEXTURE_2D, textureId);
     
     // Main wall
     glBindVertexArray(wallVao);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
     glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 
-    // Second wall
+    // Second (outer) wall
     shader->Use();
     glBindVertexArray(secondWallVao);
+    // This one is always rendered using color
+    glUniform1i(glGetUniformLocation(shader->GetProgram(), "textureMode"), false);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
     glBindVertexArray(0);
 }

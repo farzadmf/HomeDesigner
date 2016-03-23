@@ -32,17 +32,26 @@ void Room::SetWallColor(glm::vec3 wallColor)
 {
     this->wallColor = wallColor;
     for (auto wall : walls)
-    {
-        wall->SetColor(this->wallColor);
-        wall->SetRenderMode(WALL_COLOR);
-    }
+        wall->SetColor(wallColor);
 }
 
 void Room::SetFloorColor(glm::vec3 floorColor)
 {
     this->floorColor = floorColor;
-    floor->SetColor(this->floorColor);
-    floor->SetRenderMode(FLOOR_COLOR);
+    floor->SetColor(floorColor);
+}
+
+void Room::SetWallTexture(string wallTexture)
+{
+    this->wallTexture = wallTexture;
+    for (auto wall : walls)
+        wall->SetTexture(this->wallTexture);
+}
+
+void Room::SetFloorTexture(string floorTexture)
+{
+    this->floorTexture = floorTexture;
+    floor->SetTexture(this->floorTexture);
 }
 
 glm::vec3 Room::GetMinimumVertices() const

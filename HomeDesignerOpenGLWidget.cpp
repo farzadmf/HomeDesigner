@@ -418,9 +418,23 @@ void HomeDesignerOpenGLWidget::OnChangeRoomWallColor(QColor color) const
     room->SetWallColor(glm::vec3(color.redF(), color.greenF(), color.blueF()));
 }
 
+void HomeDesignerOpenGLWidget::OnChangeRoomWallTexture(QString textureFilePath)
+{
+    cout << "[HomeDesignerOpenGLWidget.cpp]: Now, set the wall texture" << endl;
+    cout << "file path is " << textureFilePath.toStdString() << endl;
+    room->SetWallTexture(textureFilePath.toStdString());
+}
+
 void HomeDesignerOpenGLWidget::OnChangeRoomFloorColor(QColor color) const
 {
     room->SetFloorColor(glm::vec3(color.redF(), color.greenF(), color.blueF()));
+}
+
+void HomeDesignerOpenGLWidget::OnChangeRoomFloorTexture(QString textureFilePath)
+{
+    cout << "[HomeDesignerOpenGLWidget.cpp]: Now, set the floor texture" << endl;
+    cout << "file path is " << textureFilePath.toStdString() << endl;
+    room->SetFloorTexture((textureFilePath.toStdString()));
 }
 
 void HomeDesignerOpenGLWidget::ProcessKeyboard()

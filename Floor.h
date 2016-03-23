@@ -26,6 +26,7 @@ class Floor
 
     FloorRenderMode renderMode;     // Wether to use color or texture to render
     glm::vec3 color;
+    GLuint textureId;
 
     void BufferData() const;
 
@@ -34,12 +35,12 @@ public:
     ~Floor();
 
     // Getter and setter for color
-    void SetColor(glm::vec3 color) { this->color = color; }
+    void SetColor(glm::vec3 color);
     glm::vec3 GetColor() const { return color; }
 
-    // Getter and setter for render mode
-    void SetRenderMode(FloorRenderMode renderMode) { this->renderMode = renderMode; }
-    FloorRenderMode GetRenderMode() const { return renderMode; }
+    // Getter and setter for texture
+    void SetTexture(string textureFilePath);
+    GLuint GetTextureId() const { return textureId; }
 
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
 };

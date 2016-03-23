@@ -67,6 +67,20 @@ void MainWindow::OnWallColorButtonClicked()
         return;
 
     emit ChangeRoomWallColor(color);
+    openglWidget->grabKeyboard();
+}
+
+void MainWindow::OnWallTextureButtonClicked()
+{
+    grabKeyboard();
+    releaseKeyboard();
+    auto wallTexturePath = QFileDialog::getOpenFileName(this, "Wall Texture File Location");
+
+    if (wallTexturePath.isEmpty())
+        return;
+
+    emit ChangeRoomWallTexture(wallTexturePath);
+    openglWidget->grabKeyboard();
 }
 
 void MainWindow::OnFloorColorButtonClicked()
@@ -79,6 +93,21 @@ void MainWindow::OnFloorColorButtonClicked()
         return;
 
     emit ChangeRoomFloorColor(color);
+    openglWidget->grabKeyboard();
+}
+
+void MainWindow::OnFloorTextureButtonClicked()
+{
+    grabKeyboard();
+    releaseKeyboard();
+    QFileDialog fileDialog(this);
+    auto floorTexturePath = QFileDialog::getOpenFileName(this, "Floor Texture Path");
+
+    if (floorTexturePath.isEmpty())
+        return;
+
+    emit ChangeRoomFloorTexture(floorTexturePath);
+    openglWidget->grabKeyboard();
 }
 
 MainWindow::~MainWindow()
@@ -275,12 +304,16 @@ void MainWindow::ConnectSignalsAndSlots() const
     connect(modelsCombo, SIGNAL(ModelChanged(QString, GLfloat)), openglWidget, SLOT(OnLoadModel(QString, GLfloat)));
 
     // Connect color/texture buttons' signals to appropriate slots
-    connect(wallColorButton, SIGNAL(clicked()),  this, SLOT(OnWallColorButtonClicked()));
-    connect(floorColorButton, SIGNAL(clicked()), this, SLOT(OnFloorColorButtonClicked()));
+    connect(wallColorButton,    SIGNAL(clicked()), this, SLOT(OnWallColorButtonClicked()));
+    connect(wallTextureButton,  SIGNAL(clicked()), this, SLOT(OnWallTextureButtonClicked()));
+    connect(floorColorButton,   SIGNAL(clicked()), this, SLOT(OnFloorColorButtonClicked()));
+    connect(floorTextureButton, SIGNAL(clicked()), this, SLOT(OnFloorTextureButtonClicked()));
 
     // Connect color/texture signals and slots
-    connect(this, SIGNAL(ChangeRoomWallColor(QColor)),  openglWidget, SLOT(OnChangeRoomWallColor(QColor)));
-    connect(this, SIGNAL(ChangeRoomFloorColor(QColor)), openglWidget, SLOT(OnChangeRoomFloorColor(QColor)));
+    connect(this, SIGNAL(ChangeRoomWallColor(QColor)),     openglWidget, SLOT(OnChangeRoomWallColor(QColor)));
+    connect(this, SIGNAL(ChangeRoomWallTexture(QString)),  openglWidget, SLOT(OnChangeRoomWallTexture(QString)));
+    connect(this, SIGNAL(ChangeRoomFloorColor(QColor)),    openglWidget, SLOT(OnChangeRoomFloorColor(QColor)));
+    connect(this, SIGNAL(ChangeRoomFloorTexture(QString)), openglWidget, SLOT(OnChangeRoomFloorTexture(QString)));
 }
 
 void MainWindow::SetupStatusBar()

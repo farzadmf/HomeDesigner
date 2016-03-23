@@ -21,11 +21,15 @@ public slots:
 
     // Color/texture handlers
     void OnWallColorButtonClicked();
+    void OnWallTextureButtonClicked();
     void OnFloorColorButtonClicked();
+    void OnFloorTextureButtonClicked();
 
 signals:
     void ChangeRoomWallColor(QColor color);
+    void ChangeRoomWallTexture(QString textureFilePath);
     void ChangeRoomFloorColor(QColor color);
+    void ChangeRoomFloorTexture(QString textureFilePath);
 
 private:
     QWidget* centralWidget;

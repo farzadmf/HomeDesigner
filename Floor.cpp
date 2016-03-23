@@ -1,4 +1,5 @@
 #include "Floor.h"
+#include "MyHelpers.h"
 
 using std::vector;
 
@@ -76,6 +77,21 @@ Floor::~Floor()
 {
 }
 
+void Floor::SetColor(glm::vec3 color)
+{
+    this->color = color;
+    renderMode = FLOOR_COLOR;
+}
+
+void Floor::SetTexture(string textureFilePath)
+{
+    glDeleteTextures(1, &textureId);
+    textureId = loadTexture(const_cast<char*>(textureFilePath.c_str()));
+    renderMode = FLOOR_TEXTURE;
+    cout << "[Floor.cpp]: Now, set the texture for the floor" << endl;
+    cout << "textureId = " << textureId << endl;
+}
+
 void Floor::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
 {
     shader->Use();
@@ -86,14 +102,18 @@ void Floor::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
     // Set the color/texture
     glUniform1i(glGetUniformLocation(shader->GetProgram(), "textureMode"), renderMode == FLOOR_TEXTURE);
     glUniform3fv(glGetUniformLocation(shader->GetProgram(), "floorColor"), 1, value_ptr(color));
+    glBindTexture(GL_TEXTURE_2D, textureId);
 
     // Main floor
     glBindVertexArray(floorVao);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
     glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 
     // Bottom floor
     glBindVertexArray(bottomFloorVao);
+    // This one is always rendered using color
+    glUniform1i(glGetUniformLocation(shader->GetProgram(), "textureMode"), false);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
     glBindVertexArray(0);
 }
