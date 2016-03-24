@@ -12,5 +12,5 @@ out vec2 TextureCoordinates;
 void main()
 {
     gl_Position = projection * view * model * vec4(position, 1.0f);
-    TextureCoordinates = textureCoordinates;
+    TextureCoordinates = vec2(textureCoordinates.x, 1.0f - textureCoordinates.y);
 }

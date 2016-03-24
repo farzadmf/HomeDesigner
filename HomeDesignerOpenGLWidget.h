@@ -90,9 +90,9 @@ public slots:
     void OnOperationNotAllowed(QString message);
     void OnOperationSuccessful();
     void OnChangeRoomWallColor(QColor color) const;
-    void OnChangeRoomWallTexture(QString textureFilePath);
+    void OnChangeRoomWallTexture(QString textureFilePath) const;
     void OnChangeRoomFloorColor(QColor color) const;
-    void OnChangeRoomFloorTexture(QString textureFilePath);
+    void OnChangeRoomFloorTexture(QString textureFilePath) const;
 
 signals:
     void Exit();

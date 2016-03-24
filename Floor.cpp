@@ -5,15 +5,15 @@ using std::vector;
 
 void Floor::BufferData() const
 {
-    vector<glm::vec3> floorVertices =
+    vector<GLfloat> floorVertices =
     {
-        glm::vec3(-width / 2.0f, 0.0f, -width / 2.0f),
-        glm::vec3(-width / 2.0f, 0.0f, +width / 2.0f),
-        glm::vec3(+width / 2.0f, 0.0f, -width / 2.0f),
-        glm::vec3(+width / 2.0f, 0.0f, +width / 2.0f)
+        -width / 2.0f, 0.0f, -width / 2.0f, 0.0f, 1.0f,
+        -width / 2.0f, 0.0f, +width / 2.0f, 0.0f, 0.0f,
+        +width / 2.0f, 0.0f, -width / 2.0f, 1.0f, 1.0f,
+        +width / 2.0f, 0.0f, +width / 2.0f, 1.0f, 0.0f
     };
 
-    vector<GLushort> floorIndices = { 0, 1, 2,  3, 2, 1 };
+    vector<GLushort> floorIndices       = { 0, 1, 2,  3, 2, 1 };
     vector<GLushort> bottomFloorIndices = { 2, 1, 0,  1, 2, 3 };
 
     targetWidget->makeCurrent();
@@ -25,7 +25,10 @@ void Floor::BufferData() const
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, floorEbo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, floorIndices.size() * sizeof floorIndices[0], &floorIndices[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<GLvoid*>(0));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof GLfloat, reinterpret_cast<GLvoid*>(0));
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof GLfloat, reinterpret_cast<GLvoid*>(3 * sizeof GLfloat));
+
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -39,7 +42,7 @@ void Floor::BufferData() const
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bottomFloorEbo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, bottomFloorIndices.size() * sizeof bottomFloorIndices[0], &bottomFloorIndices[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<GLvoid*>(0));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof GLfloat, reinterpret_cast<GLvoid*>(0));
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -88,8 +91,6 @@ void Floor::SetTexture(string textureFilePath)
     glDeleteTextures(1, &textureId);
     textureId = loadTexture(const_cast<char*>(textureFilePath.c_str()));
     renderMode = FLOOR_TEXTURE;
-    cout << "[Floor.cpp]: Now, set the texture for the floor" << endl;
-    cout << "textureId = " << textureId << endl;
 }
 
 void Floor::Draw(glm::mat4 const& view, glm::mat4 const& projection) const

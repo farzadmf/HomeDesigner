@@ -15,9 +15,9 @@ class Floor
     QOpenGLWidget* targetWidget = nullptr;
     GLfloat width = 10.0f;
 
-    GLuint floorVao = 0;
-    GLuint floorVbo = 0;
-    GLuint floorEbo = 0;
+    GLuint floorVao       = 0;
+    GLuint floorVbo       = 0;
+    GLuint floorEbo       = 0;
     GLuint bottomFloorVao = 0;
     GLuint bottomFloorVbo = 0;
     GLuint bottomFloorEbo = 0;

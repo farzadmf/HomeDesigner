@@ -4,31 +4,42 @@
 
 void Wall::BufferData() const
 {
-    vector<glm::vec3> wallVertices;
+    vector<GLfloat> wallVertices;
 
     switch (location)
     {
         case LEFT_WALL:
-            wallVertices.push_back(glm::vec3(-distance, +0.0f        , -width / 2.0f));
-            wallVertices.push_back(glm::vec3(-distance, +width / 2.0f, -width / 2.0f));
-            wallVertices.push_back(glm::vec3(-distance, +width / 2.0f, +width / 2.0f));
-            wallVertices.push_back(glm::vec3(-distance, +0.0f        , +width / 2.0f));
+            wallVertices =
+            {
+                -distance, +0.0f        , -width / 2.0f, 1.0f, 0.0f,
+                -distance, +width / 2.0f, -width / 2.0f, 1.0f, 1.0f,
+                -distance, +width / 2.0f, +width / 2.0f, 0.0f, 1.0f,
+                -distance, +0.0f        , +width / 2.0f, 0.0f, 0.0f
+            };
             break;
+
         case RIGHT_WALL:
-            wallVertices.push_back(glm::vec3(+distance, +0.0f        , +width / 2.0f));
-            wallVertices.push_back(glm::vec3(+distance, +width / 2.0f, +width / 2.0f));
-            wallVertices.push_back(glm::vec3(+distance, +width / 2.0f, -width / 2.0f));
-            wallVertices.push_back(glm::vec3(+distance, +0.0f        , -width / 2.0f));
+            wallVertices =
+            {
+                +distance, +0.0f        , +width / 2.0f, 1.0f, 0.0f,
+                +distance, +width / 2.0f, +width / 2.0f, 1.0f, 1.0f,
+                +distance, +width / 2.0f, -width / 2.0f, 0.0f, 1.0f,
+                +distance, +0.0f        , -width / 2.0f, 0.0f, 0.0f
+            };
             break;
+
         case BACK_WALL:
-            wallVertices.push_back(glm::vec3(+width / 2.0f, +0.0f        , -distance));
-            wallVertices.push_back(glm::vec3(+width / 2.0f, +width / 2.0f, -distance));
-            wallVertices.push_back(glm::vec3(-width / 2.0f, +width / 2.0f, -distance));
-            wallVertices.push_back(glm::vec3(-width / 2.0f, +0.0f        , -distance));
+            wallVertices =
+            {
+                +width / 2.0f, +0.0f        , -distance, 1.0f, 0.0f,
+                +width / 2.0f, +width / 2.0f, -distance, 1.0f, 1.0f,
+                -width / 2.0f, +width / 2.0f, -distance, 0.0f, 1.0f,
+                -width / 2.0f, +0.0f        , -distance, 0.0f, 0.0f
+            };
             break;
     }
 
-    vector<GLushort> wallIndices = {0, 1, 2,  3, 0, 2};
+    vector<GLushort> wallIndices       = {0, 1, 2,  3, 0, 2};
     vector<GLushort> secondWallIndices = {2, 1, 0,  2, 0, 3};
 
     targetWidget->makeCurrent();
@@ -40,7 +51,9 @@ void Wall::BufferData() const
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, wallEbo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, wallIndices.size() * sizeof wallIndices[0], &wallIndices[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<GLvoid*>(0));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof GLfloat, reinterpret_cast<GLvoid*>(0));
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof GLfloat, reinterpret_cast<GLvoid*>(3 * sizeof GLfloat));
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -54,7 +67,7 @@ void Wall::BufferData() const
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, secondWallEbo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, secondWallIndices.size() * sizeof secondWallIndices[0], &secondWallIndices[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<GLvoid*>(0));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof GLfloat, reinterpret_cast<GLvoid*>(0));
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -116,8 +129,6 @@ void Wall::SetTexture(string textureFilePath)
     glDeleteTextures(1, &textureId);
     textureId = loadTexture(const_cast<char*>(textureFilePath.c_str()));
     renderMode = WALL_TEXTURE;
-    cout << "[Wall.cpp]: Now, set the texture for the wall" << endl;
-    cout << "textureId = " << textureId << endl;
 }
 
 void Wall::Draw(glm::mat4 const& view, glm::mat4 const& projection) const

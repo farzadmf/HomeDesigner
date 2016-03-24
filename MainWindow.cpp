@@ -74,7 +74,8 @@ void MainWindow::OnWallTextureButtonClicked()
 {
     grabKeyboard();
     releaseKeyboard();
-    auto wallTexturePath = QFileDialog::getOpenFileName(this, "Wall Texture File Location");
+    auto wallTexturePath = QFileDialog::getOpenFileName(this, "Wall Texture File Location",
+                                                        "textures", "Image Files (*.png *.jpg *.bmp)");
 
     if (wallTexturePath.isEmpty())
         return;
@@ -101,8 +102,8 @@ void MainWindow::OnFloorTextureButtonClicked()
     grabKeyboard();
     releaseKeyboard();
     QFileDialog fileDialog(this);
-    auto floorTexturePath = QFileDialog::getOpenFileName(this, "Floor Texture Path");
-
+    auto floorTexturePath = QFileDialog::getOpenFileName(this,  "Floor Texture Path",
+                                                         "textures", "Image Files (*.png *.jpg *.bmp)");
     if (floorTexturePath.isEmpty())
         return;
 
