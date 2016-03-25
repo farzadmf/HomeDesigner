@@ -71,6 +71,7 @@ private:
     void AddScaleControlsToControlsGrid();
     void AddModelControlsToControlsGrid();
     void ConnectSignalsAndSlots() const;
+    void InitializeSliderValues();
     void SetupStatusBar();
     void SetupWallModifiers();
     void SetupFloorModifiers();

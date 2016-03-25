@@ -35,6 +35,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     openglWidget->setMouseTracking(true);
 
     ConnectSignalsAndSlots();
+    InitializeSliderValues();
 
     verticalLayout->addWidget(openglWidget);
     verticalLayout->addLayout(controlsGridLayout);
@@ -167,7 +168,7 @@ void MainWindow::SetupSliders()
     moveSlider->setTickPosition(QSlider::TicksBelow);
     moveSlider->setTickInterval(2);
     moveSlider->setMinimum(1);
-    moveSlider->setMaximum(29);
+    moveSlider->setMaximum(39);
     moveSlider->setValue(1);
 
     rotateSlider = new QSlider(Qt::Horizontal, centralWidget);
@@ -315,6 +316,14 @@ void MainWindow::ConnectSignalsAndSlots() const
     connect(this, SIGNAL(ChangeRoomWallTexture(QString)),  openglWidget, SLOT(OnChangeRoomWallTexture(QString)));
     connect(this, SIGNAL(ChangeRoomFloorColor(QColor)),    openglWidget, SLOT(OnChangeRoomFloorColor(QColor)));
     connect(this, SIGNAL(ChangeRoomFloorTexture(QString)), openglWidget, SLOT(OnChangeRoomFloorTexture(QString)));
+}
+
+// Initialize slider values to a medium value
+void MainWindow::InitializeSliderValues()
+{
+    moveSlider->setValue(12);
+    rotateSlider->setValue(5);
+    scaleSlider->setValue(4);
 }
 
 void MainWindow::SetupStatusBar()

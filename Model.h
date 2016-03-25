@@ -45,9 +45,9 @@ private:
 
     void LoadModel(string path);
     void ProcesNode(aiNode* node, const aiScene* scene);
-    Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene) const;
+    Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
 
     vector<Texture> LoadMaterialTextures(aiMaterial* material, aiTextureType type,
-                                         string typeName) const;
-    GLint TextureFromFile(const GLchar* path, string directory) const;
+                                         string typeName);
+    GLuint TextureFromFile(const GLchar* path, string directory) const;
 };

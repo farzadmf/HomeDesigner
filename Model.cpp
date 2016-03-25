@@ -151,7 +151,7 @@ void Model::ProcesNode(aiNode* node, const aiScene* scene)
         ProcesNode(node->mChildren[i], scene);
 }
 
-Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene) const
+Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 {
     vector<Vertex> vertices;
     vector<GLuint> indices;
@@ -215,7 +215,7 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene) const
 }
 
 vector<Texture> Model::LoadMaterialTextures(aiMaterial* material,
-                                            aiTextureType type, string typeName) const
+                                            aiTextureType type, string typeName)
 {
     vector<Texture> textures;
     for (GLuint i = 0; i < material->GetTextureCount(type); i++)
@@ -224,7 +224,7 @@ vector<Texture> Model::LoadMaterialTextures(aiMaterial* material,
         material->GetTexture(type, i, &string);
         GLboolean skip = false;
 
-        for (GLuint j = 0; i < loadedTextures.size(); j++)
+        for (GLuint j = 0; j < loadedTextures.size(); j++)
         {
             if (loadedTextures[j].Path == string)
             {
@@ -241,13 +241,14 @@ vector<Texture> Model::LoadMaterialTextures(aiMaterial* material,
             texture.Type = typeName;
             texture.Path = string;
             textures.push_back(texture);
+            loadedTextures.push_back(texture);
         }
     }
 
     return textures;
 }
 
-GLint Model::TextureFromFile(const GLchar* path, string directory) const
+GLuint Model::TextureFromFile(const GLchar* path, string directory) const
 {
     targetWidget->makeCurrent();
     string fileName = string(path);
