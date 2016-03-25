@@ -141,6 +141,7 @@ void Wall::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
     // Set the color/texture
     glUniform1i(glGetUniformLocation(shader->GetProgram(), "textureMode"), renderMode == WALL_TEXTURE);
     glUniform3fv(glGetUniformLocation(shader->GetProgram(), "wallColor"), 1, value_ptr(color));
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, textureId);
     
     // Main wall

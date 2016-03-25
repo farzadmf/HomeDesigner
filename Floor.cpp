@@ -103,6 +103,7 @@ void Floor::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
     // Set the color/texture
     glUniform1i(glGetUniformLocation(shader->GetProgram(), "textureMode"), renderMode == FLOOR_TEXTURE);
     glUniform3fv(glGetUniformLocation(shader->GetProgram(), "floorColor"), 1, value_ptr(color));
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, textureId);
 
     // Main floor
