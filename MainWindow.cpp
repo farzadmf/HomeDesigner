@@ -266,9 +266,9 @@ void MainWindow::AddModelControlsToControlsGrid()
     modelsCombo = new ModelComboBox(centralWidget);
     loadModelButton = new QPushButton("Load Model");
     modelsCombo->addItem("--- Please select a model ---");
-	modelsCombo->addItem("Tool chest", "models/toolChest/model.obj|floor");
-	modelsCombo->addItem("Rolled Towels", "models/rolledTowels/model.obj");
-	modelsCombo->addItem("Arm Chair", "models/armChair/model.obj");
+	modelsCombo->addItem("Tool Chest"                              , "models/toolChest/model.obj|floor");
+	modelsCombo->addItem("Rolled Towels"                           , "models/rolledTowels/model.obj");
+	modelsCombo->addItem("Arm Chair"                               , "models/armChair/model.obj");
     modelsCombo->addItem("Nanosuit Model (Not Bound)"              , "models/nanosuit/nanosuit.obj");
     modelsCombo->addItem("Nanosuit Model (Bound to Floor)"         , "models/nanosuit/nanosuit.obj|floor");
     modelsCombo->addItem("Nanosuit Model (Bound to [Default] Wall)", "models/nanosuit/nanosuit.obj|wall");
