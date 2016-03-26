@@ -25,9 +25,12 @@ static Shader axisShader;
 static glm::vec3 initialCameraPosition(0.0f, 50.0f, 80.0f);
 static glm::vec2 initialCameraDelta(0.0f, -100.0f);
 
+//room initial settings
 static GLfloat roomWidth = 60.0f;
 glm::vec3 initialWallColor(0.4f);
 glm::vec3 initialFloorColor(0.2f);
+static const std::string initialWallTexture = "textures/fabric04.jpg";
+static const std::string initialFloorTexture = "textures/woodFloor01.jpg";
 
 HomeDesignerOpenGLWidget::HomeDesignerOpenGLWidget(QWidget* parent) :
     QOpenGLWidget(parent)
@@ -162,6 +165,7 @@ void HomeDesignerOpenGLWidget::initializeGL()
     camera->MovementSpeed = 5.0f;
 
     room = make_shared<Room>(this, roomWidth, initialWallColor, initialFloorColor);
+
 }
 
 void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)

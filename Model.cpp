@@ -171,10 +171,16 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
         vertex.Position = positionVector;
 
         glm::vec3 normalVector;
-        normalVector.x = mesh->mNormals[i].x;
-        normalVector.y = mesh->mNormals[i].y;
-        normalVector.z = mesh->mNormals[i].z;
-        vertex.Normal = normalVector;
+		
+		//Check if mesh has normals included
+		if (mesh->HasNormals()) {
+
+			normalVector.x = mesh->mNormals[i].x;
+			normalVector.y = mesh->mNormals[i].y;
+			normalVector.z = mesh->mNormals[i].z;
+			vertex.Normal = normalVector;
+		}
+       
 
         // For texture coordinates: Assimp allows up to 8 coordinates (we only use 2).
         //      Also, we should check to make sure we indeed have texture coordinates

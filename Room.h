@@ -25,6 +25,7 @@ class Room
 
 public:
     Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor);
+	Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor, std::string wallTexturePath, std::string floorTexturePath);
     ~Room();
 
     Floor* GetFloor() const { return floor.get(); }

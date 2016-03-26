@@ -24,6 +24,36 @@ Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, 
     walls.push_back(backWall);
 }
 
+//Overloaded constructor with initial textures
+Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor, std::string wallTexturePath, std::string floorTexturePath):
+	width{ roomWidth }, wallColor{ wallColor }, floorColor{ floorColor }, wallTexture{ wallTexturePath } ,floorTexture{ floorTexturePath }
+{
+	this->targetWidget = targetWidget;
+	floor = make_unique<Floor>(targetWidget, width);
+	floor->SetColor(this->floorColor);
+	//set floor Texture
+	floor->SetTexture(this->floorTexture);
+
+	auto leftWall = make_shared<Wall>(targetWidget, width / 2.0f, width, RIGHT_WALL, WALL_COLOR);
+	leftWall->SetColor(this->wallColor);
+	leftWall->SetTexture(this->wallTexture);
+
+	auto rightWall = make_shared<Wall>(targetWidget, width / 2.0f, width, LEFT_WALL, WALL_COLOR);
+	rightWall->SetColor(this->wallColor);
+	rightWall->SetTexture(this->wallTexture);
+
+	auto backWall = make_shared<Wall>(targetWidget, width / 2.0f, width, BACK_WALL, WALL_COLOR);
+	backWall->SetColor(this->wallColor);
+	backWall->SetTexture(this->wallTexture);
+
+
+
+	walls.push_back(leftWall);
+	walls.push_back(rightWall);
+	walls.push_back(backWall);
+}
+
+
 Room::~Room()
 {
 }
