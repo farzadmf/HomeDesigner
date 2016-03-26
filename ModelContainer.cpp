@@ -297,12 +297,10 @@ bool ModelContainer::IsInsideRoom() const
 //    cout << "!(maximumVertices.y < roomMaximumVertices.y): " << !(maximumVertices.y < roomMaximumVertices.y) << endl;
 //    cout << "!(maximumVertices.z < roomMaximumVertices.z): " << !(maximumVertices.z < roomMaximumVertices.z) << endl;
 
-
-//Changed so that if min and max are equal it returns true, before would return false
-    return minimumVertices.x >= roomMinimumVertices.x &&
-        minimumVertices.y >= roomMinimumVertices.y &&
-        minimumVertices.z >= roomMinimumVertices.z &&
-        maximumVertices.x <= roomMaximumVertices.x &&
-        maximumVertices.y <= roomMaximumVertices.y &&
-        maximumVertices.z <= roomMaximumVertices.z;
+    return minimumVertices.x > roomMinimumVertices.x &&
+        minimumVertices.y > roomMinimumVertices.y &&
+        minimumVertices.z > roomMinimumVertices.z &&
+        maximumVertices.x < roomMaximumVertices.x &&
+        maximumVertices.y < roomMaximumVertices.y &&
+        maximumVertices.z < roomMaximumVertices.z;
 }

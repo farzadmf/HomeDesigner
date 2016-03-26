@@ -366,9 +366,13 @@ void HomeDesignerOpenGLWidget::OnLoadModel(QString modelAttributes, GLfloat init
     }
 
     auto container = make_unique<ModelContainer>(models[modelPath].get(), initialScale, room.get(), this);
+
+    // Give the model an initial offset in the 'y' direction
+    container->SetInitialTranslateVector(glm::vec3(0.0f, 0.001f, 0.0f));
+
     if (!container->IsInsideRoom())
     {
-        emit DisplayError("The model object is too big! Please try again.");
+        emit DisplayError("The model object doesn't fit in the room! Please try again.");
         container.release();
         return;
     }
