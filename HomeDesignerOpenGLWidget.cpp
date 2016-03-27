@@ -29,8 +29,6 @@ static glm::vec2 initialCameraDelta(0.0f, -110.0f); // Needed for Camera class's
 static GLfloat roomWidth = 60.0f;
 glm::vec3 initialWallColor(0.4f);
 glm::vec3 initialFloorColor(0.2f);
-static const std::string initialWallTexture = "textures/fabric04.jpg";
-static const std::string initialFloorTexture = "textures/woodFloor01.jpg";
 
 int defaultStencilValue = 1;                        // Default value written to stencil buffer
 
@@ -193,7 +191,7 @@ void HomeDesignerOpenGLWidget::initializeGL()
 void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
 {
     // Move the camera if right mouse button is down and scene isn't empty
-    if (rightMouseButtonDown && modelContainers.size() > 0)
+    if ((rightMouseButtonDown || middleMouseButtonDown) && modelContainers.size() > 0)
     {
         if (firstMouseMovement)
         {
@@ -206,7 +204,19 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
         int yOffset = event->y() - lastMouseY;
         lastMouseX = event->x();
         lastMouseY = event->y();
-        camera->ProcessMouseMovement(xOffset, yOffset);
+
+        // If right mouse button is pressed, look
+        if (rightMouseButtonDown)
+            camera->ProcessMouseMovement(xOffset, yOffset);
+        else if (middleMouseButtonDown)
+        {
+            // In case of middle click, pan
+            if (xOffset > 0) camera->ProcessKeyboard(RIGHT, cameraMoveSpeed);
+            if (xOffset < 0) camera->ProcessKeyboard(LEFT, cameraMoveSpeed);
+            if (yOffset > 0) camera->ProcessKeyboard(UP, cameraMoveSpeed);
+            if (yOffset < 0) camera->ProcessKeyboard(DOWN, cameraMoveSpeed);
+        }
+
         update();
     }
 
@@ -350,7 +360,7 @@ void HomeDesignerOpenGLWidget::mousePressEvent(QMouseEvent* event)
 **/
 void HomeDesignerOpenGLWidget::mouseReleaseEvent(QMouseEvent*)
 {
-    leftMouseButtonDown = rightMouseButtonDown = false;
+    leftMouseButtonDown = rightMouseButtonDown = middleMouseButtonDown = false;
     firstMouseMovement = true;
     releaseMouse();
 }
