@@ -5,13 +5,19 @@
 
 using std::make_unique;
 
+/**
+* Create the room with specified width, and 
+**/
 Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor) :
     width{ roomWidth }, wallColor{ wallColor }, floorColor{ floorColor }
 {
     this->targetWidget = targetWidget;
+
+    // Create the floor
     floor = make_unique<Floor>(targetWidget, width);
     floor->SetColor(this->floorColor);
 
+    // Create the walls
     auto leftWall = make_shared<Wall>(targetWidget, width / 2.0f, width, RIGHT_WALL, WALL_COLOR);
     leftWall->SetColor(this->wallColor);
     auto rightWall = make_shared<Wall>(targetWidget, width / 2.0f, width, LEFT_WALL, WALL_COLOR);
@@ -24,40 +30,13 @@ Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, 
     walls.push_back(backWall);
 }
 
-//Overloaded constructor with initial textures
-Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor, std::string wallTexturePath, std::string floorTexturePath):
-	width{ roomWidth }, wallColor{ wallColor }, floorColor{ floorColor }, wallTexture{ wallTexturePath } ,floorTexture{ floorTexturePath }
-{
-	this->targetWidget = targetWidget;
-	floor = make_unique<Floor>(targetWidget, width);
-	floor->SetColor(this->floorColor);
-	//set floor Texture
-	floor->SetTexture(this->floorTexture);
-
-	auto leftWall = make_shared<Wall>(targetWidget, width / 2.0f, width, RIGHT_WALL, WALL_COLOR);
-	leftWall->SetColor(this->wallColor);
-	leftWall->SetTexture(this->wallTexture);
-
-	auto rightWall = make_shared<Wall>(targetWidget, width / 2.0f, width, LEFT_WALL, WALL_COLOR);
-	rightWall->SetColor(this->wallColor);
-	rightWall->SetTexture(this->wallTexture);
-
-	auto backWall = make_shared<Wall>(targetWidget, width / 2.0f, width, BACK_WALL, WALL_COLOR);
-	backWall->SetColor(this->wallColor);
-	backWall->SetTexture(this->wallTexture);
-
-
-
-	walls.push_back(leftWall);
-	walls.push_back(rightWall);
-	walls.push_back(backWall);
-}
-
-
 Room::~Room()
 {
 }
 
+/**
+* Changes the color of the walls
+**/
 void Room::SetWallColor(glm::vec3 wallColor)
 {
     this->wallColor = wallColor;
@@ -65,12 +44,18 @@ void Room::SetWallColor(glm::vec3 wallColor)
         wall->SetColor(wallColor);
 }
 
+/**
+* Changes the color of the floor
+**/
 void Room::SetFloorColor(glm::vec3 floorColor)
 {
     this->floorColor = floorColor;
     floor->SetColor(floorColor);
 }
 
+/**
+* Changes the texture of the walls
+**/
 void Room::SetWallTexture(string wallTexture)
 {
     this->wallTexture = wallTexture;
@@ -78,22 +63,34 @@ void Room::SetWallTexture(string wallTexture)
         wall->SetTexture(this->wallTexture);
 }
 
+/**
+* Changes the texture of the floor
+**/
 void Room::SetFloorTexture(string floorTexture)
 {
     this->floorTexture = floorTexture;
     floor->SetTexture(this->floorTexture);
 }
 
-glm::vec3 Room::GetMinimumVertices() const
+/**
+* Returns back the minimum coordinates of the room
+**/
+glm::vec3 Room::GetMinimumCoordinates() const
 {
     return glm::vec3(-width / 2.0f, 0.0f, -width / 2.0f);
 }
 
-glm::vec3 Room::GetMaximumVertices() const
+/**
+* Returns back the maximum coordinates of the room
+**/
+glm::vec3 Room::GetMaximumCoordinates() const
 {
     return glm::vec3(width / 2.0f, width / 2.0f, width / 2.0f);
 }
 
+/**
+* Draws the room (floor and the walls)
+**/
 void Room::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
 {
     // Don't write to the stencil buffer
@@ -105,6 +102,9 @@ void Room::Draw(glm::mat4 const& view, glm::mat4 const& projection) const
     floor->Draw(view, projection);
 }
 
+/**
+* Binds the specified model container to the floor
+**/
 void Room::BindToFloor(ModelContainer* container)
 {
     // Set the rotation bound to be 'y' axis, and the translation bound to be 'xz'
@@ -115,6 +115,9 @@ void Room::BindToFloor(ModelContainer* container)
     container->SetInitialTranslateVector(glm::vec3(0.0f, 0.001f, 0.0f));
 }
 
+/**
+* Binds the specified model container to the specified wall
+**/
 void Room::BindToWall(ModelContainer* container, Location wallLocation)
 {
     for (auto wall : walls)

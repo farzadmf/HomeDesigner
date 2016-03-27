@@ -292,8 +292,8 @@ void ModelContainer::Reset()
 
 bool ModelContainer::IsInsideRoom() const
 {
-    auto roomMinimumVertices = room->GetMinimumVertices();
-    auto roomMaximumVertices = room->GetMaximumVertices();
+    auto roomMinimumVertices = room->GetMinimumCoordinates();
+    auto roomMaximumVertices = room->GetMaximumCoordinates();
     auto minimumVertices = GetMinimumVertices();
     auto maximumVertices = GetMaximumVertices();
 

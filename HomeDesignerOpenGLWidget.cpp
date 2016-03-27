@@ -7,23 +7,23 @@ using std::shared_ptr;
 using std::make_shared;
 using std::make_unique;
 
-static int lastMouseX;
-static int lastMouseY;
-static map<int, bool> keys;
-static bool modifiers[3];
-static GLfloat cameraMoveSpeed = 0.2f;
-static bool firstMouseMovement = true;
+static int lastMouseX;                              // Last X position of the mouse
+static int lastMouseY;                              // Last Y position of the mouse
+static map<int, bool> keys;                         // Map representing currently pressed keys
+static bool modifiers[3];                           // Modifier keys (SHIFT, CTRL, and ALT)
+static GLfloat cameraMoveSpeed = 0.2f;              // Offset speed used for camera movement
+static bool firstMouseMovement = true;              // Is this first time the mouse is moving?
 
-static bool drawBoundingBox = false;
-static bool drawAABoundingBox = false;
-static bool showLocalAxis = false;
-static bool showWorldAxis = false;
+static bool drawBoundingBox = false;                // Whether to display bounding boxes of models
+static bool drawAABoundingBox = false;              // Whether to display AA bounding boxes of the models
+static bool showLocalAxis = false;                  // Display model's local axis?
+static bool showWorldAxis = false;                  // Display world axis?
 
-static GLuint axisVao, axisVbo, axisEbo;
-static Shader axisShader;
+static GLuint axisVao, axisVbo, axisEbo;            // Array and buffer objects used to draw the axes
+static Shader axisShader;                           // Shader used to draw the axes
 
 static glm::vec3 initialCameraPosition(0.0f, 41.0f, 65.0f);
-static glm::vec2 initialCameraDelta(0.0f, -110.0f);
+static glm::vec2 initialCameraDelta(0.0f, -110.0f); // Needed for Camera class's delta value
 
 //room initial settings
 static GLfloat roomWidth = 60.0f;
@@ -32,7 +32,7 @@ glm::vec3 initialFloorColor(0.2f);
 static const std::string initialWallTexture = "textures/fabric04.jpg";
 static const std::string initialFloorTexture = "textures/woodFloor01.jpg";
 
-int defaultStencilValue = 1;
+int defaultStencilValue = 1;                        // Default value written to stencil buffer
 
 HomeDesignerOpenGLWidget::HomeDesignerOpenGLWidget(QWidget* parent) :
     QOpenGLWidget(parent)
@@ -44,6 +44,9 @@ HomeDesignerOpenGLWidget::~HomeDesignerOpenGLWidget()
 {
 }
 
+/**
+* Main loop of the application
+**/
 void HomeDesignerOpenGLWidget::paintGL()
 {
     // We capture keyboard state in 'keyboardEvent' and call this function to process the keys.
@@ -52,6 +55,7 @@ void HomeDesignerOpenGLWidget::paintGL()
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
+    // Create view and projection matrices
     glm::mat4 view = camera->GetViewMatrix();
     glm::mat4 projection = glm::perspective(glm::radians(camera->Zoom),
                                             static_cast<GLfloat>(width()) / static_cast<GLfloat>(height()), 0.1f, 1000.0f);
@@ -60,6 +64,7 @@ void HomeDesignerOpenGLWidget::paintGL()
     glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "view"), 1, GL_FALSE, value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "projection"), 1, GL_FALSE, value_ptr(projection));
 
+    // Display world axis
     if (showWorldAxis)
     {
         GLfloat currentLineWidth;
@@ -111,6 +116,9 @@ void HomeDesignerOpenGLWidget::paintGL()
         EmitDisplayMessage("<b><font color='red'>COLLISION DETECTED!!! Please resolve!!!</font></b>", 0);
 }
 
+/**
+* Called when the widget is being initialized
+**/
 void HomeDesignerOpenGLWidget::initializeGL()
 {
     glewExperimental = GL_TRUE;
@@ -124,6 +132,7 @@ void HomeDesignerOpenGLWidget::initializeGL()
 //    cout << setw(40) << left << "Maximum OpenGL Version Supported:" << version << endl;
 //    cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl << endl;
 
+    // Set required OpenGL states
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_STENCIL_TEST);
     glStencilFunc(GL_ALWAYS, defaultStencilValue, 0xFF);
@@ -135,6 +144,7 @@ void HomeDesignerOpenGLWidget::initializeGL()
     glFrontFace(GL_CCW);
     glCullFace(GL_BACK);
 
+    // Create the data for the axes
     axisShader = Shader("shaders/axis.vs", "shaders/axis.fs");
     axisShader.Create();
     GLfloat axes[] =
@@ -152,6 +162,7 @@ void HomeDesignerOpenGLWidget::initializeGL()
         0.0f, 0.0005f, 8.0f, 0.0f, 0.0f, 1.0f,
     };
 
+    // Buffer axis data to the GPU
     glGenVertexArrays(1, &axisVao);
     glGenBuffers(1, &axisVbo);
     glGenBuffers(1, &axisEbo);
@@ -164,6 +175,7 @@ void HomeDesignerOpenGLWidget::initializeGL()
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof GLfloat, reinterpret_cast<GLvoid*>(3 * sizeof GLfloat));
     glBindVertexArray(0);
 
+    // Initialize required objects
     shader = make_unique<Shader>("shaders/shader.vs", "shaders/shader.fs");
     shader->Create();
     outlineShader = make_shared<Shader>("shaders/outline.vs", "shaders/outline.fs");
@@ -172,11 +184,12 @@ void HomeDesignerOpenGLWidget::initializeGL()
     camera->ProcessMouseMovement(initialCameraDelta.x, initialCameraDelta.y);
     camera->MouseSensitivity = 0.5f;
     camera->MovementSpeed = 5.0f;
-
     room = make_shared<Room>(this, roomWidth, initialWallColor, initialFloorColor);
-
 }
 
+/**
+* Process mouse movement
+**/
 void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
 {
     // Move the camera if right mouse button is down and scene isn't empty
@@ -255,13 +268,18 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
     }
 }
 
+/**
+* Process key press event
+**/
 void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
 {
+    // Keep track of pressed keys and modifiers
     keys[event->key()] = true;
     modifiers[SHIFT] = event->modifiers() & Qt::ShiftModifier;
     modifiers[CONTROL] = event->modifiers() & Qt::ControlModifier;
     modifiers[ALT] = event->modifiers() & Qt::AltModifier;
 
+    // Select the operation axis and display a text accordingly
     Axis oldAxis = axis;
     switch (event->key())
     {
@@ -289,14 +307,19 @@ void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
             break;
     }
 
+    // Quit application with 'Q'
     if (event->key() == Qt::Key_Q)
         emit Exit();
 
     update();
 }
 
+/**
+* Reset pressed keys and modifiers, along with status bar message
+**/
 void HomeDesignerOpenGLWidget::keyReleaseEvent(QKeyEvent* event)
 {
+    // If this is an auto-repeat of the key, do nothing
     if (event->isAutoRepeat())
         return;
 
@@ -308,14 +331,23 @@ void HomeDesignerOpenGLWidget::keyReleaseEvent(QKeyEvent* event)
     modifiers[ALT] = event->modifiers() & Qt::AltModifier;
 }
 
+/**
+* Keep track of mouse button(s) being pressed
+**/
 void HomeDesignerOpenGLWidget::mousePressEvent(QMouseEvent* event)
 {
     leftMouseButtonDown = event->button() == Qt::LeftButton;
     rightMouseButtonDown = event->button() == Qt::RightButton;
-    if (rightMouseButtonDown)
+    middleMouseButtonDown = event->button() == Qt::MiddleButton;
+
+    // Grab mouse and change cursor to hand in case of right and middle clicks
+    if (rightMouseButtonDown || middleMouseButtonDown)
         grabMouse(Qt::ClosedHandCursor);
 }
 
+/**
+* Reset mouse buttons and release mouse
+**/
 void HomeDesignerOpenGLWidget::mouseReleaseEvent(QMouseEvent*)
 {
     leftMouseButtonDown = rightMouseButtonDown = false;
@@ -323,19 +355,32 @@ void HomeDesignerOpenGLWidget::mouseReleaseEvent(QMouseEvent*)
     releaseMouse();
 }
 
+/**
+* Zoom in/out with mouse wheel
+**/
 void HomeDesignerOpenGLWidget::wheelEvent(QWheelEvent* event)
 {
     camera->ProcessMouseScroll(event->delta() > 0 ? 1 : -1);
     update();
 }
 
+/**
+* Called when the desired operation changes in the main window
+**/
 void HomeDesignerOpenGLWidget::OnMoveSelectedChanged(bool selected) { isMove = selected; }
 void HomeDesignerOpenGLWidget::OnRotateSelectedChanged(bool selected) { isRotate = selected; }
 void HomeDesignerOpenGLWidget::OnScaleSelectedChanged(bool selected) { isScale = selected; }
+
+/**
+* Called when the operation's speed changes in the main window
+**/
 void HomeDesignerOpenGLWidget::OnMoveSpeedChanged(int speed) { moveSpeed = speed; }
 void HomeDesignerOpenGLWidget::OnRotateSpeedChanged(int speed) { rotateSpeed = speed; }
 void HomeDesignerOpenGLWidget::OnScaleSpeedChanged(int speed) { scaleSpeed = speed; }
 
+/**
+* Loads a model from the file, setting its initial scale value
+**/
 void HomeDesignerOpenGLWidget::OnLoadModel(QString modelAttributes, GLfloat initialScale)
 {
     auto attributes = modelAttributes.split('|');
@@ -363,8 +408,10 @@ void HomeDesignerOpenGLWidget::OnLoadModel(QString modelAttributes, GLfloat init
         emit DisplayMessage(QString::fromStdString(message), 3000);
     }
 
+    // Create the model container
     auto container = make_unique<ModelContainer>(models[modelPath].get(), initialScale, room.get(), this);
 
+    // If the model doens't fit the room
     if (!container->IsInsideRoom())
     {
         emit DisplayError("The model object doesn't fit in the room! Please try again.");
@@ -372,6 +419,7 @@ void HomeDesignerOpenGLWidget::OnLoadModel(QString modelAttributes, GLfloat init
         return;
     }
 
+    // Select newly selected model container
     container->SetSelected(true);
 
     // Attach container's SIGNAL to our SLOT to display a message
@@ -397,6 +445,7 @@ void HomeDesignerOpenGLWidget::OnLoadModel(QString modelAttributes, GLfloat init
         }
     }
 
+    // Deselect other containers in the scene
     for (int i = 0; i < modelContainers.size(); i++)
         modelContainers[i]->SetSelected(false);
 
@@ -406,43 +455,65 @@ void HomeDesignerOpenGLWidget::OnLoadModel(QString modelAttributes, GLfloat init
     update();
 }
 
+// Displays a message when the operation (move, rotate, scale) isn't allowed
 void HomeDesignerOpenGLWidget::OnOperationNotAllowed(QString message)
 {
     emit DisplayMessage(message, 0);
 }
 
+/**
+* Restores the previous message in the status bar when the operation is successful
+**/
 void HomeDesignerOpenGLWidget::OnOperationSuccessful()
 {
     emit DisplayMessage(lastMessage, 0);
 }
 
+/**
+* Changes the wall color for the room
+**/
 void HomeDesignerOpenGLWidget::OnChangeRoomWallColor(QColor color) const
 {
     room->SetWallColor(glm::vec3(color.redF(), color.greenF(), color.blueF()));
 }
 
+/**
+* Changes the wall texture
+**/
 void HomeDesignerOpenGLWidget::OnChangeRoomWallTexture(QString textureFilePath) const
 {
     room->SetWallTexture(textureFilePath.toStdString());
 }
 
+/**
+* Changes the floor color
+**/
 void HomeDesignerOpenGLWidget::OnChangeRoomFloorColor(QColor color) const
 {
     room->SetFloorColor(glm::vec3(color.redF(), color.greenF(), color.blueF()));
 }
 
+/**
+* Changes the floor texture
+**/
 void HomeDesignerOpenGLWidget::OnChangeRoomFloorTexture(QString textureFilePath) const
 {
     room->SetFloorTexture((textureFilePath.toStdString()));
 }
 
+/**
+* Processes keyboard input
+**/
 void HomeDesignerOpenGLWidget::ProcessKeyboard()
 {
+    // Space key
     if (keys[Qt::Key_Space])
     {
+        // If collision is detected, we don't do anything
         if (collisionDetected || modelContainers.size() == 0)
             return;
 
+        // Otherwise, select the next item
         while (true)
         {
             if (selectedContainerIndex != -1)
@@ -454,11 +525,14 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
         }
     }
 
+    // Escape key
     if (keys[Qt::Key_Escape])
     {
+        // Don't do anything if collision is detected
         if (collisionDetected)
             return;
 
+        // Deselect everything
         for (auto i = 0; i < modelContainers.size(); i++)
             modelContainers[i]->SetSelected(false);
         selectedContainerIndex = -1;
@@ -475,6 +549,7 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
         selectedContainerIndex = -1;
     }
 
+    // Move the wall-bounded object to the next wall
     if (keys[Qt::Key_N])
     {
         // If no model is selected
@@ -491,6 +566,7 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
         room->BindToWall(modelContainers[selectedContainerIndex].get(), nextWall);
     }
 
+    // Display bounding box (or AA bounding box in case SHIFT is pressed)
     if (keys[Qt::Key_B])
     {
         if (modifiers[SHIFT])
@@ -499,6 +575,7 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
             drawBoundingBox = !drawBoundingBox;
     }
 
+    // Display world axis (or object's local one if SHIFT is pressed)
     if (keys[Qt::Key_L])
     {
         if (modifiers[SHIFT])
@@ -507,6 +584,7 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
             showLocalAxis = !showLocalAxis;
     }
 
+    // Reset the camera (or the object if SHIFT is pressed)
     if (keys[Qt::Key_R])
     {
         if (modifiers[SHIFT] && selectedContainerIndex != -1)
@@ -518,7 +596,18 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
         }
     }
 
-    if (keys[Qt::Key_Left])
+    // Camera movements:
+    //      Left arrow : look to the left
+    //      Right arrow: look to the right
+    //      Up arrow   : look up
+    //      Down arrow : look down
+    //      'W'        : move forward
+    //      SHIFT + 'W': move up
+    //      'S'        : move backwards
+    //      SHIFT + 'S': move down
+    //      'A'        : strafe left
+    //      'D'        : strafe right
+    if (keys[Qt        ::Key_Left])
         camera->ProcessMouseMovement(-1, 0);
     if (keys[Qt::Key_Right])
         camera->ProcessMouseMovement(+1, 0);
@@ -538,12 +627,18 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
     emit StatusUpdated(drawBoundingBox, drawAABoundingBox, showWorldAxis);
 }
 
+/**
+* Helper function to display a message in the status bar
+**/
 void HomeDesignerOpenGLWidget::EmitDisplayMessage(QString message, int timeout)
 {
     lastMessage = message;
     emit DisplayMessage(lastMessage, timeout);
 }
 
+/**
+* Helper function to clear the message in the status bar
+**/
 void HomeDesignerOpenGLWidget::EmitClearMessage()
 {
     lastMessage = "";

@@ -25,7 +25,6 @@ class Room
 
 public:
     Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor);
-	Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor, std::string wallTexturePath, std::string floorTexturePath);
     ~Room();
 
     Floor* GetFloor() const { return floor.get(); }
@@ -43,8 +42,8 @@ public:
     void SetFloorTexture(string floorTexture);
     string GetFloorTexture() const { return floorTexture; }
 
-    glm::vec3 GetMinimumVertices() const;
-    glm::vec3 GetMaximumVertices() const;
+    glm::vec3 GetMinimumCoordinates() const;
+    glm::vec3 GetMaximumCoordinates() const;
 
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
     void BindToFloor(ModelContainer* container);

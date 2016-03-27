@@ -43,6 +43,7 @@ class HomeDesignerOpenGLWidget : public QOpenGLWidget
     unique_ptr<Camera> camera;
     bool leftMouseButtonDown = false;
     bool rightMouseButtonDown = false;
+    bool middleMouseButtonDown = false;
     bool isMove = false;
     bool isRotate = false;
     bool isScale = false;
