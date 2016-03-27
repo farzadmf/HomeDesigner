@@ -121,4 +121,17 @@
       <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="$(DefaultQtVersion)" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
+  <ItemGroup>
+    <ModelFiles Include="$(ProjectDir)models\**\*.*" />
+    <ShaderFiles Include="$(ProjectDir)shaders\*.*" />
+    <Libs Include="$(ProjectDir)bin\*.dll" />
+  </ItemGroup>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="$(QTDIR)\bin\Qt5Cored.dll" DestinationFolder="$(SolutionDir)$(Configuration)" ContinueOnError="true" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="$(QTDIR)\bin\Qt5Guid.dll" DestinationFolder="$(SolutionDir)$(Configuration)" ContinueOnError="true" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="$(QTDIR)\bin\Qt5Widgetsd.dll" DestinationFolder="$(SolutionDir)$(Configuration)" ContinueOnError="true" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="@(ModelFiles)" DestinationFiles="@(ModelFiles->'$(SolutionDir)$(Configuration)\models\%(RecursiveDir)%(Filename)%(Extension)')" ContinueOnError="true" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="@(ShaderFiles)" DestinationFolder="$(SolutionDir)$(Configuration)\shaders" ContinueOnError="true" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="@(Libs)" DestinationFolder="$(SolutionDir)$(Configuration)" ContinueOnError="true" SkipUnchangedFiles="false" />
+  </Target>
 </Project>
