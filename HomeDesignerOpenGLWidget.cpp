@@ -22,8 +22,14 @@ static bool showWorldAxis = false;
 static GLuint axisVao, axisVbo, axisEbo;
 static Shader axisShader;
 
-static glm::vec3 initialCameraPosition(0.0f, 50.0f, 80.0f);
-static glm::vec2 initialCameraDelta(0.0f, -100.0f);
+
+//Changed initial camera position to be a little closer to the action
+static glm::vec3 initialCameraPosition(0.0f, 41.0f, 65.0f);
+static glm::vec2 initialCameraDelta(0.0f, -110.0f);
+
+//Previous Camera values
+//static glm::vec3 initialCameraPosition(0.0f, 50.0f, 80.0f);
+//static glm::vec2 initialCameraDelta(0.0f, -100.0f);
 
 //room initial settings
 static GLfloat roomWidth = 60.0f;
