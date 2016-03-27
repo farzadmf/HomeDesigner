@@ -1,5 +1,6 @@
 #include "CollisionManager.h"
 #include "ModelContainer.h"
+#include "MyHelpers.h"
 
 int CollisionManager::AddContainer(ModelContainer* container)
 {
@@ -22,6 +23,11 @@ bool CollisionManager::IsColliding(ModelContainer* container, int index)
     glm::vec3 targetMinVertices = container->GetMinimumVertices();
     glm::vec3 targetMaxVertices = container->GetMaximumVertices();
 
+    // Used for debugging
+//    cout << "index = " << index << endl;
+//    cout << "\ttargetMinVer = " << targetMinVertices << endl;
+//    cout << "\ttargetMaxVer = " << targetMaxVertices << endl;
+
     vector<glm::vec3> boundingBox;
     glm::vec3 minVertices, maxVertices;
     for (int i = 0; i < containers.size(); i++)
@@ -31,6 +37,10 @@ bool CollisionManager::IsColliding(ModelContainer* container, int index)
 
         minVertices = containers[i]->GetMinimumVertices();
         maxVertices = containers[i]->GetMaximumVertices();
+
+        // Used for debugging
+//        cout << "\tminVer = " << minVertices << endl;
+//        cout << "\tmaxVer = " << maxVertices << endl;
 
         if (targetMinVertices.x < maxVertices.x && targetMaxVertices.x > minVertices.x &&
             targetMinVertices.y < maxVertices.y && targetMaxVertices.y > minVertices.y &&

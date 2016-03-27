@@ -61,6 +61,10 @@ ModelContainer::ModelContainer(Model* model, GLfloat initialScale, Room* room, Q
     room{ room }
 {
     aaBoundingBoxVertices = model->GetBoundingBoxVertices();
+
+    // Give the model an initial offset in the 'y' direction (in case it's located exactly on the floor)
+    SetInitialTranslateVector(glm::vec3(0.0f, 0.001f, 0.0f));
+
     UpdateBoundingBox();
 
     if (IsInsideRoom())

@@ -268,3 +268,9 @@ inline GLuint LoadCubeMap(vector<const GLchar*> faces)
 
     return textureId;
 }
+
+inline std::ostream& operator<<(std::ostream& stream, glm::vec3 vector)
+{
+    stream << "x = " << vector.x << ", y = " << vector.y << ", z = " << vector.z;
+    return stream;
+}
