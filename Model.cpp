@@ -22,14 +22,9 @@ void Model::Draw(Shader& shader)
 
 void Model::DrawOutline(glm::mat4& model, Shader& shader)
 {
-    glm::mat4 outlineModel = scale(model, glm::vec3(1.03f));
+    glm::mat4 outlineModel = scale(model, glm::vec3(1.05f));
     glUniformMatrix4fv(glGetUniformLocation(shader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(outlineModel));
-    glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-    glStencilMask(0x00);
     DrawMeshes(shader);
-    // Restore settings for stencil buffer
-    glStencilFunc(GL_ALWAYS, 1, 0xFF);
-    glStencilMask(0xFF);
 }
 
 void Model::DrawBoundingBox() const

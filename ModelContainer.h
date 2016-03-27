@@ -77,7 +77,7 @@ public:
     bool SetSelected(bool selected);
     bool IsColliding() const { return colliding; }
 
-    void DrawModel(Shader& shader, Shader& outlineShader);
+    void DrawModel(Shader& shader, Shader& outlineShader, int index);
     void DrawModelBoundingBox(Shader& shader);
     void DrawAABoudningBox(Shader& shader);
 

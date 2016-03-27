@@ -32,6 +32,8 @@ glm::vec3 initialFloorColor(0.2f);
 static const std::string initialWallTexture = "textures/fabric04.jpg";
 static const std::string initialFloorTexture = "textures/woodFloor01.jpg";
 
+int defaultStencilValue = 1;
+
 HomeDesignerOpenGLWidget::HomeDesignerOpenGLWidget(QWidget* parent) :
     QOpenGLWidget(parent)
 {
@@ -75,11 +77,14 @@ void HomeDesignerOpenGLWidget::paintGL()
     // Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline)
     //      and also see if there's any collisions
     collisionDetected = false;
-    for (auto& container : modelContainers)
+
+    for (int index = 0; index < modelContainers.size(); index++)
     {
+        auto container = modelContainers[index].get();
+
         container->SetProjectionMatrix(projection);
         container->SetViewMatrix(view);
-        container->DrawModel(*shader, *outlineShader);
+        container->DrawModel(*shader, *outlineShader, index + 1);
         if (drawBoundingBox)
             container->DrawModelBoundingBox(*outlineShader);
         if (drawAABoundingBox)
@@ -101,6 +106,9 @@ void HomeDesignerOpenGLWidget::paintGL()
 
     // If no collision is detected, we want to "enable" the button, so we should pass "true"
     emit CollisionDetected(!collisionDetected);
+
+    if (collisionDetected)
+        EmitDisplayMessage("<b><font color='red'>COLLISION DETECTED!!! Please resolve!!!</font></b>", 0);
 }
 
 void HomeDesignerOpenGLWidget::initializeGL()
@@ -118,7 +126,8 @@ void HomeDesignerOpenGLWidget::initializeGL()
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_STENCIL_TEST);
-    glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+    glStencilFunc(GL_ALWAYS, defaultStencilValue, 0xFF);
+    glStencilMask(0xFF);
     glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
     glEnable(GL_FRAMEBUFFER_SRGB);
@@ -259,34 +268,24 @@ void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
         case Qt::Key_X:
             axis = X;
             if (oldAxis != axis)
-            {
-                lastMessage = "<b><font color='maroon'>Axis   -------->   x  ( MAROON )</font></b>";
-                emit DisplayMessage(lastMessage, 0);
-            }
+                EmitDisplayMessage("<b><font color='maroon'>Axis   -------->   x  ( MAROON )</font></b>", 0);
             break;
 
         case Qt::Key_Y:
             axis = Y;
             if (oldAxis != axis)
-            {
-                lastMessage = "<b><font color='green'>Axis   -------->   y  ( GREEN )</font></b>";
-                emit DisplayMessage(lastMessage, 0);
-            }
+                EmitDisplayMessage("<b><font color='green'>Axis   -------->   y  ( GREEN )</font></b>", 0);
             break;
 
         case Qt::Key_Z:
             axis = Z;
             if (oldAxis != axis)
-            {
-                lastMessage = "<b><font color='blue'>Axis   -------->   z  ( BLUE )</font></b>";
-                emit DisplayMessage(lastMessage, 0);
-            }
+                EmitDisplayMessage("<b><font color='blue'>Axis   -------->   z  ( BLUE )</font></b>", 0);
             break;
 
         default:
             axis = NONE;
-            lastMessage = "";
-            emit ClearMessage();
+            EmitClearMessage();
             break;
     }
 
@@ -302,8 +301,7 @@ void HomeDesignerOpenGLWidget::keyReleaseEvent(QKeyEvent* event)
         return;
 
     axis = NONE;
-    lastMessage = "";
-    emit ClearMessage();
+    EmitClearMessage();
     keys[event->key()] = false;
     modifiers[SHIFT] = event->modifiers() & Qt::ShiftModifier;
     modifiers[CONTROL] = event->modifiers() & Qt::ControlModifier;
@@ -538,4 +536,16 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
         camera->ProcessKeyboard(RIGHT, cameraMoveSpeed);
 
     emit StatusUpdated(drawBoundingBox, drawAABoundingBox, showWorldAxis);
+}
+
+void HomeDesignerOpenGLWidget::EmitDisplayMessage(QString message, int timeout)
+{
+    lastMessage = message;
+    emit DisplayMessage(lastMessage, timeout);
+}
+
+void HomeDesignerOpenGLWidget::EmitClearMessage()
+{
+    lastMessage = "";
+    emit ClearMessage();
 }

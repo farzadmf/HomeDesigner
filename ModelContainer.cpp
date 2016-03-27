@@ -213,7 +213,7 @@ bool ModelContainer::SetSelected(bool selected)
     return true;
 }
 
-void ModelContainer::DrawModel(Shader& shader, Shader& outlineShader)
+void ModelContainer::DrawModel(Shader& shader, Shader& outlineShader, int index)
 {
     auto& finalShader = colliding ? outlineShader : shader;
     finalShader.Use();
@@ -230,19 +230,28 @@ void ModelContainer::DrawModel(Shader& shader, Shader& outlineShader)
     glUniformMatrix4fv(glGetUniformLocation(finalShader.GetProgram(), "projection"), 1, GL_FALSE, value_ptr(projection));
 
     // Update the stencil buffer when drawing the model itself
-    glStencilFunc(GL_ALWAYS, 1, 0xFF);
+    glStencilFunc(GL_ALWAYS, index, 0xFF);
     glStencilMask(0xFF);
 
     model->Draw(shader);
 
     if (selected)
     {
+        // Don't draw when stencil test fails
+        glStencilFunc(GL_NOTEQUAL, index, 0xFF);
+        glStencilMask(0x00);
+
         outlineShader.Use();
-        glUniform3f(glGetUniformLocation(outlineShader.GetProgram(), "fragmentColor"), 0.0f, 0.8f, 0.0f);
+        glUniform3f(glGetUniformLocation(outlineShader.GetProgram(), "fragmentColor"), 0.0f, 1.0f, 1.0f);
         glUniform1i(glGetUniformLocation(outlineShader.GetProgram(), "modelOverride"), false);
         glUniformMatrix4fv(glGetUniformLocation(outlineShader.GetProgram(), "view"), 1, GL_FALSE, value_ptr(view));
         glUniformMatrix4fv(glGetUniformLocation(outlineShader.GetProgram(), "projection"), 1, GL_FALSE, value_ptr(projection));
         model->DrawOutline(modelMatrix, outlineShader);
+
+        // Revert back default stencil buffer settings
+        extern int defaultStencilValue;
+        glStencilFunc(GL_ALWAYS, defaultStencilValue, 0xFF);
+        glStencilMask(0xFF);
     }
 }
 

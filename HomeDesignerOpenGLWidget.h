@@ -56,6 +56,8 @@ class HomeDesignerOpenGLWidget : public QOpenGLWidget
     QString lastMessage;    
 
     void ProcessKeyboard();
+    void EmitDisplayMessage(QString message, int timeout);
+    void EmitClearMessage();
 
 public:
     explicit HomeDesignerOpenGLWidget(QWidget *parent = nullptr);
