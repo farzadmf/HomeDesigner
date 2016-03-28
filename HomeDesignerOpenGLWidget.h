@@ -104,6 +104,6 @@ signals:
     void ClearMessage();
     void AxisChanged(Axis oldAxis, Axis axis);
     void CollisionDetected(bool isColliding);
-    void StatusUpdated(bool boundingBox, bool aaBoudningBox, bool axis);
+    void UpdateStatus(bool boundingBox, bool aaBoudningBox, bool worldAxis, bool localAxis);
 };
 

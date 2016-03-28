@@ -17,7 +17,7 @@ public slots:
     void OnClearMessage() const;
     void OnDisplayMessage(QString message, int timeout) const;
     void OnDisplayError(QString message);
-    void OnUpdateStatus(bool boundingBox, bool aaBoudningBox, bool axis) const;
+    void OnUpdateStatus(bool boundingBox, bool aaBoudningBox, bool worldAxis, bool localAxis) const;
 
     // Color/texture handlers
     void OnWallColorButtonClicked();
@@ -37,7 +37,8 @@ private:
 
     QLabel* bbStatusLabel;
     QLabel* aabbStatusLabel;
-    QLabel* axisStatusLabel;
+    QLabel* worldAxisStatusLabel;
+    QLabel* localAxisStatusLabel;
     QLabel* messageLabel;
     QStatusBar* statusBar;
 
@@ -71,7 +72,7 @@ private:
     void AddScaleControlsToControlsGrid();
     void AddModelControlsToControlsGrid();
     void ConnectSignalsAndSlots() const;
-    void InitializeSliderValues();
+    void InitializeSliderValues() const;
     void SetupStatusBar();
     void SetupWallModifiers();
     void SetupFloorModifiers();

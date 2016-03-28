@@ -640,7 +640,7 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
     if (keys[Qt::Key_D])
         camera->ProcessKeyboard(RIGHT, cameraMoveSpeed);
 
-    emit StatusUpdated(drawBoundingBox, drawAABoundingBox, showWorldAxis);
+    emit UpdateStatus(drawBoundingBox, drawAABoundingBox, showWorldAxis, showLocalAxis);
 }
 
 /**

@@ -49,14 +49,17 @@ void MainWindow::OnDisplayError(QString message)
     QMessageBox::critical(this, "Error!", message);
 }
 
-void MainWindow::OnUpdateStatus(bool boundingBox, bool aaBoudningBox, bool axis) const
+void MainWindow::OnUpdateStatus(bool boundingBox, bool aaBoudningBox,
+                                bool worldAxis, bool localAxis) const
 {
-    QString bbString = QString("BB: <b>%1</b>").arg(boundingBox ? "ON" : "OFF");
+    QString bbString = QString("OBB: <b>%1</b>").arg(boundingBox ? "ON" : "OFF");
     QString aabbString = QString("AABB: <b>%1</b>").arg(aaBoudningBox ? "ON" : "OFF");
-    QString axisString = QString("Axis: <b>%1</b>").arg(axis ? "ON" : "OFF");
+    QString worldAxisString = QString("W-Axis: <b>%1</b>").arg(worldAxis ? "ON" : "OFF");
+    QString localAxisString = QString("L-Axis: <b>%1</b>").arg(localAxis ? "ON" : "OFF");
     bbStatusLabel->setText(bbString);
     aabbStatusLabel->setText(aabbString);
-    axisStatusLabel->setText(axisString);
+    worldAxisStatusLabel->setText(worldAxisString);
+    localAxisStatusLabel->setText(localAxisString);
 }
 
 void MainWindow::OnWallColorButtonClicked()
@@ -312,12 +315,12 @@ void MainWindow::ConnectSignalsAndSlots() const
     connect(scaleSlider, SIGNAL(valueChanged(int)), openglWidget,    SLOT(OnScaleSpeedChanged(int)));
     connect(scaleSlider, SIGNAL(valueChanged(int)), scaleValueLabel, SLOT(setNum(int)));
 
-    connect(openglWidget, SIGNAL(Exit()),                          this, SLOT(close()));
-    connect(openglWidget, SIGNAL(DisplayMessage(QString, int)),    this, SLOT(OnDisplayMessage(QString, int)));
-    connect(openglWidget, SIGNAL(StatusUpdated(bool, bool, bool)), this, SLOT(OnUpdateStatus(bool, bool, bool)));
-    connect(openglWidget, SIGNAL(DisplayError(QString)),           this, SLOT(OnDisplayError(QString)));
-    connect(openglWidget, SIGNAL(ClearMessage()),                  this, SLOT(OnClearMessage()));
-    connect(openglWidget, SIGNAL(CollisionDetected(bool)),         this, SLOT(OnChangeButtons(bool)));
+    connect(openglWidget, SIGNAL(Exit()),                               this, SLOT(close()));
+    connect(openglWidget, SIGNAL(DisplayMessage(QString, int)),         this, SLOT(OnDisplayMessage(QString, int)));
+    connect(openglWidget, SIGNAL(UpdateStatus(bool, bool, bool, bool)), this, SLOT(OnUpdateStatus(bool, bool, bool, bool)));
+    connect(openglWidget, SIGNAL(DisplayError(QString)),                this, SLOT(OnDisplayError(QString)));
+    connect(openglWidget, SIGNAL(ClearMessage()),                       this, SLOT(OnClearMessage()));
+    connect(openglWidget, SIGNAL(CollisionDetected(bool)),              this, SLOT(OnChangeButtons(bool)));
 
     connect(loadModelButton, SIGNAL(clicked()), modelsCombo, SLOT(OnButtonClicked()));
 
@@ -337,7 +340,7 @@ void MainWindow::ConnectSignalsAndSlots() const
 }
 
 // Initialize slider values to a medium value
-void MainWindow::InitializeSliderValues()
+void MainWindow::InitializeSliderValues() const
 {
     moveSlider->setValue(12);
     rotateSlider->setValue(5);
@@ -353,12 +356,15 @@ void MainWindow::SetupStatusBar()
     bbStatusLabel->setAlignment(Qt::AlignRight);
     aabbStatusLabel = new QLabel(statusBar);
     aabbStatusLabel->setAlignment(Qt::AlignRight);
-    axisStatusLabel = new QLabel(statusBar);
-    axisStatusLabel->setAlignment(Qt::AlignRight);
+    worldAxisStatusLabel = new QLabel(statusBar);
+    worldAxisStatusLabel->setAlignment(Qt::AlignRight);
+    localAxisStatusLabel = new QLabel(statusBar);
+    localAxisStatusLabel->setAlignment(Qt::AlignRight);
     statusBar->addPermanentWidget(messageLabel, 4);
     statusBar->addPermanentWidget(bbStatusLabel, 0);
     statusBar->addPermanentWidget(aabbStatusLabel, 0);
-    statusBar->addPermanentWidget(axisStatusLabel, 0);
+    statusBar->addPermanentWidget(worldAxisStatusLabel, 0);
+    statusBar->addPermanentWidget(localAxisStatusLabel, 0);
     statusBar->setStyleSheet("QStatusBar{border-top: 2px outset grey;}");
     setStatusBar(statusBar);
 }
