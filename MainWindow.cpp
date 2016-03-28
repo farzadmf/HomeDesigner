@@ -267,6 +267,9 @@ void MainWindow::AddModelControlsToControlsGrid()
     loadModelButton = new QPushButton("Load Model");
     modelsCombo->addItem("--- Please select a model ---");
 	modelsCombo->addItem("Tool chest"                              , "models/toolChest/model.obj|floor");
+	modelsCombo->addItem("Three pictured frames"				   , "models/threePicturedFrames/model.obj|wall|left");
+	modelsCombo->addItem("Wood shelf"							   , "models/woodShelf/model.obj|wall|right");
+	modelsCombo->addItem("Painting Back"						   , "models/painting/model.obj|wall|back");
 	modelsCombo->addItem("Bistro buffet"						   , "models/bistroBuffet/model.obj|floor");
 	modelsCombo->addItem("Shelving unit"						   , "models/shelvingUnit/model.obj|floor");
 	modelsCombo->addItem("Picture frame"						   , "models/pictureFrames/model.obj");
@@ -276,16 +279,20 @@ void MainWindow::AddModelControlsToControlsGrid()
 	modelsCombo->addItem("Arm chair"                               , "models/armChair/model.obj|floor");
 	modelsCombo->addItem("Large chair"							   , "models/largeChair/model.obj|floor");
 	modelsCombo->addItem("Sofa"									   , "models/sofa/model.obj|floor");
+	modelsCombo->addItem("Large sofa"							   , "models/largeSofa/model.obj|floor");
 	modelsCombo->addItem("Feet rest"							   , "models/feetRest/model.obj|floor");
 	modelsCombo->addItem("Metal stool"							   , "models/metalStool/model.obj|floor");
 	modelsCombo->addItem("Modern desk"							   , "models/modernDesk/model.obj|floor");
-	modelsCombo->addItem("Painting"							       , "models/painting/model.obj");
+
+	//Nanosuit test model
+	/*
     modelsCombo->addItem("Nanosuit Model (Not Bound)"              , "models/nanosuit/nanosuit.obj");
     modelsCombo->addItem("Nanosuit Model (Bound to Floor)"         , "models/nanosuit/nanosuit.obj|floor");
     modelsCombo->addItem("Nanosuit Model (Bound to [Default] Wall)", "models/nanosuit/nanosuit.obj|wall");
     modelsCombo->addItem("Nanosuit Model (Bound to Left Wall)"     , "models/nanosuit/nanosuit.obj|wall|left");
     modelsCombo->addItem("Nanosuit Model (Bound to Right Wall)"    , "models/nanosuit/nanosuit.obj|wall|right");
     modelsCombo->addItem("Nanosuit Model (Bound to Back Wall)"     , "models/nanosuit/nanosuit.obj|wall|back");
+	*/
     controlsGridLayout->addWidget(modelsCombo    , 1, 0, 1, 6);
     controlsGridLayout->addWidget(loadModelButton, 1, 6, 1, 3);
 }

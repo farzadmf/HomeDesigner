@@ -174,7 +174,7 @@ void Wall::Bind(ModelContainer* container) const
             //      We also move the model to the middle of the wall
             containerWidth = (container->GetMaximumVertices() - container->GetMinimumVertices()).x;
             containerHeight = (container->GetMaximumVertices() - container->GetMinimumVertices()).y;
-            container->SetInitialTranslateVector(glm::vec3(-distance + containerWidth / 2.0f + 0.001f,
+            container->SetInitialTranslateVector(glm::vec3(-distance + containerWidth + 0.001f,
                                                            distance / 2.0f - containerHeight / 2.0f, 0.0f));
 
             // Rotation is bound to 'x' and translation to 'yz'
@@ -194,7 +194,7 @@ void Wall::Bind(ModelContainer* container) const
             //      We also move the model to the middle of the wall
             containerWidth = (container->GetMaximumVertices() - container->GetMinimumVertices()).x;
             containerHeight = (container->GetMaximumVertices() - container->GetMinimumVertices()).y;
-            container->SetInitialTranslateVector(glm::vec3(+distance - containerWidth / 2.0f - 0.001f,
+            container->SetInitialTranslateVector(glm::vec3(+distance - containerWidth - 0.001f,
                                                            distance / 2.0f - containerHeight / 2.0f, 0.0f));
 
             // Rotation is bound to 'x' and translation to 'yz'
@@ -211,7 +211,7 @@ void Wall::Bind(ModelContainer* container) const
             containerDepth = (container->GetMaximumVertices() - container->GetMinimumVertices()).z;
             containerHeight = (container->GetMaximumVertices() - container->GetMinimumVertices()).y;
             container->SetInitialTranslateVector(glm::vec3(0.0f, distance / 2.0f - containerHeight / 2.0f,
-                                                           -distance + containerDepth / 2.0f + 0.001f));
+                                                           -distance + containerDepth + 0.001f));
             // Also rotate the model towards the wall
             container->SetInitialRotationAngles(glm::vec3(0.0f, 0.0f, 0.0f));
 
