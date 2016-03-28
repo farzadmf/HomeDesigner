@@ -205,8 +205,13 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
         lastMouseX = event->x();
         lastMouseY = event->y();
 
-        // If right mouse button is pressed, look
-        if (rightMouseButtonDown)
+
+		//If Control and right mouse button are pressed rotate the camera around the scene
+		if (rightMouseButtonDown && modifiers[CONTROL]) {
+			camera->ProcessMouseCameraViewRotation(xOffset, yOffset);
+		}
+		// If just right mouse button is pressed, look around
+        else if (rightMouseButtonDown)
             camera->ProcessMouseMovement(xOffset, yOffset);
         else if (middleMouseButtonDown)
         {
@@ -219,6 +224,7 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
 
         update();
     }
+
 
     if (!leftMouseButtonDown || selectedContainerIndex == -1)
         return;

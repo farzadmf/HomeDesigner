@@ -22,6 +22,11 @@ const GLfloat MAXIMUM_PITCH = 89.0f;
 const GLfloat MAXIMUM_ZOOM  = 90.0f;
 const GLfloat MINIMUM_ZOOM  = 30.0f;
 
+//Camera const for scene view rotation will rotate by this angle
+const GLfloat ROTATION_ANGLE = 2.0f;
+//Camera will rotate around a Scene Point, this is the default position
+const glm::vec3 DEFAULT_SCREEN_CENTER = glm::vec3(0.0f,0.0f,0.0f);
+
 class Camera
 {
 public:
@@ -30,6 +35,9 @@ public:
     glm::vec3 Up;
     glm::vec3 Right;
     glm::vec3 WorldUp;
+
+	//camera scene center for rotations around the center
+	glm::vec3 SceneCenter;
 
     GLfloat Yaw;
     GLfloat Pitch;
@@ -45,7 +53,8 @@ public:
         Front(glm::vec3(0.0f, 0.0f, -1.0f)),
         MovementSpeed(SPEED),
         MouseSensitivity(SENSITIVITY),
-        Zoom(ZOOM)
+        Zoom(ZOOM),
+		SceneCenter(DEFAULT_SCREEN_CENTER)
     {
         Position = position;
         WorldUp = up;
@@ -61,7 +70,8 @@ public:
         Up(0.0f, 1.0f, 0.0f),
         MovementSpeed(SPEED),
         MouseSensitivity(SENSITIVITY),
-        Zoom(ZOOM)
+        Zoom(ZOOM),
+		SceneCenter(DEFAULT_SCREEN_CENTER)
     {
         Position = glm::vec3(posX, posY, posZ);
         WorldUp = glm::vec3(upX, upY, upZ);
@@ -112,6 +122,42 @@ public:
 
         UpdateCameraVectors();
     }
+
+
+	/*
+	Camera rotates around the scene
+	*/
+	void ProcessMouseCameraViewRotation(GLfloat xOffset, GLfloat yOffset)
+	{
+		glm::vec4 newPosition;
+		glm::mat4 trans;
+
+		GLfloat angle = ROTATION_ANGLE;
+
+		newPosition = glm::vec4(Position,0.0f);
+
+		//If xOffset is positive than rotate to the right
+		if (xOffset > 0)
+			angle = -angle;
+
+		//Translate to scene center
+		trans = glm::translate(trans, -SceneCenter);
+		//rotate based on preset angle
+		trans = glm::rotate(trans, glm::radians(angle), glm::vec3(0.0, 1.0, 0.0));
+		//translate back to original point
+		trans = glm::translate(trans, SceneCenter);
+
+		//Do transfomation
+		newPosition = trans * newPosition;
+		
+		//Apply transformation onto Camera Position
+		Position = glm::vec3(newPosition.x,newPosition.y,newPosition.z);
+
+		//Rotate the camera view to keep facing the Scene center
+		Yaw = Yaw - angle;
+
+		UpdateCameraVectors();
+	}
 
     void ProcessMouseScroll(GLfloat yOffset)
     {
