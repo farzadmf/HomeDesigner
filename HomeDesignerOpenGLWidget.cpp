@@ -25,6 +25,11 @@ static Shader axisShader;                           // Shader used to draw the a
 static glm::vec3 initialCameraPosition(0.0f, 41.0f, 65.0f);
 static glm::vec2 initialCameraDelta(0.0f, -110.0f); // Needed for Camera class's delta value
 
+static GLfloat worldAxisLineWidth = 2.0;            // Line width used to draw the world axis
+static glm::mat4 worldAxisLocation;                 // Location of the world axis
+// World axis is initially at the center with a small offset in the y-direction
+static glm::vec3 worldAxisInitialTranslation(0.0f, 0.001f, 0.0f);
+
 //room initial settings
 static GLfloat roomWidth = 60.0f;
 glm::vec3 initialWallColor(0.4f);
@@ -67,8 +72,9 @@ void HomeDesignerOpenGLWidget::paintGL()
     {
         GLfloat currentLineWidth;
         glGetFloatv(GL_LINE_WIDTH, &currentLineWidth);
-        glLineWidth(2 * currentLineWidth);
-        glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(glm::mat4()));
+        glLineWidth(worldAxisLineWidth);
+//        glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(glm::mat4()));
+        glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(worldAxisLocation));
         glBindVertexArray(axisVao);
         glDrawArrays(GL_LINES, 0, 6);
         glBindVertexArray(0);
@@ -110,8 +116,8 @@ void HomeDesignerOpenGLWidget::paintGL()
     // If no collision is detected, we want to "enable" the button, so we should pass "true"
     emit CollisionDetected(!collisionDetected);
 
-    if (collisionDetected)
-        EmitDisplayMessage("<b><font color='red'>COLLISION DETECTED!!! Please resolve!!!</font></b>", 0);
+//    if (collisionDetected)
+//        EmitDisplayMessage("<b><font color='red'>COLLISION DETECTED!!! Please resolve!!!</font></b>", 0);
 }
 
 /**
@@ -183,6 +189,9 @@ void HomeDesignerOpenGLWidget::initializeGL()
     camera->MouseSensitivity = 0.5f;
     camera->MovementSpeed = 5.0f;
     room = make_shared<Room>(this, roomWidth, initialWallColor, initialFloorColor);
+
+    // World axis is initially at the center (with a small offset in the y-direction)
+    worldAxisLocation = translate(glm::mat4(), worldAxisInitialTranslation);
 }
 
 /**
@@ -603,6 +612,31 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
             showWorldAxis = !showWorldAxis;
         else
             showLocalAxis = !showLocalAxis;
+    }
+
+    // If world axis is being displayed, increase/decrease the size with ' and :
+    if ((keys[Qt::Key_Apostrophe] || keys[Qt::Key_Semicolon]) && showWorldAxis)
+    {
+        GLfloat delta = keys[Qt::Key_Apostrophe] ? +1.0f : -1.0f;
+        
+        worldAxisLineWidth += delta;
+
+        // No smaller than 1 and no greater than 6
+        if (worldAxisLineWidth < 1.0f)
+            worldAxisLineWidth = 1.0f;
+        if (worldAxisLineWidth > 6.0f)
+            worldAxisLineWidth = 6.0f;
+    }
+
+    // If world axis is visible, move it up and down using [ and /
+    // Reset the position using ?
+    if ((keys[Qt::Key_BracketLeft] || keys[Qt::Key_Slash] || keys[Qt::Key_Question]) && showWorldAxis)
+    {
+        GLfloat delta = keys[Qt::Key_BracketLeft] ? +1.0f : -1.0f;
+        worldAxisLocation = translate(worldAxisLocation, glm::vec3(0.0f, delta + 0.001f, 0.0f));
+
+        if (keys[Qt::Key_Question])
+            worldAxisLocation = translate(glm::mat4(), worldAxisInitialTranslation);
     }
 
     // Reset the camera (or the object if SHIFT is pressed)
