@@ -36,6 +36,8 @@ public:
     glm::vec3 Right;
     glm::vec3 WorldUp;
 
+	glm::vec3 ViewDirection;
+
 	//camera scene center for rotations around the center
 	glm::vec3 SceneCenter;
 
@@ -82,7 +84,7 @@ public:
 
     glm::mat4 GetViewMatrix() const
     {
-        return lookAt(Position, Position + Front, Up);
+			return lookAt(Position, ViewDirection, Up);
     }
 
     void ProcessKeyboard(CameraMovement direction, GLfloat deltaTime)
@@ -101,6 +103,8 @@ public:
             Position.y += velocity;
         if (direction == DOWN)
             Position.y -= velocity;
+
+		ViewDirection = Position + Front;
     }
 
     void ProcessMouseMovement(GLfloat xOffset, GLfloat yOffset,
@@ -159,6 +163,16 @@ public:
 		UpdateCameraVectors();
 	}
 
+	/*
+	Move Camera's faceing direction to point of focus
+	*/
+	void RotateToPointOfFocus(glm::vec3 pointOfFocus)
+	{
+		ViewDirection = pointOfFocus;
+		Up = glm::vec3(0.0f, 1.0f, 0.0f);
+
+	}
+
     void ProcessMouseScroll(GLfloat yOffset)
     {
         if (Zoom >= MINIMUM_ZOOM && Zoom <= MAXIMUM_ZOOM)
@@ -180,5 +194,13 @@ private:
 
         Right = normalize(cross(Front, WorldUp));
         Up = normalize(cross(Right, Front));
+
+		ViewDirection = Position + Front;
     }
+
+GLfloat angleBetween(glm::vec3 a,glm::vec3 b,glm::vec3 origin) {
+		glm::vec3 da = glm::normalize(a - origin);
+		glm::vec3 db = glm::normalize(b - origin);
+		return acos(glm::dot(da, db));
+	}
 };

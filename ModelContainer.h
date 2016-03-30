@@ -51,6 +51,7 @@ public:
     vector<glm::vec3> const& GetBoundingBoxVertices() const { return aaBoundingBoxVertices; }
     glm::vec3 GetMinimumVertices() const { return aaBoundingBoxVertices[0]; }
     glm::vec3 GetMaximumVertices() const { return aaBoundingBoxVertices[6]; }
+	glm::vec3 getModelContainerCenter() const { return modelContainerCenter;}
     glm::mat4 GetModelMatrix() const { return CombineTransformations(); }
 
     // Setters for initial values
@@ -83,4 +84,8 @@ public:
 
     void Reset();
     bool IsInsideRoom() const;
+
+private:
+	//Container center location in scene. Used for the camera to rotate around this object when selected.
+	glm::vec3 modelContainerCenter;
 };

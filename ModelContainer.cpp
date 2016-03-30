@@ -49,6 +49,9 @@ void ModelContainer::UpdateBoundingBox()
     aaBoundingBoxVertices.push_back(glm::vec3(maxX, maxY, minZ));    // 6
     aaBoundingBoxVertices.push_back(glm::vec3(maxX, maxY, maxZ));    // 7
     aaBoundingBoxVertices.push_back(glm::vec3(maxX, minY, maxZ));    // 8
+
+	//Compute container center
+	modelContainerCenter = glm::vec3( (maxX +minX)/2.0f, (maxY + minY) /2.0f, (maxZ + minZ) /2.0f);
 }
 
 void ModelContainer::DetectCollision()

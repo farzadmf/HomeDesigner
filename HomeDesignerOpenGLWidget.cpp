@@ -376,7 +376,7 @@ void HomeDesignerOpenGLWidget::mouseReleaseEvent(QMouseEvent*)
 **/
 void HomeDesignerOpenGLWidget::wheelEvent(QWheelEvent* event)
 {
-    camera->ProcessMouseScroll(event->delta() > 0 ? 1 : -1);
+	camera->ProcessMouseScroll(event->delta() > 0 ? 1 : -1);
     update();
 }
 
@@ -467,6 +467,8 @@ void HomeDesignerOpenGLWidget::OnLoadModel(QString modelAttributes, GLfloat init
 
     modelContainers.push_back(std::move(container));
     selectedContainerIndex = modelContainers.size() - 1;
+	//Set camera focus to newly created object
+	camera->RotateToPointOfFocus((modelContainers[selectedContainerIndex]->getModelContainerCenter()));
     grabKeyboard();
     update();
 }
@@ -536,8 +538,11 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
                 modelContainers[selectedContainerIndex]->SetSelected(false);
 
             selectedContainerIndex = (selectedContainerIndex + 1) % modelContainers.size();
-            if (modelContainers[selectedContainerIndex]->SetSelected(true))
-                break;
+			if (modelContainers[selectedContainerIndex]->SetSelected(true))
+			{
+				camera->RotateToPointOfFocus((modelContainers[selectedContainerIndex]->getModelContainerCenter()));
+				break;
+			}
         }
     }
 
