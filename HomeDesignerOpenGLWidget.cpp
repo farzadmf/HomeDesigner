@@ -73,7 +73,6 @@ void HomeDesignerOpenGLWidget::paintGL()
         GLfloat currentLineWidth;
         glGetFloatv(GL_LINE_WIDTH, &currentLineWidth);
         glLineWidth(worldAxisLineWidth);
-//        glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(glm::mat4()));
         glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(worldAxisLocation));
         glBindVertexArray(axisVao);
         glDrawArrays(GL_LINES, 0, 6);
