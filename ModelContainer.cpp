@@ -8,7 +8,12 @@ glm::mat4 ModelContainer::CombineTransformations() const
     modelMatrix = rotate(modelMatrix, glm::radians(initialRotationAngles.x) + glm::radians(rotationAngles.x), glm::vec3(1.0f, 0.0f, 0.0f));
     modelMatrix = rotate(modelMatrix, glm::radians(initialRotationAngles.y) + glm::radians(rotationAngles.y), glm::vec3(0.0f, 1.0f, 0.0f));
     modelMatrix = rotate(modelMatrix, glm::radians(initialRotationAngles.z) + glm::radians(rotationAngles.z), glm::vec3(0.0f, 0.0f, 1.0f));
-    modelMatrix = scale(modelMatrix, glm::vec3(scaleFactor, scaleFactor, scaleFactor));
+    // We don't allow the model to have a scale less than '0.05' in each direction
+    auto targetScaleVector = initialScaleVector + scaleVector;
+    if (targetScaleVector.x <= 0.0f) targetScaleVector.x = 0.05f;
+    if (targetScaleVector.y <= 0.0f) targetScaleVector.y = 0.05f;
+    if (targetScaleVector.z <= 0.0f) targetScaleVector.z = 0.05f;
+    modelMatrix = scale(modelMatrix, targetScaleVector);
     return modelMatrix;
 }
 
@@ -60,8 +65,8 @@ void ModelContainer::DetectCollision()
 }
 
 ModelContainer::ModelContainer(Model* model, GLfloat initialScale, Room* room, QOpenGLWidget* targetWidget) :
-    model{ model }, scaleFactor{ initialScale }, initialScale{ initialScale }, targetWidget{ targetWidget },
-    room{ room }
+    model{ model }, initialScaleVector{ glm::vec3(initialScale) },
+    scaleFactor { initialScale }, initialScale{ initialScale }, targetWidget{ targetWidget }, room{ room }
 {
     aaBoundingBoxVertices = model->GetBoundingBoxVertices();
 
@@ -85,6 +90,7 @@ ModelContainer::~ModelContainer()
 void ModelContainer::SetInitialScale(GLfloat initialScale)
 {
     this->initialScale = initialScale;
+    scaleVector = glm::vec3(initialScale);
     UpdateBoundingBox();
     DetectCollision();
 }
@@ -108,21 +114,37 @@ void ModelContainer::ScaleBy(GLfloat scaleFactor)
     bool operationAllowed = true;
     QString reason;     // Message indicating why the operation wasn't successful
 
-    auto currentScaleFactor = this->scaleFactor;
+//    auto currentScaleFactor = this->scaleFactor;
+    auto currentScaleVector = scaleVector;
 
     // Try to scale and see whether it gets out of the room
-    this->scaleFactor = scaleFactor;
+    scaleVector.x += scaleBound.x * scaleFactor;
+    scaleVector.y += scaleBound.y * scaleFactor;
+    scaleVector.z += scaleBound.z * scaleFactor;
+
     UpdateBoundingBox();
     DetectCollision();
 
     // If not inside the room, revert back the changes
     if (!IsInsideRoom())
     {
-        this->scaleFactor = currentScaleFactor;
+//        this->scaleFactor = currentScaleFactor;
+        scaleVector = currentScaleVector;
         UpdateBoundingBox();
         DetectCollision();
         operationAllowed = false;
         reason = "The object is getting out of the room!";
+    }
+
+    // If the model is bounded to a wall, and it's getting detached from it
+    if (boundedWall >= 0 && boundedWall < room->GetWalls().size() && !room->IsAttached(this, boundedWall))
+    {
+        scaleVector = currentScaleVector;
+        UpdateBoundingBox();
+        DetectCollision();
+        operationAllowed = false;
+        reason = "Model is getting detached from its bounded wall!";
+        cout << "IsAttached = " << room->IsAttached(this, boundedWall) << endl;
     }
 
     if (!operationAllowed)

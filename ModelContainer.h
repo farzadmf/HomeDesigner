@@ -11,6 +11,8 @@ class ModelContainer : public QObject
     Model* model = nullptr;
 
     glm::vec3 translateVector = glm::vec3(0.0f);
+    glm::vec3 scaleVector = glm::vec3(0.0f);
+    glm::vec3 initialScaleVector = glm::vec3(1.0f);
     glm::vec3 initialTranslateVector = glm::vec3(0.0f);
     glm::vec3 rotationAngles = glm::vec3(0.0f);
     glm::vec3 initialRotationAngles = glm::vec3(0.0f);
@@ -27,6 +29,7 @@ class ModelContainer : public QObject
     QOpenGLWidget* targetWidget;
     glm::vec3 translationBound = glm::vec3(1.0f);
     glm::vec3 rotationBound = glm::vec3(1.0f);
+    glm::vec3 scaleBound = glm::vec3(1.0f);
     Room* room = nullptr;
 
     // Used when a model is bounded to a wall
@@ -46,6 +49,8 @@ public:
     ~ModelContainer();
 
     GLfloat GetScaleFactor() const { return scaleFactor; }
+
+    glm::vec3 GetScaleVector() const { return scaleVector; }
     glm::vec3 GetTranslationVector() const { return translateVector; }
     glm::vec3 GetRotationAngles() const { return rotationAngles; }
     vector<glm::vec3> const& GetBoundingBoxVertices() const { return aaBoundingBoxVertices; }
@@ -70,6 +75,7 @@ public:
     void SetViewMatrix(glm::mat4& view) { this->view = view; }
     void SetTranslationBound(glm::vec3 translationBound) { this->translationBound = translationBound; }
     void SetRotationBound(glm::vec3 rotationBound) { this->rotationBound = rotationBound; }
+    void SetScaleBound(glm::vec3 scaleBound) { this->scaleBound = scaleBound; }
 
     void ScaleBy(GLfloat scaleFactor);
     void RotateBy(glm::vec3 angles);

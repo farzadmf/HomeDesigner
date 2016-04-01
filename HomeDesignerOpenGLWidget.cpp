@@ -264,9 +264,7 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
     {
         GLfloat scaleFactor = scaleSpeed * (event->y() < lastMouseY ? scaleStep : -scaleStep);
         lastMouseY = event->y();
-        GLfloat currentScaleFactor = selectedContainer->GetScaleFactor();
-        GLfloat targetScaleFactor = currentScaleFactor + scaleFactor > 0 ? currentScaleFactor + scaleFactor : 0.01f;
-        selectedContainer->ScaleBy(targetScaleFactor);
+        selectedContainer->ScaleBy(scaleFactor);
         update();
     }
 
@@ -593,6 +591,7 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
 
         Location nextWall = static_cast<Location>((currentWall + 1) % room->GetWalls().size());
         room->BindToWall(modelContainers[selectedContainerIndex].get(), nextWall);
+        camera->RotateToPointOfFocus((modelContainers[selectedContainerIndex]->getModelContainerCenter()));
     }
 
     // Display bounding box (or AA bounding box in case SHIFT is pressed)

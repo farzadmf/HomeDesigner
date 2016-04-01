@@ -48,5 +48,6 @@ public:
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
     void BindToFloor(ModelContainer* container);
     void BindToWall(ModelContainer* container, Location wallLocation);
+    bool IsAttached(ModelContainer* container, Location wallLocation);
 };
 

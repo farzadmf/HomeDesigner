@@ -61,5 +61,8 @@ public:
 
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
     void Bind(ModelContainer* container) const;
+
+    // Checks whether the specified model container is attached to the wall
+    bool IsAttached(ModelContainer* container) const;
 };
 

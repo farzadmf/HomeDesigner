@@ -124,3 +124,13 @@ void Room::BindToWall(ModelContainer* container, Location wallLocation)
         if (wall->GetLocation() == wallLocation)
             wall->Bind(container);
 }
+
+bool Room::IsAttached(ModelContainer* container, Location wallLocation)
+{
+    Wall* targetWall;
+    for (auto wall : walls)
+        if (wall->GetLocation() == wallLocation)
+            targetWall = wall.get();
+
+    return targetWall->IsAttached(container);
+}

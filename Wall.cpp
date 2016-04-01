@@ -224,3 +224,23 @@ void Wall::Bind(ModelContainer* container) const
             break;
     }
 }
+
+bool Wall::IsAttached(ModelContainer* container) const
+{
+    auto containerMinimumCoords = container->GetMinimumVertices();
+    auto containerMaximumCoords = container->GetMaximumVertices();
+    auto offset = 0.1f;
+
+    // Check to see whether the model is inside the offset with respect to the wall
+    switch (location)
+    {
+        case LEFT_WALL:
+            return containerMinimumCoords.x <= -distance + offset;
+        case RIGHT_WALL:
+            return containerMaximumCoords.x >= distance - offset;
+        case BACK_WALL:
+            return containerMinimumCoords.z <= -distance + offset;
+    }
+
+    return false;
+}
