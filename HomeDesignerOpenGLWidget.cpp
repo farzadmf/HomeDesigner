@@ -214,11 +214,11 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
         lastMouseY = event->y();
 
 
-		//If Control and right mouse button are pressed rotate the camera around the scene
-		if (rightMouseButtonDown && modifiers[CONTROL]) {
-			camera->ProcessMouseCameraViewRotation(xOffset, yOffset);
-		}
-		// If just right mouse button is pressed, look around
+        //If Control and right mouse button are pressed rotate the camera around the scene
+        if (rightMouseButtonDown && modifiers[CONTROL]) {
+            camera->ProcessMouseCameraViewRotation(xOffset, yOffset);
+        }
+        // If just right mouse button is pressed, look around
         else if (rightMouseButtonDown)
             camera->ProcessMouseMovement(xOffset, yOffset);
         else if (middleMouseButtonDown)
@@ -382,7 +382,7 @@ void HomeDesignerOpenGLWidget::mouseReleaseEvent(QMouseEvent*)
 **/
 void HomeDesignerOpenGLWidget::wheelEvent(QWheelEvent* event)
 {
-	camera->ProcessMouseScroll(event->delta() > 0 ? 1 : -1);
+    camera->ProcessMouseScroll(event->delta() > 0 ? 1 : -1);
     update();
 }
 
@@ -473,8 +473,8 @@ void HomeDesignerOpenGLWidget::OnLoadModel(QString modelAttributes, GLfloat init
 
     modelContainers.push_back(std::move(container));
     selectedContainerIndex = modelContainers.size() - 1;
-	//Set camera focus to newly created object
-	camera->RotateToPointOfFocus((modelContainers[selectedContainerIndex]->getModelContainerCenter()));
+    //Set camera focus to newly created object
+    camera->RotateToPointOfFocus((modelContainers[selectedContainerIndex]->getModelContainerCenter()));
     grabKeyboard();
     update();
 }
@@ -544,11 +544,11 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
                 modelContainers[selectedContainerIndex]->SetSelected(false);
 
             selectedContainerIndex = (selectedContainerIndex + 1) % modelContainers.size();
-			if (modelContainers[selectedContainerIndex]->SetSelected(true))
-			{
-				camera->RotateToPointOfFocus((modelContainers[selectedContainerIndex]->getModelContainerCenter()));
-				break;
-			}
+            if (modelContainers[selectedContainerIndex]->SetSelected(true))
+            {
+                camera->RotateToPointOfFocus((modelContainers[selectedContainerIndex]->getModelContainerCenter()));
+                break;
+            }
         }
     }
 

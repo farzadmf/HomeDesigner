@@ -36,10 +36,10 @@ public:
     glm::vec3 Right;
     glm::vec3 WorldUp;
 
-	glm::vec3 ViewDirection;
+    glm::vec3 ViewDirection;
 
-	//camera scene center for rotations around the center
-	glm::vec3 SceneCenter;
+    //camera scene center for rotations around the center
+    glm::vec3 SceneCenter;
 
     GLfloat Yaw;
     GLfloat Pitch;
@@ -56,7 +56,7 @@ public:
         MovementSpeed(SPEED),
         MouseSensitivity(SENSITIVITY),
         Zoom(ZOOM),
-		SceneCenter(DEFAULT_SCREEN_CENTER)
+        SceneCenter(DEFAULT_SCREEN_CENTER)
     {
         Position = position;
         WorldUp = up;
@@ -73,7 +73,7 @@ public:
         MovementSpeed(SPEED),
         MouseSensitivity(SENSITIVITY),
         Zoom(ZOOM),
-		SceneCenter(DEFAULT_SCREEN_CENTER)
+        SceneCenter(DEFAULT_SCREEN_CENTER)
     {
         Position = glm::vec3(posX, posY, posZ);
         WorldUp = glm::vec3(upX, upY, upZ);
@@ -84,7 +84,7 @@ public:
 
     glm::mat4 GetViewMatrix() const
     {
-			return lookAt(Position, ViewDirection, Up);
+            return lookAt(Position, ViewDirection, Up);
     }
 
     void ProcessKeyboard(CameraMovement direction, GLfloat deltaTime)
@@ -104,7 +104,7 @@ public:
         if (direction == DOWN)
             Position.y -= velocity;
 
-		ViewDirection = Position + Front;
+        ViewDirection = Position + Front;
     }
 
     void ProcessMouseMovement(GLfloat xOffset, GLfloat yOffset,
@@ -128,50 +128,57 @@ public:
     }
 
 
-	/*
-	Camera rotates around the scene
-	*/
-	void ProcessMouseCameraViewRotation(GLfloat xOffset, GLfloat yOffset)
-	{
-		glm::vec4 newPosition;
-		glm::mat4 trans;
+    /*
+    Camera rotates around the scene
+    */
+    void ProcessMouseCameraViewRotation(GLfloat xOffset, GLfloat yOffset)
+    {
+        glm::vec4 newPosition;
+        glm::mat4 trans;
 
-		GLfloat angle = ROTATION_ANGLE;
+        GLfloat angle = ROTATION_ANGLE;
 
-		newPosition = glm::vec4(Position,0.0f);
+        newPosition = glm::vec4(Position,0.0f);
 
-		//If xOffset is positive than rotate to the right
-		if (xOffset > 0)
-			angle = -angle;
+        //If xOffset is positive than rotate to the right
+        if (xOffset > 0)
+            angle = -angle;
 
-		//Translate to scene center
-		trans = glm::translate(trans, -SceneCenter);
-		//rotate based on preset angle
-		trans = glm::rotate(trans, glm::radians(angle), glm::vec3(0.0, 1.0, 0.0));
-		//translate back to original point
-		trans = glm::translate(trans, SceneCenter);
+        //Translate to scene center
+        trans = translate(trans, -SceneCenter);
+        //rotate based on preset angle
+        trans = rotate(trans, glm::radians(angle), glm::vec3(0.0, 1.0, 0.0));
+        //translate back to original point
+        trans = translate(trans, SceneCenter);
 
-		//Do transfomation
-		newPosition = trans * newPosition;
-		
-		//Apply transformation onto Camera Position
-		Position = glm::vec3(newPosition.x,newPosition.y,newPosition.z);
+        //Do transformation
+        newPosition = trans * newPosition;
+        
+        //Apply transformation onto Camera Position
+        Position = glm::vec3(newPosition.x,newPosition.y,newPosition.z);
 
-		//Rotate the camera view to keep facing the Scene center
-		Yaw = Yaw - angle;
+        //Rotate the camera view to keep facing the Scene center
+        Yaw = Yaw - angle;
 
-		UpdateCameraVectors();
-	}
+        UpdateCameraVectors();
+    }
 
-	/*
-	Move Camera's faceing direction to point of focus
-	*/
-	void RotateToPointOfFocus(glm::vec3 pointOfFocus)
-	{
-		ViewDirection = pointOfFocus;
-		Up = glm::vec3(0.0f, 1.0f, 0.0f);
+    /*
+    Move Camera's facing direction to point of focus
+    */
+    void RotateToPointOfFocus(glm::vec3 pointOfFocus)
+    {
+        auto v1 = normalize(pointOfFocus - Position);   // Vector from camera position to focus point
+        auto v2 = normalize(ViewDirection - Position);  // Vector from camera position along its view direction
+        auto dotProduct = dot(v1, v2);                  // Angle between the two vectors
+        auto angle = glm::degrees(acos(dotProduct));    // Angle in degrees
+        auto crossProduct = cross(v1, v2);              // If crossProduct.y > 0, focus is on the right; left otherwise
 
-	}
+        ViewDirection = pointOfFocus;
+        Up = glm::vec3(0.0f, 1.0f, 0.0f);
+        Yaw += crossProduct.y > 0 ? angle : -angle;
+        UpdateCameraVectors();
+    }
 
     void ProcessMouseScroll(GLfloat yOffset)
     {
@@ -195,12 +202,12 @@ private:
         Right = normalize(cross(Front, WorldUp));
         Up = normalize(cross(Right, Front));
 
-		ViewDirection = Position + Front;
+        ViewDirection = Position + Front;
     }
 
 GLfloat angleBetween(glm::vec3 a,glm::vec3 b,glm::vec3 origin) {
-		glm::vec3 da = glm::normalize(a - origin);
-		glm::vec3 db = glm::normalize(b - origin);
-		return acos(glm::dot(da, db));
-	}
+        glm::vec3 da = normalize(a - origin);
+        glm::vec3 db = normalize(b - origin);
+        return acos(dot(da, db));
+    }
 };
