@@ -10,7 +10,7 @@
 #include "ModelContainer.h"
 #include "Room.h"
 ///
-/// \brief The Axis enum
+/// \brief The x,y,z Axis enum
 ///
 enum Axis
 {
@@ -20,7 +20,7 @@ enum Axis
     NONE
 };
 ///
-/// \brief The Modifiers enum
+/// \brief The Modifiers key enum
 ///
 enum Modifiers
 {
@@ -29,7 +29,7 @@ enum Modifiers
     ALT
 };
 ///
-/// \brief The HomeDesignerOpenGLWidget class Which creates the view and projection matrices,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection 
+/// \brief The HomeDesignerOpenGLWidget class Which creates the view and projection matrices using perspective viewing,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection 
 ///
 class HomeDesignerOpenGLWidget : public QOpenGLWidget
 {

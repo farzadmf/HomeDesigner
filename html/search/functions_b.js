@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['wheelevent',['wheelEvent',['../class_home_designer_open_g_l_widget.html#ac9a825748af7eaeb41bfe51fd5f99c1a',1,'HomeDesignerOpenGLWidget']]]
+  ['room',['Room',['../class_room.html#a7b347765e9501c064013258629b4de19',1,'Room']]],
+  ['rotatetopointoffocus',['RotateToPointOfFocus',['../class_camera.html#aa8bb7760c16698825004048c4c033ada',1,'Camera']]]
 ];

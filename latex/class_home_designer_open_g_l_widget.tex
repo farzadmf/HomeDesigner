@@ -2,7 +2,7 @@
 \label{class_home_designer_open_g_l_widget}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 
 
-The \hyperlink{class_home_designer_open_g_l_widget}{Home\+Designer\+Open\+G\+L\+Widget} class Which creates the view and projection matrices,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection.  
+The \hyperlink{class_home_designer_open_g_l_widget}{Home\+Designer\+Open\+G\+L\+Widget} class Which creates the view and projection matrices using perspective viewing,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection.  
 
 
 
@@ -19,36 +19,35 @@ Inheritance diagram for Home\+Designer\+Open\+G\+L\+Widget\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_home_designer_open_g_l_widget_a17c63eebae07d7085b22aaf35746d59a}{On\+Move\+Selected\+Changed} (bool)
-\item 
-\hypertarget{class_home_designer_open_g_l_widget_ae46f16b4230341e60317f8cb9df8f53c}{}void {\bfseries On\+Rotate\+Selected\+Changed} (bool)\label{class_home_designer_open_g_l_widget_ae46f16b4230341e60317f8cb9df8f53c}
+\begin{DoxyCompactList}\small\item\em On\+Move\+Selected\+Changed called when move selection changed. \end{DoxyCompactList}\item 
+\hypertarget{class_home_designer_open_g_l_widget_ae46f16b4230341e60317f8cb9df8f53c}{}void \hyperlink{class_home_designer_open_g_l_widget_ae46f16b4230341e60317f8cb9df8f53c}{On\+Rotate\+Selected\+Changed} (bool)\label{class_home_designer_open_g_l_widget_ae46f16b4230341e60317f8cb9df8f53c}
 
-\item 
-\hypertarget{class_home_designer_open_g_l_widget_a3b689614d2a74932b75a7c18083b6c19}{}void {\bfseries On\+Scale\+Selected\+Changed} (bool)\label{class_home_designer_open_g_l_widget_a3b689614d2a74932b75a7c18083b6c19}
+\begin{DoxyCompactList}\small\item\em On\+Rotate\+Selected\+Changed called when rotation selection changed. \end{DoxyCompactList}\item 
+\hypertarget{class_home_designer_open_g_l_widget_a3b689614d2a74932b75a7c18083b6c19}{}void \hyperlink{class_home_designer_open_g_l_widget_a3b689614d2a74932b75a7c18083b6c19}{On\+Scale\+Selected\+Changed} (bool)\label{class_home_designer_open_g_l_widget_a3b689614d2a74932b75a7c18083b6c19}
 
-\item 
+\begin{DoxyCompactList}\small\item\em On\+Scale\+Selected\+Changed called when scale selection changed. \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_af6eec49ac86769b4fd23636743ac9150}{On\+Move\+Speed\+Changed} (int)
-\item 
-\hypertarget{class_home_designer_open_g_l_widget_aeeb74ecdd39351f0229f28b394900581}{}void {\bfseries On\+Rotate\+Speed\+Changed} (int)\label{class_home_designer_open_g_l_widget_aeeb74ecdd39351f0229f28b394900581}
+\begin{DoxyCompactList}\small\item\em On\+Move\+Speed\+Changed called when the move speed changed. \end{DoxyCompactList}\item 
+\hypertarget{class_home_designer_open_g_l_widget_aeeb74ecdd39351f0229f28b394900581}{}void \hyperlink{class_home_designer_open_g_l_widget_aeeb74ecdd39351f0229f28b394900581}{On\+Rotate\+Speed\+Changed} (int)\label{class_home_designer_open_g_l_widget_aeeb74ecdd39351f0229f28b394900581}
 
-\item 
-\hypertarget{class_home_designer_open_g_l_widget_a0f69f807f678735ce1d7ba41a7d495c3}{}void {\bfseries On\+Scale\+Speed\+Changed} (int)\label{class_home_designer_open_g_l_widget_a0f69f807f678735ce1d7ba41a7d495c3}
+\begin{DoxyCompactList}\small\item\em On\+Rotate\+Speed\+Changed calledon rotation speed changed. \end{DoxyCompactList}\item 
+\hypertarget{class_home_designer_open_g_l_widget_a0f69f807f678735ce1d7ba41a7d495c3}{}void \hyperlink{class_home_designer_open_g_l_widget_a0f69f807f678735ce1d7ba41a7d495c3}{On\+Scale\+Speed\+Changed} (int)\label{class_home_designer_open_g_l_widget_a0f69f807f678735ce1d7ba41a7d495c3}
 
-\item 
+\begin{DoxyCompactList}\small\item\em On\+Scale\+Speed\+Changed called on scale speed changed. \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_a4162c2eef3980d6a2f594c0c40bd169a}{On\+Load\+Model} (Q\+String model\+Attributes, G\+Lfloat initial\+Scale)
-\item 
-\hypertarget{class_home_designer_open_g_l_widget_a0b14ecff70d70ec52b9ddced64ff4a2c}{}void {\bfseries On\+Operation\+Not\+Allowed} (Q\+String message)\label{class_home_designer_open_g_l_widget_a0b14ecff70d70ec52b9ddced64ff4a2c}
-
-\item 
+\begin{DoxyCompactList}\small\item\em On\+Load\+Model Loads a model from the file, setting its initial scale value. \end{DoxyCompactList}\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a0b14ecff70d70ec52b9ddced64ff4a2c}{On\+Operation\+Not\+Allowed} (Q\+String message)
+\begin{DoxyCompactList}\small\item\em On\+Operation\+Not\+Allowed Displays a message when the operation (move, rotate, scale) isn\textquotesingle{}t allowed. \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_ac9f66e0dc6799b7e48d6866d4322fa89}{On\+Operation\+Successful} ()
-\item 
+\begin{DoxyCompactList}\small\item\em On\+Operation\+Successful Restores the previous message in the status bar when the operation is successful. \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_a18d664925e2c18855722e5300169f229}{On\+Change\+Room\+Wall\+Color} (Q\+Color color) const 
-\item 
+\begin{DoxyCompactList}\small\item\em On\+Change\+Room\+Wall\+Color Changes the wall color for the room. \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_ad249a6ddc83b3eb0d119af8b0a694cac}{On\+Change\+Room\+Wall\+Texture} (Q\+String texture\+File\+Path) const 
-\item 
+\begin{DoxyCompactList}\small\item\em On\+Change\+Room\+Wall\+Texture Changes the wall texture. \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_abe86574fe0641dd2d564a7964bc5ee8d}{On\+Change\+Room\+Floor\+Color} (Q\+Color color) const 
-\item 
+\begin{DoxyCompactList}\small\item\em On\+Change\+Room\+Floor\+Color changes the floor color. \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_a99fb72c11d0a5a748e7342535219bf6e}{On\+Change\+Room\+Floor\+Texture} (Q\+String texture\+File\+Path) const 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em On\+Change\+Room\+Floor\+Texture changes the room texture. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
@@ -76,9 +75,8 @@ void \hyperlink{class_home_designer_open_g_l_widget_a99fb72c11d0a5a748e734253521
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_home_designer_open_g_l_widget_a24232a9ac7981b4410a8fad3d3773ef5}{}{\bfseries Home\+Designer\+Open\+G\+L\+Widget} (Q\+Widget $\ast$parent=nullptr)\label{class_home_designer_open_g_l_widget_a24232a9ac7981b4410a8fad3d3773ef5}
-
-\item 
+\hyperlink{class_home_designer_open_g_l_widget_a24232a9ac7981b4410a8fad3d3773ef5}{Home\+Designer\+Open\+G\+L\+Widget} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_home_designer_open_g_l_widget}{Home\+Designer\+Open\+G\+L\+Widget}. \end{DoxyCompactList}\item 
 Axis \hyperlink{class_home_designer_open_g_l_widget_a9e4a4bfa55e86426d28ba0589035cec9}{Get\+Axis} () const 
 \begin{DoxyCompactList}\small\item\em Get\+Axis. \end{DoxyCompactList}\item 
 int \hyperlink{class_home_designer_open_g_l_widget_a766ed7c727cfbe473064fd244dede73d}{Get\+Move\+Speed} () const 
@@ -97,25 +95,44 @@ void \hyperlink{class_home_designer_open_g_l_widget_a3bbe46ba314a8ef0a7a380fa7e8
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_home_designer_open_g_l_widget_a4222406ea010bada5b614f4aa9a408e3}{paint\+G\+L} () override
-\item 
+\begin{DoxyCompactList}\small\item\em paint\+G\+L Main loop of the application \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_ab4d259ef3a1e4d80cc784f04d1e0da1f}{initialize\+G\+L} () override
-\item 
+\begin{DoxyCompactList}\small\item\em initialize\+G\+L Called when the widget is being initialized \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_a9374ffef11f1f4be2eb7070e2a13ee65}{mouse\+Move\+Event} (Q\+Mouse\+Event $\ast$) override
-\item 
+\begin{DoxyCompactList}\small\item\em mouse\+Move\+Event Process mouse movement \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_a44f26dde734bb6b1b4e30c4c2b2a6d9a}{key\+Press\+Event} (Q\+Key\+Event $\ast$) override
-\item 
+\begin{DoxyCompactList}\small\item\em key\+Press\+Event Process key press event \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_aca029316bc95418bb9c6f8c372a74b0d}{key\+Release\+Event} (Q\+Key\+Event $\ast$) override
-\item 
+\begin{DoxyCompactList}\small\item\em key\+Release\+Event Reset pressed keys and modifiers, along with status bar message \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_a89d62b03f15537ab73b7cd7af1346967}{mouse\+Press\+Event} (Q\+Mouse\+Event $\ast$) override
-\item 
+\begin{DoxyCompactList}\small\item\em mouse\+Press\+Event Keep track of mouse button(s) being pressed \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_ab06746a2be49de22f1e3eac9cd34f49c}{mouse\+Release\+Event} (Q\+Mouse\+Event $\ast$) override
-\item 
+\begin{DoxyCompactList}\small\item\em mouse\+Release\+Event Reset mouse buttons and release mouse \end{DoxyCompactList}\item 
 void \hyperlink{class_home_designer_open_g_l_widget_ac9a825748af7eaeb41bfe51fd5f99c1a}{wheel\+Event} (Q\+Wheel\+Event $\ast$) override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em wheel\+Event Allow Zoom in/out with mouse wheel \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-The \hyperlink{class_home_designer_open_g_l_widget}{Home\+Designer\+Open\+G\+L\+Widget} class Which creates the view and projection matrices,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection. 
+The \hyperlink{class_home_designer_open_g_l_widget}{Home\+Designer\+Open\+G\+L\+Widget} class Which creates the view and projection matrices using perspective viewing,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_home_designer_open_g_l_widget_a24232a9ac7981b4410a8fad3d3773ef5}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{Home\+Designer\+Open\+G\+L\+Widget(\+Q\+Widget $\ast$parent=nullptr)}]{\setlength{\rightskip}{0pt plus 5cm}Home\+Designer\+Open\+G\+L\+Widget\+::\+Home\+Designer\+Open\+G\+L\+Widget (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_home_designer_open_g_l_widget_a24232a9ac7981b4410a8fad3d3773ef5}
+
+
+\hyperlink{class_home_designer_open_g_l_widget}{Home\+Designer\+Open\+G\+L\+Widget}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+
 
 \subsection{Member Function Documentation}
 \hypertarget{class_home_designer_open_g_l_widget_a9e4a4bfa55e86426d28ba0589035cec9}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Get\+Axis@{Get\+Axis}}
@@ -181,6 +198,10 @@ Get\+Scale\+Speed.
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_ab4d259ef3a1e4d80cc784f04d1e0da1f}
+
+
+initialize\+G\+L Called when the widget is being initialized 
+
 Called when the widget is being initialized \hypertarget{class_home_designer_open_g_l_widget_a44f26dde734bb6b1b4e30c4c2b2a6d9a}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!key\+Press\+Event@{key\+Press\+Event}}
 \index{key\+Press\+Event@{key\+Press\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{key\+Press\+Event(\+Q\+Key\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::key\+Press\+Event (
@@ -188,6 +209,10 @@ Called when the widget is being initialized \hypertarget{class_home_designer_ope
 \item[{Q\+Key\+Event $\ast$}]{event}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_a44f26dde734bb6b1b4e30c4c2b2a6d9a}
+
+
+key\+Press\+Event Process key press event 
+
 Process key press event \hypertarget{class_home_designer_open_g_l_widget_aca029316bc95418bb9c6f8c372a74b0d}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!key\+Release\+Event@{key\+Release\+Event}}
 \index{key\+Release\+Event@{key\+Release\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{key\+Release\+Event(\+Q\+Key\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::key\+Release\+Event (
@@ -195,6 +220,10 @@ Process key press event \hypertarget{class_home_designer_open_g_l_widget_aca0293
 \item[{Q\+Key\+Event $\ast$}]{event}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_aca029316bc95418bb9c6f8c372a74b0d}
+
+
+key\+Release\+Event Reset pressed keys and modifiers, along with status bar message 
+
 Reset pressed keys and modifiers, along with status bar message \hypertarget{class_home_designer_open_g_l_widget_a9374ffef11f1f4be2eb7070e2a13ee65}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!mouse\+Move\+Event@{mouse\+Move\+Event}}
 \index{mouse\+Move\+Event@{mouse\+Move\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{mouse\+Move\+Event(\+Q\+Mouse\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::mouse\+Move\+Event (
@@ -202,6 +231,10 @@ Reset pressed keys and modifiers, along with status bar message \hypertarget{cla
 \item[{Q\+Mouse\+Event $\ast$}]{event}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_a9374ffef11f1f4be2eb7070e2a13ee65}
+
+
+mouse\+Move\+Event Process mouse movement 
+
 Process mouse movement \hypertarget{class_home_designer_open_g_l_widget_a89d62b03f15537ab73b7cd7af1346967}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!mouse\+Press\+Event@{mouse\+Press\+Event}}
 \index{mouse\+Press\+Event@{mouse\+Press\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{mouse\+Press\+Event(\+Q\+Mouse\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::mouse\+Press\+Event (
@@ -209,6 +242,10 @@ Process mouse movement \hypertarget{class_home_designer_open_g_l_widget_a89d62b0
 \item[{Q\+Mouse\+Event $\ast$}]{event}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_a89d62b03f15537ab73b7cd7af1346967}
+
+
+mouse\+Press\+Event Keep track of mouse button(s) being pressed 
+
 Keep track of mouse button(s) being pressed \hypertarget{class_home_designer_open_g_l_widget_ab06746a2be49de22f1e3eac9cd34f49c}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!mouse\+Release\+Event@{mouse\+Release\+Event}}
 \index{mouse\+Release\+Event@{mouse\+Release\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{mouse\+Release\+Event(\+Q\+Mouse\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::mouse\+Release\+Event (
@@ -216,6 +253,10 @@ Keep track of mouse button(s) being pressed \hypertarget{class_home_designer_ope
 \item[{Q\+Mouse\+Event $\ast$}]{}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_ab06746a2be49de22f1e3eac9cd34f49c}
+
+
+mouse\+Release\+Event Reset mouse buttons and release mouse 
+
 Reset mouse buttons and release mouse \hypertarget{class_home_designer_open_g_l_widget_abe86574fe0641dd2d564a7964bc5ee8d}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Floor\+Color@{On\+Change\+Room\+Floor\+Color}}
 \index{On\+Change\+Room\+Floor\+Color@{On\+Change\+Room\+Floor\+Color}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{On\+Change\+Room\+Floor\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Change\+Room\+Floor\+Color (
@@ -223,28 +264,64 @@ Reset mouse buttons and release mouse \hypertarget{class_home_designer_open_g_l_
 \item[{Q\+Color}]{color}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_abe86574fe0641dd2d564a7964bc5ee8d}
-Changes the floor color \hypertarget{class_home_designer_open_g_l_widget_a99fb72c11d0a5a748e7342535219bf6e}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Floor\+Texture@{On\+Change\+Room\+Floor\+Texture}}
+
+
+On\+Change\+Room\+Floor\+Color changes the floor color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & Changes the floor color \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_home_designer_open_g_l_widget_a99fb72c11d0a5a748e7342535219bf6e}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Floor\+Texture@{On\+Change\+Room\+Floor\+Texture}}
 \index{On\+Change\+Room\+Floor\+Texture@{On\+Change\+Room\+Floor\+Texture}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{On\+Change\+Room\+Floor\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Change\+Room\+Floor\+Texture (
 \begin{DoxyParamCaption}
 \item[{Q\+String}]{texture\+File\+Path}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_a99fb72c11d0a5a748e7342535219bf6e}
-Changes the floor texture \hypertarget{class_home_designer_open_g_l_widget_a18d664925e2c18855722e5300169f229}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Wall\+Color@{On\+Change\+Room\+Wall\+Color}}
+
+
+On\+Change\+Room\+Floor\+Texture changes the room texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+File\+Path} & Changes the floor texture \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_home_designer_open_g_l_widget_a18d664925e2c18855722e5300169f229}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Wall\+Color@{On\+Change\+Room\+Wall\+Color}}
 \index{On\+Change\+Room\+Wall\+Color@{On\+Change\+Room\+Wall\+Color}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{On\+Change\+Room\+Wall\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Change\+Room\+Wall\+Color (
 \begin{DoxyParamCaption}
 \item[{Q\+Color}]{color}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_a18d664925e2c18855722e5300169f229}
-Changes the wall color for the room \hypertarget{class_home_designer_open_g_l_widget_ad249a6ddc83b3eb0d119af8b0a694cac}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Wall\+Texture@{On\+Change\+Room\+Wall\+Texture}}
+
+
+On\+Change\+Room\+Wall\+Color Changes the wall color for the room. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & Changes the wall color for the room \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_home_designer_open_g_l_widget_ad249a6ddc83b3eb0d119af8b0a694cac}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Wall\+Texture@{On\+Change\+Room\+Wall\+Texture}}
 \index{On\+Change\+Room\+Wall\+Texture@{On\+Change\+Room\+Wall\+Texture}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{On\+Change\+Room\+Wall\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Change\+Room\+Wall\+Texture (
 \begin{DoxyParamCaption}
 \item[{Q\+String}]{texture\+File\+Path}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_ad249a6ddc83b3eb0d119af8b0a694cac}
-Changes the wall texture \hypertarget{class_home_designer_open_g_l_widget_a4162c2eef3980d6a2f594c0c40bd169a}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Load\+Model@{On\+Load\+Model}}
+
+
+On\+Change\+Room\+Wall\+Texture Changes the wall texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+File\+Path} & Changes the wall texture \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_home_designer_open_g_l_widget_a4162c2eef3980d6a2f594c0c40bd169a}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Load\+Model@{On\+Load\+Model}}
 \index{On\+Load\+Model@{On\+Load\+Model}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{On\+Load\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Load\+Model (
 \begin{DoxyParamCaption}
@@ -252,13 +329,28 @@ Changes the wall texture \hypertarget{class_home_designer_open_g_l_widget_a4162c
 \item[{G\+Lfloat}]{initial\+Scale}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_a4162c2eef3980d6a2f594c0c40bd169a}
-Loads a model from the file, setting its initial scale value \hypertarget{class_home_designer_open_g_l_widget_a17c63eebae07d7085b22aaf35746d59a}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Move\+Selected\+Changed@{On\+Move\+Selected\+Changed}}
+
+
+On\+Load\+Model Loads a model from the file, setting its initial scale value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+Attributes} & \\
+\hline
+{\em initial\+Scale} & Loads a model from the file, setting its initial scale value \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_home_designer_open_g_l_widget_a17c63eebae07d7085b22aaf35746d59a}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Move\+Selected\+Changed@{On\+Move\+Selected\+Changed}}
 \index{On\+Move\+Selected\+Changed@{On\+Move\+Selected\+Changed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{On\+Move\+Selected\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Move\+Selected\+Changed (
 \begin{DoxyParamCaption}
 \item[{bool}]{selected}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_a17c63eebae07d7085b22aaf35746d59a}
+
+
+On\+Move\+Selected\+Changed called when move selection changed. 
+
 Called when the desired operation changes in the main window \hypertarget{class_home_designer_open_g_l_widget_af6eec49ac86769b4fd23636743ac9150}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Move\+Speed\+Changed@{On\+Move\+Speed\+Changed}}
 \index{On\+Move\+Speed\+Changed@{On\+Move\+Speed\+Changed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{On\+Move\+Speed\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Move\+Speed\+Changed (
@@ -266,13 +358,37 @@ Called when the desired operation changes in the main window \hypertarget{class_
 \item[{int}]{speed}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_af6eec49ac86769b4fd23636743ac9150}
-Called when the operation\textquotesingle{}s speed changes in the main window \hypertarget{class_home_designer_open_g_l_widget_ac9f66e0dc6799b7e48d6866d4322fa89}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Operation\+Successful@{On\+Operation\+Successful}}
+
+
+On\+Move\+Speed\+Changed called when the move speed changed. 
+
+Called when the operation\textquotesingle{}s speed changes in the main window \hypertarget{class_home_designer_open_g_l_widget_a0b14ecff70d70ec52b9ddced64ff4a2c}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Operation\+Not\+Allowed@{On\+Operation\+Not\+Allowed}}
+\index{On\+Operation\+Not\+Allowed@{On\+Operation\+Not\+Allowed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{On\+Operation\+Not\+Allowed}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Operation\+Not\+Allowed (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_a0b14ecff70d70ec52b9ddced64ff4a2c}
+
+
+On\+Operation\+Not\+Allowed Displays a message when the operation (move, rotate, scale) isn\textquotesingle{}t allowed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & the message \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_home_designer_open_g_l_widget_ac9f66e0dc6799b7e48d6866d4322fa89}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Operation\+Successful@{On\+Operation\+Successful}}
 \index{On\+Operation\+Successful@{On\+Operation\+Successful}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{On\+Operation\+Successful}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Operation\+Successful (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_ac9f66e0dc6799b7e48d6866d4322fa89}
+
+
+On\+Operation\+Successful Restores the previous message in the status bar when the operation is successful. 
+
 Restores the previous message in the status bar when the operation is successful \hypertarget{class_home_designer_open_g_l_widget_a4222406ea010bada5b614f4aa9a408e3}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!paint\+G\+L@{paint\+G\+L}}
 \index{paint\+G\+L@{paint\+G\+L}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{paint\+G\+L() override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::paint\+G\+L (
@@ -280,6 +396,10 @@ Restores the previous message in the status bar when the operation is successful
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_a4222406ea010bada5b614f4aa9a408e3}
+
+
+paint\+G\+L Main loop of the application 
+
 Main loop of the application \hypertarget{class_home_designer_open_g_l_widget_a36605922069ae365da069207b97a058c}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Set\+Move\+Speed@{Set\+Move\+Speed}}
 \index{Set\+Move\+Speed@{Set\+Move\+Speed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
 \subsubsection[{Set\+Move\+Speed(int speed)}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+Set\+Move\+Speed (
@@ -335,6 +455,10 @@ Set\+Scale\+Speed.
 \item[{Q\+Wheel\+Event $\ast$}]{event}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_ac9a825748af7eaeb41bfe51fd5f99c1a}
+
+
+wheel\+Event Allow Zoom in/out with mouse wheel 
+
 Zoom in/out with mouse wheel 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

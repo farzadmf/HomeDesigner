@@ -3,13 +3,17 @@
 #include "Includes.h"
 #include <QOpenGLWidget>
 #include "Shader.h"
-
+///
+/// \brief The FloorRenderMode enum
+///
 enum FloorRenderMode
 {
     FLOOR_COLOR,
     FLOOR_TEXTURE
 };
-
+///
+/// \brief The Floor class allows the adding of colors and texture to the floor using shaders.
+///
 class Floor
 {
     QOpenGLWidget* targetWidget = nullptr;
@@ -31,17 +35,41 @@ class Floor
     void BufferData() const;
 
 public:
+    ///
+    /// \brief Floor creates the array buffers and the shader
+    /// \param targetWidget target width
+    /// \param width the width in floating point value
+    ///
     explicit Floor(QOpenGLWidget* targetWidget, GLfloat width);
     ~Floor();
 
-    // Getter and setter for color
+  
+    ///
+    /// \brief SetColor
+    /// \param color
+    ///
     void SetColor(glm::vec3 color);
+    ///
+    /// \brief GetColor
+    /// \return
+    ///
     glm::vec3 GetColor() const { return color; }
 
-    // Getter and setter for texture
+    ///
+    /// \brief SetTexture setter for texture
+    /// \param textureFilePath
+    ///
     void SetTexture(string textureFilePath);
+    ///
+    /// \brief GetTextureId getter for texture
+    /// \return
+    ///
     GLuint GetTextureId() const { return textureId; }
-
+    ///
+    /// \brief Draw sets the color texture of the bottom and main floors
+    /// \param view view matrix
+    /// \param projection projection matrix
+    ///
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
 };
 

@@ -1,26 +1,136 @@
 \hypertarget{class_floor}{}\section{Floor Class Reference}
 \label{class_floor}\index{Floor@{Floor}}
+
+
+The \hyperlink{class_floor}{Floor} class allows the adding of colors and texture to the floor using shaders.  
+
+
+
+
+{\ttfamily \#include $<$Floor.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_floor_acd7d3bf0e838d5de06e973ac6310511b}{}{\bfseries Floor} (Q\+Open\+G\+L\+Widget $\ast$target\+Widget, G\+Lfloat width)\label{class_floor_acd7d3bf0e838d5de06e973ac6310511b}
+\hyperlink{class_floor_acd7d3bf0e838d5de06e973ac6310511b}{Floor} (Q\+Open\+G\+L\+Widget $\ast$target\+Widget, G\+Lfloat width)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_floor}{Floor} creates the array buffers and the shader. \end{DoxyCompactList}\item 
+void \hyperlink{class_floor_a6d0e6150ba611e218d81af542c8e0196}{Set\+Color} (glm\+::vec3 color)
+\begin{DoxyCompactList}\small\item\em Set\+Color. \end{DoxyCompactList}\item 
+glm\+::vec3 \hyperlink{class_floor_ad6022b618376adbf7087d5ccd3ea053d}{Get\+Color} () const 
+\begin{DoxyCompactList}\small\item\em Get\+Color. \end{DoxyCompactList}\item 
+void \hyperlink{class_floor_a61a025433294398423351ecc560e467b}{Set\+Texture} (string texture\+File\+Path)
+\begin{DoxyCompactList}\small\item\em Set\+Texture setter for texture. \end{DoxyCompactList}\item 
+G\+Luint \hyperlink{class_floor_ad1329cec2ad3a43d9418c6d4b98fe285}{Get\+Texture\+Id} () const 
+\begin{DoxyCompactList}\small\item\em Get\+Texture\+Id getter for texture. \end{DoxyCompactList}\item 
+void \hyperlink{class_floor_ac511f90a6e822dda5c9e3f2d40c5638f}{Draw} (glm\+::mat4 const \&view, glm\+::mat4 const \&projection) const 
+\begin{DoxyCompactList}\small\item\em Draw sets the color texture of the bottom and top floors. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\item 
-\hypertarget{class_floor_a6d0e6150ba611e218d81af542c8e0196}{}void {\bfseries Set\+Color} (glm\+::vec3 color)\label{class_floor_a6d0e6150ba611e218d81af542c8e0196}
 
-\item 
-\hypertarget{class_floor_ad6022b618376adbf7087d5ccd3ea053d}{}glm\+::vec3 {\bfseries Get\+Color} () const \label{class_floor_ad6022b618376adbf7087d5ccd3ea053d}
+\subsection{Detailed Description}
+The \hyperlink{class_floor}{Floor} class allows the adding of colors and texture to the floor using shaders. 
 
-\item 
-\hypertarget{class_floor_a61a025433294398423351ecc560e467b}{}void {\bfseries Set\+Texture} (string texture\+File\+Path)\label{class_floor_a61a025433294398423351ecc560e467b}
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_floor_acd7d3bf0e838d5de06e973ac6310511b}{}\index{Floor@{Floor}!Floor@{Floor}}
+\index{Floor@{Floor}!Floor@{Floor}}
+\subsubsection[{Floor(\+Q\+Open\+G\+L\+Widget $\ast$target\+Widget, G\+Lfloat width)}]{\setlength{\rightskip}{0pt plus 5cm}Floor\+::\+Floor (
+\begin{DoxyParamCaption}
+\item[{Q\+Open\+G\+L\+Widget $\ast$}]{target\+Widget, }
+\item[{G\+Lfloat}]{width}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_floor_acd7d3bf0e838d5de06e973ac6310511b}
 
-\item 
-\hypertarget{class_floor_ad1329cec2ad3a43d9418c6d4b98fe285}{}G\+Luint {\bfseries Get\+Texture\+Id} () const \label{class_floor_ad1329cec2ad3a43d9418c6d4b98fe285}
 
-\item 
-\hypertarget{class_floor_ac511f90a6e822dda5c9e3f2d40c5638f}{}void {\bfseries Draw} (glm\+::mat4 const \&view, glm\+::mat4 const \&projection) const \label{class_floor_ac511f90a6e822dda5c9e3f2d40c5638f}
+\hyperlink{class_floor}{Floor} creates the array buffers and the shader. 
 
-\end{DoxyCompactItemize}
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Widget} & target width \\
+\hline
+{\em width} & the width in floating point value \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_floor_ac511f90a6e822dda5c9e3f2d40c5638f}{}\index{Floor@{Floor}!Draw@{Draw}}
+\index{Draw@{Draw}!Floor@{Floor}}
+\subsubsection[{Draw(glm\+::mat4 const \&view, glm\+::mat4 const \&projection) const }]{\setlength{\rightskip}{0pt plus 5cm}void Floor\+::\+Draw (
+\begin{DoxyParamCaption}
+\item[{glm\+::mat4 const \&}]{view, }
+\item[{glm\+::mat4 const \&}]{projection}
+\end{DoxyParamCaption}
+) const}\label{class_floor_ac511f90a6e822dda5c9e3f2d40c5638f}
+
+
+Draw sets the color texture of the bottom and top floors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & view matrix \\
+\hline
+{\em projection} & projection matrix \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_floor_ad6022b618376adbf7087d5ccd3ea053d}{}\index{Floor@{Floor}!Get\+Color@{Get\+Color}}
+\index{Get\+Color@{Get\+Color}!Floor@{Floor}}
+\subsubsection[{Get\+Color() const }]{\setlength{\rightskip}{0pt plus 5cm}glm\+::vec3 Floor\+::\+Get\+Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_floor_ad6022b618376adbf7087d5ccd3ea053d}
+
+
+Get\+Color. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_floor_ad1329cec2ad3a43d9418c6d4b98fe285}{}\index{Floor@{Floor}!Get\+Texture\+Id@{Get\+Texture\+Id}}
+\index{Get\+Texture\+Id@{Get\+Texture\+Id}!Floor@{Floor}}
+\subsubsection[{Get\+Texture\+Id() const }]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint Floor\+::\+Get\+Texture\+Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_floor_ad1329cec2ad3a43d9418c6d4b98fe285}
+
+
+Get\+Texture\+Id getter for texture. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_floor_a6d0e6150ba611e218d81af542c8e0196}{}\index{Floor@{Floor}!Set\+Color@{Set\+Color}}
+\index{Set\+Color@{Set\+Color}!Floor@{Floor}}
+\subsubsection[{Set\+Color(glm\+::vec3 color)}]{\setlength{\rightskip}{0pt plus 5cm}void Floor\+::\+Set\+Color (
+\begin{DoxyParamCaption}
+\item[{glm\+::vec3}]{color}
+\end{DoxyParamCaption}
+)}\label{class_floor_a6d0e6150ba611e218d81af542c8e0196}
+
+
+Set\+Color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_floor_a61a025433294398423351ecc560e467b}{}\index{Floor@{Floor}!Set\+Texture@{Set\+Texture}}
+\index{Set\+Texture@{Set\+Texture}!Floor@{Floor}}
+\subsubsection[{Set\+Texture(string texture\+File\+Path)}]{\setlength{\rightskip}{0pt plus 5cm}void Floor\+::\+Set\+Texture (
+\begin{DoxyParamCaption}
+\item[{string}]{texture\+File\+Path}
+\end{DoxyParamCaption}
+)}\label{class_floor_a61a025433294398423351ecc560e467b}
+
+
+Set\+Texture setter for texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+File\+Path} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

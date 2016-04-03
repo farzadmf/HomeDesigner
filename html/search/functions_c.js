@@ -8,6 +8,5 @@ var searchData=
   ['setscalespeed',['SetScaleSpeed',['../class_home_designer_open_g_l_widget.html#a3bbe46ba314a8ef0a7a380fa7e8bbbdc',1,'HomeDesignerOpenGLWidget']]],
   ['settexture',['SetTexture',['../class_floor.html#a61a025433294398423351ecc560e467b',1,'Floor']]],
   ['setwallcolor',['SetWallColor',['../class_room.html#a0fee2b31c00e8965934ddb0cba8dab9f',1,'Room']]],
-  ['setwalltexture',['SetWallTexture',['../class_room.html#ab0f733f37df1351b30573dcc8e13a18d',1,'Room']]],
-  ['shader',['Shader',['../class_shader.html',1,'']]]
+  ['setwalltexture',['SetWallTexture',['../class_room.html#ab0f733f37df1351b30573dcc8e13a18d',1,'Room']]]
 ];
