@@ -67,7 +67,10 @@ class HomeDesignerOpenGLWidget : public QOpenGLWidget
     void EmitClearMessage();
 
 public:
-	
+    ///
+    /// \brief HomeDesignerOpenGLWidget
+    /// \param parent
+    ///
     explicit HomeDesignerOpenGLWidget(QWidget *parent = nullptr);
     ~HomeDesignerOpenGLWidget();
     ///
@@ -107,28 +110,98 @@ public:
     void SetScaleSpeed(int speed) { scaleSpeed = speed; }
 
 protected:
+    ///
+    /// \brief paintGL Main loop of the application
+    ///
     void paintGL() override;
+    ///
+    /// \brief initializeGL Called when the widget is being initialized
+    ///
     void initializeGL() override;
+    ///
+    /// \brief mouseMoveEvent Process mouse movement
+    ///
     void mouseMoveEvent(QMouseEvent*) override;
+    ///
+    /// \brief keyPressEvent Process key press event
+    ///
     void keyPressEvent(QKeyEvent*) override;
+    ///
+    /// \brief keyReleaseEvent Reset pressed keys and modifiers, along with status bar message
+    ///
     void keyReleaseEvent(QKeyEvent*) override;
+    ///
+    /// \brief mousePressEvent Keep track of mouse button(s) being pressed
+    ///
     void mousePressEvent(QMouseEvent*) override;
+    ///
+    /// \brief mouseReleaseEvent Reset mouse buttons and release mouse
+    ///
     void mouseReleaseEvent(QMouseEvent*) override;
+    ///
+    /// \brief wheelEvent Allow Zoom in/out with mouse wheel
+    ///
     void wheelEvent(QWheelEvent*) override;
 
 public slots:
+    ///
+    /// \brief OnMoveSelectedChanged called when move selection changed
+    ///
     void OnMoveSelectedChanged(bool);
+    ///
+    /// \brief OnRotateSelectedChanged called when rotation selection changed
+    ///
     void OnRotateSelectedChanged(bool);
+    ///
+    /// \brief OnScaleSelectedChanged called when scale selection changed
+    ///
     void OnScaleSelectedChanged(bool);
+    ///
+    /// \brief OnMoveSpeedChanged called when the move speed changed
+    ///
     void OnMoveSpeedChanged(int);
+    ///
+    /// \brief OnRotateSpeedChanged calledon rotation speed changed
+    ///
     void OnRotateSpeedChanged(int);
+    ///
+    /// \brief OnScaleSpeedChanged called on scale speed changed
+    ///
     void OnScaleSpeedChanged(int);
+    ///
+    /// \brief OnLoadModel  Loads a model from the file, setting its initial scale value
+    /// \param modelAttributes
+    /// \param initialScale
+    ///
     void OnLoadModel(QString modelAttributes, GLfloat initialScale);
+    ///
+    /// \brief OnOperationNotAllowed  Displays a message when the operation (move, rotate, scale) isn't allowed
+    /// \param message the message
+    ///
     void OnOperationNotAllowed(QString message);
+    ///
+    /// \brief OnOperationSuccessful  Restores the previous message in the status bar when the operation is successful
+    ///
     void OnOperationSuccessful();
+    ///
+    /// \brief OnChangeRoomWallColor Changes the wall color for the room
+    /// \param color
+    ///
     void OnChangeRoomWallColor(QColor color) const;
+    ///
+    /// \brief OnChangeRoomWallTexture Changes the wall texture
+    /// \param textureFilePath
+    ///
     void OnChangeRoomWallTexture(QString textureFilePath) const;
+    ///
+    /// \brief OnChangeRoomFloorColor changes the floor color
+    /// \param color
+    ///
     void OnChangeRoomFloorColor(QColor color) const;
+    ///
+    /// \brief OnChangeRoomFloorTexture changes the room texture
+    /// \param textureFilePath
+    ///
     void OnChangeRoomFloorTexture(QString textureFilePath) const;
 
 signals:

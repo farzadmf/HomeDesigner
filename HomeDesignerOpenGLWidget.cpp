@@ -660,7 +660,7 @@ void HomeDesignerOpenGLWidget::ProcessKeyboard()
     //      SHIFT + 'S': move down
     //      'A'        : strafe left
     //      'D'        : strafe right
-    if (keys[Qt        ::Key_Left])
+    if (keys[Qt::Key_Left])
         camera->ProcessMouseMovement(-1, 0);
     if (keys[Qt::Key_Right])
         camera->ProcessMouseMovement(+1, 0);
