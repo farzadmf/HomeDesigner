@@ -29,7 +29,9 @@ enum Modifiers
     ALT
 };
 ///
-/// \brief The HomeDesignerOpenGLWidget class Which creates the view and projection matrices using perspective viewing,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection 
+/// \brief The HomeDesignerOpenGLWidget class 
+/// Which creates the view and projection matrices using perspective viewing,processes keyboard and mouse input allowing movement and zooming,
+/// Then allows Iterating through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection 
 ///
 class HomeDesignerOpenGLWidget : public QOpenGLWidget
 {

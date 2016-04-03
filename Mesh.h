@@ -4,20 +4,28 @@
 #include "Shader.h"
 #include <QOpenGLWidget>
 
+///
+/// \brief The Vertex struct contains position normal and texture coordinates used to index each of the vertex attributes
+///
 struct Vertex
 {
     glm::vec3 Position;
     glm::vec3 Normal;
     glm::vec2 TextureCoordinates;
 };
-
+///
+/// \brief The Texture struct contains the id,type and the file path
+///
 struct Texture
 {
     GLuint Id;
     string Type;
     aiString Path;
 };
-
+///
+/// \brief The Mesh class
+/// Provide the mesh with all the necessery variables vertices,indices, and textures and then draw the mesh.
+///
 class Mesh
 {
 public:
@@ -27,6 +35,13 @@ public:
     vector<Texture> Textures;
 
     // Functions
+    ///
+    /// \brief Mesh Provide the mesh with all the necessery data
+    /// \param targetWidget the target width
+    /// \param vertices the vertices
+    /// \param indices the indices
+    /// \param textures the texture
+    ///
     Mesh(QOpenGLWidget* targetWidget, vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures) :
         Vertices{ vertices }, Indices{ indices }, Textures{ textures }, targetWidget{ targetWidget }
     {
@@ -34,7 +49,10 @@ public:
     }
 
     GLuint GetVao() const { return vao; }
-
+    ///
+    /// \brief Draw the drawing of the loaded mesh
+    /// \param shader
+    ///
     void Draw(Shader shader)
     {
         GLuint diffuseNumber = 1;

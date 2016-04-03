@@ -4,7 +4,7 @@
 #include <QOpenGLWidget>
 #include "Shader.h"
 ///
-/// \brief The FloorRenderMode enum
+/// \brief The FloorRenderMode enum for the color and texture
 ///
 enum FloorRenderMode
 {
@@ -12,7 +12,8 @@ enum FloorRenderMode
     FLOOR_TEXTURE
 };
 ///
-/// \brief The Floor class allows the adding of colors and texture to the floor using shaders.
+/// \brief The Floor class
+/// allows the adding of colors and texture to the floor using shaders.
 ///
 class Floor
 {
