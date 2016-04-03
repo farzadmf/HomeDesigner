@@ -1,0 +1,251 @@
+\hypertarget{class_camera}{}\section{Camera Class Reference}
+\label{class_camera}\index{Camera@{Camera}}
+
+
+The \hyperlink{class_camera}{Camera} class This class provides the functionalities of a camera viewing, allowing the zooming and rotation of a camera.\+Using the position.  
+
+
+
+
+{\ttfamily \#include $<$Camera.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_camera_a535f3a2413a88c2f1e7d1147bec0039c}{Camera} (glm\+::vec3 position=glm\+::vec3(0.\+0f, 0.\+0f, 0.\+0f), glm\+::vec3 up=glm\+::vec3(0.\+0f, 1.\+0f, 0.\+0f), G\+Lfloat yaw=\+Y\+A\+W, G\+Lfloat pitch=\+P\+I\+T\+C\+H)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_camera}{Camera} Constructor to enable the functionalities of the camera. \end{DoxyCompactList}\item 
+\hyperlink{class_camera_a1efd973829c22d5fe15a26ede3357ee5}{Camera} (G\+Lfloat pos\+X, G\+Lfloat pos\+Y, G\+Lfloat pos\+Z, G\+Lfloat up\+X, G\+Lfloat up\+Y, G\+Lfloat up\+Z, G\+Lfloat yaw, G\+Lfloat pitch)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_camera}{Camera} \hyperlink{class_camera}{Camera} Constructor to enable the functionalities of the camera. \end{DoxyCompactList}\item 
+glm\+::mat4 \hyperlink{class_camera_a739bf4fedace8b3d12868d19726df832}{Get\+View\+Matrix} () const 
+\begin{DoxyCompactList}\small\item\em Get\+View\+Matrix gives the view. \end{DoxyCompactList}\item 
+void \hyperlink{class_camera_ac922d266d0a88dbdde47a7be7736766d}{Process\+Keyboard} (Camera\+Movement direction, G\+Lfloat delta\+Time)
+\begin{DoxyCompactList}\small\item\em Process\+Keyboard takes the keyboard input and moves the position of the camera. \end{DoxyCompactList}\item 
+void \hyperlink{class_camera_ad74e2911d43fe9f34f42499b5180a362}{Process\+Mouse\+Movement} (G\+Lfloat x\+Offset, G\+Lfloat y\+Offset, G\+Lboolean constraint\+Pitch=true)
+\begin{DoxyCompactList}\small\item\em Process\+Mouse\+Movement process the mouse movement using the offset conditions. \end{DoxyCompactList}\item 
+void \hyperlink{class_camera_a58246ec7f4f0852005e09c8ab8f54642}{Process\+Mouse\+Camera\+View\+Rotation} (G\+Lfloat x\+Offset, G\+Lfloat y\+Offset)
+\begin{DoxyCompactList}\small\item\em Process\+Mouse\+Camera\+View\+Rotation \hyperlink{class_camera}{Camera} rotates around the scene based off the offset it will determine which direction to rotate in. \end{DoxyCompactList}\item 
+void \hyperlink{class_camera_aa8bb7760c16698825004048c4c033ada}{Rotate\+To\+Point\+Of\+Focus} (glm\+::vec3 point\+Of\+Focus)
+\begin{DoxyCompactList}\small\item\em Rotate\+To\+Point\+Of\+Focus Move \hyperlink{class_camera}{Camera}\textquotesingle{}s facing direction to point of focus. \end{DoxyCompactList}\item 
+void \hyperlink{class_camera_a70b8364d53d5851210baacf35b7bd837}{Process\+Mouse\+Scroll} (G\+Lfloat y\+Offset)
+\begin{DoxyCompactList}\small\item\em Process\+Mouse\+Scroll proceses the mouse scroll based on if the zoom is within Minimum and maximum zoom. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_camera_a9733b59f5340f6f1bca24d52a6679039}{}glm\+::vec3 {\bfseries Position}\label{class_camera_a9733b59f5340f6f1bca24d52a6679039}
+
+\item 
+\hypertarget{class_camera_ac95b3737115ffe9a6ff9128344d5b963}{}glm\+::vec3 {\bfseries Front}\label{class_camera_ac95b3737115ffe9a6ff9128344d5b963}
+
+\item 
+\hypertarget{class_camera_ad74c4a490bc8865e67e27a2036d0a72d}{}glm\+::vec3 {\bfseries Up}\label{class_camera_ad74c4a490bc8865e67e27a2036d0a72d}
+
+\item 
+\hypertarget{class_camera_a6624f9f4228f6299a3d4ccb81e28da0a}{}glm\+::vec3 {\bfseries Right}\label{class_camera_a6624f9f4228f6299a3d4ccb81e28da0a}
+
+\item 
+\hypertarget{class_camera_a340d30b833954b87fd016ce0e724c723}{}glm\+::vec3 {\bfseries World\+Up}\label{class_camera_a340d30b833954b87fd016ce0e724c723}
+
+\item 
+\hypertarget{class_camera_a271cb35597723e751dfde46a55088079}{}glm\+::vec3 {\bfseries View\+Direction}\label{class_camera_a271cb35597723e751dfde46a55088079}
+
+\item 
+\hypertarget{class_camera_a0e33a49658e1fa2e1f8ef91cffaec9f5}{}glm\+::vec3 {\bfseries Scene\+Center}\label{class_camera_a0e33a49658e1fa2e1f8ef91cffaec9f5}
+
+\item 
+\hypertarget{class_camera_abf27283ca0ccc51bae8446796ffc6b44}{}G\+Lfloat {\bfseries Yaw}\label{class_camera_abf27283ca0ccc51bae8446796ffc6b44}
+
+\item 
+\hypertarget{class_camera_ae6afc2507f67baf4390405cfda1d1e87}{}G\+Lfloat {\bfseries Pitch}\label{class_camera_ae6afc2507f67baf4390405cfda1d1e87}
+
+\item 
+\hypertarget{class_camera_a93ea63669df9617a6f63fa09e74a01a9}{}G\+Lfloat {\bfseries Movement\+Speed}\label{class_camera_a93ea63669df9617a6f63fa09e74a01a9}
+
+\item 
+\hypertarget{class_camera_adc61747052dc386a4ab8e110a1fbc628}{}G\+Lfloat {\bfseries Mouse\+Sensitivity}\label{class_camera_adc61747052dc386a4ab8e110a1fbc628}
+
+\item 
+\hypertarget{class_camera_a1078d85d2e18bdc32291aabfcdda710a}{}G\+Lfloat {\bfseries Zoom}\label{class_camera_a1078d85d2e18bdc32291aabfcdda710a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_camera}{Camera} class This class provides the functionalities of a camera viewing, allowing the zooming and rotation of a camera.\+Using the position. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_camera_a535f3a2413a88c2f1e7d1147bec0039c}{}\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\subsubsection[{Camera(glm\+::vec3 position=glm\+::vec3(0.\+0f, 0.\+0f, 0.\+0f), glm\+::vec3 up=glm\+::vec3(0.\+0f, 1.\+0f, 0.\+0f), G\+Lfloat yaw=\+Y\+A\+W, G\+Lfloat pitch=\+P\+I\+T\+C\+H)}]{\setlength{\rightskip}{0pt plus 5cm}Camera\+::\+Camera (
+\begin{DoxyParamCaption}
+\item[{glm\+::vec3}]{position = {\ttfamily glm\+:\+:vec3(0.0f,~0.0f,~0.0f)}, }
+\item[{glm\+::vec3}]{up = {\ttfamily glm\+:\+:vec3(0.0f,~1.0f,~0.0f)}, }
+\item[{G\+Lfloat}]{yaw = {\ttfamily YAW}, }
+\item[{G\+Lfloat}]{pitch = {\ttfamily PITCH}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_camera_a535f3a2413a88c2f1e7d1147bec0039c}
+
+
+\hyperlink{class_camera}{Camera} Constructor to enable the functionalities of the camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the camera position \\
+\hline
+{\em up} & the position of the up vector \\
+\hline
+{\em yaw} & the value of yaw \\
+\hline
+{\em pitch} & the value of pitch \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_camera_a1efd973829c22d5fe15a26ede3357ee5}{}\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\subsubsection[{Camera(\+G\+Lfloat pos\+X, G\+Lfloat pos\+Y, G\+Lfloat pos\+Z, G\+Lfloat up\+X, G\+Lfloat up\+Y, G\+Lfloat up\+Z, G\+Lfloat yaw, G\+Lfloat pitch)}]{\setlength{\rightskip}{0pt plus 5cm}Camera\+::\+Camera (
+\begin{DoxyParamCaption}
+\item[{G\+Lfloat}]{pos\+X, }
+\item[{G\+Lfloat}]{pos\+Y, }
+\item[{G\+Lfloat}]{pos\+Z, }
+\item[{G\+Lfloat}]{up\+X, }
+\item[{G\+Lfloat}]{up\+Y, }
+\item[{G\+Lfloat}]{up\+Z, }
+\item[{G\+Lfloat}]{yaw, }
+\item[{G\+Lfloat}]{pitch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_camera_a1efd973829c22d5fe15a26ede3357ee5}
+
+
+\hyperlink{class_camera}{Camera} \hyperlink{class_camera}{Camera} Constructor to enable the functionalities of the camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+X} & x coordinate \\
+\hline
+{\em pos\+Y} & y coordinate \\
+\hline
+{\em pos\+Z} & z coordinae \\
+\hline
+{\em up\+X} & up x coordinate \\
+\hline
+{\em up\+Y} & up y coordinate \\
+\hline
+{\em up\+Z} & up z coordinate \\
+\hline
+{\em yaw} & the yaw value \\
+\hline
+{\em pitch} & the pitch value \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_camera_a739bf4fedace8b3d12868d19726df832}{}\index{Camera@{Camera}!Get\+View\+Matrix@{Get\+View\+Matrix}}
+\index{Get\+View\+Matrix@{Get\+View\+Matrix}!Camera@{Camera}}
+\subsubsection[{Get\+View\+Matrix() const }]{\setlength{\rightskip}{0pt plus 5cm}glm\+::mat4 Camera\+::\+Get\+View\+Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_camera_a739bf4fedace8b3d12868d19726df832}
+
+
+Get\+View\+Matrix gives the view. 
+
+\begin{DoxyReturn}{Returns}
+the view matrix 
+\end{DoxyReturn}
+\hypertarget{class_camera_ac922d266d0a88dbdde47a7be7736766d}{}\index{Camera@{Camera}!Process\+Keyboard@{Process\+Keyboard}}
+\index{Process\+Keyboard@{Process\+Keyboard}!Camera@{Camera}}
+\subsubsection[{Process\+Keyboard(\+Camera\+Movement direction, G\+Lfloat delta\+Time)}]{\setlength{\rightskip}{0pt plus 5cm}void Camera\+::\+Process\+Keyboard (
+\begin{DoxyParamCaption}
+\item[{Camera\+Movement}]{direction, }
+\item[{G\+Lfloat}]{delta\+Time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_camera_ac922d266d0a88dbdde47a7be7736766d}
+
+
+Process\+Keyboard takes the keyboard input and moves the position of the camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & the direction to move the camera in \\
+\hline
+{\em delta\+Time} & the time change used to determine the velocity of the position change \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_camera_a58246ec7f4f0852005e09c8ab8f54642}{}\index{Camera@{Camera}!Process\+Mouse\+Camera\+View\+Rotation@{Process\+Mouse\+Camera\+View\+Rotation}}
+\index{Process\+Mouse\+Camera\+View\+Rotation@{Process\+Mouse\+Camera\+View\+Rotation}!Camera@{Camera}}
+\subsubsection[{Process\+Mouse\+Camera\+View\+Rotation(\+G\+Lfloat x\+Offset, G\+Lfloat y\+Offset)}]{\setlength{\rightskip}{0pt plus 5cm}void Camera\+::\+Process\+Mouse\+Camera\+View\+Rotation (
+\begin{DoxyParamCaption}
+\item[{G\+Lfloat}]{x\+Offset, }
+\item[{G\+Lfloat}]{y\+Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_camera_a58246ec7f4f0852005e09c8ab8f54642}
+
+
+Process\+Mouse\+Camera\+View\+Rotation \hyperlink{class_camera}{Camera} rotates around the scene based off the offset it will determine which direction to rotate in. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+Offset} & the x offset \\
+\hline
+{\em y\+Offset} & the y offset \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_camera_ad74e2911d43fe9f34f42499b5180a362}{}\index{Camera@{Camera}!Process\+Mouse\+Movement@{Process\+Mouse\+Movement}}
+\index{Process\+Mouse\+Movement@{Process\+Mouse\+Movement}!Camera@{Camera}}
+\subsubsection[{Process\+Mouse\+Movement(\+G\+Lfloat x\+Offset, G\+Lfloat y\+Offset, G\+Lboolean constraint\+Pitch=true)}]{\setlength{\rightskip}{0pt plus 5cm}void Camera\+::\+Process\+Mouse\+Movement (
+\begin{DoxyParamCaption}
+\item[{G\+Lfloat}]{x\+Offset, }
+\item[{G\+Lfloat}]{y\+Offset, }
+\item[{G\+Lboolean}]{constraint\+Pitch = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_camera_ad74e2911d43fe9f34f42499b5180a362}
+
+
+Process\+Mouse\+Movement process the mouse movement using the offset conditions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+Offset} & the x offset \\
+\hline
+{\em y\+Offset} & the y offset \\
+\hline
+{\em constraint\+Pitch} & the pitch constaint \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_camera_a70b8364d53d5851210baacf35b7bd837}{}\index{Camera@{Camera}!Process\+Mouse\+Scroll@{Process\+Mouse\+Scroll}}
+\index{Process\+Mouse\+Scroll@{Process\+Mouse\+Scroll}!Camera@{Camera}}
+\subsubsection[{Process\+Mouse\+Scroll(\+G\+Lfloat y\+Offset)}]{\setlength{\rightskip}{0pt plus 5cm}void Camera\+::\+Process\+Mouse\+Scroll (
+\begin{DoxyParamCaption}
+\item[{G\+Lfloat}]{y\+Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_camera_a70b8364d53d5851210baacf35b7bd837}
+
+
+Process\+Mouse\+Scroll proceses the mouse scroll based on if the zoom is within Minimum and maximum zoom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y\+Offset} & change the zoom based on the offset \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_camera_aa8bb7760c16698825004048c4c033ada}{}\index{Camera@{Camera}!Rotate\+To\+Point\+Of\+Focus@{Rotate\+To\+Point\+Of\+Focus}}
+\index{Rotate\+To\+Point\+Of\+Focus@{Rotate\+To\+Point\+Of\+Focus}!Camera@{Camera}}
+\subsubsection[{Rotate\+To\+Point\+Of\+Focus(glm\+::vec3 point\+Of\+Focus)}]{\setlength{\rightskip}{0pt plus 5cm}void Camera\+::\+Rotate\+To\+Point\+Of\+Focus (
+\begin{DoxyParamCaption}
+\item[{glm\+::vec3}]{point\+Of\+Focus}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_camera_aa8bb7760c16698825004048c4c033ada}
+
+
+Rotate\+To\+Point\+Of\+Focus Move \hyperlink{class_camera}{Camera}\textquotesingle{}s facing direction to point of focus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point\+Of\+Focus} & vector to rotate point focus \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Camera.\+h\end{DoxyCompactItemize}

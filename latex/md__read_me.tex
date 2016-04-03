@@ -1,0 +1,21 @@
+To use the project\+:
+
+
+\begin{DoxyEnumerate}
+\item Install Visual Studio 2015
+\begin{DoxyEnumerate}
+\item \href{https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409}{\tt This is the link to the Community version}
+\item You can get the Enterprise version \href{https://aits.encs.concordia.ca/aits/sec/msdnaa}{\tt from Dream\+Spark here} (enter your E\+N\+C\+S username and password)
+\end{DoxyEnumerate}
+\item Download Qt (32 bit -\/ latest version) --- \href{http://download.qt.io/development_releases/qt/5.6/5.6.0-rc/qt-opensource-windows-x86-msvc2015-5.6.0-rc.exe}{\tt This is the link to the R\+C version} --- {\bfseries N\+O\+T\+E\+:} the file size is about 800\+M\+B, so be patient!
+\item Install Qt into the default location ($\ast$$\ast$\+C\+:.6.\+0\textbackslash{}5.\+6$\ast$$\ast$). You don\textquotesingle{}t need to enter this location; just accept the defaults
+\item Open Visual Studio, go to {\bfseries Tools/\+Extensions and Updates...}
+\item Click on the {\bfseries Online} section
+\item In the upper right of the dialog, search by typing {\bfseries qt} (no need to press {\bfseries Enter})
+\item Install the {\bfseries Qt5\+Package} plugin
+\item After Visual Studio has been restarted, open the menu item {\bfseries Qt5/\+Qt Options}, then click {\bfseries Add}
+\item Enter {\bfseries 5.\+6} for {\bfseries Version Name} and the path should be the default install location ($\ast$$\ast$\+C\+:.6.\+0\textbackslash{}5.\+6$\ast$$\ast$)
+\item Clone the repository and you should be able to run the application inside Visual Studio
+\end{DoxyEnumerate}
+
+{\bfseries T\+I\+P}\+: not required for this project, but if you want to create new Qt projects from scratch (using the templates installed by the Add-\/in), you need to create an environment variable with name {\ttfamily Q\+T\+D\+I\+R}, and the value being the default Qt installation directory 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Includes.h"
-
+// camera movement functionalities
 enum CameraMovement
 {
     FORWARD,
@@ -27,6 +27,11 @@ const GLfloat ROTATION_ANGLE = 2.0f;
 //Camera will rotate around a Scene Point, this is the default position
 const glm::vec3 DEFAULT_SCREEN_CENTER = glm::vec3(0.0f,0.0f,0.0f);
 
+///
+/// \brief The Camera class
+/// This class provides the functionalities of a camera viewing, allowing the zooming and rotation of a camera.Using the position 
+// pitch and yaw.
+///
 class Camera
 {
 public:
@@ -47,7 +52,13 @@ public:
     GLfloat MovementSpeed;
     GLfloat MouseSensitivity;
     GLfloat Zoom;
-
+    ///
+    /// \brief Camera Constructor to enable the functionalities of the camera
+    /// \param position the camera position
+    /// \param up the position of the up vector
+    /// \param yaw the value of yaw
+    /// \param pitch the value of pitch
+    ///
     Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f),
            glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f),
            GLfloat yaw = YAW,
@@ -64,7 +75,17 @@ public:
         Pitch = pitch;
         UpdateCameraVectors();
     }
-
+    ///
+    /// \brief Camera Camera Constructor to enable the functionalities of the camera
+    /// \param posX x coordinate
+    /// \param posY y coordinate
+    /// \param posZ z coordinae
+    /// \param upX up x coordinate
+    /// \param upY up y coordinate
+    /// \param upZ up z coordinate
+    /// \param yaw the yaw value
+    /// \param pitch the pitch value
+    ///
     Camera(GLfloat posX, GLfloat posY, GLfloat posZ,
            GLfloat upX, GLfloat upY, GLfloat upZ,
            GLfloat yaw, GLfloat pitch) :
@@ -81,12 +102,19 @@ public:
         Pitch = pitch;
         UpdateCameraVectors();
     }
-
+    ///
+    /// \brief GetViewMatrix gives the view
+    /// \return the view matrix
+    ///
     glm::mat4 GetViewMatrix() const
     {
             return lookAt(Position, ViewDirection, Up);
     }
-
+    ///
+    /// \brief ProcessKeyboard takes the keyboard input and moves the position of the camera
+    /// \param direction the direction to move the camera in
+    /// \param deltaTime the time change used to determine the velocity of the position change
+    ///
     void ProcessKeyboard(CameraMovement direction, GLfloat deltaTime)
     {
         GLfloat velocity = MovementSpeed * deltaTime;
@@ -106,7 +134,12 @@ public:
 
         ViewDirection = Position + Front;
     }
-
+    ///
+    /// \brief ProcessMouseMovement process the mouse movement using the offset conditions
+    /// \param xOffset the x offset
+    /// \param yOffset the y offset
+    /// \param constraintPitch the pitch constaint
+    ///
     void ProcessMouseMovement(GLfloat xOffset, GLfloat yOffset,
                               GLboolean constraintPitch = true)
     {
@@ -128,9 +161,12 @@ public:
     }
 
 
-    /*
-    Camera rotates around the scene
-    */
+   
+   
+    /// \brief ProcessMouseCameraViewRotation  Camera rotates around the scene based off the offset it will determine which direction to rotate in
+    /// \param xOffset the x offset 
+    /// \param yOffset the y offset
+    ///
     void ProcessMouseCameraViewRotation(GLfloat xOffset, GLfloat yOffset)
     {
         glm::vec4 newPosition;
@@ -163,9 +199,11 @@ public:
         UpdateCameraVectors();
     }
 
-    /*
-    Move Camera's facing direction to point of focus
-    */
+
+    ///
+    /// \brief RotateToPointOfFocus Move Camera's facing direction to point of focus
+    /// \param pointOfFocus vector to rotate point focus
+    ///
     void RotateToPointOfFocus(glm::vec3 pointOfFocus)
     {
         auto v1 = normalize(pointOfFocus - Position);   // Vector from camera position to focus point
@@ -179,7 +217,10 @@ public:
         Yaw += crossProduct.y > 0 ? angle : -angle;
         UpdateCameraVectors();
     }
-
+    ///
+    /// \brief ProcessMouseScroll proceses the mouse scroll based on if the zoom is within Minimum and maximum zoom
+    /// \param yOffset change the zoom based on the offset
+    ///
     void ProcessMouseScroll(GLfloat yOffset)
     {
         if (Zoom >= MINIMUM_ZOOM && Zoom <= MAXIMUM_ZOOM)

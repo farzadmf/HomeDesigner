@@ -1,0 +1,133 @@
+\hypertarget{class_room}{}\section{Room Class Reference}
+\label{class_room}\index{Room@{Room}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_room_a7b347765e9501c064013258629b4de19}{Room} (Q\+Open\+G\+L\+Widget $\ast$target\+Widget, G\+Lfloat room\+Width, glm\+::vec3 wall\+Color, glm\+::vec3 floor\+Color)
+\item 
+\hypertarget{class_room_ae621e50fd276c68af137ab02666dcee8}{}\hyperlink{class_floor}{Floor} $\ast$ {\bfseries Get\+Floor} () const \label{class_room_ae621e50fd276c68af137ab02666dcee8}
+
+\item 
+\hypertarget{class_room_a99f66c521d11492e4699a8f9aca6fa25}{}vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_wall}{Wall} $>$ $>$ {\bfseries Get\+Walls} () const \label{class_room_a99f66c521d11492e4699a8f9aca6fa25}
+
+\item 
+void \hyperlink{class_room_a0fee2b31c00e8965934ddb0cba8dab9f}{Set\+Wall\+Color} (glm\+::vec3 wall\+Color)
+\item 
+\hypertarget{class_room_a4a5c9022582a2acaa29196a45c864e6c}{}glm\+::vec3 {\bfseries Get\+Wall\+Color} () const \label{class_room_a4a5c9022582a2acaa29196a45c864e6c}
+
+\item 
+void \hyperlink{class_room_a47df29040992bde5444c485b0b942aad}{Set\+Floor\+Color} (glm\+::vec3 floor\+Color)
+\item 
+\hypertarget{class_room_a92d642a94fd6a2b65094501e17559b48}{}glm\+::vec3 {\bfseries Get\+Floor\+Color} () const \label{class_room_a92d642a94fd6a2b65094501e17559b48}
+
+\item 
+void \hyperlink{class_room_ab0f733f37df1351b30573dcc8e13a18d}{Set\+Wall\+Texture} (string wall\+Texture)
+\item 
+\hypertarget{class_room_a9767bef2a8361a6654d77d522bee77e7}{}string {\bfseries Get\+Wall\+Texture} () const \label{class_room_a9767bef2a8361a6654d77d522bee77e7}
+
+\item 
+void \hyperlink{class_room_af6104c7b967af777bc8b054179f43829}{Set\+Floor\+Texture} (string floor\+Texture)
+\item 
+\hypertarget{class_room_a604d2069548456e15fc537b56900a4e0}{}string {\bfseries Get\+Floor\+Texture} () const \label{class_room_a604d2069548456e15fc537b56900a4e0}
+
+\item 
+glm\+::vec3 \hyperlink{class_room_a2a11f153f356dca23b40cd8147150cb9}{Get\+Minimum\+Coordinates} () const 
+\item 
+glm\+::vec3 \hyperlink{class_room_a1303223ef4eb22b9580148204f1de346}{Get\+Maximum\+Coordinates} () const 
+\item 
+void \hyperlink{class_room_a013a7a067df01681afa7b8bfda69e48e}{Draw} (glm\+::mat4 const \&view, glm\+::mat4 const \&projection) const 
+\item 
+void \hyperlink{class_room_afc80f1892eaa6db27ac526b4ec77d8bd}{Bind\+To\+Floor} (\hyperlink{class_model_container}{Model\+Container} $\ast$container)
+\item 
+void \hyperlink{class_room_a7c26d8c17540d6cd47a649e55de32d2e}{Bind\+To\+Wall} (\hyperlink{class_model_container}{Model\+Container} $\ast$container, Location wall\+Location)
+\item 
+\hypertarget{class_room_a7c8fbf9ae9469a79ff1b5e6cfaf4cb9d}{}bool {\bfseries Is\+Attached} (\hyperlink{class_model_container}{Model\+Container} $\ast$container, Location wall\+Location)\label{class_room_a7c8fbf9ae9469a79ff1b5e6cfaf4cb9d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_room_a7b347765e9501c064013258629b4de19}{}\index{Room@{Room}!Room@{Room}}
+\index{Room@{Room}!Room@{Room}}
+\subsubsection[{Room(\+Q\+Open\+G\+L\+Widget $\ast$target\+Widget, G\+Lfloat room\+Width, glm\+::vec3 wall\+Color, glm\+::vec3 floor\+Color)}]{\setlength{\rightskip}{0pt plus 5cm}Room\+::\+Room (
+\begin{DoxyParamCaption}
+\item[{Q\+Open\+G\+L\+Widget $\ast$}]{target\+Widget, }
+\item[{G\+Lfloat}]{room\+Width, }
+\item[{glm\+::vec3}]{wall\+Color, }
+\item[{glm\+::vec3}]{floor\+Color}
+\end{DoxyParamCaption}
+)}\label{class_room_a7b347765e9501c064013258629b4de19}
+Create the room with specified width, and 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_room_afc80f1892eaa6db27ac526b4ec77d8bd}{}\index{Room@{Room}!Bind\+To\+Floor@{Bind\+To\+Floor}}
+\index{Bind\+To\+Floor@{Bind\+To\+Floor}!Room@{Room}}
+\subsubsection[{Bind\+To\+Floor(\+Model\+Container $\ast$container)}]{\setlength{\rightskip}{0pt plus 5cm}void Room\+::\+Bind\+To\+Floor (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+Container} $\ast$}]{container}
+\end{DoxyParamCaption}
+)}\label{class_room_afc80f1892eaa6db27ac526b4ec77d8bd}
+Binds the specified model container to the floor \hypertarget{class_room_a7c26d8c17540d6cd47a649e55de32d2e}{}\index{Room@{Room}!Bind\+To\+Wall@{Bind\+To\+Wall}}
+\index{Bind\+To\+Wall@{Bind\+To\+Wall}!Room@{Room}}
+\subsubsection[{Bind\+To\+Wall(\+Model\+Container $\ast$container, Location wall\+Location)}]{\setlength{\rightskip}{0pt plus 5cm}void Room\+::\+Bind\+To\+Wall (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+Container} $\ast$}]{container, }
+\item[{Location}]{wall\+Location}
+\end{DoxyParamCaption}
+)}\label{class_room_a7c26d8c17540d6cd47a649e55de32d2e}
+Binds the specified model container to the specified wall \hypertarget{class_room_a013a7a067df01681afa7b8bfda69e48e}{}\index{Room@{Room}!Draw@{Draw}}
+\index{Draw@{Draw}!Room@{Room}}
+\subsubsection[{Draw(glm\+::mat4 const \&view, glm\+::mat4 const \&projection) const }]{\setlength{\rightskip}{0pt plus 5cm}void Room\+::\+Draw (
+\begin{DoxyParamCaption}
+\item[{glm\+::mat4 const \&}]{view, }
+\item[{glm\+::mat4 const \&}]{projection}
+\end{DoxyParamCaption}
+) const}\label{class_room_a013a7a067df01681afa7b8bfda69e48e}
+Draws the room (floor and the walls) \hypertarget{class_room_a1303223ef4eb22b9580148204f1de346}{}\index{Room@{Room}!Get\+Maximum\+Coordinates@{Get\+Maximum\+Coordinates}}
+\index{Get\+Maximum\+Coordinates@{Get\+Maximum\+Coordinates}!Room@{Room}}
+\subsubsection[{Get\+Maximum\+Coordinates() const }]{\setlength{\rightskip}{0pt plus 5cm}glm\+::vec3 Room\+::\+Get\+Maximum\+Coordinates (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_room_a1303223ef4eb22b9580148204f1de346}
+Returns back the maximum coordinates of the room \hypertarget{class_room_a2a11f153f356dca23b40cd8147150cb9}{}\index{Room@{Room}!Get\+Minimum\+Coordinates@{Get\+Minimum\+Coordinates}}
+\index{Get\+Minimum\+Coordinates@{Get\+Minimum\+Coordinates}!Room@{Room}}
+\subsubsection[{Get\+Minimum\+Coordinates() const }]{\setlength{\rightskip}{0pt plus 5cm}glm\+::vec3 Room\+::\+Get\+Minimum\+Coordinates (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_room_a2a11f153f356dca23b40cd8147150cb9}
+Returns back the minimum coordinates of the room \hypertarget{class_room_a47df29040992bde5444c485b0b942aad}{}\index{Room@{Room}!Set\+Floor\+Color@{Set\+Floor\+Color}}
+\index{Set\+Floor\+Color@{Set\+Floor\+Color}!Room@{Room}}
+\subsubsection[{Set\+Floor\+Color(glm\+::vec3 floor\+Color)}]{\setlength{\rightskip}{0pt plus 5cm}void Room\+::\+Set\+Floor\+Color (
+\begin{DoxyParamCaption}
+\item[{glm\+::vec3}]{floor\+Color}
+\end{DoxyParamCaption}
+)}\label{class_room_a47df29040992bde5444c485b0b942aad}
+Changes the color of the floor \hypertarget{class_room_af6104c7b967af777bc8b054179f43829}{}\index{Room@{Room}!Set\+Floor\+Texture@{Set\+Floor\+Texture}}
+\index{Set\+Floor\+Texture@{Set\+Floor\+Texture}!Room@{Room}}
+\subsubsection[{Set\+Floor\+Texture(string floor\+Texture)}]{\setlength{\rightskip}{0pt plus 5cm}void Room\+::\+Set\+Floor\+Texture (
+\begin{DoxyParamCaption}
+\item[{string}]{floor\+Texture}
+\end{DoxyParamCaption}
+)}\label{class_room_af6104c7b967af777bc8b054179f43829}
+Changes the texture of the floor \hypertarget{class_room_a0fee2b31c00e8965934ddb0cba8dab9f}{}\index{Room@{Room}!Set\+Wall\+Color@{Set\+Wall\+Color}}
+\index{Set\+Wall\+Color@{Set\+Wall\+Color}!Room@{Room}}
+\subsubsection[{Set\+Wall\+Color(glm\+::vec3 wall\+Color)}]{\setlength{\rightskip}{0pt plus 5cm}void Room\+::\+Set\+Wall\+Color (
+\begin{DoxyParamCaption}
+\item[{glm\+::vec3}]{wall\+Color}
+\end{DoxyParamCaption}
+)}\label{class_room_a0fee2b31c00e8965934ddb0cba8dab9f}
+Changes the color of the walls \hypertarget{class_room_ab0f733f37df1351b30573dcc8e13a18d}{}\index{Room@{Room}!Set\+Wall\+Texture@{Set\+Wall\+Texture}}
+\index{Set\+Wall\+Texture@{Set\+Wall\+Texture}!Room@{Room}}
+\subsubsection[{Set\+Wall\+Texture(string wall\+Texture)}]{\setlength{\rightskip}{0pt plus 5cm}void Room\+::\+Set\+Wall\+Texture (
+\begin{DoxyParamCaption}
+\item[{string}]{wall\+Texture}
+\end{DoxyParamCaption}
+)}\label{class_room_ab0f733f37df1351b30573dcc8e13a18d}
+Changes the texture of the walls 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Room.\+h\item 
+Room.\+cpp\end{DoxyCompactItemize}

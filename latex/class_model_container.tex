@@ -1,0 +1,122 @@
+\hypertarget{class_model_container}{}\section{Model\+Container Class Reference}
+\label{class_model_container}\index{Model\+Container@{Model\+Container}}
+Inheritance diagram for Model\+Container\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_container}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_model_container_a313ffe5493b9ed80d7a525f8530ff5f5}{}void {\bfseries Operation\+Not\+Allowed} (Q\+String message)\label{class_model_container_a313ffe5493b9ed80d7a525f8530ff5f5}
+
+\item 
+\hypertarget{class_model_container_af965a24540959f575f98f154269fafd6}{}void {\bfseries Operation\+Successful} ()\label{class_model_container_af965a24540959f575f98f154269fafd6}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_model_container_a5145271e175fb5434c5209d170a2749d}{}{\bfseries Model\+Container} (\hyperlink{class_model}{Model} $\ast$model, G\+Lfloat initial\+Scale, \hyperlink{class_room}{Room} $\ast$room, Q\+Open\+G\+L\+Widget $\ast$target\+Widget)\label{class_model_container_a5145271e175fb5434c5209d170a2749d}
+
+\item 
+\hypertarget{class_model_container_ad403022f0e44b40ae6576b1c9454263e}{}G\+Lfloat {\bfseries Get\+Scale\+Factor} () const \label{class_model_container_ad403022f0e44b40ae6576b1c9454263e}
+
+\item 
+\hypertarget{class_model_container_ae859dd4743c5c4dcd3ed4044dfe60ffe}{}glm\+::vec3 {\bfseries Get\+Scale\+Vector} () const \label{class_model_container_ae859dd4743c5c4dcd3ed4044dfe60ffe}
+
+\item 
+\hypertarget{class_model_container_ad76f4a36da8b3696089f2843382cf9fb}{}glm\+::vec3 {\bfseries Get\+Translation\+Vector} () const \label{class_model_container_ad76f4a36da8b3696089f2843382cf9fb}
+
+\item 
+\hypertarget{class_model_container_a1346377aa22a8e763475cc868e7b085c}{}glm\+::vec3 {\bfseries Get\+Rotation\+Angles} () const \label{class_model_container_a1346377aa22a8e763475cc868e7b085c}
+
+\item 
+\hypertarget{class_model_container_a14d2a1daa39d7f051a0022b577b8759e}{}vector$<$ glm\+::vec3 $>$ const \& {\bfseries Get\+Bounding\+Box\+Vertices} () const \label{class_model_container_a14d2a1daa39d7f051a0022b577b8759e}
+
+\item 
+\hypertarget{class_model_container_a5d5e757812e3c6d26b7217618f52680d}{}glm\+::vec3 {\bfseries Get\+Minimum\+Vertices} () const \label{class_model_container_a5d5e757812e3c6d26b7217618f52680d}
+
+\item 
+\hypertarget{class_model_container_af5b5265648933d3effb2e75c69412290}{}glm\+::vec3 {\bfseries Get\+Maximum\+Vertices} () const \label{class_model_container_af5b5265648933d3effb2e75c69412290}
+
+\item 
+\hypertarget{class_model_container_ac842121f3683631e63d232784841b1ea}{}glm\+::vec3 {\bfseries get\+Model\+Container\+Center} () const \label{class_model_container_ac842121f3683631e63d232784841b1ea}
+
+\item 
+\hypertarget{class_model_container_a277b409fafa9f2e51eca3ceaf05842b5}{}glm\+::mat4 {\bfseries Get\+Model\+Matrix} () const \label{class_model_container_a277b409fafa9f2e51eca3ceaf05842b5}
+
+\item 
+\hypertarget{class_model_container_adf273cf3b683f5f5452414d473afe2cb}{}void {\bfseries Set\+Initial\+Scale} (G\+Lfloat initial\+Scale)\label{class_model_container_adf273cf3b683f5f5452414d473afe2cb}
+
+\item 
+\hypertarget{class_model_container_a1ca63a7256501991de59f33452a20aae}{}void {\bfseries Set\+Initial\+Translate\+Vector} (glm\+::vec3 initial\+Translate\+Vector)\label{class_model_container_a1ca63a7256501991de59f33452a20aae}
+
+\item 
+\hypertarget{class_model_container_a29ae098cea587ffbd6595427045971b3}{}void {\bfseries Set\+Initial\+Rotation\+Angles} (glm\+::vec3 initial\+Rotation\+Angles)\label{class_model_container_a29ae098cea587ffbd6595427045971b3}
+
+\item 
+\hypertarget{class_model_container_a75175aeab083d162034b357205270759}{}Location {\bfseries Get\+Bounded\+Wall} () const \label{class_model_container_a75175aeab083d162034b357205270759}
+
+\item 
+\hypertarget{class_model_container_ae38be381c9c05dd5b6d505d1830d4264}{}void {\bfseries Set\+Bounded\+Wall} (Location wall\+Location)\label{class_model_container_ae38be381c9c05dd5b6d505d1830d4264}
+
+\item 
+\hypertarget{class_model_container_a0163bcb5b8ff80f52cfb043ec0f3aa63}{}\hyperlink{class_model}{Model} $\ast$ {\bfseries Get\+Model} () const \label{class_model_container_a0163bcb5b8ff80f52cfb043ec0f3aa63}
+
+\item 
+\hypertarget{class_model_container_a2a91fc30179a9da8195e704bcf6bb179}{}void {\bfseries Set\+Projection\+Matrix} (glm\+::mat4 \&projection)\label{class_model_container_a2a91fc30179a9da8195e704bcf6bb179}
+
+\item 
+\hypertarget{class_model_container_a14648db778747762f55ad52396225efa}{}void {\bfseries Set\+View\+Matrix} (glm\+::mat4 \&view)\label{class_model_container_a14648db778747762f55ad52396225efa}
+
+\item 
+\hypertarget{class_model_container_afb5c293199114bcd6da5bea8b964b732}{}void {\bfseries Set\+Translation\+Bound} (glm\+::vec3 translation\+Bound)\label{class_model_container_afb5c293199114bcd6da5bea8b964b732}
+
+\item 
+\hypertarget{class_model_container_a9d5ae2036e06e9230942fb45b8f5156a}{}void {\bfseries Set\+Rotation\+Bound} (glm\+::vec3 rotation\+Bound)\label{class_model_container_a9d5ae2036e06e9230942fb45b8f5156a}
+
+\item 
+\hypertarget{class_model_container_a9bc78b840b5bb544db86cb5956b17a12}{}void {\bfseries Set\+Scale\+Bound} (glm\+::vec3 scale\+Bound)\label{class_model_container_a9bc78b840b5bb544db86cb5956b17a12}
+
+\item 
+\hypertarget{class_model_container_ac8d13143fdc69ce02d2539dd677bc3db}{}void {\bfseries Scale\+By} (G\+Lfloat scale\+Factor)\label{class_model_container_ac8d13143fdc69ce02d2539dd677bc3db}
+
+\item 
+\hypertarget{class_model_container_a40a0e922136e185a3808dac214d9cea8}{}void {\bfseries Rotate\+By} (glm\+::vec3 angles)\label{class_model_container_a40a0e922136e185a3808dac214d9cea8}
+
+\item 
+\hypertarget{class_model_container_ac33db8cfd1cac6742735dcc0226feff0}{}void {\bfseries Translate\+By} (glm\+::vec3 translate\+Vector)\label{class_model_container_ac33db8cfd1cac6742735dcc0226feff0}
+
+\item 
+\hypertarget{class_model_container_a349647d2eccc777419ff6eeb8edeff90}{}bool {\bfseries Is\+Selected} () const \label{class_model_container_a349647d2eccc777419ff6eeb8edeff90}
+
+\item 
+\hypertarget{class_model_container_a56c9edb4f2eb179a213e639dbaa05c9e}{}bool {\bfseries Set\+Selected} (bool selected)\label{class_model_container_a56c9edb4f2eb179a213e639dbaa05c9e}
+
+\item 
+\hypertarget{class_model_container_ad772dd3ae73fa1f3237c83e97a5fc80b}{}bool {\bfseries Is\+Colliding} () const \label{class_model_container_ad772dd3ae73fa1f3237c83e97a5fc80b}
+
+\item 
+\hypertarget{class_model_container_a9d6352f35e74be676bf923d38ec0b24c}{}void {\bfseries Draw\+Model} (\hyperlink{class_shader}{Shader} \&shader, \hyperlink{class_shader}{Shader} \&outline\+Shader, int index)\label{class_model_container_a9d6352f35e74be676bf923d38ec0b24c}
+
+\item 
+\hypertarget{class_model_container_a4f73480431ca9bca8cbcdac87ef1d055}{}void {\bfseries Draw\+Model\+Bounding\+Box} (\hyperlink{class_shader}{Shader} \&shader)\label{class_model_container_a4f73480431ca9bca8cbcdac87ef1d055}
+
+\item 
+\hypertarget{class_model_container_a6048f0f26f86025c6854bf42d7c5cc19}{}void {\bfseries Draw\+A\+A\+Boudning\+Box} (\hyperlink{class_shader}{Shader} \&shader)\label{class_model_container_a6048f0f26f86025c6854bf42d7c5cc19}
+
+\item 
+\hypertarget{class_model_container_aff6393883a26f3d71476e24e34f58852}{}void {\bfseries Reset} ()\label{class_model_container_aff6393883a26f3d71476e24e34f58852}
+
+\item 
+\hypertarget{class_model_container_a84dee4d7878153ecd2971427b2dd4c87}{}bool {\bfseries Is\+Inside\+Room} () const \label{class_model_container_a84dee4d7878153ecd2971427b2dd4c87}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Model\+Container.\+h\item 
+Model\+Container.\+cpp\end{DoxyCompactItemize}

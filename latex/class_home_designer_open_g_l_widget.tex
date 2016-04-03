@@ -1,0 +1,343 @@
+\hypertarget{class_home_designer_open_g_l_widget}{}\section{Home\+Designer\+Open\+G\+L\+Widget Class Reference}
+\label{class_home_designer_open_g_l_widget}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+
+
+The \hyperlink{class_home_designer_open_g_l_widget}{Home\+Designer\+Open\+G\+L\+Widget} class Which creates the view and projection matrices,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection.  
+
+
+
+
+{\ttfamily \#include $<$Home\+Designer\+Open\+G\+L\+Widget.\+h$>$}
+
+Inheritance diagram for Home\+Designer\+Open\+G\+L\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_home_designer_open_g_l_widget}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a17c63eebae07d7085b22aaf35746d59a}{On\+Move\+Selected\+Changed} (bool)
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_ae46f16b4230341e60317f8cb9df8f53c}{}void {\bfseries On\+Rotate\+Selected\+Changed} (bool)\label{class_home_designer_open_g_l_widget_ae46f16b4230341e60317f8cb9df8f53c}
+
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_a3b689614d2a74932b75a7c18083b6c19}{}void {\bfseries On\+Scale\+Selected\+Changed} (bool)\label{class_home_designer_open_g_l_widget_a3b689614d2a74932b75a7c18083b6c19}
+
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_af6eec49ac86769b4fd23636743ac9150}{On\+Move\+Speed\+Changed} (int)
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_aeeb74ecdd39351f0229f28b394900581}{}void {\bfseries On\+Rotate\+Speed\+Changed} (int)\label{class_home_designer_open_g_l_widget_aeeb74ecdd39351f0229f28b394900581}
+
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_a0f69f807f678735ce1d7ba41a7d495c3}{}void {\bfseries On\+Scale\+Speed\+Changed} (int)\label{class_home_designer_open_g_l_widget_a0f69f807f678735ce1d7ba41a7d495c3}
+
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a4162c2eef3980d6a2f594c0c40bd169a}{On\+Load\+Model} (Q\+String model\+Attributes, G\+Lfloat initial\+Scale)
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_a0b14ecff70d70ec52b9ddced64ff4a2c}{}void {\bfseries On\+Operation\+Not\+Allowed} (Q\+String message)\label{class_home_designer_open_g_l_widget_a0b14ecff70d70ec52b9ddced64ff4a2c}
+
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_ac9f66e0dc6799b7e48d6866d4322fa89}{On\+Operation\+Successful} ()
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a18d664925e2c18855722e5300169f229}{On\+Change\+Room\+Wall\+Color} (Q\+Color color) const 
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_ad249a6ddc83b3eb0d119af8b0a694cac}{On\+Change\+Room\+Wall\+Texture} (Q\+String texture\+File\+Path) const 
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_abe86574fe0641dd2d564a7964bc5ee8d}{On\+Change\+Room\+Floor\+Color} (Q\+Color color) const 
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a99fb72c11d0a5a748e7342535219bf6e}{On\+Change\+Room\+Floor\+Texture} (Q\+String texture\+File\+Path) const 
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_ae8ccce3d055bc7c0889eea58c32315d8}{}void {\bfseries Exit} ()\label{class_home_designer_open_g_l_widget_ae8ccce3d055bc7c0889eea58c32315d8}
+
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_acaf3c61231c51992ddc589ec4f87b080}{}void {\bfseries Display\+Message} (Q\+String message, int timeout)\label{class_home_designer_open_g_l_widget_acaf3c61231c51992ddc589ec4f87b080}
+
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_a7da876eafb33c27ee6ea24100924a0ce}{}void {\bfseries Display\+Error} (Q\+String message)\label{class_home_designer_open_g_l_widget_a7da876eafb33c27ee6ea24100924a0ce}
+
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_af43c80a3c488bf2a128c443ef7786782}{}void {\bfseries Clear\+Message} ()\label{class_home_designer_open_g_l_widget_af43c80a3c488bf2a128c443ef7786782}
+
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_a9794810f40ecfb50cdd5bf4cdcf04cbe}{}void {\bfseries Axis\+Changed} (Axis old\+Axis, Axis axis)\label{class_home_designer_open_g_l_widget_a9794810f40ecfb50cdd5bf4cdcf04cbe}
+
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_ab35b87b7e709ee647f6d44311d8942bf}{}void {\bfseries Collision\+Detected} (bool is\+Colliding)\label{class_home_designer_open_g_l_widget_ab35b87b7e709ee647f6d44311d8942bf}
+
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_a231dd62d34d46dd13239c1cfa29a4292}{}void {\bfseries Update\+Status} (bool bounding\+Box, bool aa\+Boudning\+Box, bool world\+Axis, bool local\+Axis)\label{class_home_designer_open_g_l_widget_a231dd62d34d46dd13239c1cfa29a4292}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_home_designer_open_g_l_widget_a24232a9ac7981b4410a8fad3d3773ef5}{}{\bfseries Home\+Designer\+Open\+G\+L\+Widget} (Q\+Widget $\ast$parent=nullptr)\label{class_home_designer_open_g_l_widget_a24232a9ac7981b4410a8fad3d3773ef5}
+
+\item 
+Axis \hyperlink{class_home_designer_open_g_l_widget_a9e4a4bfa55e86426d28ba0589035cec9}{Get\+Axis} () const 
+\begin{DoxyCompactList}\small\item\em Get\+Axis. \end{DoxyCompactList}\item 
+int \hyperlink{class_home_designer_open_g_l_widget_a766ed7c727cfbe473064fd244dede73d}{Get\+Move\+Speed} () const 
+\begin{DoxyCompactList}\small\item\em Get\+Move\+Speed. \end{DoxyCompactList}\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a36605922069ae365da069207b97a058c}{Set\+Move\+Speed} (int speed)
+\begin{DoxyCompactList}\small\item\em Set\+Move\+Speed. \end{DoxyCompactList}\item 
+int \hyperlink{class_home_designer_open_g_l_widget_abdfd4baea7b439683ce0e87278335035}{Get\+Rotate\+Speed} () const 
+\begin{DoxyCompactList}\small\item\em Get\+Rotate\+Speed. \end{DoxyCompactList}\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a8987eaba2c2dd6b0d5f1348c7a80db1c}{Set\+Rotate\+Speed} (int speed)
+\begin{DoxyCompactList}\small\item\em Set\+Rotate\+Speed. \end{DoxyCompactList}\item 
+int \hyperlink{class_home_designer_open_g_l_widget_a4eefb0e0be806ebd74ea6b13cfa941ee}{Get\+Scale\+Speed} () const 
+\begin{DoxyCompactList}\small\item\em Get\+Scale\+Speed. \end{DoxyCompactList}\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a3bbe46ba314a8ef0a7a380fa7e8bbbdc}{Set\+Scale\+Speed} (int speed)
+\begin{DoxyCompactList}\small\item\em Set\+Scale\+Speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a4222406ea010bada5b614f4aa9a408e3}{paint\+G\+L} () override
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_ab4d259ef3a1e4d80cc784f04d1e0da1f}{initialize\+G\+L} () override
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a9374ffef11f1f4be2eb7070e2a13ee65}{mouse\+Move\+Event} (Q\+Mouse\+Event $\ast$) override
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a44f26dde734bb6b1b4e30c4c2b2a6d9a}{key\+Press\+Event} (Q\+Key\+Event $\ast$) override
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_aca029316bc95418bb9c6f8c372a74b0d}{key\+Release\+Event} (Q\+Key\+Event $\ast$) override
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_a89d62b03f15537ab73b7cd7af1346967}{mouse\+Press\+Event} (Q\+Mouse\+Event $\ast$) override
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_ab06746a2be49de22f1e3eac9cd34f49c}{mouse\+Release\+Event} (Q\+Mouse\+Event $\ast$) override
+\item 
+void \hyperlink{class_home_designer_open_g_l_widget_ac9a825748af7eaeb41bfe51fd5f99c1a}{wheel\+Event} (Q\+Wheel\+Event $\ast$) override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_home_designer_open_g_l_widget}{Home\+Designer\+Open\+G\+L\+Widget} class Which creates the view and projection matrices,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_home_designer_open_g_l_widget_a9e4a4bfa55e86426d28ba0589035cec9}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Get\+Axis@{Get\+Axis}}
+\index{Get\+Axis@{Get\+Axis}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{Get\+Axis() const }]{\setlength{\rightskip}{0pt plus 5cm}Axis Home\+Designer\+Open\+G\+L\+Widget\+::\+Get\+Axis (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_home_designer_open_g_l_widget_a9e4a4bfa55e86426d28ba0589035cec9}
+
+
+Get\+Axis. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_home_designer_open_g_l_widget_a766ed7c727cfbe473064fd244dede73d}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Get\+Move\+Speed@{Get\+Move\+Speed}}
+\index{Get\+Move\+Speed@{Get\+Move\+Speed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{Get\+Move\+Speed() const }]{\setlength{\rightskip}{0pt plus 5cm}int Home\+Designer\+Open\+G\+L\+Widget\+::\+Get\+Move\+Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_home_designer_open_g_l_widget_a766ed7c727cfbe473064fd244dede73d}
+
+
+Get\+Move\+Speed. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_home_designer_open_g_l_widget_abdfd4baea7b439683ce0e87278335035}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Get\+Rotate\+Speed@{Get\+Rotate\+Speed}}
+\index{Get\+Rotate\+Speed@{Get\+Rotate\+Speed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{Get\+Rotate\+Speed() const }]{\setlength{\rightskip}{0pt plus 5cm}int Home\+Designer\+Open\+G\+L\+Widget\+::\+Get\+Rotate\+Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_home_designer_open_g_l_widget_abdfd4baea7b439683ce0e87278335035}
+
+
+Get\+Rotate\+Speed. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_home_designer_open_g_l_widget_a4eefb0e0be806ebd74ea6b13cfa941ee}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Get\+Scale\+Speed@{Get\+Scale\+Speed}}
+\index{Get\+Scale\+Speed@{Get\+Scale\+Speed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{Get\+Scale\+Speed() const }]{\setlength{\rightskip}{0pt plus 5cm}int Home\+Designer\+Open\+G\+L\+Widget\+::\+Get\+Scale\+Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_home_designer_open_g_l_widget_a4eefb0e0be806ebd74ea6b13cfa941ee}
+
+
+Get\+Scale\+Speed. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_home_designer_open_g_l_widget_ab4d259ef3a1e4d80cc784f04d1e0da1f}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!initialize\+G\+L@{initialize\+G\+L}}
+\index{initialize\+G\+L@{initialize\+G\+L}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{initialize\+G\+L() override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::initialize\+G\+L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_ab4d259ef3a1e4d80cc784f04d1e0da1f}
+Called when the widget is being initialized \hypertarget{class_home_designer_open_g_l_widget_a44f26dde734bb6b1b4e30c4c2b2a6d9a}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!key\+Press\+Event@{key\+Press\+Event}}
+\index{key\+Press\+Event@{key\+Press\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{key\+Press\+Event(\+Q\+Key\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::key\+Press\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Key\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_a44f26dde734bb6b1b4e30c4c2b2a6d9a}
+Process key press event \hypertarget{class_home_designer_open_g_l_widget_aca029316bc95418bb9c6f8c372a74b0d}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!key\+Release\+Event@{key\+Release\+Event}}
+\index{key\+Release\+Event@{key\+Release\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{key\+Release\+Event(\+Q\+Key\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::key\+Release\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Key\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_aca029316bc95418bb9c6f8c372a74b0d}
+Reset pressed keys and modifiers, along with status bar message \hypertarget{class_home_designer_open_g_l_widget_a9374ffef11f1f4be2eb7070e2a13ee65}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!mouse\+Move\+Event@{mouse\+Move\+Event}}
+\index{mouse\+Move\+Event@{mouse\+Move\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{mouse\+Move\+Event(\+Q\+Mouse\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::mouse\+Move\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Mouse\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_a9374ffef11f1f4be2eb7070e2a13ee65}
+Process mouse movement \hypertarget{class_home_designer_open_g_l_widget_a89d62b03f15537ab73b7cd7af1346967}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!mouse\+Press\+Event@{mouse\+Press\+Event}}
+\index{mouse\+Press\+Event@{mouse\+Press\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{mouse\+Press\+Event(\+Q\+Mouse\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::mouse\+Press\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Mouse\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_a89d62b03f15537ab73b7cd7af1346967}
+Keep track of mouse button(s) being pressed \hypertarget{class_home_designer_open_g_l_widget_ab06746a2be49de22f1e3eac9cd34f49c}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!mouse\+Release\+Event@{mouse\+Release\+Event}}
+\index{mouse\+Release\+Event@{mouse\+Release\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{mouse\+Release\+Event(\+Q\+Mouse\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::mouse\+Release\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Mouse\+Event $\ast$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_ab06746a2be49de22f1e3eac9cd34f49c}
+Reset mouse buttons and release mouse \hypertarget{class_home_designer_open_g_l_widget_abe86574fe0641dd2d564a7964bc5ee8d}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Floor\+Color@{On\+Change\+Room\+Floor\+Color}}
+\index{On\+Change\+Room\+Floor\+Color@{On\+Change\+Room\+Floor\+Color}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{On\+Change\+Room\+Floor\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Change\+Room\+Floor\+Color (
+\begin{DoxyParamCaption}
+\item[{Q\+Color}]{color}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_abe86574fe0641dd2d564a7964bc5ee8d}
+Changes the floor color \hypertarget{class_home_designer_open_g_l_widget_a99fb72c11d0a5a748e7342535219bf6e}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Floor\+Texture@{On\+Change\+Room\+Floor\+Texture}}
+\index{On\+Change\+Room\+Floor\+Texture@{On\+Change\+Room\+Floor\+Texture}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{On\+Change\+Room\+Floor\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Change\+Room\+Floor\+Texture (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{texture\+File\+Path}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_a99fb72c11d0a5a748e7342535219bf6e}
+Changes the floor texture \hypertarget{class_home_designer_open_g_l_widget_a18d664925e2c18855722e5300169f229}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Wall\+Color@{On\+Change\+Room\+Wall\+Color}}
+\index{On\+Change\+Room\+Wall\+Color@{On\+Change\+Room\+Wall\+Color}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{On\+Change\+Room\+Wall\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Change\+Room\+Wall\+Color (
+\begin{DoxyParamCaption}
+\item[{Q\+Color}]{color}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_a18d664925e2c18855722e5300169f229}
+Changes the wall color for the room \hypertarget{class_home_designer_open_g_l_widget_ad249a6ddc83b3eb0d119af8b0a694cac}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Change\+Room\+Wall\+Texture@{On\+Change\+Room\+Wall\+Texture}}
+\index{On\+Change\+Room\+Wall\+Texture@{On\+Change\+Room\+Wall\+Texture}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{On\+Change\+Room\+Wall\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Change\+Room\+Wall\+Texture (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{texture\+File\+Path}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_ad249a6ddc83b3eb0d119af8b0a694cac}
+Changes the wall texture \hypertarget{class_home_designer_open_g_l_widget_a4162c2eef3980d6a2f594c0c40bd169a}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Load\+Model@{On\+Load\+Model}}
+\index{On\+Load\+Model@{On\+Load\+Model}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{On\+Load\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Load\+Model (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{model\+Attributes, }
+\item[{G\+Lfloat}]{initial\+Scale}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_a4162c2eef3980d6a2f594c0c40bd169a}
+Loads a model from the file, setting its initial scale value \hypertarget{class_home_designer_open_g_l_widget_a17c63eebae07d7085b22aaf35746d59a}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Move\+Selected\+Changed@{On\+Move\+Selected\+Changed}}
+\index{On\+Move\+Selected\+Changed@{On\+Move\+Selected\+Changed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{On\+Move\+Selected\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Move\+Selected\+Changed (
+\begin{DoxyParamCaption}
+\item[{bool}]{selected}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_a17c63eebae07d7085b22aaf35746d59a}
+Called when the desired operation changes in the main window \hypertarget{class_home_designer_open_g_l_widget_af6eec49ac86769b4fd23636743ac9150}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Move\+Speed\+Changed@{On\+Move\+Speed\+Changed}}
+\index{On\+Move\+Speed\+Changed@{On\+Move\+Speed\+Changed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{On\+Move\+Speed\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Move\+Speed\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{speed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_af6eec49ac86769b4fd23636743ac9150}
+Called when the operation\textquotesingle{}s speed changes in the main window \hypertarget{class_home_designer_open_g_l_widget_ac9f66e0dc6799b7e48d6866d4322fa89}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!On\+Operation\+Successful@{On\+Operation\+Successful}}
+\index{On\+Operation\+Successful@{On\+Operation\+Successful}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{On\+Operation\+Successful}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+On\+Operation\+Successful (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_home_designer_open_g_l_widget_ac9f66e0dc6799b7e48d6866d4322fa89}
+Restores the previous message in the status bar when the operation is successful \hypertarget{class_home_designer_open_g_l_widget_a4222406ea010bada5b614f4aa9a408e3}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!paint\+G\+L@{paint\+G\+L}}
+\index{paint\+G\+L@{paint\+G\+L}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{paint\+G\+L() override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::paint\+G\+L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_a4222406ea010bada5b614f4aa9a408e3}
+Main loop of the application \hypertarget{class_home_designer_open_g_l_widget_a36605922069ae365da069207b97a058c}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Set\+Move\+Speed@{Set\+Move\+Speed}}
+\index{Set\+Move\+Speed@{Set\+Move\+Speed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{Set\+Move\+Speed(int speed)}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+Set\+Move\+Speed (
+\begin{DoxyParamCaption}
+\item[{int}]{speed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_home_designer_open_g_l_widget_a36605922069ae365da069207b97a058c}
+
+
+Set\+Move\+Speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_home_designer_open_g_l_widget_a8987eaba2c2dd6b0d5f1348c7a80db1c}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Set\+Rotate\+Speed@{Set\+Rotate\+Speed}}
+\index{Set\+Rotate\+Speed@{Set\+Rotate\+Speed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{Set\+Rotate\+Speed(int speed)}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+Set\+Rotate\+Speed (
+\begin{DoxyParamCaption}
+\item[{int}]{speed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_home_designer_open_g_l_widget_a8987eaba2c2dd6b0d5f1348c7a80db1c}
+
+
+Set\+Rotate\+Speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_home_designer_open_g_l_widget_a3bbe46ba314a8ef0a7a380fa7e8bbbdc}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!Set\+Scale\+Speed@{Set\+Scale\+Speed}}
+\index{Set\+Scale\+Speed@{Set\+Scale\+Speed}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{Set\+Scale\+Speed(int speed)}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::\+Set\+Scale\+Speed (
+\begin{DoxyParamCaption}
+\item[{int}]{speed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_home_designer_open_g_l_widget_a3bbe46ba314a8ef0a7a380fa7e8bbbdc}
+
+
+Set\+Scale\+Speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_home_designer_open_g_l_widget_ac9a825748af7eaeb41bfe51fd5f99c1a}{}\index{Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}!wheel\+Event@{wheel\+Event}}
+\index{wheel\+Event@{wheel\+Event}!Home\+Designer\+Open\+G\+L\+Widget@{Home\+Designer\+Open\+G\+L\+Widget}}
+\subsubsection[{wheel\+Event(\+Q\+Wheel\+Event $\ast$) override}]{\setlength{\rightskip}{0pt plus 5cm}void Home\+Designer\+Open\+G\+L\+Widget\+::wheel\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Wheel\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}\label{class_home_designer_open_g_l_widget_ac9a825748af7eaeb41bfe51fd5f99c1a}
+Zoom in/out with mouse wheel 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Home\+Designer\+Open\+G\+L\+Widget.\+h\item 
+Home\+Designer\+Open\+G\+L\+Widget.\+cpp\end{DoxyCompactItemize}

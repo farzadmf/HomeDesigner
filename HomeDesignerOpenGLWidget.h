@@ -9,7 +9,9 @@
 #include "Camera.h"
 #include "ModelContainer.h"
 #include "Room.h"
-
+///
+/// \brief The Axis enum
+///
 enum Axis
 {
     X,
@@ -17,14 +19,18 @@ enum Axis
     Z,
     NONE
 };
-
+///
+/// \brief The Modifiers enum
+///
 enum Modifiers
 {
     SHIFT,
     CONTROL,
     ALT
 };
-
+///
+/// \brief The HomeDesignerOpenGLWidget class Which creates the view and projection matrices,processes keyboard and mouse input allowing movement and zooming,Iterate through all models in the scene, draw them as necessary (including the bounding boxes and outline),collision detection 
+///
 class HomeDesignerOpenGLWidget : public QOpenGLWidget
 {
     Q_OBJECT
@@ -61,15 +67,43 @@ class HomeDesignerOpenGLWidget : public QOpenGLWidget
     void EmitClearMessage();
 
 public:
+	
     explicit HomeDesignerOpenGLWidget(QWidget *parent = nullptr);
     ~HomeDesignerOpenGLWidget();
+    ///
+    /// \brief GetAxis
+    /// \return
+    ///
     Axis GetAxis() const { return axis; }
-
+    ///
+    /// \brief GetMoveSpeed
+    /// \return
+    ///
     int GetMoveSpeed() const { return moveSpeed; }
+    ///
+    /// \brief SetMoveSpeed
+    /// \param speed
+    ///
     void SetMoveSpeed(int speed) { moveSpeed = speed; }
+    ///
+    /// \brief GetRotateSpeed
+    /// \return
+    ///
     int GetRotateSpeed() const { return rotateSpeed; }
+    ///
+    /// \brief SetRotateSpeed
+    /// \param speed
+    ///
     void SetRotateSpeed(int speed) { rotateSpeed = speed; }
+    ///
+    /// \brief GetScaleSpeed
+    /// \return
+    ///
     int GetScaleSpeed() const { return scaleSpeed; }
+    ///
+    /// \brief SetScaleSpeed
+    /// \param speed
+    ///
     void SetScaleSpeed(int speed) { scaleSpeed = speed; }
 
 protected:
