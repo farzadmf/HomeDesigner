@@ -20,6 +20,8 @@ static bool showLocalAxis = false;                  // Display model's local axi
 static bool showWorldAxis = false;                  // Display world axis?
 
 static GLuint axisVao, axisVbo, axisEbo;            // Array and buffer objects used to draw the axes
+static GLuint xLineVao, yLineVao, zLineVao;         // Vertex array objects used to draw axis lines
+static GLuint xLineVbo, yLineVbo, zLineVbo;         // Vertex buffer objects used to draw axis lines
 static Shader axisShader;                           // Shader used to draw the axes
 
 static glm::vec3 initialCameraPosition(0.0f, 41.0f, 65.0f);
@@ -73,10 +75,45 @@ void HomeDesignerOpenGLWidget::paintGL()
         GLfloat currentLineWidth;
         glGetFloatv(GL_LINE_WIDTH, &currentLineWidth);
         glLineWidth(worldAxisLineWidth);
+
         glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE, value_ptr(worldAxisLocation));
         glBindVertexArray(axisVao);
         glDrawArrays(GL_LINES, 0, 6);
         glBindVertexArray(0);
+
+        glLineWidth(currentLineWidth);
+    }
+
+    // Draw a line corresponding to the axis
+    if (selectedContainerIndex != -1 && axis != NONE)
+    {
+        GLfloat currentLineWidth;
+        glGetFloatv(GL_LINE_WIDTH, &currentLineWidth);
+        glLineWidth(3);
+
+        auto selectedContainer = modelContainers[selectedContainerIndex].get();
+        glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE,
+                           value_ptr(selectedContainer->GetTransformMatrix()));
+
+        switch (axis)
+        {
+            case X:
+                glBindVertexArray(xLineVao);
+                glDrawArrays(GL_LINES, 0, 2);
+                glBindVertexArray(0);
+                break;
+            case Y:
+                glBindVertexArray(yLineVao);
+                glDrawArrays(GL_LINES, 0, 2);
+                glBindVertexArray(0);
+                break;
+            default:
+                glBindVertexArray(zLineVao);
+                glDrawArrays(GL_LINES, 0, 2);
+                glBindVertexArray(0);
+                break;
+        }
+
         glLineWidth(currentLineWidth);
     }
 
@@ -114,9 +151,6 @@ void HomeDesignerOpenGLWidget::paintGL()
 
     // If no collision is detected, we want to "enable" the button, so we should pass "true"
     emit CollisionDetected(!collisionDetected);
-
-//    if (collisionDetected)
-//        EmitDisplayMessage("<b><font color='red'>COLLISION DETECTED!!! Please resolve!!!</font></b>", 0);
 }
 
 /**
@@ -152,7 +186,7 @@ void HomeDesignerOpenGLWidget::initializeGL()
     axisShader.Create();
     GLfloat axes[] =
     {
-        // x axis (cyan)
+        // x axis (maroon)
         0.0f, 0.0005f, 0.0f, 0.5f, 0.0f, 0.0f,
         8.0f, 0.0005f, 0.0f, 0.5f, 0.0f, 0.0f,
 
@@ -172,6 +206,57 @@ void HomeDesignerOpenGLWidget::initializeGL()
     glBindVertexArray(axisVao);
     glBindBuffer(GL_ARRAY_BUFFER, axisVbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof axes, axes, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof GLfloat, reinterpret_cast<GLvoid*>(0));
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof GLfloat, reinterpret_cast<GLvoid*>(3 * sizeof GLfloat));
+    glBindVertexArray(0);
+
+    // Create data for the axis lines
+    GLfloat xLine[] =
+    {
+        -1000.0f, 0.1f, 0.0f, 0.5f, 0.0f, 0.0f,
+        +1000.0f, 0.1f, 0.0f, 0.5f, 0.0f, 0.0f,
+    };
+    GLfloat yLine[] =
+    {
+        0.0f, -1000.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, +1000.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+    };
+    GLfloat zLine[] =
+    {
+        0.0f, 0.1f, -1000.0f, 0.0f, 0.0f, 1.0f,
+        0.0f, 0.1f, +1000.0f, 0.0f, 0.0f, 1.0f,
+    };
+
+    // Buffer axis line data to the GPU
+    glGenVertexArrays(1, &xLineVao);
+    glGenBuffers(1, &xLineVbo);
+    glBindVertexArray(xLineVao);
+    glBindBuffer(GL_ARRAY_BUFFER, xLineVbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof xLine, xLine, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof GLfloat, reinterpret_cast<GLvoid*>(0));
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof GLfloat, reinterpret_cast<GLvoid*>(3 * sizeof GLfloat));
+    glBindVertexArray(0);
+
+    glGenVertexArrays(1, &yLineVao);
+    glGenBuffers(1, &yLineVbo);
+    glBindVertexArray(yLineVao);
+    glBindBuffer(GL_ARRAY_BUFFER, yLineVbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof yLine, yLine, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof GLfloat, reinterpret_cast<GLvoid*>(0));
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof GLfloat, reinterpret_cast<GLvoid*>(3 * sizeof GLfloat));
+    glBindVertexArray(0);
+
+    glGenVertexArrays(1, &zLineVao);
+    glGenBuffers(1, &zLineVbo);
+    glBindVertexArray(zLineVao);
+    glBindBuffer(GL_ARRAY_BUFFER, zLineVbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof zLine, zLine, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof GLfloat, reinterpret_cast<GLvoid*>(0));
     glEnableVertexAttribArray(1);
@@ -351,6 +436,7 @@ void HomeDesignerOpenGLWidget::keyReleaseEvent(QKeyEvent* event)
     modifiers[SHIFT] = event->modifiers() & Qt::ShiftModifier;
     modifiers[CONTROL] = event->modifiers() & Qt::ControlModifier;
     modifiers[ALT] = event->modifiers() & Qt::AltModifier;
+    update();
 }
 
 /**
