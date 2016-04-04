@@ -13,7 +13,12 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_ModelComboBox.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_ModelContainer.cpp" />
+    <ClCompile Include="GeneratedFiles\qrc_HomeDesigner.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="HelpWindow.cpp" />
+    <ClCompile Include="HelpWindowGridLayout.cpp" />
     <ClCompile Include="HomeDesignerOpenGLWidget.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
@@ -29,6 +34,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Floor.h" />
     <ClInclude Include="HelpWindow.h" />
+    <ClInclude Include="HelpWindowGridLayout.h" />
     <ClInclude Include="Wall.h" />
     <CustomBuild Include="ModelComboBox.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing ModelComboBox.h...</Message>
@@ -63,6 +69,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.md" />
+    <CustomBuild Include="resources\HomeDesigner.qrc">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Rcc%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
+    </CustomBuild>
+    <None Include="resources\HelpWindow.qss" />
+    <None Include="resources\temp.qss" />
     <None Include="shaders\axis.fs" />
     <None Include="shaders\axis.vs" />
     <None Include="shaders\floor.fs" />
@@ -127,6 +141,9 @@
     <ModelFiles Include="$(ProjectDir)models\**\*.*" />
     <ShaderFiles Include="$(ProjectDir)shaders\*.*" />
     <Libs Include="$(ProjectDir)bin\*.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\Oswald-Bold.ttf" />
   </ItemGroup>
   <Target Name="AfterBuild">
     <Copy SourceFiles="$(QTDIR)\bin\Qt5Cored.dll" DestinationFolder="$(SolutionDir)$(Configuration)" ContinueOnError="true" SkipUnchangedFiles="false" />

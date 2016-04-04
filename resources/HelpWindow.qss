@@ -1,0 +1,24 @@
+
+QLabel#mainHeading {
+    qproperty-alignment: 'AlignTop | AlignCenter';
+    font-family: 'Bangers';
+    font-size: 30px;
+}
+
+QLabel#title {
+    qproperty-alignment: 'AlignLeft | AlignTop | AlignJustify';
+    font-family: 'Oswald';
+    font-size: 15px;
+}
+
+QLabel#description {
+    qproperty-alignment: 'AlignLeft | AlignTop | AlignJustify';
+    font-family: 'Calibri';
+    font-size: 14px;
+}
+
+QLabel#shortcut {
+    qproperty-alignment: 'AlignLeft | AlignTop | AlignJustify';
+    font-family: 'Oxygen Mono';
+    font-size: 14px;
+}
