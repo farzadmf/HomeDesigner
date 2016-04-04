@@ -114,12 +114,21 @@ glm::mat4 ModelContainer::GetTransformMatrix() const
     return translate(glm::mat4(), initialTranslateVector + translateVector);
 }
 
+glm::mat4 ModelContainer::GetTransformRotateMatrix() const
+{
+    glm::mat4 modelMatrix;
+    modelMatrix = translate(modelMatrix, initialTranslateVector + translateVector);
+    modelMatrix = rotate(modelMatrix, glm::radians(initialRotationAngles.x) + glm::radians(rotationAngles.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    modelMatrix = rotate(modelMatrix, glm::radians(initialRotationAngles.y) + glm::radians(rotationAngles.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelMatrix = rotate(modelMatrix, glm::radians(initialRotationAngles.z) + glm::radians(rotationAngles.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    return modelMatrix;
+}
+
 void ModelContainer::ScaleBy(GLfloat scaleFactor)
 {
     bool operationAllowed = true;
     QString reason;     // Message indicating why the operation wasn't successful
 
-//    auto currentScaleFactor = this->scaleFactor;
     auto currentScaleVector = scaleVector;
 
     // Try to scale and see whether it gets out of the room

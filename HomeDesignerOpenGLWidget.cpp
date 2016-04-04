@@ -22,6 +22,7 @@ static bool showWorldAxis = false;                  // Display world axis?
 static GLuint axisVao, axisVbo, axisEbo;            // Array and buffer objects used to draw the axes
 static GLuint xLineVao, yLineVao, zLineVao;         // Vertex array objects used to draw axis lines
 static GLuint xLineVbo, yLineVbo, zLineVbo;         // Vertex buffer objects used to draw axis lines
+static GLboolean localTransform = false;            // Whether to use object's local axis to do transformation (Not used for now!!!)
 static Shader axisShader;                           // Shader used to draw the axes
 
 static glm::vec3 initialCameraPosition(0.0f, 41.0f, 65.0f);
@@ -306,14 +307,16 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
         lastMouseX = event->x();
         lastMouseY = event->y();
 
-
-        //If Control and right mouse button are pressed rotate the camera around the scene
-        if (rightMouseButtonDown && modifiers[CONTROL]) {
-            camera->ProcessMouseCameraViewRotation(xOffset, yOffset);
+        // If just right mouse button is pressed, look around, and rotate around the scene
+        //      if CTRL is pressed
+        if (rightMouseButtonDown)
+        {
+            if (modifiers[CONTROL])
+                camera->ProcessMouseCameraViewRotation(xOffset, yOffset);
+            else
+                camera->ProcessMouseMovement(xOffset, yOffset);
         }
-        // If just right mouse button is pressed, look around
-        else if (rightMouseButtonDown)
-            camera->ProcessMouseMovement(xOffset, yOffset);
+        // In case of middle click, we pan
         else if (middleMouseButtonDown)
         {
             // In case of middle click, pan
@@ -325,7 +328,6 @@ void HomeDesignerOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
 
         update();
     }
-
 
     if (!leftMouseButtonDown || selectedContainerIndex == -1)
         return;
@@ -399,18 +401,30 @@ void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
     switch (event->key())
     {
         case Qt::Key_X:
+            // Shift toggles local-axis transform
+            if (modifiers[SHIFT]) localTransform = true;
+            else localTransform = false;
+
             axis = X;
             if (oldAxis != axis)
                 EmitDisplayMessage("<b><font color='maroon'>Axis   -------->   x  ( MAROON )</font></b>", 0);
             break;
 
         case Qt::Key_Y:
+            // Shift toggles local-axis transform
+            if (modifiers[SHIFT]) localTransform = true;
+            else localTransform = false;
+
             axis = Y;
             if (oldAxis != axis)
                 EmitDisplayMessage("<b><font color='green'>Axis   -------->   y  ( GREEN )</font></b>", 0);
             break;
 
         case Qt::Key_Z:
+            // Shift toggles local-axis transform
+            if (modifiers[SHIFT]) localTransform = true;
+            else localTransform = false;
+
             axis = Z;
             if (oldAxis != axis)
                 EmitDisplayMessage("<b><font color='blue'>Axis   -------->   z  ( BLUE )</font></b>", 0);

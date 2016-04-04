@@ -74,6 +74,9 @@ public:
     // Get the transformation matrix
     glm::mat4 GetTransformMatrix() const;
 
+    /// Get the transform-rotate matrix
+    glm::mat4 GetTransformRotateMatrix() const;
+
     void SetProjectionMatrix(glm::mat4& projection) { this->projection = projection; }
     void SetViewMatrix(glm::mat4& view) { this->view = view; }
     void SetTranslationBound(glm::vec3 translationBound) { this->translationBound = translationBound; }
