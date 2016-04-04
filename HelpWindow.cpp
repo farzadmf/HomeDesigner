@@ -1,12 +1,7 @@
 #include "HelpWindow.h"
-#include "qlabel.h"
 #include <QFile>
 #include <QFontDatabase>
 #include <HelpWindowGridLayout.h>
-
-#include <iostream>
-using std::cout;
-using std::endl;
 
 void HelpWindow::AddToColumn(QGridLayout* gridLayout, int column)
 {
@@ -39,6 +34,7 @@ HelpWindow::HelpWindow()
     centralWidget = new QWidget(this);
     layout = new QGridLayout(centralWidget);
 
+    // Furniture information
     auto furnitureGrid = new HelpWindowGridLayout();
     furnitureGrid->AddHeading("Furniture Controls");
     furnitureGrid->AddTitle("Movement Speed");
@@ -53,6 +49,7 @@ HelpWindow::HelpWindow()
     furnitureGrid->AddDescription("Select which furniture object to load");
     AddToColumn(furnitureGrid, 0);
 
+    // Wall and floor controls information
     auto wallFloorControlsGrid = new HelpWindowGridLayout();
     wallFloorControlsGrid->AddHeading("Wall and Floor Controls");
     wallFloorControlsGrid->AddTitle("Change Wall Color");
@@ -65,6 +62,7 @@ HelpWindow::HelpWindow()
     wallFloorControlsGrid->AddDescription("Shows texture selection to change floor texture");
     AddToColumn(wallFloorControlsGrid, 0);
 
+    // Status bar information
     auto statusBarGrid = new HelpWindowGridLayout();
     statusBarGrid->AddHeading("Status Bar");
     statusBarGrid->AddTitle("Status Message Text");
@@ -80,6 +78,7 @@ HelpWindow::HelpWindow()
     statusBarGrid->AddDescription("Furnitures' axis display status");
     AddToColumn(statusBarGrid, 0);
 
+    // Camera movement information
     auto cameraMovementGrid = new HelpWindowGridLayout();
     cameraMovementGrid->AddHeading("Camera Movement");
     cameraMovementGrid->AddShortcut("W");
@@ -114,6 +113,7 @@ HelpWindow::HelpWindow()
     cameraMovementGrid->AddDescription("Reset camera to its original position");
     AddToColumn(cameraMovementGrid, 1);
 
+    // Furniture manipulation information
     auto furnitureManiuplationGrid = new HelpWindowGridLayout();
     furnitureManiuplationGrid->AddHeading("Furniture Object Manipulation");
     furnitureManiuplationGrid->AddTitle("Movement");
@@ -142,6 +142,7 @@ HelpWindow::HelpWindow()
     furnitureManiuplationGrid->AddDescription("De-select the currently selected object");
     AddToColumn(furnitureManiuplationGrid, 1);
 
+    // Utilities information
     auto utilitiesGrid = new HelpWindowGridLayout();
     utilitiesGrid->AddHeading("Utilities");
     utilitiesGrid->AddShortcut("B");
@@ -158,8 +159,9 @@ HelpWindow::HelpWindow()
     utilitiesGrid->AddDescription("Quit the application (no confirmation window!)");
     AddToColumn(utilitiesGrid, 2);
 
+    // World (room) axis information
     auto worldAxisGrid = new HelpWindowGridLayout();
-    worldAxisGrid->AddHeading("World (room) Axis Controls");
+    worldAxisGrid->AddHeading("World (room) Axis/Pivot Controls");
     worldAxisGrid->AddTitle("");
     worldAxisGrid->AddDescription("(only when the axis is being displayed)");
     worldAxisGrid->AddShortcut("SHIFT + L");
