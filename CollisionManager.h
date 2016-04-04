@@ -44,7 +44,7 @@ public:
     void RemoveContainer(ModelContainer* container);
     ///
     /// \brief IsColliding Using bounding box vertices 
-    /// \param container the container containing all the objects in the scene
+    /// \param container the container for which we want to check collision
     /// \param index the index of the object for collision detection
     /// \return
     ///
