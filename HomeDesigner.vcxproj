@@ -13,6 +13,7 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_ModelComboBox.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_ModelContainer.cpp" />
+    <ClCompile Include="HelpWindow.cpp" />
     <ClCompile Include="HomeDesignerOpenGLWidget.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
@@ -27,6 +28,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Floor.h" />
+    <ClInclude Include="HelpWindow.h" />
     <ClInclude Include="Wall.h" />
     <CustomBuild Include="ModelComboBox.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing ModelComboBox.h...</Message>

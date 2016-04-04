@@ -78,6 +78,9 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_HomeDesignerOpenGLWidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="HelpWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Floor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

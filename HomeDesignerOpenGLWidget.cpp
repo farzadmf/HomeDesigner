@@ -1,6 +1,7 @@
 #include "HomeDesignerOpenGLWidget.h"
 #include <QMouseEvent>
 #include <QCoreApplication>
+#include "HelpWindow.h"
 
 using std::unique_ptr;
 using std::shared_ptr;
@@ -439,6 +440,14 @@ void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
     // Quit application with 'Q'
     if (event->key() == Qt::Key_Q)
         emit Exit();
+
+    // Display help window with 'H'
+    if (event->key() == Qt::Key_H)
+    {
+        HelpWindow* helpWindow = new HelpWindow();
+        helpWindow->setWindowModality(Qt::ApplicationModal);
+        helpWindow->show();
+    }
 
     update();
 }
