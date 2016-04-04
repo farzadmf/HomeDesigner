@@ -160,6 +160,12 @@ public:
         UpdateCameraVectors();
     }
 
+	void turnUpsideDown() {
+		WorldUp.y=Up.y = -Up.y;
+
+		cout << ViewDirection.y;
+	}
+
 
    
    
