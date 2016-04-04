@@ -430,6 +430,9 @@ void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
             if (oldAxis != axis)
                 EmitDisplayMessage("<b><font color='blue'>Axis   -------->   z  ( BLUE )</font></b>", 0);
             break;
+		case Qt::Key_O:
+			camera->turnUpsideDown();
+			break;
 
         default:
             axis = NONE;
