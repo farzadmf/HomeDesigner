@@ -3,7 +3,9 @@
 #include "Includes.h"
 #include "Model.h"
 #include "Room.h"
-
+///
+/// \brief The ModelContainer class
+///
 class ModelContainer : public QObject
 {
     Q_OBJECT
@@ -45,6 +47,15 @@ signals:
     void OperationSuccessful();
     
 public:
+    ///
+    /// \brief ModelContainer 
+	/// Insert the model into the room provide initial scale factor and target width. 
+	/// Check that it fits into the room and that it is currently not colliding with anything.
+    /// \param model
+    /// \param initialScale
+    /// \param room
+    /// \param targetWidget
+    ///
     ModelContainer(Model* model, GLfloat initialScale, Room* room, QOpenGLWidget* targetWidget);
     ~ModelContainer();
 
@@ -79,16 +90,40 @@ public:
     void SetTranslationBound(glm::vec3 translationBound) { this->translationBound = translationBound; }
     void SetRotationBound(glm::vec3 rotationBound) { this->rotationBound = rotationBound; }
     void SetScaleBound(glm::vec3 scaleBound) { this->scaleBound = scaleBound; }
-
+    ///
+    /// \brief ScaleBy
+    /// \param scaleFactor
+    ///
     void ScaleBy(GLfloat scaleFactor);
+    ///
+    /// \brief RotateBy
+    /// \param angles
+    ///
     void RotateBy(glm::vec3 angles);
+    ///
+    /// \brief TranslateBy
+    /// \param translateVector
+    ///
     void TranslateBy(glm::vec3 translateVector);
     bool IsSelected() const { return selected; }
     bool SetSelected(bool selected);
     bool IsColliding() const { return colliding; }
-
+    ///
+    /// \brief DrawModel
+    /// \param shader
+    /// \param outlineShader
+    /// \param index
+    ///
     void DrawModel(Shader& shader, Shader& outlineShader, int index);
+    ///
+    /// \brief DrawModelBoundingBox
+    /// \param shader
+    ///
     void DrawModelBoundingBox(Shader& shader);
+    ///
+    /// \brief DrawAABoudningBox
+    /// \param shader
+    ///
     void DrawAABoudningBox(Shader& shader);
 
     void Reset();
