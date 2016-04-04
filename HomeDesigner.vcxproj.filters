@@ -81,6 +81,12 @@
     <ClCompile Include="HelpWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_HomeDesigner.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpWindowGridLayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -116,6 +122,9 @@
     <ClInclude Include="HelpWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HelpWindowGridLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="ModelContainer.h">
@@ -129,6 +138,9 @@
     </CustomBuild>
     <CustomBuild Include="ModelComboBox.h">
       <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="resources\HomeDesigner.qrc">
+      <Filter>Resource Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -163,5 +175,14 @@
       <Filter>shaders</Filter>
     </None>
     <None Include="ReadMe.md" />
+    <None Include="resources\HelpWindow.qss">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\temp.qss">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\Oswald-Bold.ttf" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/styles">
+        <file>HelpWindow.qss</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>Oswald-Bold.ttf</file>
+        <file>Bangers.ttf</file>
+        <file>OxygenMono-Regular.ttf</file>
+    </qresource>
+</RCC>
