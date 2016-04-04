@@ -8,15 +8,23 @@
 using std::cout;
 using std::endl;
 
-void HelpWindow::AddToColumn(QGridLayout* gridLayout, int column, int& row) const
+void HelpWindow::AddToColumn(QGridLayout* gridLayout, int column)
 {
-    layout->addLayout(gridLayout, row++, column);
-    layout->addItem(new QSpacerItem(0, verticalSpacing), row++, 0);
+    if (columnLayouts.size() < column + 1)
+    {
+        auto vLayout = new QVBoxLayout();
+        vLayout->setAlignment(Qt::AlignTop);
+        columnLayouts.push_back(vLayout);
+        layout->addLayout(columnLayouts[column], 0, column);
+    }
+
+    columnLayouts[column]->addLayout(gridLayout);
+    columnLayouts[column]->addSpacerItem(new QSpacerItem(0, verticalSpacing));
 }
 
 HelpWindow::HelpWindow()
 {
-    setFixedSize(1200, 800);
+    setFixedSize(1300, 900);
     QFile stylesheetFile(":/styles/HelpWindow.qss");
 
     if (stylesheetFile.open(QIODevice::ReadOnly))
@@ -31,8 +39,6 @@ HelpWindow::HelpWindow()
     centralWidget = new QWidget(this);
     layout = new QGridLayout(centralWidget);
 
-    auto row = 0;
-
     auto furnitureGrid = new HelpWindowGridLayout();
     furnitureGrid->AddHeading("Furniture Controls");
     furnitureGrid->AddTitle("Movement Speed");
@@ -45,9 +51,7 @@ HelpWindow::HelpWindow()
     furnitureGrid->AddDescription("Select whether to move, rotate, or scale furniture");
     furnitureGrid->AddTitle("Furniture Model Selection Dropdown");
     furnitureGrid->AddDescription("Select which furniture object to load");
-    AddToColumn(furnitureGrid, 0, row);
-//    layout->addLayout(furnitureGrid, row++, 0);
-//    layout->addItem(new QSpacerItem(0, verticalSpacing), row++, 0);
+    AddToColumn(furnitureGrid, 0);
 
     auto wallFloorControlsGrid = new HelpWindowGridLayout();
     wallFloorControlsGrid->AddHeading("Wall and Floor Controls");
@@ -59,14 +63,13 @@ HelpWindow::HelpWindow()
     wallFloorControlsGrid->AddDescription("Shows a color picker dialog to change floor color");
     wallFloorControlsGrid->AddTitle("Change Floor Texture");
     wallFloorControlsGrid->AddDescription("Shows texture selection to change floor texture");
-    AddToColumn(wallFloorControlsGrid, 0, row);
-//    layout->addLayout(wallFloorControlsGrid, row++, 0);
-//    layout->addItem(new QSpacerItem(0, verticalSpacing), row++, 0);
+    AddToColumn(wallFloorControlsGrid, 0);
 
     auto statusBarGrid = new HelpWindowGridLayout();
     statusBarGrid->AddHeading("Status Bar");
     statusBarGrid->AddTitle("Status Message Text");
-    statusBarGrid->AddDescription("Shows program status information such as furniture\nloading status or error messages");
+    statusBarGrid->AddDescription(QString("Shows program status information such as furniture")
+                                  .append("loading status or error messages"));
     statusBarGrid->AddTitle("OBB Status");
     statusBarGrid->AddDescription("Furnitures' oriented bounding box display status");
     statusBarGrid->AddTitle("AABB Status");
@@ -75,9 +78,7 @@ HelpWindow::HelpWindow()
     statusBarGrid->AddDescription("Room's center axis display status");
     statusBarGrid->AddTitle("L-Axis (Local Axis)");
     statusBarGrid->AddDescription("Furnitures' axis display status");
-    AddToColumn(statusBarGrid, 0, row);
-//    layout->addLayout(statusBarGrid, row++, 0);
-//    layout->addItem(new QSpacerItem(0, verticalSpacing), row++, 0);
+    AddToColumn(statusBarGrid, 0);
 
     auto cameraMovementGrid = new HelpWindowGridLayout();
     cameraMovementGrid->AddHeading("Camera Movement");
@@ -102,86 +103,80 @@ HelpWindow::HelpWindow()
     cameraMovementGrid->AddShortcut("Arrow Right");
     cameraMovementGrid->AddDescription("Look right");
     cameraMovementGrid->AddShortcut("Right Click Drag");
-    cameraMovementGrid->AddDescription("Change camera angle (only when there is at least\none object in the scene)");
+    cameraMovementGrid->AddDescription(QString("Change camera angle (only when there is at least")
+                                       .append("one object in the scene)"));
     cameraMovementGrid->AddShortcut("CTRL + Right Click Drag");
-    cameraMovementGrid->AddDescription("Rotate around the scene (only when there is at least\none object in the scene)");
+    cameraMovementGrid->AddDescription(QString("Rotate around the scene (only when there")
+                                       .append(" is at least one object in the scene)"));
     cameraMovementGrid->AddShortcut("Mouse Wheel");
     cameraMovementGrid->AddDescription("Change camera FOV (field of view)");
     cameraMovementGrid->AddShortcut("R");
     cameraMovementGrid->AddDescription("Reset camera to its original position");
-    row = 0;
-    AddToColumn(cameraMovementGrid, 1, row);
+    AddToColumn(cameraMovementGrid, 1);
 
-    QLabel* column0 = new QLabel("\
-Menus:\n\
-Menu items are described top down left to right.\n\
-\n\
-Scene Area :\n\
-    Displays a room and furniture objects.\n\
-\n\
-        Camera movement :\n\
-    W : Move Camera Forward\n\
-        S : Move Camera  Backward\n\
-        A : Move Camera  Left\n\
-        D : Move Camera  Right\n\
-        Shift + W : Move Camera  UP\n\
-        Shift + S : Move Camera  Down\n\
-        Arrow  Up : Rotate Camera Up\n\
-        Arrow  Down : Rotate Camera Down\n\
-        Arrow  Left : Rotate Camera Left\n\
-        Arrow  Right : Rotate Camera Right\n\
-        Right Click Drag : Change Camera angle(Only when there is at least one object in scene).\n\
-        CTRL + Right Click Drag : Rotate around the scene(Only when there is at least one object in scene).\n\
-        Mouse Scroll : Change Camera Field Of View\n\
-        R : Reset Camera to original position\n");
-//    layout->addWidget(column0, 0, 0, 1, 1);
-    QLabel* column1 = new QLabel("\
-Furniture Object Manipulation :\n\
-        Furniture objects are selected and loaded from Furniture Control Menus as seen above.\n\
-        Furniture Objects are manipulated using keyboard and mouse.\n\
-\n\
-            Movement :\n\
-            X + Left Click :\n\
-        Move mouse Down : Move object Left\n\
-            Move mouse Up : Move object Right\n\
-            Z + Left Click :\n\
-        Move mouse Down : Move object Backward\n\
-            Move mouse Up : Move object Forward\n\
-            Y + Left Click :\n\
-        Move mouse Down : Move object Down\n\
-            Move mouse Up : Move object UP\n\
-            Shift + N : Switch wall mounted Furniture Object to other walls\n\
-            Rotation :\n\
-        X + Left Click : Rotate around the X - Axis\n\
-            Z + Left Click : Rotate around the Z - Axis\n\
-            Y + Left Click : Rotate around the Y - Axis\n\
-            Scale :\n\
-        Left Click :\n\
-        Move mouse Up : Scale Up\n\
-            Move mouse Down : Scale Down\n\
-            Delete :\n\
-        Delete button : Deletes Currently Selected Furniture Object\n\
-            Selection :\n\
-        Space Bar : Cycles through Furniture Objects In Scene.Highlighted object is the currently active object.\n\
-            Esc : Deselect Object\n\
-\n\
-            Utilities :\n\
-        B : Display Furniture Object's Bounding Box\n\
-            Shift + B : Display Furniture Object's Axis - Aligned Bounding Box\n\
-            L : Display Furniture Object's x,y,z axis\n\
-            X : Displays X - axis For Current Furniture Object Or For Whole Scene\n\
-            Y : Displays Y - axis For Current Furniture  Object Or For Whole Scene\n\
-            Z : Displays Z - axis For Current Furniture  Object Or For Whole Scene\n\
-            Q : Quit Application\n\
-            World Axis controls :\n\
-            Shift + L : Show World Axis\n\
-            { : Move Axis Up(Only when World Axis is Shown)\n\
-                / : Move Axis Down(Only when World Axis is \n\
-                ; : Decrease Size(Only when World Axis is Shown)\n\
-                Shift + / : Reset World Axis Position(Only when World Axis is Shown)n");
-//    layout->addWidget(column1,0,1,1,1);
+    auto furnitureManiuplationGrid = new HelpWindowGridLayout();
+    furnitureManiuplationGrid->AddHeading("Furniture Object Manipulation");
+    furnitureManiuplationGrid->AddTitle("Movement");
+    furnitureManiuplationGrid->AddDescription("");
+    furnitureManiuplationGrid->AddShortcut("X + Left Click Drag\nY + Left Click Drag\nZ + Left Click Drag");
+    furnitureManiuplationGrid->AddDescription(QString("<b>Move mouse up/down:</b> Move object ")
+                                              .append("in the positive/negative direction of the axis ")
+                                              .append("corresponding to X, Y, and Z"));
+    furnitureManiuplationGrid->AddTitle("Rotation");
+    furnitureManiuplationGrid->AddDescription("");
+    furnitureManiuplationGrid->AddShortcut("X + Left Click Drag\nY + Left Click Drag\nZ + Left Click Drag");
+    furnitureManiuplationGrid->AddDescription(QString("<b>Move mouse up/down:</b> rotate object ")
+                                              .append("in the positive/negative angle direction of the axis ")
+                                              .append("corresponding to X, Y, and Z"));
+    furnitureManiuplationGrid->AddTitle("Scale");
+    furnitureManiuplationGrid->AddDescription("");
+    furnitureManiuplationGrid->AddShortcut("Left Click Drag");
+    furnitureManiuplationGrid->AddDescription("<b>Move mouse up/down</b>: uniformly scale the object up/down");
+    furnitureManiuplationGrid->AddShortcut("N");
+    furnitureManiuplationGrid->AddDescription("Cycle wall-mounted furnitures between the walls");
+    furnitureManiuplationGrid->AddShortcut("DELETE");
+    furnitureManiuplationGrid->AddDescription("Remove the currently selected object from the scene");
+    furnitureManiuplationGrid->AddShortcut("SPACE");
+    furnitureManiuplationGrid->AddDescription("Cycle through exising objects");
+    furnitureManiuplationGrid->AddShortcut("ESCAPE");
+    furnitureManiuplationGrid->AddDescription("De-select the currently selected object");
+    AddToColumn(furnitureManiuplationGrid, 1);
+
+    auto utilitiesGrid = new HelpWindowGridLayout();
+    utilitiesGrid->AddHeading("Utilities");
+    utilitiesGrid->AddShortcut("B");
+    utilitiesGrid->AddDescription("Display objects' oriented bounding boxes");
+    utilitiesGrid->AddShortcut("SHIFT + B");
+    utilitiesGrid->AddDescription("Display objects' axis-aligned bounding boxes");
+    utilitiesGrid->AddShortcut("L");
+    utilitiesGrid->AddDescription("Display objects' pivots");
+    utilitiesGrid->AddShortcut("X\nY\nZ");
+    utilitiesGrid->AddDescription(QString("Display <b>X, Y</b> or <b>Z</b> axis aligned to ")
+                                  .append("the center of the room ")
+                                  .append("or aligned to currently selected object's location"));
+    utilitiesGrid->AddShortcut("Q");
+    utilitiesGrid->AddDescription("Quit the application (no confirmation window!)");
+    AddToColumn(utilitiesGrid, 2);
+
+    auto worldAxisGrid = new HelpWindowGridLayout();
+    worldAxisGrid->AddHeading("World (room) Axis Controls");
+    worldAxisGrid->AddTitle("");
+    worldAxisGrid->AddDescription("(only when the axis is being displayed)");
+    worldAxisGrid->AddShortcut("SHIFT + L");
+    worldAxisGrid->AddDescription("Display room's pivot");
+    worldAxisGrid->AddShortcut("{");
+    worldAxisGrid->AddDescription("Move axis up");
+    worldAxisGrid->AddShortcut("/");
+    worldAxisGrid->AddDescription("Move axis down");
+    worldAxisGrid->AddShortcut("'");
+    worldAxisGrid->AddDescription("Move axis to the right");
+    worldAxisGrid->AddShortcut(";");
+    worldAxisGrid->AddDescription("Move axis to the left");
+    worldAxisGrid->AddShortcut("SHIFT + /");
+    worldAxisGrid->AddDescription("Reset axis' location to its original position");
+    AddToColumn(worldAxisGrid, 2);
+
     setCentralWidget(centralWidget);
-    
 }
 
 

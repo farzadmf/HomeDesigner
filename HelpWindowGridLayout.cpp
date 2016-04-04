@@ -4,6 +4,9 @@
 HelpWindowGridLayout::HelpWindowGridLayout()
 {
     setContentsMargins(20, 0, 20, 0);
+    setColumnStretch(0, 1);
+    setColumnStretch(1, 1);
+    setColumnStretch(2, 4);
 }
 
 void HelpWindowGridLayout::AddHeading(QString headingText)
@@ -24,6 +27,7 @@ void HelpWindowGridLayout::AddTitle(QString titleText)
 void HelpWindowGridLayout::AddDescription(QString descriptionText)
 {
     auto description = new QLabel(descriptionText);
+    description->setWordWrap(true);
     description->setObjectName("description");
     addWidget(description, row++, 2);
 }
