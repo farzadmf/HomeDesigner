@@ -85,15 +85,23 @@ void HomeDesignerOpenGLWidget::paintGL()
     }
 
     // Draw a line corresponding to the axis
-    if (selectedContainerIndex != -1 && axis != NONE)
+    if (axis != NONE)
     {
+        axisShader.Use();
         GLfloat currentLineWidth;
         glGetFloatv(GL_LINE_WIDTH, &currentLineWidth);
         glLineWidth(3);
 
-        auto selectedContainer = modelContainers[selectedContainerIndex].get();
+        // If a model is selected, use its transform matrix; otherwise, use the identity matrix
+        glm::mat4 transformMatrix;
+        if (selectedContainerIndex != -1)
+        {
+            auto selectedContainer = modelContainers[selectedContainerIndex].get();
+            transformMatrix = selectedContainer->GetTransformMatrix();
+        }
+
         glUniformMatrix4fv(glGetUniformLocation(axisShader.GetProgram(), "model"), 1, GL_FALSE,
-                           value_ptr(selectedContainer->GetTransformMatrix()));
+                           value_ptr(transformMatrix));
 
         switch (axis)
         {
