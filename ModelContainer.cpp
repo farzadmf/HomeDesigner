@@ -158,7 +158,6 @@ void ModelContainer::ScaleBy(GLfloat scaleFactor)
         DetectCollision();
         operationAllowed = false;
         reason = "Model is getting detached from its bounded wall!";
-        cout << "IsAttached = " << room->IsAttached(this, boundedWall) << endl;
     }
 
     if (!operationAllowed)
