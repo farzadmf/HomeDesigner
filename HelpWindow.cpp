@@ -199,11 +199,14 @@ HelpWindow::HelpWindow()
 
     auto column = 0;
 
+    // First column
     AddFurnitureInformation(column);
     AddWallAndFloorInformation(column);
     AddStatusBarInformation(column++);
+    // Second column
     AddUtilitiesInformation(column);
     AddCameraMovementInformation(column++);
+    // Third column
     AddFurnitureManipulationInformation(column);
     AddWorldAxisInformation(column);
 
