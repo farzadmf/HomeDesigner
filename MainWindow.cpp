@@ -289,51 +289,51 @@ void MainWindow::AddModelControlsToControlsGrid()
     modelsCombo->setItemIcon(1, QIcon(":/icons/color.png"));
 
     modelsCombo->addItem("--- Please select a model ---");
-    modelsCombo->addItem(QIcon("models/anglePainting/material_3.jpg"),
+    modelsCombo->addItem(QIcon("models/anglePainting/angelPaintingIcon.png"),
                          "Angel Painting", "models/anglePainting/model.obj|wall|back");
-    modelsCombo->addItem(QIcon("models/armChair/FABRI08.JPG"),
-                         "Arm chair", "models/armChair/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/bistroBuffet/untitled.bmp"),
+	modelsCombo->addItem(QIcon("models/armChair/armChairIcon.png"),
+					     "Arm Chair", "models/armChair/model.obj|floor");
+    modelsCombo->addItem(QIcon("models/bistroBuffet/bistroIcon.png"),
                          "Bistro buffet", "models/bistroBuffet/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/books/books_5.JPG"),
+    modelsCombo->addItem(QIcon("models/books/booksIcon.png"),
                          "Books", "models/books/model.obj");
-    modelsCombo->addItem(QIcon("models/brassPlate/brass_tray.JPG"),
+    modelsCombo->addItem(QIcon("models/brassPlate/brassPlateIcon.png"),
                          "Brass plate", "models/brassPlate/model.obj");
-    modelsCombo->addItem(QIcon("models/cafeSign/material_1.jpg"),
+    modelsCombo->addItem(QIcon("models/cafeSign/cafeSignIcon.png"),
                          "Cafe Sign", "models/cafeSign/model.obj|wall|back");
-    modelsCombo->addItem(QIcon("models/churchPainting/material_9_square.jpg"),
+    modelsCombo->addItem(QIcon("models/churchPainting/churchPaintingIcon.png"),
                          "Church Painting", "models/churchPainting/model.obj|wall|back");
-    modelsCombo->addItem(QIcon("models/designerchair/akb-butternut.jpg"),
+    modelsCombo->addItem(QIcon("models/designerchair/designerchairIcon.png"),
                          "Designer Chair", "models/designerchair/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/diningtable/redelm2.jpg"),
+    modelsCombo->addItem(QIcon("models/diningtable/diningtableIcon.png"),
                          "Dining Table", "models/diningTable/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/feetRest/weave12S.jpg"),
+    modelsCombo->addItem(QIcon("models/feetRest/feetRestIcon.png"),
                          "Feet rest", "models/feetRest/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/luxurySofa/_79609_texture.jpg"),
+    modelsCombo->addItem(QIcon("models/luxurySofa/luxurySofaIcon.png"),
                          "Luxury Sofa", "models/luxurySofa/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/metalStool/Derrick_Hair.jpg"),
+    modelsCombo->addItem(QIcon("models/metalStool/metalStoolIcon.png"),
                          "Metal stool", "models/metalStool/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/modernDesk/Wood_Cherry_Original3.jpg"),
+    modelsCombo->addItem(QIcon("models/modernDesk/modernDeskIcon.png"),
                          "Modern desk", "models/modernDesk/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/pictureFrames/material_1.jpg"),
-                         "Picture frame", "models/pictureFrames/model.obj");
-    modelsCombo->addItem(QIcon("models/relaxedChair/sillon_Thiago_Tapizado.jpg"),
+    modelsCombo->addItem(QIcon("models/pictureFrame/pictureFrameIcon.png"),
+                         "Picture frame", "models/pictureFrame/model.obj");
+    modelsCombo->addItem(QIcon("models/relaxedChair/relaxedChairIcon.png"),
                          "Relaxed chair", "models/relaxedChair/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/relaxedTableChair/Layer_Chair_fabric.jpg"),
+    modelsCombo->addItem(QIcon("models/relaxedTableChair/relaxedTableChairIcon.png"),
                          "Relaxed Table Chair", "models/relaxedTableChair/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/shelvingUnit/AntiqueYellowPine-1.jpg"),
+    modelsCombo->addItem(QIcon("models/shelvingUnit/shelvingUnitIcon.png"),
                          "Shelving unit", "models/shelvingUnit/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/squareDiningTable/Layer_Wood_Square.jpg"),
+    modelsCombo->addItem(QIcon("models/squareDiningTable/squareDiningTableIcon.png"),
                          "Square Dining Table", "models/squareDiningTable/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/TvStand/metal_parts_15_square.jpg"),
-                         "T.V Stand", "models/TvStand/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/tableChair/redelm2.jpg"),
+    modelsCombo->addItem(QIcon("models/TvStand/TvStandIcon.png"),
+                         "TV Stand", "models/TvStand/model.obj|floor");
+    modelsCombo->addItem(QIcon("models/tableChair/tableChairIcon.png"),
                          "Table Chair", "models/tableChair/model.obj|floor");
-    modelsCombo->addItem(QIcon("models/threePicturedFrames/Fence_Panel_Decor.jpg"),
-                         "Three pictured frames""models/threePicturedFrames/model.obj|wall|left");
-    modelsCombo->addItem(QIcon("models/tv/wood_10.jpg"),
-                         "Tv", "models/tv/model.obj");
-    modelsCombo->addItem(QIcon("models/woodShelf/Wood_Cherry_Original.jpg"),
+    modelsCombo->addItem(QIcon("models/threePicturedFrames/threePicturedFramesIcon.png"),
+                         "Three pictured frames","models/threePicturedFrames/model.obj|wall|left");
+    modelsCombo->addItem(QIcon("models/tv/tvIcon.png"),
+                         "TV", "models/tv/model.obj");
+    modelsCombo->addItem(QIcon("models/woodShelf/woodShelfIcon.png"),
                          "Wood shelf", "models/woodShelf/model.obj|wall|right");
 
     //Nanosuit test model
