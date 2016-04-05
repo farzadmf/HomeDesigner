@@ -1,5 +1,5 @@
 
-QPushButton, QComboBox {
+QPushButton, QComboBox, QDoubleSpinBox {
     font-family: 'Abril Fatface';
     font-size: 14px;
 }
