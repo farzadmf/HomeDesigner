@@ -1,7 +1,7 @@
 # Blender MTL File: 'model.obj'
-# Material Count: 2
+# Material Count: 3
 
-newmtl Fence_Panel_Decor
+newmtl Wood_Cherry_Original
 Ns 92.156863
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
@@ -10,12 +10,23 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Fence_Panel_Decor.jpg
+map_Kd Wood_Cherry_Original.jpg
 
 newmtl material
 Ns 92.156863
 Ka 1.000000 1.000000 1.000000
 Kd 0.670588 0.690196 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd metal_parts_15.jpg
+
+newmtl material_0
+Ns 92.156863
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000

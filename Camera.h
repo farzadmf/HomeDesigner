@@ -251,10 +251,4 @@ private:
 
         ViewDirection = Position + Front;
     }
-
-GLfloat angleBetween(glm::vec3 a,glm::vec3 b,glm::vec3 origin) {
-        glm::vec3 da = normalize(a - origin);
-        glm::vec3 db = normalize(b - origin);
-        return acos(dot(da, db));
-    }
 };

@@ -1,7 +1,7 @@
 # Blender MTL File: 'model.obj'
 # Material Count: 2
 
-newmtl Fence_Panel_Decor
+newmtl Layer_Chair_fabric
 Ns 92.156863
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
@@ -10,14 +10,15 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Fence_Panel_Decor.jpg
+map_Kd Layer_Chair_fabric.jpg
 
-newmtl material
+newmtl Layer_Wood
 Ns 92.156863
 Ka 1.000000 1.000000 1.000000
-Kd 0.670588 0.690196 0.800000
+Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
+map_Kd Layer_Wood.jpg
