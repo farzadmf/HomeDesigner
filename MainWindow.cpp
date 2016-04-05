@@ -1,7 +1,19 @@
 #include "MainWindow.h"
 
+static int groupBoxHeight = 70;
+
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 {
+    QFile stylesheetFile(":/styles/MainWindow.qss");
+
+    if (stylesheetFile.open(QIODevice::ReadOnly))
+    {
+        QFontDatabase::addApplicationFont(":/fonts/AbrilFatface-Regular.ttf");
+//        QFontDatabase::addApplicationFont(":/fonts/OpenSans-Semibold.ttf");
+        QString stylesheet = stylesheetFile.readAll();
+        setStyleSheet(stylesheet);
+    }
+
     resize(800, 800);
 
     centralWidget = new QWidget(this);
@@ -269,33 +281,33 @@ void MainWindow::AddModelControlsToControlsGrid()
     modelsCombo = new ModelComboBox(centralWidget);
     loadModelButton = new QPushButton("Load Model");
     modelsCombo->addItem("--- Please select a model ---");
-	modelsCombo->addItem("Tool chest"                              , "models/toolChest/model.obj|floor");
-	modelsCombo->addItem("Three pictured frames"				   , "models/threePicturedFrames/model.obj|wall|left");
-	modelsCombo->addItem("Wood shelf"							   , "models/woodShelf/model.obj|wall|right");
-	modelsCombo->addItem("Painting Back"						   , "models/painting/model.obj|wall|back");
-	modelsCombo->addItem("Bistro buffet"						   , "models/bistroBuffet/model.obj|floor");
-	modelsCombo->addItem("Shelving unit"						   , "models/shelvingUnit/model.obj|floor");
-	modelsCombo->addItem("Picture frame"						   , "models/pictureFrames/model.obj");
-	modelsCombo->addItem("Rolled towels"                           , "models/rolledTowels/model.obj");
-	modelsCombo->addItem("Brass plate"							   , "models/brassPlate/model.obj");
-	modelsCombo->addItem("Books"								   , "models/books/model.obj");
-	modelsCombo->addItem("Arm chair"                               , "models/armChair/model.obj|floor");
-	modelsCombo->addItem("Large chair"							   , "models/largeChair/model.obj|floor");
-	modelsCombo->addItem("Sofa"									   , "models/sofa/model.obj|floor");
-	modelsCombo->addItem("Large sofa"							   , "models/largeSofa/model.obj|floor");
-	modelsCombo->addItem("Feet rest"							   , "models/feetRest/model.obj|floor");
-	modelsCombo->addItem("Metal stool"							   , "models/metalStool/model.obj|floor");
-	modelsCombo->addItem("Modern desk"							   , "models/modernDesk/model.obj|floor");
+    modelsCombo->addItem("Tool chest"                              , "models/toolChest/model.obj|floor");
+    modelsCombo->addItem("Three pictured frames"				   , "models/threePicturedFrames/model.obj|wall|left");
+    modelsCombo->addItem("Wood shelf"							   , "models/woodShelf/model.obj|wall|right");
+    modelsCombo->addItem("Painting Back"						   , "models/painting/model.obj|wall|back");
+    modelsCombo->addItem("Bistro buffet"						   , "models/bistroBuffet/model.obj|floor");
+    modelsCombo->addItem("Shelving unit"						   , "models/shelvingUnit/model.obj|floor");
+    modelsCombo->addItem("Picture frame"						   , "models/pictureFrames/model.obj");
+    modelsCombo->addItem("Rolled towels"                           , "models/rolledTowels/model.obj");
+    modelsCombo->addItem("Brass plate"							   , "models/brassPlate/model.obj");
+    modelsCombo->addItem("Books"								   , "models/books/model.obj");
+    modelsCombo->addItem("Arm chair"                               , "models/armChair/model.obj|floor");
+    modelsCombo->addItem("Large chair"							   , "models/largeChair/model.obj|floor");
+    modelsCombo->addItem("Sofa"									   , "models/sofa/model.obj|floor");
+    modelsCombo->addItem("Large sofa"							   , "models/largeSofa/model.obj|floor");
+    modelsCombo->addItem("Feet rest"							   , "models/feetRest/model.obj|floor");
+    modelsCombo->addItem("Metal stool"							   , "models/metalStool/model.obj|floor");
+    modelsCombo->addItem("Modern desk"							   , "models/modernDesk/model.obj|floor");
 
-	//Nanosuit test model
-	/*
+    //Nanosuit test model
+    /*
     modelsCombo->addItem("Nanosuit Model (Not Bound)"              , "models/nanosuit/nanosuit.obj");
     modelsCombo->addItem("Nanosuit Model (Bound to Floor)"         , "models/nanosuit/nanosuit.obj|floor");
     modelsCombo->addItem("Nanosuit Model (Bound to [Default] Wall)", "models/nanosuit/nanosuit.obj|wall");
     modelsCombo->addItem("Nanosuit Model (Bound to Left Wall)"     , "models/nanosuit/nanosuit.obj|wall|left");
     modelsCombo->addItem("Nanosuit Model (Bound to Right Wall)"    , "models/nanosuit/nanosuit.obj|wall|right");
     modelsCombo->addItem("Nanosuit Model (Bound to Back Wall)"     , "models/nanosuit/nanosuit.obj|wall|back");
-	*/
+    */
     controlsGridLayout->addWidget(modelsCombo    , 1, 0, 1, 6);
     controlsGridLayout->addWidget(loadModelButton, 1, 6, 1, 3);
 }
@@ -375,7 +387,7 @@ void MainWindow::SetupWallModifiers()
     wallTextureButton = new QPushButton("Change Wall Texture ...");
 
     QGroupBox* wallGroupBox = new QGroupBox("Wall Controls:");
-    wallGroupBox->setFixedHeight(60);
+    wallGroupBox->setFixedHeight(groupBoxHeight);
     auto wallLayout = new QHBoxLayout();
     wallLayout->addWidget(wallColorButton);
     wallLayout->addWidget(wallTextureButton);
@@ -393,7 +405,7 @@ void MainWindow::SetupFloorModifiers()
     floorTextureButton = new QPushButton("Change Floor Texture ...");
 
     QGroupBox* floorGroupBox = new QGroupBox("Floor Controls:");
-    floorGroupBox->setFixedHeight(60);
+    floorGroupBox->setFixedHeight(groupBoxHeight);
     auto wallLayout = new QHBoxLayout();
     wallLayout->addWidget(floorColorButton);
     wallLayout->addWidget(floorTextureButton);
