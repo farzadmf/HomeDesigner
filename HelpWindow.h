@@ -3,7 +3,9 @@
 #include <QMainWindow>
 #include <QLayout>
 #include <vector>
-
+///
+/// \brief The HelpWindow class Another Mainwindow that displays all the help keyboard shorcuts
+///
 class HelpWindow : public QMainWindow
 {
     QWidget* centralWidget;
@@ -15,6 +17,9 @@ class HelpWindow : public QMainWindow
 
     void AddToColumn(QGridLayout* gridLayout, int column);
 public:
+    ///
+    /// \brief HelpWindow sets the size and loads stylesheets for styling the window then adds all the widgets to the window
+    ///
     HelpWindow();
     ~HelpWindow();
 };

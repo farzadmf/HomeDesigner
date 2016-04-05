@@ -111,6 +111,9 @@ HelpWindow::HelpWindow()
     cameraMovementGrid->AddDescription("Change camera FOV (field of view)");
     cameraMovementGrid->AddShortcut("R");
     cameraMovementGrid->AddDescription("Reset camera to its original position");
+	cameraMovementGrid->AddShortcut("O");
+	cameraMovementGrid->AddDescription("Turn Camera Upside down");
+	
     AddToColumn(cameraMovementGrid, 1);
 
     // Furniture manipulation information

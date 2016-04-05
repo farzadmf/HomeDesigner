@@ -159,7 +159,9 @@ public:
 
         UpdateCameraVectors();
     }
-
+    ///
+    /// \brief turnUpsideDown gives the ability to turn the room upside down.
+    ///
 	void turnUpsideDown() {
 		WorldUp.y=Up.y = -Up.y;
 
