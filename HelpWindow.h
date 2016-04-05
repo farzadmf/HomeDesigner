@@ -4,7 +4,8 @@
 #include <QLayout>
 #include <vector>
 ///
-/// \brief The HelpWindow class Another Mainwindow that displays all the help keyboard shorcuts
+/// \brief The HelpWindow class 
+///  Another MainWindow that displays all the help keyboard shorcuts
 ///
 class HelpWindow : public QMainWindow
 {

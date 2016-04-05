@@ -23,6 +23,11 @@ inline void errorCallBack(int error, const char* description)
     cout << "========================================================" << endl;
 }
 
+///
+/// \brief generateVertexShader  create vertex shader
+/// \param source the source code for the shader
+/// \return success any integer or 0 for failure
+///
 inline GLuint generateVertexShader(const GLchar* source)
 {
     GLuint shader = glCreateShader(GL_VERTEX_SHADER);
@@ -36,6 +41,11 @@ inline GLuint generateVertexShader(const GLchar* source)
     return success ? shader : 0;
 }
 
+///
+/// \brief GenerateGeometryShader creates geometry shader
+/// \param source the source code for the shader
+/// \return success any integer or 0 for failure
+///
 inline GLuint GenerateGeometryShader(const GLchar* source)
 {
     GLuint shader = glCreateShader(GL_GEOMETRY_SHADER);
@@ -49,6 +59,11 @@ inline GLuint GenerateGeometryShader(const GLchar* source)
     return success ? shader : 0;
 }
 
+///
+/// \brief generateFragmentShader creates the fragment shader
+/// \param source   the source code for the shader
+/// \return success any integer and 0 for failure
+///
 inline GLuint generateFragmentShader(const GLchar* source)
 {
     GLuint shader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -61,7 +76,12 @@ inline GLuint generateFragmentShader(const GLchar* source)
 
     return success ? shader : 0;
 }
-
+///
+/// \brief GenerateShader reads a whole file and then generates the shader
+/// \param type shader type
+/// \param filePath  file path
+/// \return returns the shader type
+///
 inline GLuint GenerateShader(GLenum type, const GLchar* filePath)
 {
     ifstream sourceFile;
@@ -120,7 +140,13 @@ inline bool CheckProgramLink(GLuint program)
 
     return status;
 }
-
+///
+/// \brief GenerateShaderProgram Creates the shader program
+/// \param vertexShader
+/// \param fragmentShader
+/// \param geometryShader
+/// \return
+///
 inline GLuint GenerateShaderProgram(GLuint vertexShader, GLuint fragmentShader,
                                   GLuint geometryShader)
 {
@@ -141,7 +167,11 @@ inline GLuint GenerateShaderProgram(GLuint vertexShader, GLuint fragmentShader)
 {
     return GenerateShaderProgram(vertexShader, fragmentShader, 0);
 }
-
+///
+/// \brief loadTexture loads and binds the texture sets the wrap and filtering
+/// \param texture texture type
+/// \param texturePath file path of the texture
+///
 inline void loadTexture(GLuint texture, char* texturePath)
 {
     int width, height;
@@ -161,7 +191,11 @@ inline void loadTexture(GLuint texture, char* texturePath)
 
     glBindTexture(GL_TEXTURE_2D, 0);
 }
-
+///
+/// \brief loadTexture loads and binds the texture sets the wrap and filtering
+/// \param texturePath file path of the texture
+/// \return
+///
 inline GLuint loadTexture(char* texturePath)
 {
     GLuint textureId;
@@ -189,7 +223,11 @@ inline GLuint loadTexture(char* texturePath)
     glBindTexture(GL_TEXTURE_2D, 0);
     return textureId;
 }
-
+///
+/// \brief loadTextureWithAlpha load and binds the texture sets the wrap and filtering
+/// \param texturePath file path of the texture
+/// \return
+///
 inline GLuint loadTextureWithAlpha(char* texturePath)
 {
     GLuint textureId;

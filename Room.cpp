@@ -6,7 +6,7 @@
 using std::make_unique;
 
 /**
-* Create the room with specified width, and 
+* Create the room with specified width, and colors
 **/
 Room::Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor) :
     width{ roomWidth }, wallColor{ wallColor }, floorColor{ floorColor }

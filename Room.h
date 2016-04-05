@@ -8,7 +8,10 @@
 class ModelContainer;
 class Floor;
 class QOpenGLWidget;
-
+///
+/// \brief The Room class 
+/// Creates a room with 3 walls and sets the color and texture of the room
+///
 class Room
 {
     GLfloat width;
@@ -24,6 +27,13 @@ class Room
     string wallTexture, floorTexture;
 
 public:
+    ///
+    /// \brief Room Creates the room with specific widths and colors
+    /// \param targetWidget target width
+    /// \param roomWidth room width
+    /// \param wallColor wall color
+    /// \param floorColor floor color
+    ///
     Room(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor);
     ~Room();
 
@@ -44,9 +54,22 @@ public:
 
     glm::vec3 GetMinimumCoordinates() const;
     glm::vec3 GetMaximumCoordinates() const;
-
+    ///
+    /// \brief Draw Draws the room floor and walls
+    /// \param view view matrix
+    /// \param projection projection matrix
+    ///
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
+    ///
+    /// \brief BindToFloor binds the specific model container to the floor y axis and allows movement in xz plane
+    /// \param container
+    ///
     void BindToFloor(ModelContainer* container);
+    ///
+    /// \brief BindToWall binds the specific model container to the wall
+    /// \param container
+    /// \param wallLocation
+    ///
     void BindToWall(ModelContainer* container, Location wallLocation);
     bool IsAttached(ModelContainer* container, Location wallLocation);
 };

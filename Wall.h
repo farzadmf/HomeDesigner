@@ -5,20 +5,26 @@
 #include "Shader.h"
 
 class ModelContainer;
-
+///
+/// \brief The Location enum
+///
 enum Location
 {
     LEFT_WALL,
     RIGHT_WALL,
     BACK_WALL,
 };
-
+///
+/// \brief The WallRenderMode enum
+///
 enum WallRenderMode
 {
     WALL_COLOR,
     WALL_TEXTURE
 };
-
+///
+/// \brief The Wall class
+///
 class Wall
 {
     GLfloat distance;
@@ -42,6 +48,14 @@ class Wall
     void BufferData() const;
 
 public:
+    ///
+    /// \brief Wall
+    /// \param targetWidget
+    /// \param distance
+    /// \param width
+    /// \param location
+    /// \param renderMode
+    ///
     Wall(QOpenGLWidget* targetWidget, GLfloat distance, GLfloat width, Location location, WallRenderMode renderMode);
     ~Wall();
 
@@ -58,8 +72,16 @@ public:
     // Getter and setter for texture
     void SetTexture(string textureFilePath);
     GLuint GetTextureId() const { return textureId; }
-
+    ///
+    /// \brief Draw
+    /// \param view
+    /// \param projection
+    ///
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
+    ///
+    /// \brief Bind
+    /// \param container
+    ///
     void Bind(ModelContainer* container) const;
 
     // Checks whether the specified model container is attached to the wall
