@@ -17,24 +17,8 @@ void HelpWindow::AddToColumn(QGridLayout* gridLayout, int column)
     columnLayouts[column]->addSpacerItem(new QSpacerItem(0, verticalSpacing));
 }
 
-HelpWindow::HelpWindow()
+void HelpWindow::AddFurnitureInformation(int column)
 {
-    setFixedSize(1300, 900);
-    QFile stylesheetFile(":/styles/HelpWindow.qss");
-
-    if (stylesheetFile.open(QIODevice::ReadOnly))
-    {
-        QFontDatabase::addApplicationFont(":/fonts/Oswald-Bold.ttf");
-        QFontDatabase::addApplicationFont(":/fonts/Bangers.ttf");
-        QFontDatabase::addApplicationFont(":/fonts/OxygenMono-Regular.ttf");
-        QString stylesheet = stylesheetFile.readAll();
-        setStyleSheet(stylesheet);
-    }
-
-    centralWidget = new QWidget(this);
-    layout = new QGridLayout(centralWidget);
-
-    // Furniture information
     auto furnitureGrid = new HelpWindowGridLayout();
     furnitureGrid->AddHeading("Furniture Controls");
     furnitureGrid->AddTitle("Movement Speed");
@@ -47,9 +31,11 @@ HelpWindow::HelpWindow()
     furnitureGrid->AddDescription("Select whether to move, rotate, or scale furniture");
     furnitureGrid->AddTitle("Furniture Model Selection Dropdown");
     furnitureGrid->AddDescription("Select which furniture object to load");
-    AddToColumn(furnitureGrid, 0);
+    AddToColumn(furnitureGrid, column);
+}
 
-    // Wall and floor controls information
+void HelpWindow::AddWallAndFloorInformation(int column)
+{
     auto wallFloorControlsGrid = new HelpWindowGridLayout();
     wallFloorControlsGrid->AddHeading("Wall and Floor Controls");
     wallFloorControlsGrid->AddTitle("Change Wall Color");
@@ -60,9 +46,12 @@ HelpWindow::HelpWindow()
     wallFloorControlsGrid->AddDescription("Shows a color picker dialog to change floor color");
     wallFloorControlsGrid->AddTitle("Change Floor Texture");
     wallFloorControlsGrid->AddDescription("Shows texture selection to change floor texture");
-    AddToColumn(wallFloorControlsGrid, 0);
+    AddToColumn(wallFloorControlsGrid, column);
 
-    // Status bar information
+}
+
+void HelpWindow::AddStatusBarInformation(int column)
+{
     auto statusBarGrid = new HelpWindowGridLayout();
     statusBarGrid->AddHeading("Status Bar");
     statusBarGrid->AddTitle("Status Message Text");
@@ -76,9 +65,30 @@ HelpWindow::HelpWindow()
     statusBarGrid->AddDescription("Room's center axis display status");
     statusBarGrid->AddTitle("L-Axis (Local Axis)");
     statusBarGrid->AddDescription("Furnitures' axis display status");
-    AddToColumn(statusBarGrid, 0);
+    AddToColumn(statusBarGrid, column);
+}
 
-    // Camera movement information
+void HelpWindow::AddUtilitiesInformation(int column)
+{
+    auto utilitiesGrid = new HelpWindowGridLayout();
+    utilitiesGrid->AddHeading("Utilities");
+    utilitiesGrid->AddShortcut("B");
+    utilitiesGrid->AddDescription("Display objects' oriented bounding boxes");
+    utilitiesGrid->AddShortcut("SHIFT + B");
+    utilitiesGrid->AddDescription("Display objects' axis-aligned bounding boxes");
+    utilitiesGrid->AddShortcut("L");
+    utilitiesGrid->AddDescription("Display objects' pivots");
+    utilitiesGrid->AddShortcut("X\nY\nZ");
+    utilitiesGrid->AddDescription(QString("Display <b>X, Y</b> or <b>Z</b> axis aligned to ")
+                                  .append("the center of the room ")
+                                  .append("or aligned to currently selected object's location"));
+    utilitiesGrid->AddShortcut("Q");
+    utilitiesGrid->AddDescription("Quit the application (no confirmation window!)");
+    AddToColumn(utilitiesGrid, column);
+}
+
+void HelpWindow::AddCameraMovementInformation(int column)
+{
     auto cameraMovementGrid = new HelpWindowGridLayout();
     cameraMovementGrid->AddHeading("Camera Movement");
     cameraMovementGrid->AddShortcut("W");
@@ -111,12 +121,14 @@ HelpWindow::HelpWindow()
     cameraMovementGrid->AddDescription("Change camera FOV (field of view)");
     cameraMovementGrid->AddShortcut("R");
     cameraMovementGrid->AddDescription("Reset camera to its original position");
-	cameraMovementGrid->AddShortcut("O");
-	cameraMovementGrid->AddDescription("Turn Camera Upside down");
-	
-    AddToColumn(cameraMovementGrid, 1);
+    cameraMovementGrid->AddShortcut("O");
+    cameraMovementGrid->AddDescription("Turn Camera Upside down");
+    
+    AddToColumn(cameraMovementGrid, column);
+}
 
-    // Furniture manipulation information
+void HelpWindow::AddFurnitureManipulationInformation(int column)
+{
     auto furnitureManiuplationGrid = new HelpWindowGridLayout();
     furnitureManiuplationGrid->AddHeading("Furniture Object Manipulation");
     furnitureManiuplationGrid->AddTitle("Movement");
@@ -143,26 +155,12 @@ HelpWindow::HelpWindow()
     furnitureManiuplationGrid->AddDescription("Cycle through exising objects");
     furnitureManiuplationGrid->AddShortcut("ESCAPE");
     furnitureManiuplationGrid->AddDescription("De-select the currently selected object");
-    AddToColumn(furnitureManiuplationGrid, 1);
+    AddToColumn(furnitureManiuplationGrid, column);
 
-    // Utilities information
-    auto utilitiesGrid = new HelpWindowGridLayout();
-    utilitiesGrid->AddHeading("Utilities");
-    utilitiesGrid->AddShortcut("B");
-    utilitiesGrid->AddDescription("Display objects' oriented bounding boxes");
-    utilitiesGrid->AddShortcut("SHIFT + B");
-    utilitiesGrid->AddDescription("Display objects' axis-aligned bounding boxes");
-    utilitiesGrid->AddShortcut("L");
-    utilitiesGrid->AddDescription("Display objects' pivots");
-    utilitiesGrid->AddShortcut("X\nY\nZ");
-    utilitiesGrid->AddDescription(QString("Display <b>X, Y</b> or <b>Z</b> axis aligned to ")
-                                  .append("the center of the room ")
-                                  .append("or aligned to currently selected object's location"));
-    utilitiesGrid->AddShortcut("Q");
-    utilitiesGrid->AddDescription("Quit the application (no confirmation window!)");
-    AddToColumn(utilitiesGrid, 2);
+}
 
-    // World (room) axis information
+void HelpWindow::AddWorldAxisInformation(int column)
+{
     auto worldAxisGrid = new HelpWindowGridLayout();
     worldAxisGrid->AddHeading("World (room) Axis/Pivot Controls");
     worldAxisGrid->AddTitle("");
@@ -179,7 +177,35 @@ HelpWindow::HelpWindow()
     worldAxisGrid->AddDescription("Move axis to the left");
     worldAxisGrid->AddShortcut("SHIFT + /");
     worldAxisGrid->AddDescription("Reset axis' location to its original position");
-    AddToColumn(worldAxisGrid, 2);
+    AddToColumn(worldAxisGrid, column);
+}
+
+HelpWindow::HelpWindow()
+{
+    setFixedSize(1300, 900);
+    QFile stylesheetFile(":/styles/HelpWindow.qss");
+
+    if (stylesheetFile.open(QIODevice::ReadOnly))
+    {
+        QFontDatabase::addApplicationFont(":/fonts/Oswald-Bold.ttf");
+        QFontDatabase::addApplicationFont(":/fonts/Bangers.ttf");
+        QFontDatabase::addApplicationFont(":/fonts/OxygenMono-Regular.ttf");
+        QString stylesheet = stylesheetFile.readAll();
+        setStyleSheet(stylesheet);
+    }
+
+    centralWidget = new QWidget(this);
+    layout = new QGridLayout(centralWidget);
+
+    auto column = 0;
+
+    AddFurnitureInformation(column);
+    AddWallAndFloorInformation(column);
+    AddStatusBarInformation(column++);
+    AddUtilitiesInformation(column);
+    AddCameraMovementInformation(column++);
+    AddFurnitureManipulationInformation(column);
+    AddWorldAxisInformation(column);
 
     setCentralWidget(centralWidget);
 }
