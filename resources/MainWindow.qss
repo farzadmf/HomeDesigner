@@ -1,0 +1,10 @@
+
+QPushButton, QComboBox {
+    font-family: 'Abril Fatface';
+    font-size: 14px;
+}
+
+QLabel, QRadioButton, QGroupBox {
+    font-family: 'Open Sans Semibold';
+    font-size: 14px;
+}

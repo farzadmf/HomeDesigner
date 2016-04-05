@@ -76,6 +76,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
     </CustomBuild>
     <None Include="resources\HelpWindow.qss" />
+    <None Include="resources\MainWindow.qss" />
     <None Include="resources\temp.qss" />
     <None Include="shaders\axis.fs" />
     <None Include="shaders\axis.vs" />
@@ -141,9 +142,6 @@
     <ModelFiles Include="$(ProjectDir)models\**\*.*" />
     <ShaderFiles Include="$(ProjectDir)shaders\*.*" />
     <Libs Include="$(ProjectDir)bin\*.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="resources\Oswald-Bold.ttf" />
   </ItemGroup>
   <Target Name="AfterBuild">
     <Copy SourceFiles="$(QTDIR)\bin\Qt5Cored.dll" DestinationFolder="$(SolutionDir)$(Configuration)" ContinueOnError="true" SkipUnchangedFiles="false" />
