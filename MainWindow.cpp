@@ -53,7 +53,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     verticalLayout->addLayout(controlsGridLayout);
 
     setCentralWidget(centralWidget);
-
 }
 
 void MainWindow::OnDisplayError(QString message)
@@ -278,32 +277,41 @@ void MainWindow::AddScaleControlsToControlsGrid()
 
 void MainWindow::AddModelControlsToControlsGrid()
 {
-    modelsCombo = new ModelComboBox(centralWidget);
+    int iconSize = 24;
+
     loadModelButton = new QPushButton("Load Model");
+    loadModelButton->setIcon(QIcon(":/icons/load.png"));
+    loadModelButton->setIconSize(QSize(iconSize, iconSize));
+
+    modelsCombo = new ModelComboBox(centralWidget);
+    modelsCombo->setFixedHeight(30);
+    modelsCombo->setIconSize(QSize(iconSize - 4, iconSize - 4));
+    modelsCombo->setItemIcon(1, QIcon(":/icons/color.png"));
+
     modelsCombo->addItem("--- Please select a model ---");
-    modelsCombo->addItem("Angel Painting"       , "models/anglePainting/model.obj|wall|back");
-    modelsCombo->addItem("Arm chair"            , "models/armChair/model.obj|floor");
-    modelsCombo->addItem("Bistro buffet"		, "models/bistroBuffet/model.obj|floor");
-    modelsCombo->addItem("Books"                , "models/books/model.obj");
-    modelsCombo->addItem("Brass plate"			, "models/brassPlate/model.obj");
-    modelsCombo->addItem("Cafe Sign"            , "models/cafeSign/model.obj|wall|back");
-    modelsCombo->addItem("Church Painting"      , "models/churchPainting/model.obj|wall|back");
-    modelsCombo->addItem("Designer Chair"       , "models/designerchair/model.obj|floor");
-    modelsCombo->addItem("Dining Table"         , "models/diningTable/model.obj|floor");
-    modelsCombo->addItem("Feet rest"            , "models/feetRest/model.obj|floor");
-    modelsCombo->addItem("Luxury Sofa"          , "models/luxurySofa/model.obj|floor");
-    modelsCombo->addItem("Metal stool"			, "models/metalStool/model.obj|floor");
-    modelsCombo->addItem("Modern desk"          , "models/modernDesk/model.obj|floor");
-    modelsCombo->addItem("Picture frame"		, "models/pictureFrames/model.obj");
-    modelsCombo->addItem("Relaxed Table Chair"  , "models/relaxedTableChair/model.obj|floor");
-    modelsCombo->addItem("Relaxed chair"		, "models/relaxedChair/model.obj|floor");
-    modelsCombo->addItem("Shelving unit"		, "models/shelvingUnit/model.obj|floor");
-    modelsCombo->addItem("Square Dining Table"  , "models/squareDiningTable/model.obj|floor");
-    modelsCombo->addItem("T.V Stand"            , "models/TvStand/model.obj|floor");
-    modelsCombo->addItem("Table Chair"          , "models/tableChair/model.obj|floor");
-    modelsCombo->addItem("Three pictured frames", "models/threePicturedFrames/model.obj|wall|left");
-    modelsCombo->addItem("Tv"                   , "models/tv/model.obj");
-    modelsCombo->addItem("Wood shelf"			, "models/woodShelf/model.obj|wall|right");
+    modelsCombo->addItem(QIcon("models/anglePainting/material_3.jpg"), "Angel Painting", "models/anglePainting/model.obj|wall|back");
+    modelsCombo->addItem(QIcon("models/armChair/FABRI08.JPG"), "Arm chair", "models/armChair/model.obj|floor");
+    modelsCombo->addItem(QIcon("models/bistroBuffet/untitled.bmp"), "Bistro buffet", "models/bistroBuffet/model.obj|floor");
+    modelsCombo->addItem(QIcon("models/books/books_5.JPG"), "Books", "models/books/model.obj");
+    modelsCombo->addItem(QIcon("models/brassPlate/brass_tray.JPG"), "Brass plate", "models/brassPlate/model.obj");
+    modelsCombo->addItem(QIcon("models/cafeSign/material_1.jpg"), "Cafe Sign", "models/cafeSign/model.obj|wall|back");
+    modelsCombo->addItem(QIcon("models/churchPainting/material_9_square.jpg"), "Church Painting", "models/churchPainting/model.obj|wall|back");
+    modelsCombo->addItem(QIcon("models/designerchair/akb-butternut.jpg"), "Designer Chair", "models/designerchair/model.obj|floor");
+    modelsCombo->addItem("Dining Table", "models/diningTable/model.obj|floor");
+    modelsCombo->addItem("Feet rest", "models/feetRest/model.obj|floor");
+    modelsCombo->addItem("Luxury Sofa", "models/luxurySofa/model.obj|floor");
+    modelsCombo->addItem("Metal stool", "models/metalStool/model.obj|floor");
+    modelsCombo->addItem("Modern desk", "models/modernDesk/model.obj|floor");
+    modelsCombo->addItem("Picture frame", "models/pictureFrames/model.obj");
+    modelsCombo->addItem("Relaxed Table Chair", "models/relaxedTableChair/model.obj|floor");
+    modelsCombo->addItem("Relaxed chair", "models/relaxedChair/model.obj|floor");
+    modelsCombo->addItem("Shelving unit", "models/shelvingUnit/model.obj|floor");
+    modelsCombo->addItem("Square Dining Table", "models/squareDiningTable/model.obj|floor");
+    modelsCombo->addItem("T.V Stand", "models/TvStand/model.obj|floor");
+    modelsCombo->addItem("Table Chair", "models/tableChair/model.obj|floor");
+    modelsCombo->addItem("Three pictured frames""models/threePicturedFrames/model.obj|wall|left");
+    modelsCombo->addItem("Tv", "models/tv/model.obj");
+    modelsCombo->addItem("Wood shelf", "models/woodShelf/model.obj|wall|right");
 
     //Nanosuit test model
     /*
@@ -389,8 +397,15 @@ void MainWindow::SetupStatusBar()
 
 void MainWindow::SetupWallModifiers()
 {
+    int iconSize = 32;
+
     wallColorButton = new QPushButton("Change Wall Color ...");
+    wallColorButton->setIcon(QIcon(":/icons/color.png"));
+    wallColorButton->setIconSize(QSize(iconSize, iconSize));
+
     wallTextureButton = new QPushButton("Change Wall Texture ...");
+    wallTextureButton->setIcon(QIcon(":/icons/texture.png"));
+    wallTextureButton->setIconSize(QSize(iconSize, iconSize));
 
     QGroupBox* wallGroupBox = new QGroupBox("Wall Controls:");
     wallGroupBox->setFixedHeight(groupBoxHeight);
@@ -408,7 +423,12 @@ void MainWindow::SetupWallModifiers()
 void MainWindow::SetupFloorModifiers()
 {
     floorColorButton = new QPushButton("Change Floor Color ...");
+    floorColorButton->setIcon(QIcon(":/icons/color.png"));
+    floorColorButton->setIconSize(QSize(32, 32));
+
     floorTextureButton = new QPushButton("Change Floor Texture ...");
+    floorTextureButton->setIcon(QIcon(":/icons/texture.png"));
+    floorTextureButton->setIconSize(QSize(32, 32));
 
     QGroupBox* floorGroupBox = new QGroupBox("Floor Controls:");
     floorGroupBox->setFixedHeight(groupBoxHeight);

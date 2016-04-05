@@ -10,4 +10,9 @@
         <file>AbrilFatface-Regular.ttf</file>
         <file>OpenSans-Semibold.ttf</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file>color.png</file>
+        <file>texture.png</file>
+        <file>load.png</file>
+    </qresource>
 </RCC>
