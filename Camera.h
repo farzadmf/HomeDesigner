@@ -25,7 +25,7 @@ const GLfloat MINIMUM_ZOOM  = 30.0f;
 //Camera const for scene view rotation will rotate by this angle
 const GLfloat ROTATION_ANGLE = 2.0f;
 //Camera will rotate around a Scene Point, this is the default position
-const glm::vec3 DEFAULT_SCREEN_CENTER = glm::vec3(0.0f,0.0f,0.0f);
+const glm::vec3 DEFAULT_SCREEN_CENTER    = glm::vec3(0.0f,0.0f,0.0f);
 
 ///
 /// \brief The Camera class
@@ -169,8 +169,6 @@ public:
 	}
 
 
-   
-   
     /// \brief ProcessMouseCameraViewRotation  Camera rotates around the scene based off the offset it will determine which direction to rotate in
     /// \param xOffset the x offset 
     /// \param yOffset the y offset
@@ -225,6 +223,97 @@ public:
         Yaw += crossProduct.y > 0 ? angle : -angle;
         UpdateCameraVectors();
     }
+
+	///
+	/// \brief Moves camera close to selected object for fast and easy editing of current object
+	///
+	void getCloseToSelectedObject(glm::vec3 modelCenter, GLfloat maxX, GLfloat minX) {
+
+		//If object is too close to the minX wall then do special action
+		if (modelCenter.x < minX + 5.0f) {
+
+			//Camera's position close to selected object
+			Position = (glm::vec3(modelCenter.x + 20.0f, modelCenter.y + 15.0f, modelCenter.z));
+			Yaw = -180.0f;
+		}
+		//If object is too close to the maxX wall then do special action
+		else if (modelCenter.x > maxX - 5.0f) {
+
+			//Camera's position close to selected object
+			Position = (glm::vec3(modelCenter.x - 20.0f, modelCenter.y + 15.0f, modelCenter.z));
+			Yaw = 0.0f;
+		}
+		//else default action
+		else {
+			//Camera's position close to selected object
+			Position = (glm::vec3(modelCenter.x, modelCenter.y + 15.0f, modelCenter.z + 20.0f));
+			Yaw = -90.0f;
+		}
+
+		Pitch = -35.0f;
+		UpdateCameraVectors();
+		
+	}
+
+
+	///
+	/// \brief Moves camera to give a birds eye view perspective of the scene
+	///
+	void birdsEyeView(GLfloat maxX, GLfloat minX, GLfloat maxY, GLfloat minY, GLfloat maxZ, GLfloat minZ) {
+
+		    //Camera's bird's eye view position
+			Position = (glm::vec3(0.0f, maxY + 80.0f, 0.0f));
+			Yaw = 270.0f;
+			Pitch = -88.0f;
+			UpdateCameraVectors();
+	}
+
+	///
+	/// \brief Moves camera to give an eye level view of the scene
+	///
+	void horizontalFaceView(GLfloat maxX, GLfloat minX, GLfloat maxY, GLfloat minY, GLfloat maxZ, GLfloat minZ) {
+		    
+		   //Camera's Horizontal view position
+			Position = (glm::vec3(0.0f, maxY / 2.0f, maxZ + 40.0f));
+			Yaw = -90.0f;
+			Pitch = 0.0f;
+			UpdateCameraVectors();
+	}
+
+	///
+	/// \brief Cycles through the scenes corners with camera facing the scene center
+	///
+	void cycleThroughSceneCorners(GLfloat maxX, GLfloat minX, GLfloat maxY, GLfloat minY, GLfloat maxZ, GLfloat minZ) {
+		
+		//if Front left corner of the scene
+		if   (Position == glm::vec3(minX + 1, maxY + 10.0f, maxZ)) {
+			//Back left corner of the scene
+			Position = (glm::vec3(minX + 1, maxY + 10.0f, minZ + 1));
+			Yaw = 45.0f;
+		}
+		//if Back left corner of the scene
+		else if (Position == glm::vec3(minX + 1, maxY + 10.0f, minZ + 1)) {
+			//Back right corner of the scene
+			Position = (glm::vec3(maxX - 1, maxY + 10.0f, minZ + 1));
+			Yaw = 135.0f;
+		}
+		//if Back right corner of the scene
+		else if (Position == glm::vec3(maxX - 1, maxY + 10.0f, minZ + 1)) {
+			//Front right corner of the scene
+			Position = (glm::vec3(maxX - 1, maxY + 10.0f, maxZ));
+			Yaw = 225.0f;
+		}
+		//if Front right corner of the scene
+		else {
+			//Front left corner of the scene
+			Position = (glm::vec3(minX + 1, maxY + 10.0f, maxZ));
+			Yaw = -46.0f;
+		}
+
+		Pitch = -45.0f;
+		UpdateCameraVectors();
+	}
+
     ///
     /// \brief ProcessMouseScroll proceses the mouse scroll based on if the zoom is within Minimum and maximum zoom
     /// \param yOffset change the zoom based on the offset

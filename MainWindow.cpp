@@ -295,7 +295,7 @@ void MainWindow::AddModelControlsToControlsGrid()
 	modelsCombo->addItem(QIcon("models/armChair/armChairIcon.png"),
 					     "Arm Chair", "models/armChair/model.obj|floor");
     modelsCombo->addItem(QIcon("models/bistroBuffet/bistroIcon.png"),
-                         "Bistro buffet", "models/bistroBuffet/model.obj|floor");
+                         "Bistro Buffet", "models/bistroBuffet/model.obj|floor");
     modelsCombo->addItem(QIcon("models/books/booksIcon.png"),
                          "Books", "models/books/model.obj");
     modelsCombo->addItem(QIcon("models/brassPlate/brassPlateIcon.png"),
