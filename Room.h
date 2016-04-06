@@ -10,7 +10,7 @@ class Floor;
 class QOpenGLWidget;
 ///
 /// \brief The Room class 
-/// Creates a room with 3 walls and sets the color and texture of the room
+/// A room with 3 walls, allow setting the color and texture ,binding of models to floor and wall
 ///
 class Room
 {

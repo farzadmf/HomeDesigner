@@ -6,7 +6,7 @@
 
 class ModelContainer;
 ///
-/// \brief The Location enum
+/// \brief The Location enum determines which wall
 ///
 enum Location
 {
@@ -15,7 +15,7 @@ enum Location
     BACK_WALL,
 };
 ///
-/// \brief The WallRenderMode enum
+/// \brief The WallRenderMode enum either color or texture
 ///
 enum WallRenderMode
 {
@@ -23,7 +23,8 @@ enum WallRenderMode
     WALL_TEXTURE
 };
 ///
-/// \brief The Wall class
+/// \brief The Wall class 
+///  Renders and keeps track of the wall,colour,texture and size
 ///
 class Wall
 {
@@ -49,12 +50,12 @@ class Wall
 
 public:
     ///
-    /// \brief Wall
+    /// \brief Wall renders the wall based on the distance ,location , width ,wall location and based on color or texture
     /// \param targetWidget
-    /// \param distance
-    /// \param width
-    /// \param location
-    /// \param renderMode
+    /// \param distance the distance
+    /// \param width the width
+    /// \param location which wall
+    /// \param renderMode the color of the texture
     ///
     Wall(QOpenGLWidget* targetWidget, GLfloat distance, GLfloat width, Location location, WallRenderMode renderMode);
     ~Wall();
@@ -73,13 +74,13 @@ public:
     void SetTexture(string textureFilePath);
     GLuint GetTextureId() const { return textureId; }
     ///
-    /// \brief Draw
+    /// \brief Draw draws the colors textures bind the main and the other walls
     /// \param view
     /// \param projection
     ///
     void Draw(glm::mat4 const& view, glm::mat4 const& projection) const;
     ///
-    /// \brief Bind
+    /// \brief Bind binds the model to the wall
     /// \param container
     ///
     void Bind(ModelContainer* container) const;

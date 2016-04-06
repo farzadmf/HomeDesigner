@@ -4,7 +4,8 @@
 #include "Model.h"
 #include "Room.h"
 ///
-/// \brief The ModelContainer class
+/// \brief The ModelContainer class 
+/// the model's container controls the size,scaling, collision, the bounding boxes
 ///
 class ModelContainer : public QObject
 {
@@ -112,7 +113,7 @@ public:
     bool SetSelected(bool selected);
     bool IsColliding() const { return colliding; }
     ///
-    /// \brief DrawModel
+    /// \brief DrawModel draws the model and handles collision drawing
     /// \param shader
     /// \param outlineShader
     /// \param index

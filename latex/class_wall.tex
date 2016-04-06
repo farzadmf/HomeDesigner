@@ -2,7 +2,7 @@
 \label{class_wall}\index{Wall@{Wall}}
 
 
-The \hyperlink{class_wall}{Wall} class.  
+The \hyperlink{class_wall}{Wall} class Renders and keeps track of the wall,colour,texture and size.  
 
 
 
@@ -13,7 +13,7 @@ The \hyperlink{class_wall}{Wall} class.
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_wall_a63c0ce873bd396cd64328bc789d9b52d}{Wall} (Q\+Open\+G\+L\+Widget $\ast$target\+Widget, G\+Lfloat distance, G\+Lfloat width, Location location, Wall\+Render\+Mode render\+Mode)
-\begin{DoxyCompactList}\small\item\em \hyperlink{class_wall}{Wall}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_wall}{Wall} renders the wall based on the distance ,location , width ,wall location and based on color or texture. \end{DoxyCompactList}\item 
 \hypertarget{class_wall_a69e3d769d03cc7710cff5ec12016d041}{}Location {\bfseries Get\+Location} () const \label{class_wall_a69e3d769d03cc7710cff5ec12016d041}
 
 \item 
@@ -30,9 +30,9 @@ The \hyperlink{class_wall}{Wall} class.
 
 \item 
 void \hyperlink{class_wall_ac5293b39064ec52d57c90023481bc047}{Draw} (glm\+::mat4 const \&view, glm\+::mat4 const \&projection) const 
-\begin{DoxyCompactList}\small\item\em Draw. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Draw draws the colors textures bind the main and the other walls. \end{DoxyCompactList}\item 
 void \hyperlink{class_wall_a90d245563ab3c20a09bd6596f4ea2657}{Bind} (\hyperlink{class_model_container}{Model\+Container} $\ast$container) const 
-\begin{DoxyCompactList}\small\item\em Bind. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Bind binds the model to the wall. \end{DoxyCompactList}\item 
 \hypertarget{class_wall_a66a659d911e11bf8b91e5e7fe151baee}{}bool {\bfseries Is\+Attached} (\hyperlink{class_model_container}{Model\+Container} $\ast$container) const \label{class_wall_a66a659d911e11bf8b91e5e7fe151baee}
 
 \end{DoxyCompactItemize}
@@ -45,7 +45,7 @@ void \hyperlink{class_wall_a90d245563ab3c20a09bd6596f4ea2657}{Bind} (\hyperlink{
 
 
 \subsection{Detailed Description}
-The \hyperlink{class_wall}{Wall} class. 
+The \hyperlink{class_wall}{Wall} class Renders and keeps track of the wall,colour,texture and size. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_wall_a63c0ce873bd396cd64328bc789d9b52d}{}\index{Wall@{Wall}!Wall@{Wall}}
@@ -61,19 +61,19 @@ The \hyperlink{class_wall}{Wall} class.
 )}\label{class_wall_a63c0ce873bd396cd64328bc789d9b52d}
 
 
-\hyperlink{class_wall}{Wall}. 
+\hyperlink{class_wall}{Wall} renders the wall based on the distance ,location , width ,wall location and based on color or texture. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em target\+Widget} & \\
 \hline
-{\em distance} & \\
+{\em distance} & the distance \\
 \hline
-{\em width} & \\
+{\em width} & the width \\
 \hline
-{\em location} & \\
+{\em location} & which wall \\
 \hline
-{\em render\+Mode} & \\
+{\em render\+Mode} & the color of the texture \\
 \hline
 \end{DoxyParams}
 
@@ -88,7 +88,7 @@ The \hyperlink{class_wall}{Wall} class.
 ) const}\label{class_wall_a90d245563ab3c20a09bd6596f4ea2657}
 
 
-Bind. 
+Bind binds the model to the wall. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -105,7 +105,7 @@ Bind.
 ) const}\label{class_wall_ac5293b39064ec52d57c90023481bc047}
 
 
-Draw. 
+Draw draws the colors textures bind the main and the other walls. 
 
 
 \begin{DoxyParams}{Parameters}

@@ -89,111 +89,111 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Includes.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Model.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Room.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_model_container.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_model_container.html">ModelContainer</a> : <span class="keyword">public</span> QObject</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="class_model.html">Model</a>* model = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    glm::vec3 translateVector = glm::vec3(0.0f);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    glm::vec3 scaleVector = glm::vec3(0.0f);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    glm::vec3 initialScaleVector = glm::vec3(1.0f);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    glm::vec3 initialTranslateVector = glm::vec3(0.0f);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    glm::vec3 rotationAngles = glm::vec3(0.0f);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    glm::vec3 initialRotationAngles = glm::vec3(0.0f);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    GLfloat scaleFactor = 1.0f;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    GLfloat initialScale = 1.0f;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">bool</span> selected = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">bool</span> selectable = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    glm::mat4 projection = glm::mat4();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    glm::mat4 view = glm::mat4();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    vector&lt;glm::vec3&gt; aaBoundingBoxVertices;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> collisionManagerIndex = -1;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">bool</span> colliding = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    QOpenGLWidget* targetWidget;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    glm::vec3 translationBound = glm::vec3(1.0f);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    glm::vec3 rotationBound = glm::vec3(1.0f);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    glm::vec3 scaleBound = glm::vec3(1.0f);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_room.html">Room</a>* room = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Used when a model is bounded to a wall</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    Location boundedWall;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    glm::mat4 CombineTransformations() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> UpdateBoundingBox();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> DetectCollision();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;signals:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// Used to display a message when the transformation is not allowed</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> OperationNotAllowed(QString message);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> OperationSuccessful();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="class_model_container.html#a5145271e175fb5434c5209d170a2749d">ModelContainer</a>(<a class="code" href="class_model.html">Model</a>* model, GLfloat initialScale, <a class="code" href="class_room.html">Room</a>* room, QOpenGLWidget* targetWidget);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    ~<a class="code" href="class_model_container.html">ModelContainer</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    GLfloat GetScaleFactor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> scaleFactor; }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    glm::vec3 GetScaleVector()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> scaleVector; }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    glm::vec3 GetTranslationVector()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> translateVector; }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    glm::vec3 GetRotationAngles()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> rotationAngles; }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    vector&lt;glm::vec3&gt; <span class="keyword">const</span>&amp; GetBoundingBoxVertices()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> aaBoundingBoxVertices; }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    glm::vec3 GetMinimumVertices()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> aaBoundingBoxVertices[0]; }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    glm::vec3 GetMaximumVertices()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> aaBoundingBoxVertices[6]; }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    glm::vec3 getModelContainerCenter()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> modelContainerCenter;}</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    glm::mat4 GetModelMatrix()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> CombineTransformations(); }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// Setters for initial values</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> SetInitialScale(GLfloat initialScale);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> SetInitialTranslateVector(glm::vec3 initialTranslateVector);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> SetInitialRotationAngles(glm::vec3 initialRotationAngles);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// Setter and getter for the bounded wall</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    Location GetBoundedWall()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> boundedWall; }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> SetBoundedWall(Location wallLocation) { boundedWall = wallLocation; }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// Getter for the contained model</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="class_model.html">Model</a>* GetModel()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> model; }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// Get the transformation matrix</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    glm::mat4 GetTransformMatrix() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    glm::mat4 <a class="code" href="class_model_container.html#a9f7fc23d5b09502dbb442b3f65c294ce">GetTransformRotateMatrix</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> SetProjectionMatrix(glm::mat4&amp; projection) { this-&gt;projection = projection; }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> SetViewMatrix(glm::mat4&amp; view) { this-&gt;view = view; }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> SetTranslationBound(glm::vec3 translationBound) { this-&gt;translationBound = translationBound; }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> SetRotationBound(glm::vec3 rotationBound) { this-&gt;rotationBound = rotationBound; }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> SetScaleBound(glm::vec3 scaleBound) { this-&gt;scaleBound = scaleBound; }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#ac8d13143fdc69ce02d2539dd677bc3db">ScaleBy</a>(GLfloat scaleFactor);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#a40a0e922136e185a3808dac214d9cea8">RotateBy</a>(glm::vec3 angles);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#ac33db8cfd1cac6742735dcc0226feff0">TranslateBy</a>(glm::vec3 translateVector);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">bool</span> IsSelected()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> selected; }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">bool</span> SetSelected(<span class="keywordtype">bool</span> selected);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">bool</span> IsColliding()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> colliding; }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#a9d6352f35e74be676bf923d38ec0b24c">DrawModel</a>(<a class="code" href="class_shader.html">Shader</a>&amp; shader, <a class="code" href="class_shader.html">Shader</a>&amp; outlineShader, <span class="keywordtype">int</span> index);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#a4f73480431ca9bca8cbcdac87ef1d055">DrawModelBoundingBox</a>(<a class="code" href="class_shader.html">Shader</a>&amp; shader);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#a6048f0f26f86025c6854bf42d7c5cc19">DrawAABoudningBox</a>(<a class="code" href="class_shader.html">Shader</a>&amp; shader);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">void</span> Reset();</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">bool</span> IsInsideRoom() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">//Container center location in scene. Used for the camera to rotate around this object when selected.</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    glm::vec3 modelContainerCenter;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;};</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_model_container.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_model_container.html">ModelContainer</a> : <span class="keyword">public</span> QObject</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="class_model.html">Model</a>* model = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    glm::vec3 translateVector = glm::vec3(0.0f);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    glm::vec3 scaleVector = glm::vec3(0.0f);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    glm::vec3 initialScaleVector = glm::vec3(1.0f);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    glm::vec3 initialTranslateVector = glm::vec3(0.0f);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    glm::vec3 rotationAngles = glm::vec3(0.0f);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    glm::vec3 initialRotationAngles = glm::vec3(0.0f);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    GLfloat scaleFactor = 1.0f;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    GLfloat initialScale = 1.0f;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">bool</span> selected = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">bool</span> selectable = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    glm::mat4 projection = glm::mat4();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    glm::mat4 view = glm::mat4();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    vector&lt;glm::vec3&gt; aaBoundingBoxVertices;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> collisionManagerIndex = -1;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">bool</span> colliding = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    QOpenGLWidget* targetWidget;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    glm::vec3 translationBound = glm::vec3(1.0f);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    glm::vec3 rotationBound = glm::vec3(1.0f);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    glm::vec3 scaleBound = glm::vec3(1.0f);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="class_room.html">Room</a>* room = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// Used when a model is bounded to a wall</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    Location boundedWall;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    glm::mat4 CombineTransformations() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> UpdateBoundingBox();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> DetectCollision();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;signals:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// Used to display a message when the transformation is not allowed</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> OperationNotAllowed(QString message);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> OperationSuccessful();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="class_model_container.html#a5145271e175fb5434c5209d170a2749d">ModelContainer</a>(<a class="code" href="class_model.html">Model</a>* model, GLfloat initialScale, <a class="code" href="class_room.html">Room</a>* room, QOpenGLWidget* targetWidget);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    ~<a class="code" href="class_model_container.html">ModelContainer</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    GLfloat GetScaleFactor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> scaleFactor; }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    glm::vec3 GetScaleVector()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> scaleVector; }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    glm::vec3 GetTranslationVector()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> translateVector; }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    glm::vec3 GetRotationAngles()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> rotationAngles; }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    vector&lt;glm::vec3&gt; <span class="keyword">const</span>&amp; GetBoundingBoxVertices()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> aaBoundingBoxVertices; }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    glm::vec3 GetMinimumVertices()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> aaBoundingBoxVertices[0]; }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    glm::vec3 GetMaximumVertices()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> aaBoundingBoxVertices[6]; }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    glm::vec3 getModelContainerCenter()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> modelContainerCenter;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    glm::mat4 GetModelMatrix()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> CombineTransformations(); }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Setters for initial values</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> SetInitialScale(GLfloat initialScale);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> SetInitialTranslateVector(glm::vec3 initialTranslateVector);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> SetInitialRotationAngles(glm::vec3 initialRotationAngles);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// Setter and getter for the bounded wall</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    Location GetBoundedWall()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> boundedWall; }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> SetBoundedWall(Location wallLocation) { boundedWall = wallLocation; }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Getter for the contained model</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="class_model.html">Model</a>* GetModel()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> model; }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Get the transformation matrix</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    glm::mat4 GetTransformMatrix() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    glm::mat4 <a class="code" href="class_model_container.html#a9f7fc23d5b09502dbb442b3f65c294ce">GetTransformRotateMatrix</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> SetProjectionMatrix(glm::mat4&amp; projection) { this-&gt;projection = projection; }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> SetViewMatrix(glm::mat4&amp; view) { this-&gt;view = view; }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> SetTranslationBound(glm::vec3 translationBound) { this-&gt;translationBound = translationBound; }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> SetRotationBound(glm::vec3 rotationBound) { this-&gt;rotationBound = rotationBound; }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> SetScaleBound(glm::vec3 scaleBound) { this-&gt;scaleBound = scaleBound; }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#ac8d13143fdc69ce02d2539dd677bc3db">ScaleBy</a>(GLfloat scaleFactor);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#a40a0e922136e185a3808dac214d9cea8">RotateBy</a>(glm::vec3 angles);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#ac33db8cfd1cac6742735dcc0226feff0">TranslateBy</a>(glm::vec3 translateVector);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">bool</span> IsSelected()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> selected; }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">bool</span> SetSelected(<span class="keywordtype">bool</span> selected);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">bool</span> IsColliding()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> colliding; }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#a9d6352f35e74be676bf923d38ec0b24c">DrawModel</a>(<a class="code" href="class_shader.html">Shader</a>&amp; shader, <a class="code" href="class_shader.html">Shader</a>&amp; outlineShader, <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#a4f73480431ca9bca8cbcdac87ef1d055">DrawModelBoundingBox</a>(<a class="code" href="class_shader.html">Shader</a>&amp; shader);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_model_container.html#a6048f0f26f86025c6854bf42d7c5cc19">DrawAABoudningBox</a>(<a class="code" href="class_shader.html">Shader</a>&amp; shader);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">void</span> Reset();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">bool</span> IsInsideRoom() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">//Container center location in scene. Used for the camera to rotate around this object when selected.</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    glm::vec3 modelContainerCenter;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;};</div>
 <div class="ttc" id="class_model_container_html_ac8d13143fdc69ce02d2539dd677bc3db"><div class="ttname"><a href="class_model_container.html#ac8d13143fdc69ce02d2539dd677bc3db">ModelContainer::ScaleBy</a></div><div class="ttdeci">void ScaleBy(GLfloat scaleFactor)</div><div class="ttdoc">ScaleBy. </div><div class="ttdef"><b>Definition:</b> ModelContainer.cpp:135</div></div>
 <div class="ttc" id="class_model_container_html_a6048f0f26f86025c6854bf42d7c5cc19"><div class="ttname"><a href="class_model_container.html#a6048f0f26f86025c6854bf42d7c5cc19">ModelContainer::DrawAABoudningBox</a></div><div class="ttdeci">void DrawAABoudningBox(Shader &amp;shader)</div><div class="ttdoc">DrawAABoudningBox. </div><div class="ttdef"><b>Definition:</b> ModelContainer.cpp:318</div></div>
 <div class="ttc" id="class_model_html"><div class="ttname"><a href="class_model.html">Model</a></div><div class="ttdoc">The Model class Which does the drawing of the model and the outline bounding box and which contain mu...</div><div class="ttdef"><b>Definition:</b> Model.h:11</div></div>
 <div class="ttc" id="class_model_container_html_a5145271e175fb5434c5209d170a2749d"><div class="ttname"><a href="class_model_container.html#a5145271e175fb5434c5209d170a2749d">ModelContainer::ModelContainer</a></div><div class="ttdeci">ModelContainer(Model *model, GLfloat initialScale, Room *room, QOpenGLWidget *targetWidget)</div><div class="ttdoc">ModelContainer Insert the model into the room provide initial scale factor and target width...</div><div class="ttdef"><b>Definition:</b> ModelContainer.cpp:67</div></div>
-<div class="ttc" id="class_model_container_html_a9d6352f35e74be676bf923d38ec0b24c"><div class="ttname"><a href="class_model_container.html#a9d6352f35e74be676bf923d38ec0b24c">ModelContainer::DrawModel</a></div><div class="ttdeci">void DrawModel(Shader &amp;shader, Shader &amp;outlineShader, int index)</div><div class="ttdoc">DrawModel. </div><div class="ttdef"><b>Definition:</b> ModelContainer.cpp:262</div></div>
+<div class="ttc" id="class_model_container_html_a9d6352f35e74be676bf923d38ec0b24c"><div class="ttname"><a href="class_model_container.html#a9d6352f35e74be676bf923d38ec0b24c">ModelContainer::DrawModel</a></div><div class="ttdeci">void DrawModel(Shader &amp;shader, Shader &amp;outlineShader, int index)</div><div class="ttdoc">DrawModel draws the model and handles collision drawing. </div><div class="ttdef"><b>Definition:</b> ModelContainer.cpp:262</div></div>
 <div class="ttc" id="class_model_container_html_a4f73480431ca9bca8cbcdac87ef1d055"><div class="ttname"><a href="class_model_container.html#a4f73480431ca9bca8cbcdac87ef1d055">ModelContainer::DrawModelBoundingBox</a></div><div class="ttdeci">void DrawModelBoundingBox(Shader &amp;shader)</div><div class="ttdoc">DrawModelBoundingBox. </div><div class="ttdef"><b>Definition:</b> ModelContainer.cpp:304</div></div>
 <div class="ttc" id="class_model_container_html_a40a0e922136e185a3808dac214d9cea8"><div class="ttname"><a href="class_model_container.html#a40a0e922136e185a3808dac214d9cea8">ModelContainer::RotateBy</a></div><div class="ttdeci">void RotateBy(glm::vec3 angles)</div><div class="ttdoc">RotateBy. </div><div class="ttdef"><b>Definition:</b> ModelContainer.cpp:177</div></div>
 <div class="ttc" id="class_model_container_html_a9f7fc23d5b09502dbb442b3f65c294ce"><div class="ttname"><a href="class_model_container.html#a9f7fc23d5b09502dbb442b3f65c294ce">ModelContainer::GetTransformRotateMatrix</a></div><div class="ttdeci">glm::mat4 GetTransformRotateMatrix() const </div><div class="ttdoc">Get the transform-rotate matrix. </div><div class="ttdef"><b>Definition:</b> ModelContainer.cpp:125</div></div>
 <div class="ttc" id="class_shader_html"><div class="ttname"><a href="class_shader.html">Shader</a></div><div class="ttdoc">The Shader class. </div><div class="ttdef"><b>Definition:</b> Shader.h:11</div></div>
-<div class="ttc" id="class_model_container_html"><div class="ttname"><a href="class_model_container.html">ModelContainer</a></div><div class="ttdoc">The ModelContainer class. </div><div class="ttdef"><b>Definition:</b> ModelContainer.h:9</div></div>
-<div class="ttc" id="class_room_html"><div class="ttname"><a href="class_room.html">Room</a></div><div class="ttdoc">The Room class Creates a room with 3 walls and sets the color and texture of the room. </div><div class="ttdef"><b>Definition:</b> Room.h:15</div></div>
+<div class="ttc" id="class_model_container_html"><div class="ttname"><a href="class_model_container.html">ModelContainer</a></div><div class="ttdoc">The ModelContainer class the model&#39;s container controls the size,scaling, collision, the bounding boxes. </div><div class="ttdef"><b>Definition:</b> ModelContainer.h:10</div></div>
+<div class="ttc" id="class_room_html"><div class="ttname"><a href="class_room.html">Room</a></div><div class="ttdoc">The Room class A room with 3 walls, allow setting the color and texture ,binding of models to floor a...</div><div class="ttdef"><b>Definition:</b> Room.h:15</div></div>
 <div class="ttc" id="class_model_container_html_ac33db8cfd1cac6742735dcc0226feff0"><div class="ttname"><a href="class_model_container.html#ac33db8cfd1cac6742735dcc0226feff0">ModelContainer::TranslateBy</a></div><div class="ttdeci">void TranslateBy(glm::vec3 translateVector)</div><div class="ttdoc">TranslateBy. </div><div class="ttdef"><b>Definition:</b> ModelContainer.cpp:215</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
