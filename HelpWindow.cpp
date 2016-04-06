@@ -2,6 +2,9 @@
 #include <QFile>
 #include <QFontDatabase>
 #include <HelpWindowGridLayout.h>
+#include <QStyle>
+#include <QApplication>
+#include <QDesktopWidget>
 
 void HelpWindow::AddToColumn(QGridLayout* gridLayout, int column)
 {
@@ -123,6 +126,14 @@ void HelpWindow::AddCameraMovementInformation(int column)
     cameraMovementGrid->AddDescription("Reset camera to its original position");
     cameraMovementGrid->AddShortcut("O");
     cameraMovementGrid->AddDescription("Turn Camera Upside down");
+    cameraMovementGrid->AddShortcut("1");
+    cameraMovementGrid->AddDescription("Zoom on currently active object");
+    cameraMovementGrid->AddShortcut("2");
+    cameraMovementGrid->AddDescription("Face scene front at human eye level");
+    cameraMovementGrid->AddShortcut("3");
+    cameraMovementGrid->AddDescription("Bird's eye view perspective of the scene");
+    cameraMovementGrid->AddShortcut("4");
+    cameraMovementGrid->AddDescription("Cycle through corners of the scene");
     
     AddToColumn(cameraMovementGrid, column);
 }
@@ -182,7 +193,11 @@ void HelpWindow::AddWorldAxisInformation(int column)
 
 HelpWindow::HelpWindow()
 {
-    setFixedSize(1300, 900);
+    setFixedSize(1400, 900);
+    // Center on the screen
+	setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, this->size(),
+                                    QApplication::desktop()->availableGeometry()));
+
     QFile stylesheetFile(":/styles/HelpWindow.qss");
 
     if (stylesheetFile.open(QIODevice::ReadOnly))

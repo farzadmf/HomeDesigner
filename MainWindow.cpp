@@ -16,6 +16,9 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     }
 
     resize(800, 800);
+    // Center on the screen
+    setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, this->size(),
+                                    QApplication::desktop()->availableGeometry()));
 
     centralWidget = new QWidget(this);
     QVBoxLayout *verticalLayout = new QVBoxLayout(centralWidget);
