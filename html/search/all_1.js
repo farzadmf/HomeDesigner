@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['camera',['Camera',['../class_camera.html',1,'Camera'],['../class_camera.html#a535f3a2413a88c2f1e7d1147bec0039c',1,'Camera::Camera(glm::vec3 position=glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up=glm::vec3(0.0f, 1.0f, 0.0f), GLfloat yaw=YAW, GLfloat pitch=PITCH)'],['../class_camera.html#a1efd973829c22d5fe15a26ede3357ee5',1,'Camera::Camera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch)']]],
-  ['collisionmanager',['CollisionManager',['../class_collision_manager.html',1,'']]]
+  ['bind',['Bind',['../class_wall.html#a90d245563ab3c20a09bd6596f4ea2657',1,'Wall']]],
+  ['bindtofloor',['BindToFloor',['../class_room.html#afc80f1892eaa6db27ac526b4ec77d8bd',1,'Room']]],
+  ['bindtowall',['BindToWall',['../class_room.html#a7c26d8c17540d6cd47a649e55de32d2e',1,'Room']]],
+  ['birdseyeview',['birdsEyeView',['../class_camera.html#a9f7fab48637e55f780cfbc55844cb611',1,'Camera']]]
 ];

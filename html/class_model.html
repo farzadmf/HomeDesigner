@@ -85,28 +85,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_model-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Model Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_model.html" title="The Model class Which does the drawing of the model and the outline bounding box and which contain mu...">Model</a> class Which does the drawing of the model and the outline bounding box and which contain multiple textures and meshes.  
+ <a href="class_model.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_model_8h_source.html">Model.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a305581f2c1f2e77addbc7e436961c6dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a305581f2c1f2e77addbc7e436961c6dc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Model</b> (QOpenGLWidget *targetWidget, string path)</td></tr>
+<tr class="memitem:a305581f2c1f2e77addbc7e436961c6dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a305581f2c1f2e77addbc7e436961c6dc">Model</a> (QOpenGLWidget *targetWidget, string path)</td></tr>
+<tr class="memdesc:a305581f2c1f2e77addbc7e436961c6dc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_model.html" title="The Model class Which does the drawing of the model and the outline bounding box and which contain mu...">Model</a> Loads and populates the model.  <a href="#a305581f2c1f2e77addbc7e436961c6dc">More...</a><br /></td></tr>
 <tr class="separator:a305581f2c1f2e77addbc7e436961c6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c66de8af7e48fefaccbb8a056ec3c1d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c66de8af7e48fefaccbb8a056ec3c1d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Draw</b> (<a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memitem:a9c66de8af7e48fefaccbb8a056ec3c1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a9c66de8af7e48fefaccbb8a056ec3c1d">Draw</a> (<a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memdesc:a9c66de8af7e48fefaccbb8a056ec3c1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw loops over the meshes to draw them.  <a href="#a9c66de8af7e48fefaccbb8a056ec3c1d">More...</a><br /></td></tr>
 <tr class="separator:a9c66de8af7e48fefaccbb8a056ec3c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ecdedb61ab3d622243ca0fcc900675f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ecdedb61ab3d622243ca0fcc900675f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawOutline</b> (glm::mat4 &amp;model, <a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memitem:a3ecdedb61ab3d622243ca0fcc900675f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a3ecdedb61ab3d622243ca0fcc900675f">DrawOutline</a> (glm::mat4 &amp;model, <a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memdesc:a3ecdedb61ab3d622243ca0fcc900675f"><td class="mdescLeft">&#160;</td><td class="mdescRight">DrawOutline draws for each a slightly large outline of the model.  <a href="#a3ecdedb61ab3d622243ca0fcc900675f">More...</a><br /></td></tr>
 <tr class="separator:a3ecdedb61ab3d622243ca0fcc900675f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ea10d4e794c767d6fd2c3e69dde742a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ea10d4e794c767d6fd2c3e69dde742a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawBoundingBox</b> () const </td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a9ea10d4e794c767d6fd2c3e69dde742a">DrawBoundingBox</a> () const </td></tr>
+<tr class="memdesc:a9ea10d4e794c767d6fd2c3e69dde742a"><td class="mdescLeft">&#160;</td><td class="mdescRight">DrawBoundingBox draws the bounding box will provide. <br /></td></tr>
 <tr class="separator:a9ea10d4e794c767d6fd2c3e69dde742a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e44a9cc66044f1a0bec5c4590a4225c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e44a9cc66044f1a0bec5c4590a4225c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawBoundingBox</b> (const vector&lt; glm::vec3 &gt; &amp;vertices) const </td></tr>
+<tr class="memitem:a2e44a9cc66044f1a0bec5c4590a4225c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a2e44a9cc66044f1a0bec5c4590a4225c">DrawBoundingBox</a> (const vector&lt; glm::vec3 &gt; &amp;vertices) const </td></tr>
+<tr class="memdesc:a2e44a9cc66044f1a0bec5c4590a4225c"><td class="mdescLeft">&#160;</td><td class="mdescRight">DrawBoundingBox draws the bounding box by taking as input the vertices.  <a href="#a2e44a9cc66044f1a0bec5c4590a4225c">More...</a><br /></td></tr>
 <tr class="separator:a2e44a9cc66044f1a0bec5c4590a4225c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3de6dceab0188445a152fcdf2fbe0cb9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3de6dceab0188445a152fcdf2fbe0cb9"></a>
 vector&lt; <a class="el" href="struct_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetLoadedTextures</b> () const </td></tr>
@@ -120,7 +127,135 @@ vector&lt; glm::vec3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>
 <tr class="memitem:a18dffdf7f50a87e32c9d8d8eea9a277a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a18dffdf7f50a87e32c9d8d8eea9a277a"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>GetFilePath</b> () const </td></tr>
 <tr class="separator:a18dffdf7f50a87e32c9d8d8eea9a277a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a12f5c8926b1f1d1e05914778ddd8b901"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12f5c8926b1f1d1e05914778ddd8b901"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;stream, <a class="el" href="class_model.html">Model</a> const &amp;model)</td></tr>
+<tr class="separator:a12f5c8926b1f1d1e05914778ddd8b901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_model.html" title="The Model class Which does the drawing of the model and the outline bounding box and which contain mu...">Model</a> class Which does the drawing of the model and the outline bounding box and which contain multiple textures and meshes. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a305581f2c1f2e77addbc7e436961c6dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Model::Model </td>
+          <td>(</td>
+          <td class="paramtype">QOpenGLWidget *&#160;</td>
+          <td class="paramname"><em>targetWidget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_model.html" title="The Model class Which does the drawing of the model and the outline bounding box and which contain mu...">Model</a> Loads and populates the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targetWidget</td><td>the target widget </td></tr>
+    <tr><td class="paramname">path</td><td>the path to the file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a9c66de8af7e48fefaccbb8a056ec3c1d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::Draw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> &amp;&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draw loops over the meshes to draw them. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shader</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2e44a9cc66044f1a0bec5c4590a4225c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::DrawBoundingBox </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; glm::vec3 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vertices</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DrawBoundingBox draws the bounding box by taking as input the vertices. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vertices</td><td>the vertices for drawing the bounding box </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3ecdedb61ab3d622243ca0fcc900675f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::DrawOutline </td>
+          <td>(</td>
+          <td class="paramtype">glm::mat4 &amp;&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> &amp;&#160;</td>
+          <td class="paramname"><em>shader</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DrawOutline draws for each a slightly large outline of the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td></td></tr>
+    <tr><td class="paramname">shader</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_model_8h_source.html">Model.h</a></li>
 <li>Model.cpp</li>

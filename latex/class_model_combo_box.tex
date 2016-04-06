@@ -1,29 +1,85 @@
 \hypertarget{class_model_combo_box}{}\section{Model\+Combo\+Box Class Reference}
 \label{class_model_combo_box}\index{Model\+Combo\+Box@{Model\+Combo\+Box}}
+
+
+The \hyperlink{class_model_combo_box}{Model\+Combo\+Box} class Which will provide a list of models from which one can select to load.  
+
+
+
+
+{\ttfamily \#include $<$Model\+Combo\+Box.\+h$>$}
+
 Inheritance diagram for Model\+Combo\+Box\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_model_combo_box}
 \end{center}
 \end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_model_combo_box_1_1_combo_box_delegate}{Combo\+Box\+Delegate}
+\begin{DoxyCompactList}\small\item\em Solely used to draw the separator in our Combo\+Box. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Slots}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_model_combo_box_ac45a64e2c5ab7232c5dc99ef3eccd154}{}void {\bfseries On\+Button\+Clicked} ()\label{class_model_combo_box_ac45a64e2c5ab7232c5dc99ef3eccd154}
+\hypertarget{class_model_combo_box_ac45a64e2c5ab7232c5dc99ef3eccd154}{}void \hyperlink{class_model_combo_box_ac45a64e2c5ab7232c5dc99ef3eccd154}{On\+Button\+Clicked} ()\label{class_model_combo_box_ac45a64e2c5ab7232c5dc99ef3eccd154}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em On\+Button\+Clicked when button is clicked in model exists it will be loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_model_combo_box_aa521cbde3c50231f37ed0cf287bdcb1e}{}void {\bfseries Model\+Changed} (Q\+String model\+Attributes, G\+Lfloat initial\+Scale)\label{class_model_combo_box_aa521cbde3c50231f37ed0cf287bdcb1e}
-
-\end{DoxyCompactItemize}
+void \hyperlink{class_model_combo_box_aa521cbde3c50231f37ed0cf287bdcb1e}{Model\+Changed} (Q\+String model\+Attributes, G\+Lfloat initial\+Scale)
+\begin{DoxyCompactList}\small\item\em Model\+Changed will determine when a model selection has changed and when we have loaded an initial scale. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_model_combo_box_ac9c23e7ee48e1e04361c5f1bea08815c}{}{\bfseries Model\+Combo\+Box} (Q\+Widget $\ast$parent=nullptr)\label{class_model_combo_box_ac9c23e7ee48e1e04361c5f1bea08815c}
+\hyperlink{class_model_combo_box_ac9c23e7ee48e1e04361c5f1bea08815c}{Model\+Combo\+Box} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_model_combo_box}{Model\+Combo\+Box} creates the model combo box. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\end{DoxyCompactItemize}
+
+\subsection{Detailed Description}
+The \hyperlink{class_model_combo_box}{Model\+Combo\+Box} class Which will provide a list of models from which one can select to load. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_model_combo_box_ac9c23e7ee48e1e04361c5f1bea08815c}{}\index{Model\+Combo\+Box@{Model\+Combo\+Box}!Model\+Combo\+Box@{Model\+Combo\+Box}}
+\index{Model\+Combo\+Box@{Model\+Combo\+Box}!Model\+Combo\+Box@{Model\+Combo\+Box}}
+\subsubsection[{Model\+Combo\+Box(\+Q\+Widget $\ast$parent=nullptr)}]{\setlength{\rightskip}{0pt plus 5cm}Model\+Combo\+Box\+::\+Model\+Combo\+Box (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_model_combo_box_ac9c23e7ee48e1e04361c5f1bea08815c}
+
+
+\hyperlink{class_model_combo_box}{Model\+Combo\+Box} creates the model combo box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & the parent widget \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_model_combo_box_aa521cbde3c50231f37ed0cf287bdcb1e}{}\index{Model\+Combo\+Box@{Model\+Combo\+Box}!Model\+Changed@{Model\+Changed}}
+\index{Model\+Changed@{Model\+Changed}!Model\+Combo\+Box@{Model\+Combo\+Box}}
+\subsubsection[{Model\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void Model\+Combo\+Box\+::\+Model\+Changed (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{model\+Attributes, }
+\item[{G\+Lfloat}]{initial\+Scale}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_model_combo_box_aa521cbde3c50231f37ed0cf287bdcb1e}
+
+
+Model\+Changed will determine when a model selection has changed and when we have loaded an initial scale. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+Attributes} & the selected model from the combobox \\
+\hline
+{\em initial\+Scale} & usually 1 \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

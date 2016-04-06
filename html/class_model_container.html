@@ -91,6 +91,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ModelContainer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_model_container.html" title="The ModelContainer class. ">ModelContainer</a> class.  
+ <a href="class_model_container.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_model_container_8h_source.html">ModelContainer.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ModelContainer:</div>
 <div class="dyncontent">
@@ -111,8 +116,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>OperationSuccessful</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5145271e175fb5434c5209d170a2749d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5145271e175fb5434c5209d170a2749d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ModelContainer</b> (<a class="el" href="class_model.html">Model</a> *model, GLfloat initialScale, <a class="el" href="class_room.html">Room</a> *room, QOpenGLWidget *targetWidget)</td></tr>
+<tr class="memitem:a5145271e175fb5434c5209d170a2749d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_container.html#a5145271e175fb5434c5209d170a2749d">ModelContainer</a> (<a class="el" href="class_model.html">Model</a> *model, GLfloat initialScale, <a class="el" href="class_room.html">Room</a> *room, QOpenGLWidget *targetWidget)</td></tr>
+<tr class="memdesc:a5145271e175fb5434c5209d170a2749d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_model_container.html" title="The ModelContainer class. ">ModelContainer</a> Insert the model into the room provide initial scale factor and target width. Check that it fits into the room and that it is currently not colliding with anything.  <a href="#a5145271e175fb5434c5209d170a2749d">More...</a><br /></td></tr>
 <tr class="separator:a5145271e175fb5434c5209d170a2749d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad403022f0e44b40ae6576b1c9454263e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad403022f0e44b40ae6576b1c9454263e"></a>
 GLfloat&#160;</td><td class="memItemRight" valign="bottom"><b>GetScaleFactor</b> () const </td></tr>
@@ -159,6 +164,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBoundedWall</b> (L
 <tr class="memitem:a0163bcb5b8ff80f52cfb043ec0f3aa63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0163bcb5b8ff80f52cfb043ec0f3aa63"></a>
 <a class="el" href="class_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetModel</b> () const </td></tr>
 <tr class="separator:a0163bcb5b8ff80f52cfb043ec0f3aa63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9df86e06bcda6af814008c136b1023e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9df86e06bcda6af814008c136b1023e8"></a>
+glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>GetTransformMatrix</b> () const </td></tr>
+<tr class="separator:a9df86e06bcda6af814008c136b1023e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f7fc23d5b09502dbb442b3f65c294ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f7fc23d5b09502dbb442b3f65c294ce"></a>
+glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_container.html#a9f7fc23d5b09502dbb442b3f65c294ce">GetTransformRotateMatrix</a> () const </td></tr>
+<tr class="memdesc:a9f7fc23d5b09502dbb442b3f65c294ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the transform-rotate matrix. <br /></td></tr>
+<tr class="separator:a9f7fc23d5b09502dbb442b3f65c294ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a91fc30179a9da8195e704bcf6bb179"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a91fc30179a9da8195e704bcf6bb179"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetProjectionMatrix</b> (glm::mat4 &amp;projection)</td></tr>
 <tr class="separator:a2a91fc30179a9da8195e704bcf6bb179"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,14 +186,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRotationBound</b> 
 <tr class="memitem:a9bc78b840b5bb544db86cb5956b17a12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9bc78b840b5bb544db86cb5956b17a12"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetScaleBound</b> (glm::vec3 scaleBound)</td></tr>
 <tr class="separator:a9bc78b840b5bb544db86cb5956b17a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8d13143fdc69ce02d2539dd677bc3db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8d13143fdc69ce02d2539dd677bc3db"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ScaleBy</b> (GLfloat scaleFactor)</td></tr>
+<tr class="memitem:ac8d13143fdc69ce02d2539dd677bc3db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_container.html#ac8d13143fdc69ce02d2539dd677bc3db">ScaleBy</a> (GLfloat scaleFactor)</td></tr>
+<tr class="memdesc:ac8d13143fdc69ce02d2539dd677bc3db"><td class="mdescLeft">&#160;</td><td class="mdescRight">ScaleBy.  <a href="#ac8d13143fdc69ce02d2539dd677bc3db">More...</a><br /></td></tr>
 <tr class="separator:ac8d13143fdc69ce02d2539dd677bc3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40a0e922136e185a3808dac214d9cea8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40a0e922136e185a3808dac214d9cea8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RotateBy</b> (glm::vec3 angles)</td></tr>
+<tr class="memitem:a40a0e922136e185a3808dac214d9cea8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_container.html#a40a0e922136e185a3808dac214d9cea8">RotateBy</a> (glm::vec3 angles)</td></tr>
+<tr class="memdesc:a40a0e922136e185a3808dac214d9cea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">RotateBy.  <a href="#a40a0e922136e185a3808dac214d9cea8">More...</a><br /></td></tr>
 <tr class="separator:a40a0e922136e185a3808dac214d9cea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac33db8cfd1cac6742735dcc0226feff0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac33db8cfd1cac6742735dcc0226feff0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>TranslateBy</b> (glm::vec3 translateVector)</td></tr>
+<tr class="memitem:ac33db8cfd1cac6742735dcc0226feff0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_container.html#ac33db8cfd1cac6742735dcc0226feff0">TranslateBy</a> (glm::vec3 translateVector)</td></tr>
+<tr class="memdesc:ac33db8cfd1cac6742735dcc0226feff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">TranslateBy.  <a href="#ac33db8cfd1cac6742735dcc0226feff0">More...</a><br /></td></tr>
 <tr class="separator:ac33db8cfd1cac6742735dcc0226feff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a349647d2eccc777419ff6eeb8edeff90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a349647d2eccc777419ff6eeb8edeff90"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsSelected</b> () const </td></tr>
@@ -192,14 +204,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>SetSelected</b> (bool
 <tr class="memitem:ad772dd3ae73fa1f3237c83e97a5fc80b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad772dd3ae73fa1f3237c83e97a5fc80b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsColliding</b> () const </td></tr>
 <tr class="separator:ad772dd3ae73fa1f3237c83e97a5fc80b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d6352f35e74be676bf923d38ec0b24c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d6352f35e74be676bf923d38ec0b24c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawModel</b> (<a class="el" href="class_shader.html">Shader</a> &amp;shader, <a class="el" href="class_shader.html">Shader</a> &amp;outlineShader, int index)</td></tr>
+<tr class="memitem:a9d6352f35e74be676bf923d38ec0b24c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_container.html#a9d6352f35e74be676bf923d38ec0b24c">DrawModel</a> (<a class="el" href="class_shader.html">Shader</a> &amp;shader, <a class="el" href="class_shader.html">Shader</a> &amp;outlineShader, int index)</td></tr>
+<tr class="memdesc:a9d6352f35e74be676bf923d38ec0b24c"><td class="mdescLeft">&#160;</td><td class="mdescRight">DrawModel.  <a href="#a9d6352f35e74be676bf923d38ec0b24c">More...</a><br /></td></tr>
 <tr class="separator:a9d6352f35e74be676bf923d38ec0b24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f73480431ca9bca8cbcdac87ef1d055"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f73480431ca9bca8cbcdac87ef1d055"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawModelBoundingBox</b> (<a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memitem:a4f73480431ca9bca8cbcdac87ef1d055"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_container.html#a4f73480431ca9bca8cbcdac87ef1d055">DrawModelBoundingBox</a> (<a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memdesc:a4f73480431ca9bca8cbcdac87ef1d055"><td class="mdescLeft">&#160;</td><td class="mdescRight">DrawModelBoundingBox.  <a href="#a4f73480431ca9bca8cbcdac87ef1d055">More...</a><br /></td></tr>
 <tr class="separator:a4f73480431ca9bca8cbcdac87ef1d055"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6048f0f26f86025c6854bf42d7c5cc19"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6048f0f26f86025c6854bf42d7c5cc19"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawAABoudningBox</b> (<a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memitem:a6048f0f26f86025c6854bf42d7c5cc19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_container.html#a6048f0f26f86025c6854bf42d7c5cc19">DrawAABoudningBox</a> (<a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memdesc:a6048f0f26f86025c6854bf42d7c5cc19"><td class="mdescLeft">&#160;</td><td class="mdescRight">DrawAABoudningBox.  <a href="#a6048f0f26f86025c6854bf42d7c5cc19">More...</a><br /></td></tr>
 <tr class="separator:a6048f0f26f86025c6854bf42d7c5cc19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff6393883a26f3d71476e24e34f58852"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff6393883a26f3d71476e24e34f58852"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> ()</td></tr>
@@ -208,6 +220,221 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> ()</td></tr
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsInsideRoom</b> () const </td></tr>
 <tr class="separator:a84dee4d7878153ecd2971427b2dd4c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_model_container.html" title="The ModelContainer class. ">ModelContainer</a> class. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a5145271e175fb5434c5209d170a2749d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ModelContainer::ModelContainer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_model.html">Model</a> *&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLfloat&#160;</td>
+          <td class="paramname"><em>initialScale</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_room.html">Room</a> *&#160;</td>
+          <td class="paramname"><em>room</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QOpenGLWidget *&#160;</td>
+          <td class="paramname"><em>targetWidget</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_model_container.html" title="The ModelContainer class. ">ModelContainer</a> Insert the model into the room provide initial scale factor and target width. Check that it fits into the room and that it is currently not colliding with anything. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td></td></tr>
+    <tr><td class="paramname">initialScale</td><td></td></tr>
+    <tr><td class="paramname">room</td><td></td></tr>
+    <tr><td class="paramname">targetWidget</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6048f0f26f86025c6854bf42d7c5cc19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModelContainer::DrawAABoudningBox </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> &amp;&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DrawAABoudningBox. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shader</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9d6352f35e74be676bf923d38ec0b24c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModelContainer::DrawModel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> &amp;&#160;</td>
+          <td class="paramname"><em>shader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> &amp;&#160;</td>
+          <td class="paramname"><em>outlineShader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DrawModel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shader</td><td></td></tr>
+    <tr><td class="paramname">outlineShader</td><td></td></tr>
+    <tr><td class="paramname">index</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4f73480431ca9bca8cbcdac87ef1d055"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModelContainer::DrawModelBoundingBox </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> &amp;&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DrawModelBoundingBox. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shader</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a40a0e922136e185a3808dac214d9cea8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModelContainer::RotateBy </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>angles</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>RotateBy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angles</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac8d13143fdc69ce02d2539dd677bc3db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModelContainer::ScaleBy </td>
+          <td>(</td>
+          <td class="paramtype">GLfloat&#160;</td>
+          <td class="paramname"><em>scaleFactor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ScaleBy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scaleFactor</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac33db8cfd1cac6742735dcc0226feff0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModelContainer::TranslateBy </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>translateVector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>TranslateBy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">translateVector</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_model_container_8h_source.html">ModelContainer.h</a></li>
 <li>ModelContainer.cpp</li>

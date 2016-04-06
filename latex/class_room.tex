@@ -1,10 +1,19 @@
 \hypertarget{class_room}{}\section{Room Class Reference}
 \label{class_room}\index{Room@{Room}}
+
+
+The \hyperlink{class_room}{Room} class Creates a room with 3 walls and sets the color and texture of the room.  
+
+
+
+
+{\ttfamily \#include $<$Room.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_room_a7b347765e9501c064013258629b4de19}{Room} (Q\+Open\+G\+L\+Widget $\ast$target\+Widget, G\+Lfloat room\+Width, glm\+::vec3 wall\+Color, glm\+::vec3 floor\+Color)
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_room}{Room} Creates the room with specific widths and colors. \end{DoxyCompactList}\item 
 \hypertarget{class_room_ae621e50fd276c68af137ab02666dcee8}{}\hyperlink{class_floor}{Floor} $\ast$ {\bfseries Get\+Floor} () const \label{class_room_ae621e50fd276c68af137ab02666dcee8}
 
 \item 
@@ -36,15 +45,18 @@ glm\+::vec3 \hyperlink{class_room_a2a11f153f356dca23b40cd8147150cb9}{Get\+Minimu
 glm\+::vec3 \hyperlink{class_room_a1303223ef4eb22b9580148204f1de346}{Get\+Maximum\+Coordinates} () const 
 \item 
 void \hyperlink{class_room_a013a7a067df01681afa7b8bfda69e48e}{Draw} (glm\+::mat4 const \&view, glm\+::mat4 const \&projection) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Draw Draws the room floor and walls. \end{DoxyCompactList}\item 
 void \hyperlink{class_room_afc80f1892eaa6db27ac526b4ec77d8bd}{Bind\+To\+Floor} (\hyperlink{class_model_container}{Model\+Container} $\ast$container)
-\item 
+\begin{DoxyCompactList}\small\item\em Bind\+To\+Floor binds the specific model container to the floor y axis and allows movement in xz plane. \end{DoxyCompactList}\item 
 void \hyperlink{class_room_a7c26d8c17540d6cd47a649e55de32d2e}{Bind\+To\+Wall} (\hyperlink{class_model_container}{Model\+Container} $\ast$container, Location wall\+Location)
-\item 
+\begin{DoxyCompactList}\small\item\em Bind\+To\+Wall binds the specific model container to the wall. \end{DoxyCompactList}\item 
 \hypertarget{class_room_a7c8fbf9ae9469a79ff1b5e6cfaf4cb9d}{}bool {\bfseries Is\+Attached} (\hyperlink{class_model_container}{Model\+Container} $\ast$container, Location wall\+Location)\label{class_room_a7c8fbf9ae9469a79ff1b5e6cfaf4cb9d}
 
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The \hyperlink{class_room}{Room} class Creates a room with 3 walls and sets the color and texture of the room. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_room_a7b347765e9501c064013258629b4de19}{}\index{Room@{Room}!Room@{Room}}
@@ -57,7 +69,22 @@ void \hyperlink{class_room_a7c26d8c17540d6cd47a649e55de32d2e}{Bind\+To\+Wall} (\
 \item[{glm\+::vec3}]{floor\+Color}
 \end{DoxyParamCaption}
 )}\label{class_room_a7b347765e9501c064013258629b4de19}
-Create the room with specified width, and 
+
+
+\hyperlink{class_room}{Room} Creates the room with specific widths and colors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Widget} & target width \\
+\hline
+{\em room\+Width} & room width \\
+\hline
+{\em wall\+Color} & wall color \\
+\hline
+{\em floor\+Color} & floor color\\
+\hline
+\end{DoxyParams}
+Create the room with specified width, and colors 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_room_afc80f1892eaa6db27ac526b4ec77d8bd}{}\index{Room@{Room}!Bind\+To\+Floor@{Bind\+To\+Floor}}
@@ -67,7 +94,16 @@ Create the room with specified width, and
 \item[{{\bf Model\+Container} $\ast$}]{container}
 \end{DoxyParamCaption}
 )}\label{class_room_afc80f1892eaa6db27ac526b4ec77d8bd}
-Binds the specified model container to the floor \hypertarget{class_room_a7c26d8c17540d6cd47a649e55de32d2e}{}\index{Room@{Room}!Bind\+To\+Wall@{Bind\+To\+Wall}}
+
+
+Bind\+To\+Floor binds the specific model container to the floor y axis and allows movement in xz plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & Binds the specified model container to the floor \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_room_a7c26d8c17540d6cd47a649e55de32d2e}{}\index{Room@{Room}!Bind\+To\+Wall@{Bind\+To\+Wall}}
 \index{Bind\+To\+Wall@{Bind\+To\+Wall}!Room@{Room}}
 \subsubsection[{Bind\+To\+Wall(\+Model\+Container $\ast$container, Location wall\+Location)}]{\setlength{\rightskip}{0pt plus 5cm}void Room\+::\+Bind\+To\+Wall (
 \begin{DoxyParamCaption}
@@ -75,7 +111,18 @@ Binds the specified model container to the floor \hypertarget{class_room_a7c26d8
 \item[{Location}]{wall\+Location}
 \end{DoxyParamCaption}
 )}\label{class_room_a7c26d8c17540d6cd47a649e55de32d2e}
-Binds the specified model container to the specified wall \hypertarget{class_room_a013a7a067df01681afa7b8bfda69e48e}{}\index{Room@{Room}!Draw@{Draw}}
+
+
+Bind\+To\+Wall binds the specific model container to the wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & \\
+\hline
+{\em wall\+Location} & Binds the specified model container to the specified wall \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_room_a013a7a067df01681afa7b8bfda69e48e}{}\index{Room@{Room}!Draw@{Draw}}
 \index{Draw@{Draw}!Room@{Room}}
 \subsubsection[{Draw(glm\+::mat4 const \&view, glm\+::mat4 const \&projection) const }]{\setlength{\rightskip}{0pt plus 5cm}void Room\+::\+Draw (
 \begin{DoxyParamCaption}
@@ -83,6 +130,17 @@ Binds the specified model container to the specified wall \hypertarget{class_roo
 \item[{glm\+::mat4 const \&}]{projection}
 \end{DoxyParamCaption}
 ) const}\label{class_room_a013a7a067df01681afa7b8bfda69e48e}
+
+
+Draw Draws the room floor and walls. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & view matrix \\
+\hline
+{\em projection} & projection matrix\\
+\hline
+\end{DoxyParams}
 Draws the room (floor and the walls) \hypertarget{class_room_a1303223ef4eb22b9580148204f1de346}{}\index{Room@{Room}!Get\+Maximum\+Coordinates@{Get\+Maximum\+Coordinates}}
 \index{Get\+Maximum\+Coordinates@{Get\+Maximum\+Coordinates}!Room@{Room}}
 \subsubsection[{Get\+Maximum\+Coordinates() const }]{\setlength{\rightskip}{0pt plus 5cm}glm\+::vec3 Room\+::\+Get\+Maximum\+Coordinates (

@@ -1,29 +1,124 @@
 \hypertarget{class_collision_manager}{}\section{Collision\+Manager Class Reference}
 \label{class_collision_manager}\index{Collision\+Manager@{Collision\+Manager}}
+
+
+The \hyperlink{class_collision_manager}{Collision\+Manager} class Handles the collision detection of various objects in the scene.  
+
+
+
+
+{\ttfamily \#include $<$Collision\+Manager.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_collision_manager_a31a5f57dc2974068f3a8460710fcb129}{}{\bfseries Collision\+Manager} (\hyperlink{class_collision_manager}{Collision\+Manager} const \&)=delete\label{class_collision_manager_a31a5f57dc2974068f3a8460710fcb129}
+\hypertarget{class_collision_manager_a31a5f57dc2974068f3a8460710fcb129}{}\hyperlink{class_collision_manager_a31a5f57dc2974068f3a8460710fcb129}{Collision\+Manager} (\hyperlink{class_collision_manager}{Collision\+Manager} const \&)=delete\label{class_collision_manager_a31a5f57dc2974068f3a8460710fcb129}
 
-\item 
-\hypertarget{class_collision_manager_aad2b15b4b3477b30c5a4762d539f6074}{}\hyperlink{class_collision_manager}{Collision\+Manager} \& {\bfseries operator=} (\hyperlink{class_collision_manager}{Collision\+Manager} const \&)=delete\label{class_collision_manager_aad2b15b4b3477b30c5a4762d539f6074}
-
-\item 
-\hypertarget{class_collision_manager_af89588cea264c9a154955ce269725f8d}{}int {\bfseries Add\+Container} (\hyperlink{class_model_container}{Model\+Container} $\ast$container)\label{class_collision_manager_af89588cea264c9a154955ce269725f8d}
-
-\item 
-\hypertarget{class_collision_manager_af57c222f9832682b7742de3863cca237}{}void {\bfseries Remove\+Container} (\hyperlink{class_model_container}{Model\+Container} $\ast$container)\label{class_collision_manager_af57c222f9832682b7742de3863cca237}
-
-\item 
-\hypertarget{class_collision_manager_a039ee08a27ee8d3390f29501900036fa}{}bool {\bfseries Is\+Colliding} (\hyperlink{class_model_container}{Model\+Container} $\ast$container, int index)\label{class_collision_manager_a039ee08a27ee8d3390f29501900036fa}
-
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_collision_manager}{Collision\+Manager}. \end{DoxyCompactList}\item 
+\hyperlink{class_collision_manager}{Collision\+Manager} \& \hyperlink{class_collision_manager_aad2b15b4b3477b30c5a4762d539f6074}{operator=} (\hyperlink{class_collision_manager}{Collision\+Manager} const \&)=delete
+\begin{DoxyCompactList}\small\item\em operator = \end{DoxyCompactList}\item 
+int \hyperlink{class_collision_manager_af89588cea264c9a154955ce269725f8d}{Add\+Container} (\hyperlink{class_model_container}{Model\+Container} $\ast$container)
+\begin{DoxyCompactList}\small\item\em Add\+Container adds a container to check for collision detection. \end{DoxyCompactList}\item 
+void \hyperlink{class_collision_manager_af57c222f9832682b7742de3863cca237}{Remove\+Container} (\hyperlink{class_model_container}{Model\+Container} $\ast$container)
+\begin{DoxyCompactList}\small\item\em Remove\+Container removes container from collision detection. \end{DoxyCompactList}\item 
+bool \hyperlink{class_collision_manager_a039ee08a27ee8d3390f29501900036fa}{Is\+Colliding} (\hyperlink{class_model_container}{Model\+Container} $\ast$container, int index)
+\begin{DoxyCompactList}\small\item\em Is\+Colliding Using bounding box vertices. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_collision_manager_a02b247c273929839c9957ed08073597f}{}static \hyperlink{class_collision_manager}{Collision\+Manager} \& {\bfseries Get\+Instance} ()\label{class_collision_manager_a02b247c273929839c9957ed08073597f}
+static \hyperlink{class_collision_manager}{Collision\+Manager} \& \hyperlink{class_collision_manager_a02b247c273929839c9957ed08073597f}{Get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Get\+Instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\end{DoxyCompactItemize}
+
+\subsection{Detailed Description}
+The \hyperlink{class_collision_manager}{Collision\+Manager} class Handles the collision detection of various objects in the scene. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_collision_manager_af89588cea264c9a154955ce269725f8d}{}\index{Collision\+Manager@{Collision\+Manager}!Add\+Container@{Add\+Container}}
+\index{Add\+Container@{Add\+Container}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{Add\+Container(\+Model\+Container $\ast$container)}]{\setlength{\rightskip}{0pt plus 5cm}int Collision\+Manager\+::\+Add\+Container (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+Container} $\ast$}]{container}
+\end{DoxyParamCaption}
+)}\label{class_collision_manager_af89588cea264c9a154955ce269725f8d}
+
+
+Add\+Container adds a container to check for collision detection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_collision_manager_a02b247c273929839c9957ed08073597f}{}\index{Collision\+Manager@{Collision\+Manager}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{Get\+Instance()}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Collision\+Manager}\& Collision\+Manager\+::\+Get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_collision_manager_a02b247c273929839c9957ed08073597f}
+
+
+Get\+Instance. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_collision_manager_a039ee08a27ee8d3390f29501900036fa}{}\index{Collision\+Manager@{Collision\+Manager}!Is\+Colliding@{Is\+Colliding}}
+\index{Is\+Colliding@{Is\+Colliding}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{Is\+Colliding(\+Model\+Container $\ast$container, int index)}]{\setlength{\rightskip}{0pt plus 5cm}bool Collision\+Manager\+::\+Is\+Colliding (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+Container} $\ast$}]{container, }
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{class_collision_manager_a039ee08a27ee8d3390f29501900036fa}
+
+
+Is\+Colliding Using bounding box vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & the container for which we want to check collision \\
+\hline
+{\em index} & the index of the object for collision detection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_collision_manager_aad2b15b4b3477b30c5a4762d539f6074}{}\index{Collision\+Manager@{Collision\+Manager}!operator=@{operator=}}
+\index{operator=@{operator=}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{operator=(\+Collision\+Manager const \&)=delete}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Collision\+Manager}\& Collision\+Manager\+::operator= (
+\begin{DoxyParamCaption}
+\item[{{\bf Collision\+Manager} const \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [delete]}}\label{class_collision_manager_aad2b15b4b3477b30c5a4762d539f6074}
+
+
+operator = 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_collision_manager_af57c222f9832682b7742de3863cca237}{}\index{Collision\+Manager@{Collision\+Manager}!Remove\+Container@{Remove\+Container}}
+\index{Remove\+Container@{Remove\+Container}!Collision\+Manager@{Collision\+Manager}}
+\subsubsection[{Remove\+Container(\+Model\+Container $\ast$container)}]{\setlength{\rightskip}{0pt plus 5cm}void Collision\+Manager\+::\+Remove\+Container (
+\begin{DoxyParamCaption}
+\item[{{\bf Model\+Container} $\ast$}]{container}
+\end{DoxyParamCaption}
+)}\label{class_collision_manager_af57c222f9832682b7742de3863cca237}
+
+
+Remove\+Container removes container from collision detection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

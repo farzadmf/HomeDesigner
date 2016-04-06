@@ -1,23 +1,28 @@
 \hypertarget{class_model}{}\section{Model Class Reference}
 \label{class_model}\index{Model@{Model}}
+
+
+The \hyperlink{class_model}{Model} class Which does the drawing of the model and the outline bounding box and which contain multiple textures and meshes.  
+
+
+
+
+{\ttfamily \#include $<$Model.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_model_a305581f2c1f2e77addbc7e436961c6dc}{}{\bfseries Model} (Q\+Open\+G\+L\+Widget $\ast$target\+Widget, string path)\label{class_model_a305581f2c1f2e77addbc7e436961c6dc}
+\hyperlink{class_model_a305581f2c1f2e77addbc7e436961c6dc}{Model} (Q\+Open\+G\+L\+Widget $\ast$target\+Widget, string path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_model}{Model} Loads and populates the model. \end{DoxyCompactList}\item 
+void \hyperlink{class_model_a9c66de8af7e48fefaccbb8a056ec3c1d}{Draw} (\hyperlink{class_shader}{Shader} \&shader)
+\begin{DoxyCompactList}\small\item\em Draw loops over the meshes to draw them. \end{DoxyCompactList}\item 
+void \hyperlink{class_model_a3ecdedb61ab3d622243ca0fcc900675f}{Draw\+Outline} (glm\+::mat4 \&model, \hyperlink{class_shader}{Shader} \&shader)
+\begin{DoxyCompactList}\small\item\em Draw\+Outline draws for each a slightly large outline of the model. \end{DoxyCompactList}\item 
+\hypertarget{class_model_a9ea10d4e794c767d6fd2c3e69dde742a}{}void \hyperlink{class_model_a9ea10d4e794c767d6fd2c3e69dde742a}{Draw\+Bounding\+Box} () const \label{class_model_a9ea10d4e794c767d6fd2c3e69dde742a}
 
-\item 
-\hypertarget{class_model_a9c66de8af7e48fefaccbb8a056ec3c1d}{}void {\bfseries Draw} (\hyperlink{class_shader}{Shader} \&shader)\label{class_model_a9c66de8af7e48fefaccbb8a056ec3c1d}
-
-\item 
-\hypertarget{class_model_a3ecdedb61ab3d622243ca0fcc900675f}{}void {\bfseries Draw\+Outline} (glm\+::mat4 \&model, \hyperlink{class_shader}{Shader} \&shader)\label{class_model_a3ecdedb61ab3d622243ca0fcc900675f}
-
-\item 
-\hypertarget{class_model_a9ea10d4e794c767d6fd2c3e69dde742a}{}void {\bfseries Draw\+Bounding\+Box} () const \label{class_model_a9ea10d4e794c767d6fd2c3e69dde742a}
-
-\item 
-\hypertarget{class_model_a2e44a9cc66044f1a0bec5c4590a4225c}{}void {\bfseries Draw\+Bounding\+Box} (const vector$<$ glm\+::vec3 $>$ \&vertices) const \label{class_model_a2e44a9cc66044f1a0bec5c4590a4225c}
-
-\item 
+\begin{DoxyCompactList}\small\item\em Draw\+Bounding\+Box draws the bounding box will provide. \end{DoxyCompactList}\item 
+void \hyperlink{class_model_a2e44a9cc66044f1a0bec5c4590a4225c}{Draw\+Bounding\+Box} (const vector$<$ glm\+::vec3 $>$ \&vertices) const 
+\begin{DoxyCompactList}\small\item\em Draw\+Bounding\+Box draws the bounding box by taking as input the vertices. \end{DoxyCompactList}\item 
 \hypertarget{class_model_a3de6dceab0188445a152fcdf2fbe0cb9}{}vector$<$ \hyperlink{struct_texture}{Texture} $>$ {\bfseries Get\+Loaded\+Textures} () const \label{class_model_a3de6dceab0188445a152fcdf2fbe0cb9}
 
 \item 
@@ -30,6 +35,91 @@
 \hypertarget{class_model_a18dffdf7f50a87e32c9d8d8eea9a277a}{}string {\bfseries Get\+File\+Path} () const \label{class_model_a18dffdf7f50a87e32c9d8d8eea9a277a}
 
 \end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_model_a12f5c8926b1f1d1e05914778ddd8b901}{}std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&stream, \hyperlink{class_model}{Model} const \&model)\label{class_model_a12f5c8926b1f1d1e05914778ddd8b901}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_model}{Model} class Which does the drawing of the model and the outline bounding box and which contain multiple textures and meshes. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_model_a305581f2c1f2e77addbc7e436961c6dc}{}\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\subsubsection[{Model(\+Q\+Open\+G\+L\+Widget $\ast$target\+Widget, string path)}]{\setlength{\rightskip}{0pt plus 5cm}Model\+::\+Model (
+\begin{DoxyParamCaption}
+\item[{Q\+Open\+G\+L\+Widget $\ast$}]{target\+Widget, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}\label{class_model_a305581f2c1f2e77addbc7e436961c6dc}
+
+
+\hyperlink{class_model}{Model} Loads and populates the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Widget} & the target widget \\
+\hline
+{\em path} & the path to the file \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_model_a9c66de8af7e48fefaccbb8a056ec3c1d}{}\index{Model@{Model}!Draw@{Draw}}
+\index{Draw@{Draw}!Model@{Model}}
+\subsubsection[{Draw(\+Shader \&shader)}]{\setlength{\rightskip}{0pt plus 5cm}void Model\+::\+Draw (
+\begin{DoxyParamCaption}
+\item[{{\bf Shader} \&}]{shader}
+\end{DoxyParamCaption}
+)}\label{class_model_a9c66de8af7e48fefaccbb8a056ec3c1d}
+
+
+Draw loops over the meshes to draw them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_a2e44a9cc66044f1a0bec5c4590a4225c}{}\index{Model@{Model}!Draw\+Bounding\+Box@{Draw\+Bounding\+Box}}
+\index{Draw\+Bounding\+Box@{Draw\+Bounding\+Box}!Model@{Model}}
+\subsubsection[{Draw\+Bounding\+Box(const vector$<$ glm\+::vec3 $>$ \&vertices) const }]{\setlength{\rightskip}{0pt plus 5cm}void Model\+::\+Draw\+Bounding\+Box (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ glm\+::vec3 $>$ \&}]{vertices}
+\end{DoxyParamCaption}
+) const}\label{class_model_a2e44a9cc66044f1a0bec5c4590a4225c}
+
+
+Draw\+Bounding\+Box draws the bounding box by taking as input the vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertices} & the vertices for drawing the bounding box \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_a3ecdedb61ab3d622243ca0fcc900675f}{}\index{Model@{Model}!Draw\+Outline@{Draw\+Outline}}
+\index{Draw\+Outline@{Draw\+Outline}!Model@{Model}}
+\subsubsection[{Draw\+Outline(glm\+::mat4 \&model, Shader \&shader)}]{\setlength{\rightskip}{0pt plus 5cm}void Model\+::\+Draw\+Outline (
+\begin{DoxyParamCaption}
+\item[{glm\+::mat4 \&}]{model, }
+\item[{{\bf Shader} \&}]{shader}
+\end{DoxyParamCaption}
+)}\label{class_model_a3ecdedb61ab3d622243ca0fcc900675f}
+
+
+Draw\+Outline draws for each a slightly large outline of the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+{\em shader} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

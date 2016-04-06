@@ -22,10 +22,25 @@ void \hyperlink{class_camera_ac922d266d0a88dbdde47a7be7736766d}{Process\+Keyboar
 \begin{DoxyCompactList}\small\item\em Process\+Keyboard takes the keyboard input and moves the position of the camera. \end{DoxyCompactList}\item 
 void \hyperlink{class_camera_ad74e2911d43fe9f34f42499b5180a362}{Process\+Mouse\+Movement} (G\+Lfloat x\+Offset, G\+Lfloat y\+Offset, G\+Lboolean constraint\+Pitch=true)
 \begin{DoxyCompactList}\small\item\em Process\+Mouse\+Movement process the mouse movement using the offset conditions. \end{DoxyCompactList}\item 
+\hypertarget{class_camera_a7e93caf3e55100a7507714d7eeec223e}{}void \hyperlink{class_camera_a7e93caf3e55100a7507714d7eeec223e}{turn\+Upside\+Down} ()\label{class_camera_a7e93caf3e55100a7507714d7eeec223e}
+
+\begin{DoxyCompactList}\small\item\em turn\+Upside\+Down gives the ability to turn the room upside down. \end{DoxyCompactList}\item 
 void \hyperlink{class_camera_a58246ec7f4f0852005e09c8ab8f54642}{Process\+Mouse\+Camera\+View\+Rotation} (G\+Lfloat x\+Offset, G\+Lfloat y\+Offset)
 \begin{DoxyCompactList}\small\item\em Process\+Mouse\+Camera\+View\+Rotation \hyperlink{class_camera}{Camera} rotates around the scene based off the offset it will determine which direction to rotate in. \end{DoxyCompactList}\item 
 void \hyperlink{class_camera_aa8bb7760c16698825004048c4c033ada}{Rotate\+To\+Point\+Of\+Focus} (glm\+::vec3 point\+Of\+Focus)
 \begin{DoxyCompactList}\small\item\em Rotate\+To\+Point\+Of\+Focus Move \hyperlink{class_camera}{Camera}\textquotesingle{}s facing direction to point of focus. \end{DoxyCompactList}\item 
+\hypertarget{class_camera_a875c97e044ea5069d07476652d1cde41}{}void \hyperlink{class_camera_a875c97e044ea5069d07476652d1cde41}{get\+Close\+To\+Selected\+Object} (glm\+::vec3 model\+Center, G\+Lfloat max\+X, G\+Lfloat min\+X)\label{class_camera_a875c97e044ea5069d07476652d1cde41}
+
+\begin{DoxyCompactList}\small\item\em Moves camera close to selected object for fast and easy editing of current object. \end{DoxyCompactList}\item 
+\hypertarget{class_camera_a9f7fab48637e55f780cfbc55844cb611}{}void \hyperlink{class_camera_a9f7fab48637e55f780cfbc55844cb611}{birds\+Eye\+View} (G\+Lfloat max\+X, G\+Lfloat min\+X, G\+Lfloat max\+Y, G\+Lfloat min\+Y, G\+Lfloat max\+Z, G\+Lfloat min\+Z)\label{class_camera_a9f7fab48637e55f780cfbc55844cb611}
+
+\begin{DoxyCompactList}\small\item\em Moves camera to give a birds eye view perspective of the scene. \end{DoxyCompactList}\item 
+\hypertarget{class_camera_aa5dbecd3eb846f229b325633ca62d711}{}void \hyperlink{class_camera_aa5dbecd3eb846f229b325633ca62d711}{horizontal\+Face\+View} (G\+Lfloat max\+X, G\+Lfloat min\+X, G\+Lfloat max\+Y, G\+Lfloat min\+Y, G\+Lfloat max\+Z, G\+Lfloat min\+Z)\label{class_camera_aa5dbecd3eb846f229b325633ca62d711}
+
+\begin{DoxyCompactList}\small\item\em Moves camera to give an eye level view of the scene. \end{DoxyCompactList}\item 
+\hypertarget{class_camera_aaf646454821cf05e45c5cd30d185d31a}{}void \hyperlink{class_camera_aaf646454821cf05e45c5cd30d185d31a}{cycle\+Through\+Scene\+Corners} (G\+Lfloat max\+X, G\+Lfloat min\+X, G\+Lfloat max\+Y, G\+Lfloat min\+Y, G\+Lfloat max\+Z, G\+Lfloat min\+Z)\label{class_camera_aaf646454821cf05e45c5cd30d185d31a}
+
+\begin{DoxyCompactList}\small\item\em Cycles through the scenes corners with camera facing the scene center. \end{DoxyCompactList}\item 
 void \hyperlink{class_camera_a70b8364d53d5851210baacf35b7bd837}{Process\+Mouse\+Scroll} (G\+Lfloat y\+Offset)
 \begin{DoxyCompactList}\small\item\em Process\+Mouse\+Scroll proceses the mouse scroll based on if the zoom is within Minimum and maximum zoom. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
