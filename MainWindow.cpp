@@ -277,15 +277,16 @@ void MainWindow::AddScaleControlsToControlsGrid()
 
 void MainWindow::AddModelControlsToControlsGrid()
 {
-    int iconSize = 24;
+    int buttonIconSize = 30;
+	int modelIconSize = 36;
 
     loadModelButton = new QPushButton("Load Model");
     loadModelButton->setIcon(QIcon(":/icons/load.png"));
-    loadModelButton->setIconSize(QSize(iconSize, iconSize));
+    loadModelButton->setIconSize(QSize(buttonIconSize, buttonIconSize));
 
     modelsCombo = new ModelComboBox(centralWidget);
     modelsCombo->setFixedHeight(30);
-    modelsCombo->setIconSize(QSize(iconSize - 4, iconSize - 4));
+    modelsCombo->setIconSize(QSize(modelIconSize, modelIconSize));
     modelsCombo->setItemIcon(1, QIcon(":/icons/color.png"));
 
     modelsCombo->addItem("--- Please select a model ---");
