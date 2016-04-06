@@ -73,6 +73,7 @@ artifacts/
 *.scc
 
 Thumbs.db
+desktop.ini
 
 # Chutzpah Test files
 _Chutzpah*

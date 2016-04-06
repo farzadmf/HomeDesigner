@@ -1,10 +1,15 @@
 
-QPushButton, QComboBox, QDoubleSpinBox {
+QPushButton, QComboBox, QListView, QDoubleSpinBox {
     font-family: 'Abril Fatface';
     font-size: 14px;
 }
 
 QLabel, QRadioButton, QGroupBox {
-    font-family: 'Open Sans Semibold';
+    font-family: 'Open Sans';
+    font-size: 15px;
+}
+
+QLabel#statusBar {
+    font-family: 'Arimo';
     font-size: 14px;
 }

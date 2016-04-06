@@ -9,6 +9,8 @@
         <file>OxygenMono-Regular.ttf</file>
         <file>AbrilFatface-Regular.ttf</file>
         <file>OpenSans-Semibold.ttf</file>
+        <file>Arimo-Regular.ttf</file>
+        <file>OpenSans-Regular.ttf</file>
     </qresource>
     <qresource prefix="/icons">
         <file>color.png</file>

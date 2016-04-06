@@ -79,6 +79,14 @@ ModelContainer::ModelContainer(Model* model, GLfloat initialScale, Room* room, Q
     {
         collisionManagerIndex = CollisionManager::GetInstance().AddContainer(this);
         DetectCollision();
+        
+        // Log info
+        cout << *model << " added to collision manager with index = " << collisionManagerIndex << endl;
+    }
+    else
+    {
+        // Log info
+        cout << *model << " could not be added to collision manager!" << endl;
     }
 }
 

@@ -9,7 +9,8 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     if (stylesheetFile.open(QIODevice::ReadOnly))
     {
         QFontDatabase::addApplicationFont(":/fonts/AbrilFatface-Regular.ttf");
-//        QFontDatabase::addApplicationFont(":/fonts/OpenSans-Semibold.ttf");
+        QFontDatabase::addApplicationFont(":/fonts/OpenSans-Regular.ttf");
+        QFontDatabase::addApplicationFont(":/fonts/Arimo-Regular.ttf");
         QString stylesheet = stylesheetFile.readAll();
         setStyleSheet(stylesheet);
     }
@@ -278,28 +279,34 @@ void MainWindow::AddScaleControlsToControlsGrid()
 void MainWindow::AddModelControlsToControlsGrid()
 {
     int buttonIconSize = 30;
-	int modelIconSize = 36;
+    int modelIconSize = 36;
 
     loadModelButton = new QPushButton("Load Model");
     loadModelButton->setIcon(QIcon(":/icons/load.png"));
     loadModelButton->setIconSize(QSize(buttonIconSize, buttonIconSize));
 
     modelsCombo = new ModelComboBox(centralWidget);
-    modelsCombo->setFixedHeight(30);
+
+    // Sets the style for the seprator
+    auto listView = new QListView(modelsCombo);
+    listView->setItemDelegate(new ModelComboBox::ComboBoxDelegate());
+    modelsCombo->setView(listView);
+
+    modelsCombo->setFixedHeight(buttonIconSize + 6);
     modelsCombo->setIconSize(QSize(modelIconSize, modelIconSize));
-    modelsCombo->setItemIcon(1, QIcon(":/icons/color.png"));
 
     modelsCombo->addItem("--- Please select a model ---");
+    modelsCombo->insertSeparator(1);
     modelsCombo->addItem(QIcon("models/anglePainting/angelPaintingIcon.png"),
                          "Angel Painting", "models/anglePainting/model.obj|wall|back");
-	modelsCombo->addItem(QIcon("models/armChair/armChairIcon.png"),
-					     "Arm Chair", "models/armChair/model.obj|floor");
+    modelsCombo->addItem(QIcon("models/armChair/armChairIcon.png"),
+                         "Arm Chair", "models/armChair/model.obj|floor");
     modelsCombo->addItem(QIcon("models/bistroBuffet/bistroIcon.png"),
                          "Bistro Buffet", "models/bistroBuffet/model.obj|floor");
     modelsCombo->addItem(QIcon("models/books/booksIcon.png"),
                          "Books", "models/books/model.obj");
     modelsCombo->addItem(QIcon("models/brassPlate/brassPlateIcon.png"),
-                         "Brass plate", "models/brassPlate/model.obj");
+                         "Brass Plate", "models/brassPlate/model.obj");
     modelsCombo->addItem(QIcon("models/cafeSign/cafeSignIcon.png"),
                          "Cafe Sign", "models/cafeSign/model.obj|wall|back");
     modelsCombo->addItem(QIcon("models/churchPainting/churchPaintingIcon.png"),
@@ -309,21 +316,21 @@ void MainWindow::AddModelControlsToControlsGrid()
     modelsCombo->addItem(QIcon("models/diningtable/diningtableIcon.png"),
                          "Dining Table", "models/diningTable/model.obj|floor");
     modelsCombo->addItem(QIcon("models/feetRest/feetRestIcon.png"),
-                         "Feet rest", "models/feetRest/model.obj|floor");
+                         "Feet Rest", "models/feetRest/model.obj|floor");
     modelsCombo->addItem(QIcon("models/luxurySofa/luxurySofaIcon.png"),
                          "Luxury Sofa", "models/luxurySofa/model.obj|floor");
     modelsCombo->addItem(QIcon("models/metalStool/metalStoolIcon.png"),
-                         "Metal stool", "models/metalStool/model.obj|floor");
+                         "Metal Stool", "models/metalStool/model.obj|floor");
     modelsCombo->addItem(QIcon("models/modernDesk/modernDeskIcon.png"),
-                         "Modern desk", "models/modernDesk/model.obj|floor");
+                         "Modern Desk", "models/modernDesk/model.obj|floor");
     modelsCombo->addItem(QIcon("models/pictureFrame/pictureFrameIcon.png"),
-                         "Picture frame", "models/pictureFrame/model.obj");
+                         "Picture Frame", "models/pictureFrame/model.obj");
     modelsCombo->addItem(QIcon("models/relaxedChair/relaxedChairIcon.png"),
-                         "Relaxed chair", "models/relaxedChair/model.obj|floor");
+                         "Relaxed Chair", "models/relaxedChair/model.obj|floor");
     modelsCombo->addItem(QIcon("models/relaxedTableChair/relaxedTableChairIcon.png"),
                          "Relaxed Table Chair", "models/relaxedTableChair/model.obj|floor");
     modelsCombo->addItem(QIcon("models/shelvingUnit/shelvingUnitIcon.png"),
-                         "Shelving unit", "models/shelvingUnit/model.obj|floor");
+                         "Shelving Unit", "models/shelvingUnit/model.obj|floor");
     modelsCombo->addItem(QIcon("models/squareDiningTable/squareDiningTableIcon.png"),
                          "Square Dining Table", "models/squareDiningTable/model.obj|floor");
     modelsCombo->addItem(QIcon("models/TvStand/TvStandIcon.png"),
@@ -331,11 +338,11 @@ void MainWindow::AddModelControlsToControlsGrid()
     modelsCombo->addItem(QIcon("models/tableChair/tableChairIcon.png"),
                          "Table Chair", "models/tableChair/model.obj|floor");
     modelsCombo->addItem(QIcon("models/threePicturedFrames/threePicturedFramesIcon.png"),
-                         "Three pictured frames","models/threePicturedFrames/model.obj|wall|left");
+                         "Three Pictured Frames","models/threePicturedFrames/model.obj|wall|left");
     modelsCombo->addItem(QIcon("models/tv/tvIcon.png"),
                          "TV", "models/tv/model.obj");
     modelsCombo->addItem(QIcon("models/woodShelf/woodShelfIcon.png"),
-                         "Wood shelf", "models/woodShelf/model.obj|wall|right");
+                         "Wood Shelf", "models/woodShelf/model.obj|wall|right");
 
     //Nanosuit test model
     /*
@@ -402,14 +409,24 @@ void MainWindow::SetupStatusBar()
     statusBar = new QStatusBar(centralWidget);
 
     messageLabel = new QLabel(statusBar);
+    messageLabel->setObjectName("statusBar");
+
     bbStatusLabel = new QLabel(statusBar);
     bbStatusLabel->setAlignment(Qt::AlignRight);
+    bbStatusLabel->setObjectName("statusBar");
+
     aabbStatusLabel = new QLabel(statusBar);
     aabbStatusLabel->setAlignment(Qt::AlignRight);
+    aabbStatusLabel->setObjectName("statusBar");
+
     worldAxisStatusLabel = new QLabel(statusBar);
     worldAxisStatusLabel->setAlignment(Qt::AlignRight);
+    worldAxisStatusLabel->setObjectName("statusBar");
+
     localAxisStatusLabel = new QLabel(statusBar);
     localAxisStatusLabel->setAlignment(Qt::AlignRight);
+    localAxisStatusLabel->setObjectName("statusBar");
+
     statusBar->addPermanentWidget(messageLabel, 4);
     statusBar->addPermanentWidget(bbStatusLabel, 0);
     statusBar->addPermanentWidget(aabbStatusLabel, 0);

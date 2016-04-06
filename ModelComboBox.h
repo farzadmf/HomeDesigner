@@ -12,6 +12,17 @@ class ModelComboBox : public QComboBox
     Q_OBJECT
 
 public:
+    /// \brief Solely used to draw the separator in our ComboBox
+    class ComboBoxDelegate : public QItemDelegate
+    {
+    public:
+        explicit ComboBoxDelegate(QObject* parent = nullptr);
+
+    protected:
+        void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
+        QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override;
+    };
+
     ///
     /// \brief ModelComboBox creates the model combo box
     /// \param parent the parent widget

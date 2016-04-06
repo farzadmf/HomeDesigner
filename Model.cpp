@@ -1,4 +1,5 @@
 #include "Model.h"
+#include <QString>
 
 Model::Model() : targetWidget(nullptr) {}
 
@@ -10,6 +11,7 @@ Model::Model(QOpenGLWidget* targetWidget, string path) : targetWidget{ targetWid
     glGenBuffers(1, &boundingBoxEbo);
     targetWidget->doneCurrent();
 
+    filePath = path;
     LoadModel(path);
     PopulateBoundingBoxVertices();
     PopulateBoundingBoxIndices();
@@ -38,6 +40,16 @@ void Model::DrawBoundingBox(const vector<glm::vec3>& vertices) const
     glBindVertexArray(boundingBoxVao);
     glDrawElements(GL_LINES, boundingBoxIndices.size(), GL_UNSIGNED_SHORT, nullptr);
     glBindVertexArray(0);
+}
+
+std::ostream& operator<<(std::ostream& stream, Model const& model)
+{
+    auto path = QString::fromStdString(model.filePath);
+    auto pathParts = path.split('/');
+    auto dir = pathParts[pathParts.size() - 2];
+    auto fileName = pathParts[pathParts.size() - 1];
+    stream << "Model [" << dir.toStdString() << "/" << fileName.toStdString() << "]";
+    return stream;
 }
 
 void Model::DrawMeshes(Shader& shader)

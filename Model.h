@@ -46,6 +46,9 @@ public:
     // Getter for model file path
     string GetFilePath() const { return filePath; }
 
+    // Stream overload
+    friend std::ostream& operator<<(std::ostream& stream, Model const& model);
+
 private:
     // Model data
     vector<Mesh> meshes;

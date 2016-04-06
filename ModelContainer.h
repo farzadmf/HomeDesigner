@@ -49,8 +49,8 @@ signals:
 public:
     ///
     /// \brief ModelContainer 
-	/// Insert the model into the room provide initial scale factor and target width. 
-	/// Check that it fits into the room and that it is currently not colliding with anything.
+    /// Insert the model into the room provide initial scale factor and target width. 
+    /// Check that it fits into the room and that it is currently not colliding with anything.
     /// \param model
     /// \param initialScale
     /// \param room

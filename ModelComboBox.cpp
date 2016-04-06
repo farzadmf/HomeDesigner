@@ -1,5 +1,34 @@
 #include "ModelComboBox.h"
 
+ModelComboBox::ComboBoxDelegate::ComboBoxDelegate(QObject* parent) :
+    QItemDelegate(parent)
+{
+}
+
+void ModelComboBox::ComboBoxDelegate::paint(QPainter* painter,
+                                            const QStyleOptionViewItem& option,
+                                            const QModelIndex& index) const
+{
+    if (index.data(Qt::AccessibleDescriptionRole).toString() == QLatin1String("separator"))
+    {
+        painter->setPen(QPen(QBrush(Qt::black), 2, Qt::DashDotLine));
+        painter->drawLine(option.rect.left(), option.rect.center().y(),
+                          option.rect.right(), option.rect.center().y());
+    }
+    else
+        QItemDelegate::paint(painter, option, index);
+}
+
+QSize ModelComboBox::ComboBoxDelegate::sizeHint(const QStyleOptionViewItem& option,
+                                                const QModelIndex& index) const
+{
+    auto type = index.data(Qt::AccessibleDescriptionRole).toString();
+    if (type == QLatin1String("separator"))
+        return QSize(0, 20);
+    
+    return QItemDelegate::sizeHint(option, index);
+}
+
 ModelComboBox::ModelComboBox(QWidget* parent) : QComboBox(parent) { }
 
 ModelComboBox::~ModelComboBox() { }
