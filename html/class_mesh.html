@@ -91,17 +91,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Mesh Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_mesh.html" title="The Mesh class Provide the mesh with all the necessery variables vertices,indices, and textures and then draw the mesh. ">Mesh</a> class Provide the mesh with all the necessery variables vertices,indices, and textures and then draw the mesh.  
+ <a href="class_mesh.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_mesh_8h_source.html">Mesh.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9a4b7f1b6b50b9ad7e80c5d61d2b221b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a4b7f1b6b50b9ad7e80c5d61d2b221b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Mesh</b> (QOpenGLWidget *targetWidget, vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; vertices, vector&lt; GLuint &gt; indices, vector&lt; <a class="el" href="struct_texture.html">Texture</a> &gt; textures)</td></tr>
+<tr class="memitem:a9a4b7f1b6b50b9ad7e80c5d61d2b221b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#a9a4b7f1b6b50b9ad7e80c5d61d2b221b">Mesh</a> (QOpenGLWidget *targetWidget, vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; vertices, vector&lt; GLuint &gt; indices, vector&lt; <a class="el" href="struct_texture.html">Texture</a> &gt; textures)</td></tr>
+<tr class="memdesc:a9a4b7f1b6b50b9ad7e80c5d61d2b221b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_mesh.html" title="The Mesh class Provide the mesh with all the necessery variables vertices,indices, and textures and then draw the mesh. ">Mesh</a> Provide the mesh with all the necessery data.  <a href="#a9a4b7f1b6b50b9ad7e80c5d61d2b221b">More...</a><br /></td></tr>
 <tr class="separator:a9a4b7f1b6b50b9ad7e80c5d61d2b221b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a01e69fcc56f348f7c91e1420b14e0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a01e69fcc56f348f7c91e1420b14e0e"></a>
 GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>GetVao</b> () const </td></tr>
 <tr class="separator:a7a01e69fcc56f348f7c91e1420b14e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a143c8d7c179801c6377853db26d4a19f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a143c8d7c179801c6377853db26d4a19f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Draw</b> (<a class="el" href="class_shader.html">Shader</a> shader)</td></tr>
+<tr class="memitem:a143c8d7c179801c6377853db26d4a19f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#a143c8d7c179801c6377853db26d4a19f">Draw</a> (<a class="el" href="class_shader.html">Shader</a> shader)</td></tr>
+<tr class="memdesc:a143c8d7c179801c6377853db26d4a19f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw the drawing of the loaded mesh.  <a href="#a143c8d7c179801c6377853db26d4a19f">More...</a><br /></td></tr>
 <tr class="separator:a143c8d7c179801c6377853db26d4a19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -116,6 +121,99 @@ vector&lt; GLuint &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Ind
 vector&lt; <a class="el" href="struct_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Textures</b></td></tr>
 <tr class="separator:a10fa55f46fc6c5bb237525ed5343e73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_mesh.html" title="The Mesh class Provide the mesh with all the necessery variables vertices,indices, and textures and then draw the mesh. ">Mesh</a> class Provide the mesh with all the necessery variables vertices,indices, and textures and then draw the mesh. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a9a4b7f1b6b50b9ad7e80c5d61d2b221b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mesh::Mesh </td>
+          <td>(</td>
+          <td class="paramtype">QOpenGLWidget *&#160;</td>
+          <td class="paramname"><em>targetWidget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt;&#160;</td>
+          <td class="paramname"><em>vertices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; GLuint &gt;&#160;</td>
+          <td class="paramname"><em>indices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="struct_texture.html">Texture</a> &gt;&#160;</td>
+          <td class="paramname"><em>textures</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_mesh.html" title="The Mesh class Provide the mesh with all the necessery variables vertices,indices, and textures and then draw the mesh. ">Mesh</a> Provide the mesh with all the necessery data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targetWidget</td><td>the target width </td></tr>
+    <tr><td class="paramname">vertices</td><td>the vertices </td></tr>
+    <tr><td class="paramname">indices</td><td>the indices </td></tr>
+    <tr><td class="paramname">textures</td><td>the texture </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a143c8d7c179801c6377853db26d4a19f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mesh::Draw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a>&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draw the drawing of the loaded mesh. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shader</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="_mesh_8h_source.html">Mesh.h</a></li>
 </ul>

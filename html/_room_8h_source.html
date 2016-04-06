@@ -94,61 +94,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">class </span><a class="code" href="class_model_container.html">ModelContainer</a>;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">class </span><a class="code" href="class_floor.html">Floor</a>;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span>QOpenGLWidget;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_room.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_room.html">Room</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    GLfloat width;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    QOpenGLWidget* targetWidget = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    unique_ptr&lt;Floor&gt; floor;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    vector&lt;shared_ptr&lt;Wall&gt;&gt; walls;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// Color for wall and floor</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    glm::vec3 wallColor, floorColor;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_room.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_room.html">Room</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    GLfloat width;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    QOpenGLWidget* targetWidget = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    unique_ptr&lt;Floor&gt; floor;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    vector&lt;shared_ptr&lt;Wall&gt;&gt; walls;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">// Texture file path for wall and floor</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">string</span> wallTexture, floorTexture;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">// Color for wall and floor</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    glm::vec3 wallColor, floorColor;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_room.html#a7b347765e9501c064013258629b4de19">Room</a>(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    ~<a class="code" href="class_room.html">Room</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_floor.html">Floor</a>* GetFloor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> floor.get(); }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    vector&lt;shared_ptr&lt;Wall&gt;&gt; GetWalls()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> walls; }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Getters and setters for colors</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#a0fee2b31c00e8965934ddb0cba8dab9f">SetWallColor</a>(glm::vec3 wallColor);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    glm::vec3 GetWallColor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> wallColor; }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#a47df29040992bde5444c485b0b942aad">SetFloorColor</a>(glm::vec3 floorColor);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    glm::vec3 GetFloorColor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> floorColor; }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// Getters and setters for textures</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#ab0f733f37df1351b30573dcc8e13a18d">SetWallTexture</a>(<span class="keywordtype">string</span> wallTexture);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">string</span> GetWallTexture()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> wallTexture; }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#af6104c7b967af777bc8b054179f43829">SetFloorTexture</a>(<span class="keywordtype">string</span> floorTexture);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">string</span> GetFloorTexture()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> floorTexture; }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    glm::vec3 <a class="code" href="class_room.html#a2a11f153f356dca23b40cd8147150cb9">GetMinimumCoordinates</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    glm::vec3 <a class="code" href="class_room.html#a1303223ef4eb22b9580148204f1de346">GetMaximumCoordinates</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#a013a7a067df01681afa7b8bfda69e48e">Draw</a>(glm::mat4 <span class="keyword">const</span>&amp; view, glm::mat4 <span class="keyword">const</span>&amp; projection) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#afc80f1892eaa6db27ac526b4ec77d8bd">BindToFloor</a>(<a class="code" href="class_model_container.html">ModelContainer</a>* container);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#a7c26d8c17540d6cd47a649e55de32d2e">BindToWall</a>(<a class="code" href="class_model_container.html">ModelContainer</a>* container, Location wallLocation);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> IsAttached(<a class="code" href="class_model_container.html">ModelContainer</a>* container, Location wallLocation);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="ttc" id="class_room_html_a7c26d8c17540d6cd47a649e55de32d2e"><div class="ttname"><a href="class_room.html#a7c26d8c17540d6cd47a649e55de32d2e">Room::BindToWall</a></div><div class="ttdeci">void BindToWall(ModelContainer *container, Location wallLocation)</div><div class="ttdef"><b>Definition:</b> Room.cpp:121</div></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// Texture file path for wall and floor</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">string</span> wallTexture, floorTexture;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_room.html#a7b347765e9501c064013258629b4de19">Room</a>(QOpenGLWidget* targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    ~<a class="code" href="class_room.html">Room</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_floor.html">Floor</a>* GetFloor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> floor.get(); }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    vector&lt;shared_ptr&lt;Wall&gt;&gt; GetWalls()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> walls; }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// Getters and setters for colors</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#a0fee2b31c00e8965934ddb0cba8dab9f">SetWallColor</a>(glm::vec3 wallColor);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    glm::vec3 GetWallColor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> wallColor; }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#a47df29040992bde5444c485b0b942aad">SetFloorColor</a>(glm::vec3 floorColor);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    glm::vec3 GetFloorColor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> floorColor; }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// Getters and setters for textures</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#ab0f733f37df1351b30573dcc8e13a18d">SetWallTexture</a>(<span class="keywordtype">string</span> wallTexture);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">string</span> GetWallTexture()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> wallTexture; }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#af6104c7b967af777bc8b054179f43829">SetFloorTexture</a>(<span class="keywordtype">string</span> floorTexture);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">string</span> GetFloorTexture()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> floorTexture; }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    glm::vec3 <a class="code" href="class_room.html#a2a11f153f356dca23b40cd8147150cb9">GetMinimumCoordinates</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    glm::vec3 <a class="code" href="class_room.html#a1303223ef4eb22b9580148204f1de346">GetMaximumCoordinates</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#a013a7a067df01681afa7b8bfda69e48e">Draw</a>(glm::mat4 <span class="keyword">const</span>&amp; view, glm::mat4 <span class="keyword">const</span>&amp; projection) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#afc80f1892eaa6db27ac526b4ec77d8bd">BindToFloor</a>(<a class="code" href="class_model_container.html">ModelContainer</a>* container);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_room.html#a7c26d8c17540d6cd47a649e55de32d2e">BindToWall</a>(<a class="code" href="class_model_container.html">ModelContainer</a>* container, Location wallLocation);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span> IsAttached(<a class="code" href="class_model_container.html">ModelContainer</a>* container, Location wallLocation);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="ttc" id="class_room_html_a7c26d8c17540d6cd47a649e55de32d2e"><div class="ttname"><a href="class_room.html#a7c26d8c17540d6cd47a649e55de32d2e">Room::BindToWall</a></div><div class="ttdeci">void BindToWall(ModelContainer *container, Location wallLocation)</div><div class="ttdoc">BindToWall binds the specific model container to the wall. </div><div class="ttdef"><b>Definition:</b> Room.cpp:121</div></div>
 <div class="ttc" id="class_room_html_a2a11f153f356dca23b40cd8147150cb9"><div class="ttname"><a href="class_room.html#a2a11f153f356dca23b40cd8147150cb9">Room::GetMinimumCoordinates</a></div><div class="ttdeci">glm::vec3 GetMinimumCoordinates() const </div><div class="ttdef"><b>Definition:</b> Room.cpp:78</div></div>
 <div class="ttc" id="class_room_html_ab0f733f37df1351b30573dcc8e13a18d"><div class="ttname"><a href="class_room.html#ab0f733f37df1351b30573dcc8e13a18d">Room::SetWallTexture</a></div><div class="ttdeci">void SetWallTexture(string wallTexture)</div><div class="ttdef"><b>Definition:</b> Room.cpp:59</div></div>
-<div class="ttc" id="class_floor_html"><div class="ttname"><a href="class_floor.html">Floor</a></div><div class="ttdoc">The Floor class allows the adding of colors and texture to the floor using shaders. </div><div class="ttdef"><b>Definition:</b> Floor.h:17</div></div>
+<div class="ttc" id="class_floor_html"><div class="ttname"><a href="class_floor.html">Floor</a></div><div class="ttdoc">The Floor class allows the adding of colors and texture to the floor using shaders. </div><div class="ttdef"><b>Definition:</b> Floor.h:18</div></div>
 <div class="ttc" id="class_room_html_a1303223ef4eb22b9580148204f1de346"><div class="ttname"><a href="class_room.html#a1303223ef4eb22b9580148204f1de346">Room::GetMaximumCoordinates</a></div><div class="ttdeci">glm::vec3 GetMaximumCoordinates() const </div><div class="ttdef"><b>Definition:</b> Room.cpp:86</div></div>
-<div class="ttc" id="class_room_html_a7b347765e9501c064013258629b4de19"><div class="ttname"><a href="class_room.html#a7b347765e9501c064013258629b4de19">Room::Room</a></div><div class="ttdeci">Room(QOpenGLWidget *targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor)</div><div class="ttdef"><b>Definition:</b> Room.cpp:11</div></div>
+<div class="ttc" id="class_room_html_a7b347765e9501c064013258629b4de19"><div class="ttname"><a href="class_room.html#a7b347765e9501c064013258629b4de19">Room::Room</a></div><div class="ttdeci">Room(QOpenGLWidget *targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor)</div><div class="ttdoc">Room Creates the room with specific widths and colors. </div><div class="ttdef"><b>Definition:</b> Room.cpp:11</div></div>
 <div class="ttc" id="class_room_html_af6104c7b967af777bc8b054179f43829"><div class="ttname"><a href="class_room.html#af6104c7b967af777bc8b054179f43829">Room::SetFloorTexture</a></div><div class="ttdeci">void SetFloorTexture(string floorTexture)</div><div class="ttdef"><b>Definition:</b> Room.cpp:69</div></div>
-<div class="ttc" id="class_room_html_a013a7a067df01681afa7b8bfda69e48e"><div class="ttname"><a href="class_room.html#a013a7a067df01681afa7b8bfda69e48e">Room::Draw</a></div><div class="ttdeci">void Draw(glm::mat4 const &amp;view, glm::mat4 const &amp;projection) const </div><div class="ttdef"><b>Definition:</b> Room.cpp:94</div></div>
+<div class="ttc" id="class_room_html_a013a7a067df01681afa7b8bfda69e48e"><div class="ttname"><a href="class_room.html#a013a7a067df01681afa7b8bfda69e48e">Room::Draw</a></div><div class="ttdeci">void Draw(glm::mat4 const &amp;view, glm::mat4 const &amp;projection) const </div><div class="ttdoc">Draw Draws the room floor and walls. </div><div class="ttdef"><b>Definition:</b> Room.cpp:94</div></div>
 <div class="ttc" id="class_room_html_a47df29040992bde5444c485b0b942aad"><div class="ttname"><a href="class_room.html#a47df29040992bde5444c485b0b942aad">Room::SetFloorColor</a></div><div class="ttdeci">void SetFloorColor(glm::vec3 floorColor)</div><div class="ttdef"><b>Definition:</b> Room.cpp:50</div></div>
-<div class="ttc" id="class_model_container_html"><div class="ttname"><a href="class_model_container.html">ModelContainer</a></div><div class="ttdef"><b>Definition:</b> ModelContainer.h:7</div></div>
-<div class="ttc" id="class_room_html"><div class="ttname"><a href="class_room.html">Room</a></div><div class="ttdef"><b>Definition:</b> Room.h:12</div></div>
-<div class="ttc" id="class_room_html_afc80f1892eaa6db27ac526b4ec77d8bd"><div class="ttname"><a href="class_room.html#afc80f1892eaa6db27ac526b4ec77d8bd">Room::BindToFloor</a></div><div class="ttdeci">void BindToFloor(ModelContainer *container)</div><div class="ttdef"><b>Definition:</b> Room.cpp:108</div></div>
+<div class="ttc" id="class_model_container_html"><div class="ttname"><a href="class_model_container.html">ModelContainer</a></div><div class="ttdoc">The ModelContainer class. </div><div class="ttdef"><b>Definition:</b> ModelContainer.h:9</div></div>
+<div class="ttc" id="class_room_html"><div class="ttname"><a href="class_room.html">Room</a></div><div class="ttdoc">The Room class Creates a room with 3 walls and sets the color and texture of the room. </div><div class="ttdef"><b>Definition:</b> Room.h:15</div></div>
+<div class="ttc" id="class_room_html_afc80f1892eaa6db27ac526b4ec77d8bd"><div class="ttname"><a href="class_room.html#afc80f1892eaa6db27ac526b4ec77d8bd">Room::BindToFloor</a></div><div class="ttdeci">void BindToFloor(ModelContainer *container)</div><div class="ttdoc">BindToFloor binds the specific model container to the floor y axis and allows movement in xz plane...</div><div class="ttdef"><b>Definition:</b> Room.cpp:108</div></div>
 <div class="ttc" id="class_room_html_a0fee2b31c00e8965934ddb0cba8dab9f"><div class="ttname"><a href="class_room.html#a0fee2b31c00e8965934ddb0cba8dab9f">Room::SetWallColor</a></div><div class="ttdeci">void SetWallColor(glm::vec3 wallColor)</div><div class="ttdef"><b>Definition:</b> Room.cpp:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

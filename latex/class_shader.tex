@@ -1,23 +1,80 @@
 \hypertarget{class_shader}{}\section{Shader Class Reference}
 \label{class_shader}\index{Shader@{Shader}}
+
+
+The \hyperlink{class_shader}{Shader} class.  
+
+
+
+
+{\ttfamily \#include $<$Shader.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_shader_a03421a8419cdad4b84cf58ecdb156879}{}{\bfseries Shader} (const G\+Lchar $\ast$vertex\+Path, const G\+Lchar $\ast$fragment\+Path)\label{class_shader_a03421a8419cdad4b84cf58ecdb156879}
+\hypertarget{class_shader_a0d654ebaca4e0555197c0724c6d30610}{}\hyperlink{class_shader_a0d654ebaca4e0555197c0724c6d30610}{Shader} ()\label{class_shader_a0d654ebaca4e0555197c0724c6d30610}
 
-\item 
-\hypertarget{class_shader_a764dce935b63a5ba4add880af9e102fa}{}{\bfseries Shader} (const G\+Lchar $\ast$vertex\+Path, const G\+Lchar $\ast$fragment\+Path, const G\+Lchar $\ast$geometry\+Path)\label{class_shader_a764dce935b63a5ba4add880af9e102fa}
-
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_shader}{Shader} sets default shader values. \end{DoxyCompactList}\item 
+\hyperlink{class_shader_a03421a8419cdad4b84cf58ecdb156879}{Shader} (const G\+Lchar $\ast$vertex\+Path, const G\+Lchar $\ast$fragment\+Path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_shader}{Shader} read vertex and fragment shaders file path then compile the shaders. \end{DoxyCompactList}\item 
+\hyperlink{class_shader_a764dce935b63a5ba4add880af9e102fa}{Shader} (const G\+Lchar $\ast$vertex\+Path, const G\+Lchar $\ast$fragment\+Path, const G\+Lchar $\ast$geometry\+Path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_shader}{Shader} \hyperlink{class_shader}{Shader} read vertex and fragment shaders file path then compile the shaders as well as reading the geometry. \end{DoxyCompactList}\item 
 \hypertarget{class_shader_ac7d8eeb6d2a6215b73f168906a094e15}{}G\+Luint {\bfseries Get\+Program} () const \label{class_shader_ac7d8eeb6d2a6215b73f168906a094e15}
 
 \item 
-\hypertarget{class_shader_ae22f06df368cebeb2e96173d5a6489d0}{}void {\bfseries Create} ()\label{class_shader_ae22f06df368cebeb2e96173d5a6489d0}
+\hypertarget{class_shader_ae22f06df368cebeb2e96173d5a6489d0}{}void \hyperlink{class_shader_ae22f06df368cebeb2e96173d5a6489d0}{Create} ()\label{class_shader_ae22f06df368cebeb2e96173d5a6489d0}
 
-\item 
-\hypertarget{class_shader_a65e20a174801bb1e074356c3eed43a37}{}void {\bfseries Use} () const \label{class_shader_a65e20a174801bb1e074356c3eed43a37}
+\begin{DoxyCompactList}\small\item\em Create generates the shader program. \end{DoxyCompactList}\item 
+\hypertarget{class_shader_a65e20a174801bb1e074356c3eed43a37}{}void \hyperlink{class_shader_a65e20a174801bb1e074356c3eed43a37}{Use} () const \label{class_shader_a65e20a174801bb1e074356c3eed43a37}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Use uses the shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_shader}{Shader} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_shader_a03421a8419cdad4b84cf58ecdb156879}{}\index{Shader@{Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!Shader@{Shader}}
+\subsubsection[{Shader(const G\+Lchar $\ast$vertex\+Path, const G\+Lchar $\ast$fragment\+Path)}]{\setlength{\rightskip}{0pt plus 5cm}Shader\+::\+Shader (
+\begin{DoxyParamCaption}
+\item[{const G\+Lchar $\ast$}]{vertex\+Path, }
+\item[{const G\+Lchar $\ast$}]{fragment\+Path}
+\end{DoxyParamCaption}
+)}\label{class_shader_a03421a8419cdad4b84cf58ecdb156879}
+
+
+\hyperlink{class_shader}{Shader} read vertex and fragment shaders file path then compile the shaders. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+Path} & file path to the vertex shader \\
+\hline
+{\em fragment\+Path} & file path to the fragment shader \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_shader_a764dce935b63a5ba4add880af9e102fa}{}\index{Shader@{Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!Shader@{Shader}}
+\subsubsection[{Shader(const G\+Lchar $\ast$vertex\+Path, const G\+Lchar $\ast$fragment\+Path, const G\+Lchar $\ast$geometry\+Path)}]{\setlength{\rightskip}{0pt plus 5cm}Shader\+::\+Shader (
+\begin{DoxyParamCaption}
+\item[{const G\+Lchar $\ast$}]{vertex\+Path, }
+\item[{const G\+Lchar $\ast$}]{fragment\+Path, }
+\item[{const G\+Lchar $\ast$}]{geometry\+Path}
+\end{DoxyParamCaption}
+)}\label{class_shader_a764dce935b63a5ba4add880af9e102fa}
+
+
+\hyperlink{class_shader}{Shader} \hyperlink{class_shader}{Shader} read vertex and fragment shaders file path then compile the shaders as well as reading the geometry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+Path} & file path to the vertex shader \\
+\hline
+{\em fragment\+Path} & file path to the fragment shader \\
+\hline
+{\em geometry\+Path} & file path to geometry shader \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

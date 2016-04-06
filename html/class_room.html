@@ -90,10 +90,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Room Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_room.html" title="The Room class Creates a room with 3 walls and sets the color and texture of the room. ">Room</a> class Creates a room with 3 walls and sets the color and texture of the room.  
+ <a href="class_room.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_room_8h_source.html">Room.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b347765e9501c064013258629b4de19"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_room.html#a7b347765e9501c064013258629b4de19">Room</a> (QOpenGLWidget *targetWidget, GLfloat roomWidth, glm::vec3 wallColor, glm::vec3 floorColor)</td></tr>
+<tr class="memdesc:a7b347765e9501c064013258629b4de19"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_room.html" title="The Room class Creates a room with 3 walls and sets the color and texture of the room. ">Room</a> Creates the room with specific widths and colors.  <a href="#a7b347765e9501c064013258629b4de19">More...</a><br /></td></tr>
 <tr class="separator:a7b347765e9501c064013258629b4de19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae621e50fd276c68af137ab02666dcee8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae621e50fd276c68af137ab02666dcee8"></a>
 <a class="el" href="class_floor.html">Floor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetFloor</b> () const </td></tr>
@@ -126,16 +132,21 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>GetFloorTexture</b>
 <tr class="memitem:a1303223ef4eb22b9580148204f1de346"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_room.html#a1303223ef4eb22b9580148204f1de346">GetMaximumCoordinates</a> () const </td></tr>
 <tr class="separator:a1303223ef4eb22b9580148204f1de346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a013a7a067df01681afa7b8bfda69e48e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_room.html#a013a7a067df01681afa7b8bfda69e48e">Draw</a> (glm::mat4 const &amp;view, glm::mat4 const &amp;projection) const </td></tr>
+<tr class="memdesc:a013a7a067df01681afa7b8bfda69e48e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw Draws the room floor and walls.  <a href="#a013a7a067df01681afa7b8bfda69e48e">More...</a><br /></td></tr>
 <tr class="separator:a013a7a067df01681afa7b8bfda69e48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc80f1892eaa6db27ac526b4ec77d8bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_room.html#afc80f1892eaa6db27ac526b4ec77d8bd">BindToFloor</a> (<a class="el" href="class_model_container.html">ModelContainer</a> *container)</td></tr>
+<tr class="memdesc:afc80f1892eaa6db27ac526b4ec77d8bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">BindToFloor binds the specific model container to the floor y axis and allows movement in xz plane.  <a href="#afc80f1892eaa6db27ac526b4ec77d8bd">More...</a><br /></td></tr>
 <tr class="separator:afc80f1892eaa6db27ac526b4ec77d8bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c26d8c17540d6cd47a649e55de32d2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_room.html#a7c26d8c17540d6cd47a649e55de32d2e">BindToWall</a> (<a class="el" href="class_model_container.html">ModelContainer</a> *container, Location wallLocation)</td></tr>
+<tr class="memdesc:a7c26d8c17540d6cd47a649e55de32d2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">BindToWall binds the specific model container to the wall.  <a href="#a7c26d8c17540d6cd47a649e55de32d2e">More...</a><br /></td></tr>
 <tr class="separator:a7c26d8c17540d6cd47a649e55de32d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c8fbf9ae9469a79ff1b5e6cfaf4cb9d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c8fbf9ae9469a79ff1b5e6cfaf4cb9d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsAttached</b> (<a class="el" href="class_model_container.html">ModelContainer</a> *container, Location wallLocation)</td></tr>
 <tr class="separator:a7c8fbf9ae9469a79ff1b5e6cfaf4cb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_room.html" title="The Room class Creates a room with 3 walls and sets the color and texture of the room. ">Room</a> class Creates a room with 3 walls and sets the color and texture of the room. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7b347765e9501c064013258629b4de19"></a>
 <div class="memitem">
 <div class="memproto">
@@ -171,7 +182,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsAttached</b> (<a cl
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create the room with specified width, and </p>
+
+<p><a class="el" href="class_room.html" title="The Room class Creates a room with 3 walls and sets the color and texture of the room. ">Room</a> Creates the room with specific widths and colors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targetWidget</td><td>target width </td></tr>
+    <tr><td class="paramname">roomWidth</td><td>room width </td></tr>
+    <tr><td class="paramname">wallColor</td><td>wall color </td></tr>
+    <tr><td class="paramname">floorColor</td><td>floor color</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Create the room with specified width, and colors </p>
 
 </div>
 </div>
@@ -189,7 +211,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsAttached</b> (<a cl
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Binds the specified model container to the floor </p>
+
+<p>BindToFloor binds the specific model container to the floor y axis and allows movement in xz plane. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">container</td><td>Binds the specified model container to the floor </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -216,7 +245,15 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsAttached</b> (<a cl
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Binds the specified model container to the specified wall </p>
+
+<p>BindToWall binds the specific model container to the wall. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">container</td><td></td></tr>
+    <tr><td class="paramname">wallLocation</td><td>Binds the specified model container to the specified wall </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -243,6 +280,15 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsAttached</b> (<a cl
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Draw Draws the room floor and walls. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">view</td><td>view matrix </td></tr>
+    <tr><td class="paramname">projection</td><td>projection matrix</td></tr>
+  </table>
+  </dd>
+</dl>
 <p>Draws the room (floor and the walls) </p>
 
 </div>

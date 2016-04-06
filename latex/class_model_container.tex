@@ -1,5 +1,14 @@
 \hypertarget{class_model_container}{}\section{Model\+Container Class Reference}
 \label{class_model_container}\index{Model\+Container@{Model\+Container}}
+
+
+The \hyperlink{class_model_container}{Model\+Container} class.  
+
+
+
+
+{\ttfamily \#include $<$Model\+Container.\+h$>$}
+
 Inheritance diagram for Model\+Container\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -18,9 +27,8 @@ Inheritance diagram for Model\+Container\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_model_container_a5145271e175fb5434c5209d170a2749d}{}{\bfseries Model\+Container} (\hyperlink{class_model}{Model} $\ast$model, G\+Lfloat initial\+Scale, \hyperlink{class_room}{Room} $\ast$room, Q\+Open\+G\+L\+Widget $\ast$target\+Widget)\label{class_model_container_a5145271e175fb5434c5209d170a2749d}
-
-\item 
+\hyperlink{class_model_container_a5145271e175fb5434c5209d170a2749d}{Model\+Container} (\hyperlink{class_model}{Model} $\ast$model, G\+Lfloat initial\+Scale, \hyperlink{class_room}{Room} $\ast$room, Q\+Open\+G\+L\+Widget $\ast$target\+Widget)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_model_container}{Model\+Container} Insert the model into the room provide initial scale factor and target width. Check that it fits into the room and that it is currently not colliding with anything. \end{DoxyCompactList}\item 
 \hypertarget{class_model_container_ad403022f0e44b40ae6576b1c9454263e}{}G\+Lfloat {\bfseries Get\+Scale\+Factor} () const \label{class_model_container_ad403022f0e44b40ae6576b1c9454263e}
 
 \item 
@@ -66,6 +74,12 @@ Inheritance diagram for Model\+Container\+:\begin{figure}[H]
 \hypertarget{class_model_container_a0163bcb5b8ff80f52cfb043ec0f3aa63}{}\hyperlink{class_model}{Model} $\ast$ {\bfseries Get\+Model} () const \label{class_model_container_a0163bcb5b8ff80f52cfb043ec0f3aa63}
 
 \item 
+\hypertarget{class_model_container_a9df86e06bcda6af814008c136b1023e8}{}glm\+::mat4 {\bfseries Get\+Transform\+Matrix} () const \label{class_model_container_a9df86e06bcda6af814008c136b1023e8}
+
+\item 
+\hypertarget{class_model_container_a9f7fc23d5b09502dbb442b3f65c294ce}{}glm\+::mat4 \hyperlink{class_model_container_a9f7fc23d5b09502dbb442b3f65c294ce}{Get\+Transform\+Rotate\+Matrix} () const \label{class_model_container_a9f7fc23d5b09502dbb442b3f65c294ce}
+
+\begin{DoxyCompactList}\small\item\em Get the transform-\/rotate matrix. \end{DoxyCompactList}\item 
 \hypertarget{class_model_container_a2a91fc30179a9da8195e704bcf6bb179}{}void {\bfseries Set\+Projection\+Matrix} (glm\+::mat4 \&projection)\label{class_model_container_a2a91fc30179a9da8195e704bcf6bb179}
 
 \item 
@@ -81,15 +95,12 @@ Inheritance diagram for Model\+Container\+:\begin{figure}[H]
 \hypertarget{class_model_container_a9bc78b840b5bb544db86cb5956b17a12}{}void {\bfseries Set\+Scale\+Bound} (glm\+::vec3 scale\+Bound)\label{class_model_container_a9bc78b840b5bb544db86cb5956b17a12}
 
 \item 
-\hypertarget{class_model_container_ac8d13143fdc69ce02d2539dd677bc3db}{}void {\bfseries Scale\+By} (G\+Lfloat scale\+Factor)\label{class_model_container_ac8d13143fdc69ce02d2539dd677bc3db}
-
-\item 
-\hypertarget{class_model_container_a40a0e922136e185a3808dac214d9cea8}{}void {\bfseries Rotate\+By} (glm\+::vec3 angles)\label{class_model_container_a40a0e922136e185a3808dac214d9cea8}
-
-\item 
-\hypertarget{class_model_container_ac33db8cfd1cac6742735dcc0226feff0}{}void {\bfseries Translate\+By} (glm\+::vec3 translate\+Vector)\label{class_model_container_ac33db8cfd1cac6742735dcc0226feff0}
-
-\item 
+void \hyperlink{class_model_container_ac8d13143fdc69ce02d2539dd677bc3db}{Scale\+By} (G\+Lfloat scale\+Factor)
+\begin{DoxyCompactList}\small\item\em Scale\+By. \end{DoxyCompactList}\item 
+void \hyperlink{class_model_container_a40a0e922136e185a3808dac214d9cea8}{Rotate\+By} (glm\+::vec3 angles)
+\begin{DoxyCompactList}\small\item\em Rotate\+By. \end{DoxyCompactList}\item 
+void \hyperlink{class_model_container_ac33db8cfd1cac6742735dcc0226feff0}{Translate\+By} (glm\+::vec3 translate\+Vector)
+\begin{DoxyCompactList}\small\item\em Translate\+By. \end{DoxyCompactList}\item 
 \hypertarget{class_model_container_a349647d2eccc777419ff6eeb8edeff90}{}bool {\bfseries Is\+Selected} () const \label{class_model_container_a349647d2eccc777419ff6eeb8edeff90}
 
 \item 
@@ -99,21 +110,154 @@ Inheritance diagram for Model\+Container\+:\begin{figure}[H]
 \hypertarget{class_model_container_ad772dd3ae73fa1f3237c83e97a5fc80b}{}bool {\bfseries Is\+Colliding} () const \label{class_model_container_ad772dd3ae73fa1f3237c83e97a5fc80b}
 
 \item 
-\hypertarget{class_model_container_a9d6352f35e74be676bf923d38ec0b24c}{}void {\bfseries Draw\+Model} (\hyperlink{class_shader}{Shader} \&shader, \hyperlink{class_shader}{Shader} \&outline\+Shader, int index)\label{class_model_container_a9d6352f35e74be676bf923d38ec0b24c}
-
-\item 
-\hypertarget{class_model_container_a4f73480431ca9bca8cbcdac87ef1d055}{}void {\bfseries Draw\+Model\+Bounding\+Box} (\hyperlink{class_shader}{Shader} \&shader)\label{class_model_container_a4f73480431ca9bca8cbcdac87ef1d055}
-
-\item 
-\hypertarget{class_model_container_a6048f0f26f86025c6854bf42d7c5cc19}{}void {\bfseries Draw\+A\+A\+Boudning\+Box} (\hyperlink{class_shader}{Shader} \&shader)\label{class_model_container_a6048f0f26f86025c6854bf42d7c5cc19}
-
-\item 
+void \hyperlink{class_model_container_a9d6352f35e74be676bf923d38ec0b24c}{Draw\+Model} (\hyperlink{class_shader}{Shader} \&shader, \hyperlink{class_shader}{Shader} \&outline\+Shader, int index)
+\begin{DoxyCompactList}\small\item\em Draw\+Model. \end{DoxyCompactList}\item 
+void \hyperlink{class_model_container_a4f73480431ca9bca8cbcdac87ef1d055}{Draw\+Model\+Bounding\+Box} (\hyperlink{class_shader}{Shader} \&shader)
+\begin{DoxyCompactList}\small\item\em Draw\+Model\+Bounding\+Box. \end{DoxyCompactList}\item 
+void \hyperlink{class_model_container_a6048f0f26f86025c6854bf42d7c5cc19}{Draw\+A\+A\+Boudning\+Box} (\hyperlink{class_shader}{Shader} \&shader)
+\begin{DoxyCompactList}\small\item\em Draw\+A\+A\+Boudning\+Box. \end{DoxyCompactList}\item 
 \hypertarget{class_model_container_aff6393883a26f3d71476e24e34f58852}{}void {\bfseries Reset} ()\label{class_model_container_aff6393883a26f3d71476e24e34f58852}
 
 \item 
 \hypertarget{class_model_container_a84dee4d7878153ecd2971427b2dd4c87}{}bool {\bfseries Is\+Inside\+Room} () const \label{class_model_container_a84dee4d7878153ecd2971427b2dd4c87}
 
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_model_container}{Model\+Container} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_model_container_a5145271e175fb5434c5209d170a2749d}{}\index{Model\+Container@{Model\+Container}!Model\+Container@{Model\+Container}}
+\index{Model\+Container@{Model\+Container}!Model\+Container@{Model\+Container}}
+\subsubsection[{Model\+Container(\+Model $\ast$model, G\+Lfloat initial\+Scale, Room $\ast$room, Q\+Open\+G\+L\+Widget $\ast$target\+Widget)}]{\setlength{\rightskip}{0pt plus 5cm}Model\+Container\+::\+Model\+Container (
+\begin{DoxyParamCaption}
+\item[{{\bf Model} $\ast$}]{model, }
+\item[{G\+Lfloat}]{initial\+Scale, }
+\item[{{\bf Room} $\ast$}]{room, }
+\item[{Q\+Open\+G\+L\+Widget $\ast$}]{target\+Widget}
+\end{DoxyParamCaption}
+)}\label{class_model_container_a5145271e175fb5434c5209d170a2749d}
+
+
+\hyperlink{class_model_container}{Model\+Container} Insert the model into the room provide initial scale factor and target width. Check that it fits into the room and that it is currently not colliding with anything. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+{\em initial\+Scale} & \\
+\hline
+{\em room} & \\
+\hline
+{\em target\+Widget} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_model_container_a6048f0f26f86025c6854bf42d7c5cc19}{}\index{Model\+Container@{Model\+Container}!Draw\+A\+A\+Boudning\+Box@{Draw\+A\+A\+Boudning\+Box}}
+\index{Draw\+A\+A\+Boudning\+Box@{Draw\+A\+A\+Boudning\+Box}!Model\+Container@{Model\+Container}}
+\subsubsection[{Draw\+A\+A\+Boudning\+Box(\+Shader \&shader)}]{\setlength{\rightskip}{0pt plus 5cm}void Model\+Container\+::\+Draw\+A\+A\+Boudning\+Box (
+\begin{DoxyParamCaption}
+\item[{{\bf Shader} \&}]{shader}
+\end{DoxyParamCaption}
+)}\label{class_model_container_a6048f0f26f86025c6854bf42d7c5cc19}
+
+
+Draw\+A\+A\+Boudning\+Box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_container_a9d6352f35e74be676bf923d38ec0b24c}{}\index{Model\+Container@{Model\+Container}!Draw\+Model@{Draw\+Model}}
+\index{Draw\+Model@{Draw\+Model}!Model\+Container@{Model\+Container}}
+\subsubsection[{Draw\+Model(\+Shader \&shader, Shader \&outline\+Shader, int index)}]{\setlength{\rightskip}{0pt plus 5cm}void Model\+Container\+::\+Draw\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Shader} \&}]{shader, }
+\item[{{\bf Shader} \&}]{outline\+Shader, }
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{class_model_container_a9d6352f35e74be676bf923d38ec0b24c}
+
+
+Draw\+Model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & \\
+\hline
+{\em outline\+Shader} & \\
+\hline
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_container_a4f73480431ca9bca8cbcdac87ef1d055}{}\index{Model\+Container@{Model\+Container}!Draw\+Model\+Bounding\+Box@{Draw\+Model\+Bounding\+Box}}
+\index{Draw\+Model\+Bounding\+Box@{Draw\+Model\+Bounding\+Box}!Model\+Container@{Model\+Container}}
+\subsubsection[{Draw\+Model\+Bounding\+Box(\+Shader \&shader)}]{\setlength{\rightskip}{0pt plus 5cm}void Model\+Container\+::\+Draw\+Model\+Bounding\+Box (
+\begin{DoxyParamCaption}
+\item[{{\bf Shader} \&}]{shader}
+\end{DoxyParamCaption}
+)}\label{class_model_container_a4f73480431ca9bca8cbcdac87ef1d055}
+
+
+Draw\+Model\+Bounding\+Box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_container_a40a0e922136e185a3808dac214d9cea8}{}\index{Model\+Container@{Model\+Container}!Rotate\+By@{Rotate\+By}}
+\index{Rotate\+By@{Rotate\+By}!Model\+Container@{Model\+Container}}
+\subsubsection[{Rotate\+By(glm\+::vec3 angles)}]{\setlength{\rightskip}{0pt plus 5cm}void Model\+Container\+::\+Rotate\+By (
+\begin{DoxyParamCaption}
+\item[{glm\+::vec3}]{angles}
+\end{DoxyParamCaption}
+)}\label{class_model_container_a40a0e922136e185a3808dac214d9cea8}
+
+
+Rotate\+By. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angles} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_container_ac8d13143fdc69ce02d2539dd677bc3db}{}\index{Model\+Container@{Model\+Container}!Scale\+By@{Scale\+By}}
+\index{Scale\+By@{Scale\+By}!Model\+Container@{Model\+Container}}
+\subsubsection[{Scale\+By(\+G\+Lfloat scale\+Factor)}]{\setlength{\rightskip}{0pt plus 5cm}void Model\+Container\+::\+Scale\+By (
+\begin{DoxyParamCaption}
+\item[{G\+Lfloat}]{scale\+Factor}
+\end{DoxyParamCaption}
+)}\label{class_model_container_ac8d13143fdc69ce02d2539dd677bc3db}
+
+
+Scale\+By. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale\+Factor} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_container_ac33db8cfd1cac6742735dcc0226feff0}{}\index{Model\+Container@{Model\+Container}!Translate\+By@{Translate\+By}}
+\index{Translate\+By@{Translate\+By}!Model\+Container@{Model\+Container}}
+\subsubsection[{Translate\+By(glm\+::vec3 translate\+Vector)}]{\setlength{\rightskip}{0pt plus 5cm}void Model\+Container\+::\+Translate\+By (
+\begin{DoxyParamCaption}
+\item[{glm\+::vec3}]{translate\+Vector}
+\end{DoxyParamCaption}
+)}\label{class_model_container_ac33db8cfd1cac6742735dcc0226feff0}
+
+
+Translate\+By. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em translate\+Vector} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
