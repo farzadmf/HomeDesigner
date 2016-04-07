@@ -16,4 +16,4 @@ To use the project:
 9. Enter **5.6** for **Version Name** and the path should be the default install location (**C:\Qt\Qt5.6.0\5.6\msvc2015**)
 10. Clone the repository and you should be able to run the application inside Visual Studio
 
-**TIP**: not required for this project, but if you want to create new Qt projects from scratch (using the templates installed by the Add-in), you need to create an environment variable with name `QTDIR`, and the value being the default Qt installation directory (C:\Qt\Qt5.6.0\5.6\msvc2015**)
+**TIP**: not required for this project, but if you want to create new Qt projects from scratch (using the templates installed by the Add-in), you need to create an environment variable with name `QTDIR`, and the value being the default Qt installation directory (**C:\Qt\Qt5.6.0\5.6\msvc2015**)
