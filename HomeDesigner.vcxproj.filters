@@ -178,9 +178,6 @@
     <None Include="resources\HelpWindow.qss">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="resources\temp.qss">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="resources\MainWindow.qss">
       <Filter>Resource Files</Filter>
     </None>

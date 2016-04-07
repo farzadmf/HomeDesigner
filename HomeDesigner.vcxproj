@@ -77,7 +77,6 @@
     </CustomBuild>
     <None Include="resources\HelpWindow.qss" />
     <None Include="resources\MainWindow.qss" />
-    <None Include="resources\temp.qss" />
     <None Include="shaders\axis.fs" />
     <None Include="shaders\axis.vs" />
     <None Include="shaders\floor.fs" />
