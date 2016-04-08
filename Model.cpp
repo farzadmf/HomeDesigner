@@ -31,7 +31,11 @@ void Model::DrawOutline(glm::mat4& model, Shader& shader)
 
 void Model::DrawBoundingBox() const
 {
+    GLfloat currentLineWidth;
+    glGetFloatv(GL_LINE_WIDTH, &currentLineWidth);
+    glLineWidth(3);
     DrawBoundingBox(boundingBoxVertices);
+    glLineWidth(currentLineWidth);
 }
 
 void Model::DrawBoundingBox(const vector<glm::vec3>& vertices) const
