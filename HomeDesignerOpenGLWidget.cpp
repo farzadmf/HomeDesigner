@@ -431,28 +431,28 @@ void HomeDesignerOpenGLWidget::keyPressEvent(QKeyEvent* event)
             if (oldAxis != axis)
                 EmitDisplayMessage("<b><font color='blue'>Axis   -------->   z  ( BLUE )</font></b>", 0);
             break;
-		case Qt::Key_O:
-			camera->turnUpsideDown();
-			break;
-			//If keyboard key 1 is pressed move camera close to selected object and facing it.
-		case Qt::Key_1:
-			//if an object is selected
-			if (selectedContainerIndex != -1) {
-				camera->getCloseToSelectedObject(modelContainers[selectedContainerIndex]->getModelContainerCenter(), roomHalf, -roomHalf);
-			}
-			break;
-		//If keyboard key 2 is pressed Moves camera to give an eye level view of the scene
-		case Qt::Key_2:
-			camera->horizontalFaceView(roomHalf, -roomHalf, roomHalf, -roomHalf, roomHalf, -roomHalf);
-			break;
-		//If keyboard key 3 is pressed move camera to a bird's eye view of the scene
-		case Qt::Key_3:
-			camera->birdsEyeView(roomHalf, -roomHalf, roomHalf, -roomHalf, roomHalf, -roomHalf);
-			break;
-		//If keyboard key 4 is pressed cycle through scene corners with camera
-		case Qt::Key_4:
-			camera->cycleThroughSceneCorners(roomHalf, -roomHalf, roomHalf, -roomHalf, roomHalf, -roomHalf);
-			break;
+        case Qt::Key_O:
+            camera->turnUpsideDown();
+            break;
+            //If keyboard key 1 is pressed move camera close to selected object and facing it.
+        case Qt::Key_1:
+            //if an object is selected
+            if (selectedContainerIndex != -1) {
+                camera->getCloseToSelectedObject(modelContainers[selectedContainerIndex]->getModelContainerCenter(), roomHalf, -roomHalf);
+            }
+            break;
+        //If keyboard key 2 is pressed Moves camera to give an eye level view of the scene
+        case Qt::Key_2:
+            camera->horizontalFaceView(roomHalf, -roomHalf, roomHalf, -roomHalf, roomHalf, -roomHalf);
+            break;
+        //If keyboard key 3 is pressed move camera to a bird's eye view of the scene
+        case Qt::Key_3:
+            camera->birdsEyeView(roomHalf, -roomHalf, roomHalf, -roomHalf, roomHalf, -roomHalf);
+            break;
+        //If keyboard key 4 is pressed cycle through scene corners with camera
+        case Qt::Key_4:
+            camera->cycleThroughSceneCorners(roomHalf, -roomHalf, roomHalf, -roomHalf, roomHalf, -roomHalf);
+            break;
         default:
             axis = NONE;
             EmitClearMessage();

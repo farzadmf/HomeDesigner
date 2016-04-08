@@ -195,7 +195,7 @@ HelpWindow::HelpWindow()
 {
     setFixedSize(1400, 900);
     // Center on the screen
-	setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, this->size(),
+    setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, this->size(),
                                     QApplication::desktop()->availableGeometry()));
 
     QFile stylesheetFile(":/styles/HelpWindow.qss");
