@@ -1,7 +1,31 @@
 # HomeDesigner Project
 
-To use the project:
+## Screenshots
+### Main Window
+<img src="https://github.com/farzadmf/HomeDesigner/blob/master/Screenshots/01-Main.jpg" />
 
+### Adding a Model
+<img src="https://github.com/farzadmf/HomeDesigner/blob/master/Screenshots/02-AddingModel.jpg" />
+
+### Moving a model in the scene
+<img src="https://github.com/farzadmf/HomeDesigner/blob/master/Screenshots/03-MoveModel.jpg" />
+
+### Changing color (wall or floor)
+<img src="https://github.com/farzadmf/HomeDesigner/blob/master/Screenshots/04-ChangeColor.jpg" />
+
+### Changing texture (wall or floor)
+<img src="https://github.com/farzadmf/HomeDesigner/blob/master/Screenshots/04-ChangeTexture.jpg" />
+
+### Room with different textures
+<img src="https://github.com/farzadmf/HomeDesigner/blob/master/Screenshots/05-ChangedTextures.jpg" />
+
+### Collision detection
+<img src="https://github.com/farzadmf/HomeDesigner/blob/master/Screenshots/06-CollisionDetection.jpg" />
+
+### Resolving collision (by moving the object)
+<img src="https://github.com/farzadmf/HomeDesigner/blob/master/Screenshots/07-CollisionResolved.jpg" />
+
+## To use the project:
 1. Install Visual Studio 2015  
     1. [This is the link to the Community version](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)
     2. You can get the Enterprise version [from DreamSpark here](https://aits.encs.concordia.ca/aits/sec/msdnaa) (enter your ENCS username and password)
